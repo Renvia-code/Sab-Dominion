@@ -89,7 +89,7 @@ The work has three steps: **bring together the public reports, check and standar
 | Source data and annual results | [data/](data/) |
 | Cleaning, calculations and tests | [sql/](sql/) |
 | Supporting explanations and audit trail | [docs/](docs/) |
-| Power BI measures and workbook | [powerbi/](powerbi/) |
+| Power BI report template, queries, measures and workbook | [powerbi/](powerbi/) |
 
 ## How to check the work
 
@@ -100,9 +100,9 @@ python -m pip install -r requirements.txt
 python -I scripts/run_local_duckdb.py
 ```
 
-This runner covers the reliability SQL and its six checks (T1-T6). With the raw downloads in `data/raw/` (download scripts in [scripts/](scripts/)), `python -I scripts/run_local_duckdb_sources.py` rebuilds the storm, demand, outage and event tables and runs T7 to T31, and `python -I scripts/check_output_metrics.py` checks the committed outputs. Neither reproduces the Power BI report itself.
+This runner covers the reliability SQL and its six checks (T1-T6). With the raw downloads in `data/raw/` (download scripts in [scripts/](scripts/)), `python -I scripts/run_local_duckdb_sources.py` rebuilds the storm, demand, outage and event tables and runs T7 to T31, and `python -I scripts/check_output_metrics.py` checks the committed outputs; `python -I scripts/trend_tests.py` prints the 2015-2025 trend tests. None of them reproduces the Power BI report itself.
 
-The project includes the Power BI measure definitions and supporting workbook, but **not a .pbix dashboard file**. The two charts above are reproductions of selected findings from the reported figures, not exports from Power BI Desktop.
+The Power BI report is included as a template, `powerbi/Dominion_reliability_review.pbit` (the report and the model, no data). Opening it asks for `DataFolder`, a folder that holds the CSV files from `data/output/` and the workbook `powerbi/Dominion_Reliability_PowerBI_Data.xlsx` ([how to open it](docs/06_powerbi_report.md)). The two charts above are reproductions of selected findings from the reported figures, not exports from Power BI Desktop.
 
 For data attribution, see [NOTICE.md](NOTICE.md) and [source notes](docs/01_sources.md). Detailed field mappings and known source anomalies are kept in [docs/](docs/) for reproducibility.
 
@@ -115,4 +115,4 @@ For data attribution, see [NOTICE.md](NOTICE.md) and [source notes](docs/01_sour
 - [SQL transformations and analysis](sql/)
 - [Power BI measures](powerbi/measures.dax)
 
-To reproduce the **core reliability** calculations without Snowflake, run `python scripts/run_local_duckdb.py`. The NOAA and hourly-demand analyses use the additional input files and SQL documented in `scripts/` and `sql/`. The Power BI report file itself is not included in the repository.
+To reproduce the **core reliability** calculations without Snowflake, run `python scripts/run_local_duckdb.py`. The NOAA and hourly-demand analyses use the additional input files and SQL documented in `scripts/` and `sql/`. The Power BI report is included as a template (`powerbi/Dominion_reliability_review.pbit`); the working `.pbix` is not committed.

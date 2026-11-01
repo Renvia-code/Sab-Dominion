@@ -8,7 +8,9 @@ Inputs (scripts/download_context_sources.sh):
 
 Outputs:
   data/raw/census/va_counties_cb2024.geojson      133 Virginia counties and independent cities, full detail
-  data/output/va_counties.geojson                 the same, simplified (about 100 m) for charts and Power BI
+  data/output/va_counties.geojson                 the same, simplified (about 100 m) for charts
+  data/output/va_counties.topojson                TopoJSON for the Power BI shape map (object "counties",
+                                                  properties county_fips and name; borders simplified once)
   data/raw/census/va_county_census.csv            county_fips, name, land area, ACS population and
                                                   housing units, PEP population 2020 and 2025
 Run with: python -I scripts/extract_census_va.py
@@ -18,6 +20,7 @@ import json
 from pathlib import Path
 
 import shapefile  # pyshp
+import topojson
 from shapely.geometry import shape, mapping
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,6 +60,13 @@ def main():
     (C / "va_counties_cb2024.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": feats}), encoding="utf-8")
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "va_counties.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": simple}, separators=(",", ":")), encoding="utf-8")
+    # TopoJSON for the Power BI shape map: topology from the full-detail boundaries, shared borders
+    # simplified once (so neighbours keep a common edge), object "counties", key property county_fips.
+    topo_in = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "geometry": f["geometry"],
+         "properties": {"county_fips": f["properties"]["county_fips"], "name": f["properties"]["namelsad"]}} for f in feats]}
+    topo = topojson.Topology(topo_in, object_name="counties", prequantize=1e6, toposimplify=0.0005)
+    (OUT / "va_counties.topojson").write_text(topo.to_json(), encoding="utf-8")
 
     pop = acs(C / "acsdt5y2024-b01003.dat", "B01003_E001")
     hu = acs(C / "acsdt5y2024-b25001.dat", "B25001_E001")

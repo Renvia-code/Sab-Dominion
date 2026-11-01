@@ -326,23 +326,33 @@ LEFT JOIN peak p ON p.day = d.day;
 -- Readings above the threshold no more than 3 hours apart (territory) or 1 hour
 -- apart (county) belong to the same event. Restoration is measured from the peak,
 -- above the background level (median of the 24 hours before the event starts):
--- hours_to_90pct is the first reading after the peak at or below
--- background + 10% of (peak - background). Searched for 14 days after the peak.
+-- hours_to_90pct is the first reading after the peak from which the series stays
+-- at or below background + 10% of (peak - background) for the next 3 hours (13
+-- readings), so one-reading collection drops (a partial EAGLE-I run, docs/03) do
+-- not count as restoration. Searched for 14 days after the peak.
+-- peak_sustained_1h: the highest level held for a full hour (four consecutive
+-- readings); a peak far above it is a short spike, not a long outage.
 CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_OUTAGE_EVENT COPY GRANTS AS
 WITH terr AS (
-  SELECT ts_utc, customers_out FROM RELIABILITY.MART.FCT_TERRITORY_15MIN WHERE customers_out IS NOT NULL
+  SELECT ts_utc, customers_out,
+         MIN(customers_out) OVER (ORDER BY ts_utc ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)  AS min_next_hour,
+         MAX(customers_out) OVER (ORDER BY ts_utc ROWS BETWEEN CURRENT ROW AND 12 FOLLOWING) AS max_next_3h
+  FROM RELIABILITY.MART.FCT_TERRITORY_15MIN WHERE customers_out IS NOT NULL
 ),
 t_above AS (
-  SELECT ts_utc, customers_out,
+  SELECT ts_utc, customers_out, min_next_hour,
          CASE WHEN DATEDIFF('minute', LAG(ts_utc) OVER (ORDER BY ts_utc), ts_utc) <= 180 THEN 0 ELSE 1 END AS new_event
   FROM terr WHERE customers_out >= 10000
 ),
 t_ev AS (
-  SELECT ts_utc, customers_out, SUM(new_event) OVER (ORDER BY ts_utc ROWS UNBOUNDED PRECEDING) AS seq FROM t_above
+  SELECT ts_utc, customers_out, min_next_hour,
+         SUM(new_event) OVER (ORDER BY ts_utc ROWS UNBOUNDED PRECEDING) AS seq
+  FROM t_above
 ),
 t_sum AS (
   SELECT seq, MIN(ts_utc) AS start_utc, MAX(ts_utc) AS end_utc, MAX(customers_out) AS peak_customers_out,
-         MAX_BY(ts_utc, customers_out) AS peak_utc, COUNT(*) AS readings_above
+         MAX_BY(ts_utc, customers_out) AS peak_utc, COUNT(*) AS readings_above,
+         MAX(min_next_hour) AS peak_sustained_1h
   FROM t_ev GROUP BY seq
 ),
 t_base AS (
@@ -357,9 +367,9 @@ t_ch AS (
 ),
 t_rest AS (
   SELECT e.seq,
-         MIN(CASE WHEN t.customers_out <= b.background + 0.50 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_50,
-         MIN(CASE WHEN t.customers_out <= b.background + 0.10 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_90,
-         MIN(CASE WHEN t.customers_out <= b.background + 0.01 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_99
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.50 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_50,
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.10 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_90,
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.01 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_99
   FROM t_sum e
   JOIN t_base b ON b.seq = e.seq
   JOIN terr t ON t.ts_utc > e.peak_utc AND t.ts_utc <= e.peak_utc + INTERVAL '14 DAY'
@@ -367,7 +377,7 @@ t_rest AS (
 ),
 territory AS (
   SELECT 'territory' AS scope, 'DOM103' AS area_code, e.seq,
-         e.start_utc, e.peak_utc, e.end_utc, e.peak_customers_out, e.readings_above,
+         e.start_utc, e.peak_utc, e.end_utc, e.peak_customers_out, e.peak_sustained_1h, e.readings_above,
          c.customer_hours, b.background AS background_customers_out,
          DATEDIFF('minute', e.peak_utc, r.ts_50) / 60.0 AS hours_to_50pct,
          DATEDIFF('minute', e.peak_utc, r.ts_90) / 60.0 AS hours_to_90pct,
@@ -396,7 +406,7 @@ c_ev AS (
 county AS (
   SELECT 'county' AS scope, county_fips AS area_code, seq,
          MIN(ts_utc) AS start_utc, MAX_BY(ts_utc, customers_out) AS peak_utc, MAX(ts_utc) AS end_utc,
-         MAX(customers_out) AS peak_customers_out, COUNT(*) AS readings_above,
+         MAX(customers_out) AS peak_customers_out, CAST(NULL AS DOUBLE) AS peak_sustained_1h, COUNT(*) AS readings_above,
          SUM(customers_out) * 0.25 AS customer_hours, CAST(NULL AS DOUBLE) AS background_customers_out,
          CAST(NULL AS DOUBLE) AS hours_to_50pct, CAST(NULL AS DOUBLE) AS hours_to_90pct, CAST(NULL AS DOUBLE) AS hours_to_99pct
   FROM c_ev GROUP BY county_fips, seq
@@ -410,7 +420,7 @@ SELECT b.scope || '|' || b.area_code || '|' || CAST(b.start_utc AS VARCHAR)  AS 
        b.scope, b.area_code, b.start_utc, b.peak_utc, b.end_utc,
        CAST(b.start_utc - INTERVAL '5 HOUR' AS DATE)                         AS start_day,
        YEAR(b.start_utc - INTERVAL '5 HOUR')                                 AS year,
-       b.peak_customers_out, b.readings_above,
+       b.peak_customers_out, b.peak_sustained_1h, b.readings_above,
        DATEDIFF('minute', b.start_utc, b.end_utc) / 60.0 + 0.25               AS hours_above_threshold,
        b.customer_hours, b.background_customers_out,
        b.hours_to_50pct, b.hours_to_90pct, b.hours_to_99pct,
@@ -434,7 +444,50 @@ WHERE e.scope = 'territory' AND e.peak_customers_out >= 50000
 GROUP BY e.event_key, e.peak_utc, e.peak_customers_out, e.background_customers_out,
          FLOOR(DATEDIFF('minute', e.peak_utc, t.ts_utc) / 60);
 
+-- County-year summary for the county map (A3): customer-hours and county outage
+-- events, all days and excluding proxy major event days (FCT_TERRITORY_DAY), with
+-- NOAA storm county-days and the share of failed readings. Per-customer rates use
+-- the county's customer basis (STG.VA_COUNTY_CUSTOMERS, decision D15).
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_COUNTY_YEAR COPY GRANTS AS
+WITH cd AS (
+  SELECT d.county_fips, d.year,
+         SUM(d.customer_hours)                                                   AS customer_hours,
+         SUM(CASE WHEN NOT t.is_med_proxy THEN d.customer_hours ELSE 0 END)      AS customer_hours_non_med,
+         SUM(CASE WHEN d.storm_day THEN 1 ELSE 0 END)                            AS storm_days,
+         SUM(d.failed_readings)                                                  AS failed_readings,
+         SUM(d.readings + d.failed_readings)                                     AS slots_with_rows
+  FROM RELIABILITY.MART.FCT_COUNTY_DAY d
+  JOIN RELIABILITY.MART.FCT_TERRITORY_DAY t ON t.day = d.day
+  GROUP BY 1, 2
+),
+ev AS (
+  SELECT area_code AS county_fips, year,
+         COUNT(*)                                                     AS events,
+         SUM(CASE WHEN NOT starts_on_med_proxy_day THEN 1 ELSE 0 END) AS events_non_med
+  FROM RELIABILITY.MART.FCT_OUTAGE_EVENT
+  WHERE scope = 'county'
+  GROUP BY 1, 2
+)
+SELECT cd.county_fips, c.county_name, c.county_label, c.dominion_only_county, cd.year, c.customers_basis,
+       cd.customer_hours, cd.customer_hours_non_med,
+       ROUND(60 * cd.customer_hours / NULLIF(c.customers_basis, 0), 1)          AS outage_minutes_per_customer,
+       ROUND(60 * cd.customer_hours_non_med / NULLIF(c.customers_basis, 0), 1)  AS outage_minutes_per_customer_non_med,
+       COALESCE(ev.events, 0)                                                   AS events,
+       COALESCE(ev.events_non_med, 0)                                           AS events_non_med,
+       ROUND(10000 * COALESCE(ev.events_non_med, 0) / NULLIF(c.customers_basis, 0), 2) AS events_non_med_per_10k_customers,
+       cd.storm_days,
+       ROUND(cd.failed_readings / NULLIF(cd.slots_with_rows, 0), 4)             AS failed_share
+FROM cd
+JOIN RELIABILITY.MART.DIM_COUNTY c ON c.county_fips = cd.county_fips
+LEFT JOIN ev ON ev.county_fips = cd.county_fips AND ev.year = cd.year;
+
 -- ---------- 4. Tests ----------
+-- T31. County-year table: 103 counties x 11 years, and its customer-hours add up to the county-day panel (expected 1 row: value 0 in problems)
+SELECT CASE WHEN COUNT(*) = 103 * 11
+             AND ABS(SUM(customer_hours) - (SELECT SUM(customer_hours) FROM RELIABILITY.MART.FCT_COUNTY_DAY)) < 1
+            THEN 0 ELSE 1 END AS problems
+FROM RELIABILITY.MART.FCT_COUNTY_YEAR;
+
 -- T13. Raw row count equals the sum of the Virginia rows written by the extract script (expected 0 rows)
 SELECT COUNT(*) AS n FROM RELIABILITY.RAW.EAGLEI_OUTAGES_VA HAVING COUNT(*) <> 11608442;
 

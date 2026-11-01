@@ -54,7 +54,7 @@ snake_case.
 
 ## Tests and analysis queries
 
-- Tests: `T<n>`, numbered across files (T1 to T6 in 04, T7 to T9 in 05, T10 to T12 in 06). The expected result is stated in the comment above each test.
+- Tests: `T<n>`, numbered across files (T1 to T6 in 04, T7 to T9 in 05, T10 to T12 in 06, T13 to T24 and T31 in 09, T28 to T30 in 10, T25 to T27 in 11). The expected result is stated in the comment above each test.
 - Analysis queries: `Q<n>`, with a letter suffix for variants (`Q3b`).
 
 ## Documentation

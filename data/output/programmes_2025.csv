@@ -1,0 +1,7 @@
+utility,winter_peak_mw,summer_peak_mw,smart_meter_share,time_varying_rate_share_pct,demand_response_potential_mw,losses_pct
+Dominion Energy Virginia,19676,18934,0.998,1,49.6,2.94
+Georgia Power,,,0.994,3.1,1037.5,3.19
+FPL,,,0.993,,1748,6.09
+BGE,,,0.977,87.3,187,10.87
+Pepco (MD),,,0.996,41.1,418,3.87
+Alabama Power,,,1,0.75,1769.7,4.42

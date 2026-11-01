@@ -134,6 +134,21 @@ check([int(r["subset"]) for r in years] == list(range(2015, 2026)) and all(float
 check(sum(int(r["storm_county_days"]) for r in years) == 6108 and sum(int(r["calm_county_days"]) for r in years) == 373851,
       "storm vs calm: the yearly rows add up to the all-years row")
 
+# The workbook sheets the Power BI template imports, as CSV (scripts/export_workbook_tables.py)
+growth = rows("load_growth.csv")
+sales = {(int(r["year"]), r["customer_class"]): float(r["sales_mwh"]) for r in rows("fct_sales_sector.csv")}
+check([int(r["year"]) for r in growth] == list(range(2013, 2026)), "load_growth.csv: one row per year, 2013-2025")
+check(all(round(sales[(int(r["year"]), "commercial")] / 1e6, 2) == float(r["commercial_twh"])
+          and round(sales[(int(r["year"]), "residential")] / 1e6, 2) == float(r["residential_twh"]) for r in growth),
+      "load_growth.csv commercial and residential TWh match fct_sales_sector.csv every year")
+check(round(float(growth[-1]["commercial_sales_index"]), 1) == 165.4
+      and isclose(float(growth[-1]["commercial_sales_index"]), 100 * float(growth[-1]["commercial_twh"]) / float(growth[0]["commercial_twh"]), rel_tol=1e-12),
+      "commercial sales index 2025 = 165.4 (2013 = 100)")
+programmes = rows("programmes_2025.csv")
+check(len(programmes) == 6 and programmes[0]["utility"] == "Dominion Energy Virginia"
+      and (float(programmes[0]["smart_meter_share"]), float(programmes[0]["time_varying_rate_share_pct"])) == (0.998, 1.0),
+      "programmes_2025.csv: six utilities; Dominion 99.8% smart meters, 1% of customers on time-varying rates")
+
 # Trend tests, 2015-2025 (scripts/trend_tests.py; docs/05 "Trend tests"): the values the documents quote
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import trend_tests  # noqa: E402  (standard library only; importing runs nothing)

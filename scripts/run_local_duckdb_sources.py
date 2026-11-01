@@ -53,13 +53,19 @@ def translate(sql: str) -> str:
     sql = sql.replace(" COPY GRANTS AS", " AS").replace(" COPY GRANTS", "")
     sql = sql.replace("RELIABILITY.RAW.", "raw.").replace("RELIABILITY.STG.", "stg.").replace("RELIABILITY.MART.", "mart.")
     # Date and timestamp parsing with a format
-    fmt = {"'MM/DD/YYYY'": "'%m/%d/%Y'", "'MM/DD/YYYY HH12:MI:SS AM'": "'%m/%d/%Y %I:%M:%S %p'"}
+    fmt = {"'MM/DD/YYYY'": "'%m/%d/%Y'", "'MM/DD/YYYY HH12:MI:SS AM'": "'%m/%d/%Y %I:%M:%S %p'",
+           "'YYYYMMDD HH24MI'": "'%Y%m%d %H%M'"}
     def _date(m):
         return f"CAST(TRY_STRPTIME({m.group(1)}, {fmt[m.group(2)]}) AS DATE)"
     def _ts(m):
         return f"TRY_STRPTIME({m.group(1)}, {fmt[m.group(2)]})"
     sql = re.sub(r"TRY_TO_DATE\(([^(),]+),\s*('MM/DD/YYYY')\)", _date, sql)
-    sql = re.sub(r"TRY_TO_TIMESTAMP_NTZ\(([^(),]+),\s*('MM/DD/YYYY HH12:MI:SS AM')\)", _ts, sql)
+    sql = re.sub(r"TRY_TO_TIMESTAMP_NTZ\(([^(),]+),\s*('MM/DD/YYYY HH12:MI:SS AM'|'YYYYMMDD HH24MI')\)", _ts, sql)
+    # REGEXP_LIKE matches the whole string in Snowflake, as regexp_full_match does in DuckDB
+    sql = sql.replace("REGEXP_LIKE(", "regexp_full_match(")
+    sql = sql.replace("DAYOFWEEKISO(", "isodow(")  # 1 = Monday ... 7 = Sunday in both
+    # LISTAGG(x, 'sep') WITHIN GROUP (ORDER BY y) -> listagg(x, 'sep' ORDER BY y)
+    sql = re.sub(r"LISTAGG\(([^(),]+),\s*('[^']*')\)\s*WITHIN GROUP\s*\(ORDER BY ([^()]+)\)", r"listagg(\1, \2 ORDER BY \3)", sql)
     # TRY_TO_NUMBER(x, p, s) -> TRY_CAST(x AS DECIMAL(p,s)); TRY_TO_NUMBER(x) -> TRY_CAST(x AS BIGINT)
     sql = re.sub(r"TRY_TO_NUMBER\(([^()]*(?:\([^()]*\))?[^()]*),\s*(\d+),\s*(\d+)\)", r"TRY_CAST(\1 AS DECIMAL(\2,\3))", sql)
     sql = re.sub(r"TRY_TO_NUMBER\(([^()]*(?:\([^()]*\))?[^()]*)\)", r"TRY_CAST(\1 AS BIGINT)", sql)
@@ -94,6 +100,9 @@ LOADERS = {
     "EAGLEI_MCC": lambda con: _positional(con, "EAGLEI_MCC", RAW / "eaglei" / "MCC.csv"),
     "EAGLEI_COVERAGE_HISTORY": lambda con: _positional(con, "EAGLEI_COVERAGE_HISTORY", RAW / "eaglei" / "coverage_history.csv"),
     "CENSUS_VA_COUNTY": lambda con: _positional(con, "CENSUS_VA_COUNTY", RAW / "census" / "va_county_census.csv"),
+    "HURDAT2_POINTS": lambda con: _positional(con, "HURDAT2_POINTS", RAW / "hurdat2" / "hurdat2_points.csv"),
+    "DOE417_EVENTS": lambda con: _positional(con, "DOE417_EVENTS", RAW / "doe417" / "doe417_events_2014_2025.csv"),
+    "CPC_DEGREE_DAYS": lambda con: _positional(con, "CPC_DEGREE_DAYS", RAW / "degree_days" / "cpc_degree_days_long.csv"),
 }
 
 

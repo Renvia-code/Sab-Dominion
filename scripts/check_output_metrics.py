@@ -79,6 +79,19 @@ for r in rows("storm_county_year.csv"):
     by_year[int(r["year"])] = by_year.get(int(r["year"]), 0) + int(r["storm_days"])
 check(set(by_year) == set(range(2015, 2026)) and all(by_year[y] == int(storm[y]["storm_county_days"]) for y in by_year),
       "storm_county_year.csv adds up to storm_index.csv for every year 2015-2025")
+peers = rows("peer_reliability_5yr.csv")
+dom = [r for r in peers if r["is_dominion"] == "True"]
+check(len(peers) == 12 and len(dom) == 1, "peer_reliability_5yr.csv: twelve utilities, Dominion and 11 peers (D10)")
+dom = dom[0]
+check((dom["saidi_rank_highest"], dom["saifi_rank_highest"], dom["caidi_rank_highest"]) == ("4", "4", "6"),
+      "Dominion among the twelve: fourth-highest SAIDI 2023-25 and SAIFI 2021-25, sixth-highest CAIDI 2021-25")
+check(tuple(dom[c] for c in ("median_saifi_2021_25", "median_caidi_2021_25", "median_saifi_2021_25_excl_dominion",
+                             "median_caidi_2021_25_excl_dominion")) == ("0.964", "105.0", "0.934", "99.5"),
+      "medians 2021-25: SAIFI 0.964 and CAIDI 105.0 for the twelve, 0.934 and 99.5 for the 11 peers alone")
+check(all(float(dom[m]) < float(dom[v]) for v, m in (("saifi_2021_25", "median_saifi_2021_25"), ("caidi_2021_25", "median_caidi_2021_25"),
+                                                      ("saifi_2021_25", "median_saifi_2021_25_excl_dominion"),
+                                                      ("caidi_2021_25", "median_caidi_2021_25_excl_dominion"))),
+      "Dominion's SAIFI and CAIDI are above the median with or without Dominion (same quadrant)")
 svc = rows("storm_vs_calm.csv")
 by_subset = {r["subset"]: r for r in svc}
 first = svc[0]

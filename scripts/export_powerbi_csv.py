@@ -60,8 +60,9 @@ FROM mart.V_STORM_VS_SAIDI ORDER BY year"""),
     ("dom_load_profile.csv", "MART.DOM_LOAD_PROFILE",
      "SELECT * FROM mart.DOM_LOAD_PROFILE ORDER BY hour_no"),
     ("peer_reliability_5yr.csv",
-     "derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large-utility peers (sql/03), "
-     "SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks (1 = highest)",
+     "derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large utilities of D10, Dominion and 11 peers (sql/03), "
+     "SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks among the 12 (1 = highest), "
+     "medians of the 12 and of the 11 peers without Dominion",
      f"""WITH u AS (
   SELECT f.utility_key, d.utility_name, d.peer_group,
          AVG(CASE WHEN f.year BETWEEN 2023 AND 2025 THEN f.saidi_ex_med END) AS saidi_2023_25,
@@ -79,7 +80,11 @@ SELECT utility_key, utility_name, peer_group, utility_key = '19876|VA' AS is_dom
        RANK() OVER (ORDER BY caidi_2021_25 DESC) AS caidi_rank_highest,
        ROUND(MEDIAN(saidi_2023_25) OVER (), 1) AS median_saidi_2023_25,
        ROUND(MEDIAN(saifi_2021_25) OVER (), 3) AS median_saifi_2021_25,
-       ROUND(MEDIAN(caidi_2021_25) OVER (), 1) AS median_caidi_2021_25
+       ROUND(MEDIAN(caidi_2021_25) OVER (), 1) AS median_caidi_2021_25,
+       -- the same medians over the 11 peers alone (Dominion left out; a NULL is skipped by MEDIAN)
+       ROUND(MEDIAN(CASE WHEN utility_key <> '19876|VA' THEN saidi_2023_25 END) OVER (), 1) AS median_saidi_2023_25_excl_dominion,
+       ROUND(MEDIAN(CASE WHEN utility_key <> '19876|VA' THEN saifi_2021_25 END) OVER (), 3) AS median_saifi_2021_25_excl_dominion,
+       ROUND(MEDIAN(CASE WHEN utility_key <> '19876|VA' THEN caidi_2021_25 END) OVER (), 1) AS median_caidi_2021_25_excl_dominion
 FROM u ORDER BY saifi_2021_25 DESC"""),
     # ---- EAGLE-I county outages (sql/09) and event context (sql/11) ----
     ("dim_county.csv", "MART.DIM_COUNTY (133 Virginia counties and cities, Dominion-county rule and reason)",

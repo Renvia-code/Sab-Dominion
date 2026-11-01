@@ -84,7 +84,7 @@ Ratios are not averaged. Numerators and denominators are summed separately and d
 | Minutes 2015 to 17, Minutes 2023 to 25 | `SAIDI 2015 to 2017`, `SAIDI 2023 to 2025`: three-year customer-weighted averages per utility |
 | Change | Minutes 2023 to 25 / Minutes 2015 to 17 - 1 |
 | Outages per customer 2021 to 25, Minutes per outage 2021 to 25 | `SAIFI 5yr`, `CAIDI 5yr`: five-year averages |
-| Quadrant lines | medians of the twelve peers: SAIFI 0.96, CAIDI 105 |
+| Quadrant lines | medians of the twelve utilities (Dominion and 11 peers, D10): SAIFI 0.96, CAIDI 105. Over the 11 peers alone: SAIFI 0.93, CAIDI 99.5. Dominion (SAIFI 1.21, CAIDI 110) is above both either way. Among the twelve it has the fourth-highest SAIFI and the sixth-highest CAIDI (and the fourth-highest SAIDI 2023 to 2025: 133.0 against medians of 91.5 with Dominion and 83.9 without). Both sets of medians are in `peer_reliability_5yr.csv` |
 | Major-storm rule | `IEEE 1366`, `Own rule` (EIA "Other"), `Changed` (filed under both across years) |
 
 ### Growth

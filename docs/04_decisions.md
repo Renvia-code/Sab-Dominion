@@ -106,7 +106,7 @@ Design decisions, each with context, the decision, alternatives considered and c
 
 ### D10. Peer set
 
-**Decision.** Twelve large investor-owned utilities in PJM and the Southeast, selected by EIA ID before results were computed. Southeast: Duke Carolinas, Duke Progress, Georgia Power, Alabama Power, Dominion SC. Mid-Atlantic (PJM): BGE, Pepco, PECO, PPL. Florida: FPL, Duke Energy Florida. Plus Dominion VA. Appalachian Power (VA) is held in a separate group and shown separately because its SAIDI exceeds 300 minutes and would compress the scale of every chart.
+**Decision.** Twelve large investor-owned utilities in PJM and the Southeast, selected by EIA ID before results were computed. Southeast: Duke Carolinas, Duke Progress, Georgia Power, Alabama Power, Dominion SC. Mid-Atlantic (PJM): BGE, Pepco, PECO, PPL. Florida: FPL, Duke Energy Florida. Plus Dominion VA, so the twelve are Dominion and 11 peers. Appalachian Power (VA) is held in a separate group and shown separately because its SAIDI exceeds 300 minutes and would compress the scale of every chart.
 
 **Alternatives.** All investor-owned utilities with over one million customers nationally. Rejected: differences in climate and vegetation across regions would require a weather model outside the scope of this project.
 

@@ -1,6 +1,6 @@
 # 06. Power BI report
 
-> **At a glance:** One page per question. Start with frequency against restoration time. Read weather as context, then the county and storm pages (all utilities), and hourly demand as a separate growth story. The Data notes page shows the tests and the reconciliation.
+> **At a glance:** One page per question. Start with frequency against minutes per interruption. Read weather as context, then the county and storm pages (all utilities), and hourly demand as a separate growth story. The Data notes page shows the tests and the reconciliation.
 
 **Files**
 - Report: `powerbi/Dominion_reliability_review.pbit`. It is a template: the report and the model, no data.
@@ -9,7 +9,7 @@
 - `powerbi/m/`: the query behind each table.
 - `powerbi/theme_dominion_review.json`: the theme.
 
-**Data source.** Opening the template asks for one text parameter, `DataFolder`: the folder that holds the CSV files from `data/output/` and the workbook `Dominion_Reliability_PowerBI_Data.xlsx`. Every table is imported from there, so the report opens with no network connection or running warehouse. The report was developed in DirectQuery against Snowflake (D13).
+**Data source.** Opening the template asks for one text parameter, `DataFolder`: this repository's `data\output\` folder, for example `C:\path\to\dominion-reliability-review\data\output\` (it must end with a backslash). Every table is imported from the CSV files there, so the report opens with no network connection or running warehouse. The report was developed in DirectQuery against Snowflake (D13).
 
 **Model**
 - 18 imported tables, plus a disconnected year table (`'Dashboard Year'`) and a measures table.
@@ -25,7 +25,7 @@
 | Rule | Reason |
 |---|---|
 | The title states the finding; the subtitle states the unit and source | The titles summarize the report on their own |
-| `#0A66C2` for the subject of the chart (Dominion, or the series the title refers to); `#B8BCC2` for context; `#E8B117` only where a third category is required (day hours, summer) | Consistent color meaning across pages |
+| `#0A66C2` for the subject of the chart (Dominion, or the series the title refers to); `#B8BCC2` for context; `#E8B117` only where a third category is required (the hours ending 1 to 5 p.m. on the hour-growth charts, summer) | Consistent color meaning across pages |
 | Straight lines between points, with markers on annual series | Smoothed lines imply values between the observations |
 | Counting changes (2015, 2020) are dashed vertical lines on each reliability trend, on a continuous year axis | Separates changes in measurement from changes in performance |
 | A reference line where an anchor is needed (2019 level, 2015 = 100, ten-year average, peer medians) | Makes non-zero axes readable |
@@ -39,7 +39,7 @@
 
 ### 1. Summary
 - Header and a year slicer (default 2025).
-- Five cards for the selected year: customers served, SAIDI, minutes to restore (CAIDI), SAIFI, major-event share.
+- Five cards for the selected year: customers served, SAIDI, minutes per interruption (CAIDI), SAIFI, major-event share.
 - SAIFI and CAIDI trends.
 - Actual and weather-adjusted SAIDI.
 - The storm scatter.
@@ -55,7 +55,7 @@
 ### 3. What moved
 SAIFI ex MED and CAIDI ex MED, 2013 to 2025, stacked at full width, each with the 2015 and 2020 lines and the 2019 level.
 - Frequency: up 6% since 2019, most of it after 2023.
-- Restoration time: down 9% since 2019.
+- Minutes per interruption (CAIDI): down 9% since 2019. CAIDI is SAIDI ÷ SAIFI, a ratio, not a measured restoration time.
 
 ### 4. Weather
 - Stacked columns: minutes on ordinary days and on major event days.
@@ -66,7 +66,7 @@ SAIFI ex MED and CAIDI ex MED, 2013 to 2025, stacked at full width, each with th
 ### 5. Fair comparison
 Twelve large utilities: Dominion and 11 peers, chosen by EIA ID before results were computed (D10).
 
-Fourth of twelve on outage minutes. Restoration time is mid-range; frequency is the gap. Ten of the twelve use IEEE 1366; Dominion and Alabama Power use their own rule.
+Fourth of twelve on outage minutes. Minutes per interruption are mid-range; frequency is the gap. Ten of the twelve use IEEE 1366; Dominion and Alabama Power use their own rule.
 
 - **Bar chart:** three-year SAIDI, 2023 to 2025.
 - **Quadrant scatter:** five-year SAIFI against CAIDI.
@@ -120,10 +120,10 @@ One page on demand: smart meters, the sales index, seasonal peaks, three cards a
 | `COUNTY_OUTAGE_MAP`, `OUTAGE_EVENTS_TOP10`, `RESTORATION_CURVE` | `county_outage_map.csv`, `outage_events_top10.csv`, `fct_restoration_curve.csv` | 6, 7 |
 | `DOM_LOAD_ANNUAL`, `DOM_TOP50_HOURS`, `DOM_LOAD_PROFILE`, `DOM_LOAD_HOUR_MONTH`, `DOM_SEASONAL_PEAK` | the `dom_*.csv` files of the same names | 8 to 10 |
 | `FCT_SALES_SECTOR` | `fct_sales_sector.csv` | 9 |
-| `LoadGrowth`, `Programmes2025` | workbook sheets | 8, 10 |
+| `LoadGrowth`, `Programmes2025` | `load_growth.csv`, `programmes_2025.csv` (the workbook's two sheets, exported by `scripts/export_workbook_tables.py`) | 8, 10 |
 | `Tests`, `Reconciliation` | `test_results.csv`, `reconciliation.csv` | 11 |
 
-The workbook's `StormIndex` sheet predates D22 and is not used.
+The report reads no workbook sheet. The workbook's `StormIndex` sheet predates D22.
 
 ## Refresh
 
@@ -132,7 +132,7 @@ The workbook's `StormIndex` sheet predates D22 and is not used.
 
 To use another folder, go to Transform data > Edit parameters > `DataFolder`. The path must end with a backslash.
 
-The CSV files come from `scripts/export_powerbi_csv.py`. It exports the local DuckDB build of the same SQL that builds `RELIABILITY.MART` in Snowflake (`data/README.md`).
+The CSV files come from `scripts/export_powerbi_csv.py`, which exports the local DuckDB build of the same SQL that builds `RELIABILITY.MART` in Snowflake (`data/README.md`), and from `scripts/export_workbook_tables.py` for the two workbook tables.
 
 ## Export
 

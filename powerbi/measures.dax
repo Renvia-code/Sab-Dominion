@@ -20,7 +20,7 @@ SAIDI ex MED = DIVIDE(SUM(FCT_RELIABILITY[CUST_MINUTES_EX_MED]), [Total Customer
 // Format: 0.000
 SAIFI ex MED = DIVIDE(SUM(FCT_RELIABILITY[CUST_INTERRUPTIONS_EX_MED]), [Total Customers])
 
-// Minutes to restore an average interruption excluding major event days. SAIDI = SAIFI x CAIDI.
+// Minutes per interruption excluding major event days: a ratio of the two indices (SAIDI / SAIFI), not a restoration time. SAIDI = SAIFI x CAIDI.
 // Format: 0.0
 CAIDI ex MED = DIVIDE([SAIDI ex MED], [SAIFI ex MED])
 
@@ -363,10 +363,10 @@ Average MW 2019 = SELECTEDVALUE(DOM_LOAD_PROFILE[AVG_MW_2019])
 // Format: #,0
 Average MW 2025 = SELECTEDVALUE(DOM_LOAD_PROFILE[AVG_MW_2025])
 
-// Column color by time of day: night (hours ending 23-6) blue, evening gray, day gold.
+// Column color by the hours the title names: hours ending 1-5 a.m. blue, 1-5 p.m. gold, the rest gray.
 Hour colour =
 VAR h = SELECTEDVALUE(DOM_LOAD_PROFILE[HOUR_NO])
-RETURN SWITCH(TRUE(), h <= 6 || h >= 23, "#0A66C2", h >= 18, "#B8BCC2", "#E8B117")
+RETURN SWITCH(TRUE(), h >= 1 && h <= 5, "#0A66C2", h >= 13 && h <= 17, "#E8B117", "#B8BCC2")
 
 // ---------------------------------------------------------------------
 // DOM_LOAD_HOUR_MONTH

@@ -1,0 +1,97 @@
+{
+  "name": "Dominion reliability review",
+  "dataColors": [
+    "#0A66C2",
+    "#B8BCC2",
+    "#6B7280",
+    "#E8B117",
+    "#1F2A44",
+    "#7FB2E5",
+    "#D9DCE1",
+    "#9CA3AF",
+    "#F3D27A",
+    "#3B4A6B",
+    "#BFD7F2",
+    "#E5E7EB"
+  ],
+  "foreground": "#1F2A44",
+  "background": "#FFFFFF",
+  "tableAccent": "#0A66C2",
+  "good": "#2E7D32",
+  "bad": "#B23B3B",
+  "neutral": "#6B7280",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28,
+      "color": "#1F2A44"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14,
+      "color": "#1F2A44"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1F2A44"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#1F2A44"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 14,
+            "fontColor": {
+              "solid": {
+                "color": "#1F2A44"
+              }
+            }
+          }
+        ],
+        "subTitle": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 10,
+            "fontColor": {
+              "solid": {
+                "color": "#6B7280"
+              }
+            }
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

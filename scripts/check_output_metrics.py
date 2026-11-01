@@ -64,4 +64,18 @@ peak25 = max(float(load[2025]["winter_peak_mw"]), float(load[2025]["summer_peak_
 check(peak19 == 19803 and peak25 == 24957, "DOM annual peaks match source output")
 check(isclose((peak25 / peak19 - 1) * 100, 26, abs_tol=0.1), "peak-hour demand growth rounds to 26%")
 check(isclose((10903 / 7167 - 1) * 100, 52, abs_tol=0.2), "minimum-hour demand growth rounds to 52%")
+
+# Data notes tables written by scripts/export_powerbi_csv.py
+tests = rows("test_results.csv")
+check([r["test"] for r in tests] == [f"T{n}" for n in range(1, len(tests) + 1)] and len(tests) == 31, "test_results.csv lists T1-T31 in order")
+check(all(r["status"] == "PASS" for r in tests), "every test in test_results.csv passed")
+recon = rows("reconciliation.csv")
+check(len(recon) == 12 and all(r["verdict"] == "MATCH" for r in recon), "reconciliation.csv: 12 rows, all MATCH")
+check(round(float(recon[0]["rebuilt"]), 1) == 130.2 and round(float(recon[1]["rebuilt"]), 1) == 133.0,
+      "reconciliation 3-year SAIDI = 130.2 and 133.0 (reported 130 and 133)")
+by_year = {}
+for r in rows("storm_county_year.csv"):
+    by_year[int(r["year"])] = by_year.get(int(r["year"]), 0) + int(r["storm_days"])
+check(set(by_year) == set(range(2015, 2026)) and all(by_year[y] == int(storm[y]["storm_county_days"]) for y in by_year),
+      "storm_county_year.csv adds up to storm_index.csv for every year 2015-2025")
 print("All committed-output checks passed.")

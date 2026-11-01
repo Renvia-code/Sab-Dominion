@@ -50,7 +50,7 @@ Hour-of-day columns, three cards, winter/summer columns, sales index line, smart
 
 ### 6. Data notes
 Headline: *What was checked and what public data cannot show.*
-The workbook `Tests` sheet contains the six reliability checks T1-T6. The additional NOAA and demand checks T7-T12 are defined in the SQL files and must be run separately; the example Snowflake task is not evidence that these tests are automatically scheduled. Text box with method notes and sources.
+The workbook `Tests` sheet contains the six reliability checks T1-T6. The additional NOAA and demand checks T7-T12 are defined in the SQL files and must be run separately; the example Snowflake task is not evidence that these tests are automatically scheduled. `data/output/test_results.csv` holds all 31 checks (T1 to T31) with the expected and observed result of each, from the DuckDB build of the same SQL. Text box with method notes and sources.
 
 ## Model objects
 
@@ -65,6 +65,10 @@ The workbook `Tests` sheet contains the six reliability checks T1-T6. The additi
 | `DOM_LOAD_ANNUAL`, `DOM_TOP50_HOURS`, `DOM_LOAD_PROFILE` | Snowflake | 0, 5 |
 | `LoadGrowth`, `Programmes2025`, `Reconciliation`, `Tests` | Workbook sheets | 1, 5, 6 (only T1-T6 in `Tests`) |
 | `dominion_ir_series` | `data/reference/dominion_ir_series.csv` | 0, 5 (contracted capacity, rate review text) |
+
+### CSV files for an Import refresh (November 2026)
+
+`scripts/export_powerbi_csv.py` writes the mart objects above and the November 2026 tables as CSV in `data/output/` (list and columns in `data/README.md`), so the report can be switched to Import from a folder (D13). Two files serve the Data notes page: `test_results.csv` (T1 to T31) and `reconciliation.csv` (twelve rebuilt figures against the annual report and the EIA-861 2024 and 2025 files, each with its source and verdict). Storm figures should come from `storm_index.csv` and `storm_vs_saidi.csv` until Snowflake's `STORM_INDEX` is rebuilt with decision D22.
 
 ## Refresh
 

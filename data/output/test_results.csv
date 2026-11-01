@@ -1,0 +1,32 @@
+test,test_no,sql_file,description,expected,rows_returned,observed_value,status
+T1,1,04_tests.sql,No duplicate utility-state-year after de-duplication,0 rows,0,,PASS
+T2,2,04_tests.sql,SAIDI = SAIFI x CAIDI within rounding,0 rows,0,,PASS
+T3,3,04_tests.sql,All-events SAIDI is not lower than ex-MED SAIDI,4 rows,4,,PASS
+T4,4,04_tests.sql,Dominion VA 2025 exists exactly once and matches EIA's published values,0 rows,0,,PASS
+T5,5,04_tests.sql,Row counts and customer totals by year,13 rows,13,,PASS
+T6,6,04_tests.sql,Raw numeric values that failed TRY_TO_NUMBER after separator removal,0 rows,0,,PASS
+T7,7,05_noaa_storms.sql,Every Dominion county found a FIPS code,0 rows,0,,PASS
+T8,8,05_noaa_storms.sql,The 2025 file is a full year,last_month = 202512,1,202512,PASS
+T9,9,05_noaa_storms.sql,Zone events that found no county even after the name pass,unmapped_zone_rows = 0,1,0,PASS
+T10,10,06_eia930_demand.sql,Impossible demand values,2 rows,2,,PASS
+T11,11,06_eia930_demand.sql,No hour appears twice,0 rows,0,,PASS
+T12,12,06_eia930_demand.sql,"Every full year has at least 8,700 reported hours",0 rows,0,,PASS
+T13,13,09_eaglei_outages.sql,Raw row count equals the sum of the Virginia rows written by the extract script,0 rows,0,,PASS
+T14,14,09_eaglei_outages.sql,No Virginia row has a county code outside 51001-51840 or a timestamp that does not parse,0 rows,0,,PASS
+T15,15,09_eaglei_outages.sql,One row per county per 15-minute slot after staging,0 rows,0,,PASS
+T16,16,09_eaglei_outages.sql,Every EAGLE-I county code is a Census county or city,0 rows,0,,PASS
+T17,17,09_eaglei_outages.sql,"Dominion counties: 103 (EIA's 104 names less Bedford city) of 133, 33 Dominion-only",problems = 0,1,0,PASS
+T18,18,09_eaglei_outages.sql,Every Virginia utility-county in EIA-861 Service Territory resolves to a FIPS code,0 rows,0,,PASS
+T19,19,09_eaglei_outages.sql,"County-days with readings above twice the county's customers, which staging sets to NULL: Fairfax city on 2-4 March 2018 (up to 136,046 out in a city of 12,701 customers) and on five days in 2019-2020, and 14 county-days in seven other counties",22 rows,22,,PASS
+T20,20,09_eaglei_outages.sql,"The county-day panel is complete: 103 counties x 4,018 days",problems = 0,1,0,PASS
+T21,21,09_eaglei_outages.sql,"The panel's storm days add up to the storm index, year by year (both fold Bedford city into Bedford County, decision D22)",0 rows,0,,PASS
+T22,22,09_eaglei_outages.sql,Hourly customer-hours add up to the 15-minute total,0 rows,0,,PASS
+T23,23,09_eaglei_outages.sql,Restoration curves are bounded and start at the peak,0 rows,0,,PASS
+T24,24,09_eaglei_outages.sql,Every full year 2015 to 2025 has between 1 and 20 proxy major event days,0 rows,0,,PASS
+T25,25,11_event_context.sql,HURDAT2 points parse and the 2014-2025 storms are all there,problems = 0,1,0,PASS
+T26,26,11_event_context.sql,"DOE-417: every row of the long file is staged, 3,702 rows, and 2024 and 2025 equal the files' ""Total Records"" (622 and 426)",problems = 0,1,0,PASS
+T27,27,11_event_context.sql,One context row per territory event,problems = 0,1,0,PASS
+T28,28,10_load_and_sales.sql,Every month from July 2018 to October 2026 has all 24 hours in the hour x month table,0 rows,0,,PASS
+T29,29,10_load_and_sales.sql,"Commercial sales 2025 = 60,088,202 bundled + 4,532,591 delivery-only MWh, the EIA-861 2025 file",0 rows,0,,PASS
+T30,30,10_load_and_sales.sql,"Virginia degree days: one HDD and one CDD per day from 2018-01-01, none negative",problems = 0,1,0,PASS
+T31,31,09_eaglei_outages.sql,"County-year table: 103 counties x 11 years, and its customer-hours add up to the county-day panel",problems = 0,1,0,PASS

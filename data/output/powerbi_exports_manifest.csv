@@ -16,7 +16,10 @@ fct_sales_sector.csv,52,3208,b61aca09cdf520c99cc8ddf82375c225d9eb72c3351df29dee1
 fct_territory_day.csv,4018,311847,4c07c627f77fdb8a582c7f0e37407a4a5dfd448014b018d50005384c893ae1a7,"MART.FCT_TERRITORY_DAY (103 Dominion counties together, one row per day, proxy major event days)",2026-11-01T02:44:03Z
 outage_events_top10.csv,10,1491,c184d88cef761c9b66cd01b83b4cbebbc6714f346eef81eaece554acdefb0956,derived from MART.FCT_EVENT_CONTEXT: the ten largest events by the level held for one hour,2026-11-01T02:44:03Z
 peer_reliability_5yr.csv,12,1454,4848bf678afdd14a201ef3776f7f502644be667107195b7c84ebf057e5a1c459,"derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large-utility peers (sql/03), SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks (1 = highest)",2026-11-01T02:44:03Z
+reconciliation.csv,12,1797,3c6269b5cac6a24349ce80f6038f9b61bb7f6f0003e65dc5bfd085414524a3a4,"derived from MART.FCT_RELIABILITY and FCT_SALES_SECTOR against published values (annual report, EIA-861 2024 and 2025 final files)",2026-11-01T03:19:59Z
 saidi_weather_adjusted.csv,11,638,c64593f28bb89cbe50cbd7d97f1c35a881958827e838a5922c8d68b587e836fa,MART.SAIDI_WEATHER_ADJUSTED,2026-11-01T02:49:47Z
+storm_county_year.csv,1133,24940,512e0045b30db1342eadc4b8e90af2a587a0164f2bffba32905708d2ef8ac9ae,"derived from MART.FCT_COUNTY_DAY: NOAA storm county-days by county, year and type, 103 Dominion counties, 2015-2025 (D22 fold)",2026-11-01T03:19:59Z
 storm_index.csv,13,361,d9615507180a531bce8058c37b2256a66a8be40825883df4014c797e63b30b6c,"MART.STORM_INDEX (Bedford city folded into Bedford County, D22)",2026-11-01T02:49:47Z
 storm_vs_saidi.csv,13,679,e24076db369416e4ab2375109530b4bc0f69f891f59dbf35a08ede297cda807a,MART.V_STORM_VS_SAIDI (D22),2026-11-01T02:49:47Z
+test_results.csv,31,3635,5ca93e8a2464c4bd2306a775572d6fc0e6039b67868da5269368f7f2cb6bdde2,"tests T1-T31 run on this DuckDB build (sql/04, 05, 06, 09 onward)",2026-11-01T03:19:59Z
 v_group_index.csv,91,7844,1dead2f911377c410b99d71d85e1ebb0af5f890d2cb9da8853b2eb5524489e95,MART.V_GROUP_INDEX,2026-11-01T02:44:03Z

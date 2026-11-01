@@ -11,7 +11,7 @@ Access control, secrets handling, layering rules, refresh procedure and change c
 | Build user | `ACCOUNTADMIN` on the project account | Create and replace all objects in `RELIABILITY` | |
 | `POWERBI_SVC` | `BI_READER` | `SELECT` on all tables and views in `RELIABILITY.MART`, including objects created later (`FUTURE` grants). `USAGE` on the warehouse | Read `RAW` or `STG`. Write to any object. Access any other database |
 
-The report connects as `POWERBI_SVC` and can read only the mart. `sql/08_grants.sql` creates the role and user. Two points of note:
+The October report (`Dominion_Reliability.pbix`, kept outside the repository; see the last table) connects to Snowflake as `POWERBI_SVC` and can read only the mart. The template in `powerbi/` connects to no database: it imports the CSV files in `data/output/` (`docs/06_powerbi_report.md`). `sql/08_grants.sql` creates the role and user. Two points of note:
 
 - `CREATE OR REPLACE` on a table or view drops its grants. Two measures are in place: `GRANT SELECT ON FUTURE TABLES/VIEWS` so that new and rebuilt objects are readable and `COPY GRANTS` on every `CREATE OR REPLACE` in MART so that existing objects retain their grants through a rebuild.
 - Power BI's Snowflake connector with username and password authentication requires the user to be `TYPE = LEGACY_SERVICE`. The default user type fails authentication.
@@ -28,7 +28,7 @@ No password, key or token appears in the repository. `08_grants.sql` contains a 
 |---|---|---|---|
 | `RAW` | stages | `STG` | Re-upload and `COPY INTO` |
 | `STG` | `RAW` | `MART` | Immediate (views) |
-| `MART` | `STG`, other `MART` objects | Power BI, analysts | Seconds |
+| `MART` | `STG`, other `MART` objects | In Snowflake: the October report (`POWERBI_SVC`) and analysts. In the DuckDB mirror: `scripts/export_powerbi_csv.py`, which writes the CSV files the template imports | Seconds |
 
 A change to a source file affects `RAW` only. A change to a definition affects one view in `STG` or one object in `MART` and consumers receive it on refresh. The tests verify that a change has not broken the layer contract.
 
@@ -41,7 +41,7 @@ A change to a source file affects `RAW` only. A change to a definition affects o
 3. Upload to the stages. Run `sql/01`. The `RELIABILITY_2025` view and its `source` string are renamed for the new year.
 4. Run `sql/02` and `sql/04`. All tests except T3 and T5 must return zero rows; T3's count must be explained.
 5. Update the year windows in `powerbi/measures.dax` (`IN {...}` sets and the three-year measures).
-6. Refresh Power BI. Compare the scorecard with the new annual report. Record the load in `CHANGELOG.md`.
+6. Refresh the reports. The October report reads Snowflake and refreshes directly. The template imports CSV files, so first rebuild the DuckDB mirror and export them again (`python -I scripts/run_local_duckdb_sources.py`, then `python -I scripts/export_powerbi_csv.py`), then refresh it. Compare the scorecard with the new annual report. Record the load in `CHANGELOG.md`.
 
 ### Monthly (NOAA)
 
@@ -61,7 +61,7 @@ Run `scripts/download_eia930.sh`, then `sql/06` and `sql/07`. The file for the c
 3. Run `sql/09` (after `05`), `sql/10` (after `06`) and `sql/11` (after `09`). T13 to T31 are commented with their expected results. T21 compares the county-day panel with `STORM_INDEX`, so it fails until `STORM_INDEX` has been rebuilt with decision D22.
 4. `python -I scripts/run_local_duckdb_sources.py` builds the same tables in DuckDB; `python -I scripts/export_powerbi_csv.py` writes the CSV files the report imports.
 
-First Snowflake run, 1 November 2026, X-Small warehouse, about one minute of build time: every load matched its file, T13 to T31 passed except T21 (the pre-D22 index), and the new tables matched the DuckDB build on 25 row counts and totals.
+A test run on 1 November 2026 used a separate Snowflake trial account (X-Small warehouse, about one minute of build time): every load matched its file, T13 to T31 passed except T21 (that account's `STORM_INDEX` predated D22), and the new tables matched the DuckDB build on 25 row counts and totals. Any other account, including the project's own, gets the November tables only when steps 1 to 3 above are run in it.
 
 ### Example only: scheduling the tests in Snowflake
 
@@ -82,7 +82,7 @@ WHERE utility_key = '19876|VA' AND year = 2025 AND NOT (saidi_all = 306.7 AND sa
 -- remaining tests follow the same pattern
 ```
 
-If this example task is fully implemented and enabled, the Data notes page could read `TEST_RESULTS` in place of the workbook's `Tests` sheet. The example below is not proof of a deployed scheduled task.
+If this example task is fully implemented and enabled, the Data notes page could read `TEST_RESULTS` in place of `data/output/test_results.csv`, which the template imports. The example above is not proof of a deployed scheduled task.
 
 ## Change control
 

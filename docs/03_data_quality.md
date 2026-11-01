@@ -83,7 +83,7 @@ Run after every load. A result other than the expected one stops the refresh unt
 | T29 | 10 | Commercial sales 2025 = 60,088,202 + 4,532,591 MWh (EIA-861 2025) | 0 rows | 0 | Wrong file or class mapping |
 | T30 | 10 | Virginia degree days: one HDD and one CDD per day from 2018, none negative | 1 row, 0 problems | 0 | A CPC file is missing |
 
-T13 to T31 run in the DuckDB mirror (`scripts/run_local_duckdb_sources.py`, which reads the expected result from each test's comment). The Snowflake run of sql/09 to 11 follows the same files.
+T13 to T31 run in the DuckDB mirror (`scripts/run_local_duckdb_sources.py`, which reads the expected result from each test's comment). A Snowflake run of sql/09 to 11 uses the same files (`docs/07_governance_and_runbook.md`, yearly refresh).
 
 ### Form of the tests
 

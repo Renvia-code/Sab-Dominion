@@ -102,7 +102,7 @@ python -I scripts/run_local_duckdb.py
 
 This runner covers the reliability SQL and its six checks (T1-T6). With the raw downloads in `data/raw/` (download scripts in [scripts/](scripts/)), `python -I scripts/run_local_duckdb_sources.py` rebuilds the storm, demand, outage and event tables and runs T7 to T31, and `python -I scripts/check_output_metrics.py` checks the committed outputs; `python -I scripts/trend_tests.py` prints the 2015-2025 trend tests. None of them reproduces the Power BI report itself.
 
-The Power BI report is included as a template, `powerbi/Dominion_reliability_review.pbit` (the report and the model, no data). Opening it asks for `DataFolder`, a folder that holds the CSV files from `data/output/` and the workbook `powerbi/Dominion_Reliability_PowerBI_Data.xlsx` ([how to open it](docs/06_powerbi_report.md)). The two charts above are reproductions of selected findings from the reported figures, not exports from Power BI Desktop.
+The Power BI report is included as a template, `powerbi/Dominion_reliability_review.pbit` (the report and the model, no data). Opening it asks for `DataFolder`: point it at the repository's `data/output/` folder, which holds every CSV file it imports ([how to open it](docs/06_powerbi_report.md)). The two charts above are reproductions of selected findings from the reported figures, not exports from Power BI Desktop.
 
 For data attribution, see [NOTICE.md](NOTICE.md) and [source notes](docs/01_sources.md). Detailed field mappings and known source anomalies are kept in [docs/](docs/) for reproducibility.
 

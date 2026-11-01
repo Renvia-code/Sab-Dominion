@@ -502,7 +502,7 @@ SELECT county_fips, ts_utc FROM RELIABILITY.STG.EAGLEI_VA_15MIN GROUP BY 1, 2 HA
 SELECT DISTINCT s.county_fips FROM RELIABILITY.STG.EAGLEI_VA_15MIN s
 LEFT JOIN RELIABILITY.MART.DIM_COUNTY d ON d.county_fips = s.county_fips WHERE d.county_fips IS NULL;
 
--- T17. Dominion counties: 103 (EIA's 104 names less Bedford city) of 133, 34 Dominion-only (expected 1 row: value 0 in problems)
+-- T17. Dominion counties: 103 (EIA's 104 names less Bedford city) of 133, 33 Dominion-only (expected 1 row: value 0 in problems)
 SELECT CASE WHEN COUNT(*) = 133 AND SUM(CASE WHEN dominion_county THEN 1 ELSE 0 END) = 103
              AND SUM(CASE WHEN dominion_only_county THEN 1 ELSE 0 END) BETWEEN 30 AND 40 THEN 0 ELSE 1 END AS problems
 FROM RELIABILITY.MART.DIM_COUNTY;
@@ -512,7 +512,8 @@ SELECT * FROM RELIABILITY.STG.EIA861_VA_COUNTY_UTILITY WHERE county_fips IS NULL
 
 -- T19. County-days with readings above twice the county's customers, which staging sets
 --      to NULL: Fairfax city on 2-4 March 2018 (up to 136,046 out in a city of 12,701
---      customers) and 2019-2020, and 18 other county-days (expected 22 rows)
+--      customers) and on five days in 2019-2020, and 14 county-days in seven other
+--      counties (expected 22 rows)
 SELECT s.county_fips, CAST(s.ts_utc AS DATE) AS utc_day, COUNT(*) AS readings,
        MAX(s.customers_out_reported) AS max_reported, MAX(d.customers_basis) AS customers_basis
 FROM RELIABILITY.STG.EAGLEI_VA_15MIN s JOIN RELIABILITY.MART.DIM_COUNTY d ON d.county_fips = s.county_fips

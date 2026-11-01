@@ -35,8 +35,9 @@ SELECT v.year, v.storm_county_days, v.saidi_ex_med,
 FROM RELIABILITY.MART.V_STORM_VS_SAIDI v CROSS JOIN fit f
 WHERE v.year >= 2015;
 
--- Check: expected 11 rows. 2019 weather_adjusted 135.8, 2025 133.1,
--- predicted_from_weather for 2025 145.3, slope 0.0514, intercept 104.4
+-- Check: expected 11 rows. 2019 weather_adjusted 135.7, 2025 133.1,
+-- predicted_from_weather for 2025 145.3, slope 0.0518, intercept 104.3
+-- (decision D22; before it: 135.8, 133.1, 145.3, 0.0514, 104.4)
 SELECT * FROM RELIABILITY.MART.SAIDI_WEATHER_ADJUSTED ORDER BY year;
 
 -- ---------- 3. Hour-of-day load profile, 2019 vs 2025 ----------

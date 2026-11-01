@@ -117,7 +117,7 @@ Balanced panel of Virginia co-ops with at least 10,000 customers that filed in e
 ### `MART.STORM_INDEX` (13 rows, year)
 | Column | Meaning |
 |---|---|
-| `storm_county_days` | Count of (county, date) pairs in Dominion's Virginia counties with at least one wind, winter or tropical event. Multiple reports in one county on one day count once. |
+| `storm_county_days` | Count of (county, date) pairs in Dominion's Virginia counties with at least one wind, winter or tropical event. Multiple reports in one county on one day count once. Bedford city (51515) is counted as Bedford County (51019), decision D22. |
 | `wind_days`, `winter_days`, `tropical_days` | Same, by event family |
 | `severe_gust_days` | County-days with a Thunderstorm Wind gust of 60 knots or more |
 
@@ -127,7 +127,7 @@ Balanced panel of Virginia co-ops with at least 10,000 customers that filed in e
 ### `MART.SAIDI_WEATHER_ADJUSTED` (11 rows, year 2015 to 2025)
 | Column | Meaning |
 |---|---|
-| `predicted_from_weather` | intercept + slope x storm_county_days, fitted on 2015 to 2024 (intercept 104.4, slope 0.0514 minutes per county-day) |
+| `predicted_from_weather` | intercept + slope x storm_county_days, fitted on 2015 to 2024 (intercept 104.3, slope 0.0518 minutes per county-day, after D22) |
 | `weather_adjusted_saidi` | actual - predicted + mean(2015 to 2024). The year's SAIDI at average weather exposure |
 
 ### `MART.DOM_LOAD_ANNUAL` (9 rows, year 2018 to 2026)

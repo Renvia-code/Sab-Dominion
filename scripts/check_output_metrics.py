@@ -30,8 +30,10 @@ check(set(storm) == set(paired) == set(range(2013, 2026)), "2013-2025 complete a
 for year in storm:
     for col in ("storm_county_days", "wind_days", "winter_days", "tropical_days", "severe_gust_days"):
         check(storm[year][col] == paired[year][col], f"{year} {col} matches the annual index")
-check(int(storm[2024]["storm_county_days"]) == 465, "2024 storm county-days = 465")
-check(int(storm[2025]["storm_county_days"]) == 796, "2025 storm county-days = 796")
+# Decision D22 (docs/04): Bedford city folded into Bedford County, so each zone-34 storm counts once.
+# Before D22 these were 465 and 796.
+check(int(storm[2024]["storm_county_days"]) == 464, "2024 storm county-days = 464 (D22)")
+check(int(storm[2025]["storm_county_days"]) == 791, "2025 storm county-days = 791 (D22)")
 
 training = [paired[y] for y in range(2015, 2025)]
 x = [float(r["storm_county_days"]) for r in training]

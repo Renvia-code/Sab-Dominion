@@ -28,11 +28,11 @@ From 2023 to 2025, Dominion Virginia's reported reliability measures (excluding 
 
 ### 2. Weather helps explain the pattern, but the regression is exploratory
 
-I grouped NOAA storm reports into **storm county-days**: one county with at least one relevant storm report on a given date counts once, even if NOAA recorded several individual events. For Dominion's Virginia service area, the count increased from **465 in 2024** to **796 in 2025**.
+I grouped NOAA storm reports into **storm county-days**: one county with at least one relevant storm report on a given date counts once, even if NOAA recorded several individual events. For Dominion's Virginia service area, the count increased from **464 in 2024** to **791 in 2025** (Bedford city, part of Bedford County since 2013, is counted once: decision D22).
 
 I compared annual storm exposure with SAIDI and fitted a simple linear regression using **2015–2024** data, holding 2025 back as a test.
 
-- **Historical correlation:** 0.70 (R² about 0.48).
+- **Historical correlation:** 0.70 (R² about 0.49).
 - **Model estimate for 2025:** 145.3 outage minutes per customer.
 - **Actual reported 2025 value:** 144.4 minutes.
 

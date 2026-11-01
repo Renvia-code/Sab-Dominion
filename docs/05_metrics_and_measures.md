@@ -68,9 +68,9 @@ Ratios are not averaged. Numerators and denominators are summed separately and d
 
 | Figure | Value | Calculation |
 |---|---|---|
-| Storm county-days, 2025 | 796 | `STORM_INDEX`. Second-highest in the record; 2019 was 851 |
+| Storm county-days, 2025 | 791 | `STORM_INDEX` (D22). Second-highest in the record; 2019 was 848 |
 | Correlation, storm days vs SAIDI ex-MED, 2015 to 2024 | 0.70 | `CORR()` in `05_noaa_storms.sql` Q6b. With SAIFI: 0.41. With major-storm minutes: 0.47 |
-| Predicted from weather, 2025 | 145.3 | `REGR_INTERCEPT + REGR_SLOPE x 796`, fitted 2015 to 2024 |
+| Predicted from weather, 2025 | 145.3 | `REGR_INTERCEPT + REGR_SLOPE x 791`, fitted 2015 to 2024 |
 | Actual 2025 | 144.4 | EIA |
 | Weather-adjusted SAIDI | 2015: 122, 2019: 136, 2025: 133 | actual - predicted + mean(2015 to 2024) |
 | Ten-year average line | 134 | mean of actual SAIDI ex-MED, 2015 to 2024 |

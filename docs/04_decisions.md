@@ -46,7 +46,7 @@ Design decisions, each with context, the decision, alternatives considered and c
 
 **Context.** NOAA records one row per event. A single storm can produce many rows in one county on one day.
 
-**Decision.** `STORM_INDEX` counts distinct (county, date) pairs with at least one line-risk event. 796 county-days in 2025.
+**Decision.** `STORM_INDEX` counts distinct (county, date) pairs with at least one line-risk event. 791 county-days in 2025 (D22).
 
 **Alternatives.** Event counts (over-weight well-reported storms). Damage estimates (sparse and inconsistent). Heating and cooling degree days (temperature only and already quoted in the annual report).
 
@@ -72,7 +72,7 @@ Design decisions, each with context, the decision, alternatives considered and c
 
 **Alternatives.** Include 2013 and 2014. Rejected: the 2015 change to automated outage recording shifts the level. Include 2025. Rejected: 2025 is the year under test.
 
-**Consequence.** Ten observations. Intercept 104.4, slope 0.051 minutes per county-day. The fit is a check on one year, not a forecasting model.
+**Consequence.** Ten observations. Intercept 104.3, slope 0.052 minutes per county-day (D22). The fit is a check on one year, not a forecasting model.
 
 ---
 
@@ -207,3 +207,15 @@ Design decisions, each with context, the decision, alternatives considered and c
 **Decision.** Every 2026 figure from EIA-930 runs to the last hour with a value in the file downloaded on 1 November 2026: the hour ending midnight on 29 October 2026 (P33). The text says "to 29 Oct 2026".
 
 **Consequence.** The 2026 peaks (winter 25,413 MW on 9 February, summer 25,384 MW on 3 July) are the same as in the committed 21 October snapshot; the 2026 totals, averages and medians differ slightly.
+
+---
+
+### D22. Bedford city counts as Bedford County in the storm index
+
+**Context.** Bedford city (FIPS 51515) became part of Bedford County (51019) in 2013. EIA's 2025 Service Territory file still lists "Bedford City" for Dominion, and NOAA's zone-county lookup maps forecast zone 34 to both codes, so every zone-34 storm added two county-days for one area (P28).
+
+**Decision.** `STORM_INDEX` (sql/05) folds 51515 into 51019 before counting county-days. The EAGLE-I county tables (sql/09) already did the same. A known double count stays in no presented number.
+
+**Alternatives.** Leaving the index as first published and footnoting the difference. Rejected: the difference is small (38 county-days over 2013-2025), but it is a known error.
+
+**Consequence.** Storm county-days 2024 and 2025 become 464 and 791 (were 465 and 796); 2019 becomes 848 (was 851). The 2015-2024 correlation with SAIDI ex-MED stays 0.70 (0.697), the 2025 prediction 145.3 and the weather-adjusted 2025 value 133.1; the fit becomes 104.3 + 0.0518 x county-days. `data/output/storm_index.csv`, `storm_vs_saidi.csv` and `saidi_weather_adjusted.csv` were re-exported and `scripts/check_output_metrics.py` expects the new values. Snowflake is not rebuilt in this pass, because builds from this branch only add objects and never replace existing ones: `RELIABILITY.MART.STORM_INDEX` and `SAIDI_WEATHER_ADJUSTED` there, and the view `V_STORM_VS_SAIDI` that reads the index, hold the pre-D22 values until the owner re-runs the `STORM_INDEX` statement in sql/05 and the `SAIDI_WEATHER_ADJUSTED` statement in sql/07. Until then T21 fails in Snowflake, because the county-day panel already counts Bedford once. The workbook `powerbi/Dominion_Reliability_PowerBI_Data.xlsx` (sheet `StormIndex`) also predates D22; storm figures should be taken from `data/output/storm_vs_saidi.csv`.

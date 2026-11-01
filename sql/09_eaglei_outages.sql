@@ -523,18 +523,11 @@ GROUP BY 1, 2;
 SELECT CASE WHEN COUNT(*) = 103 * 4018 AND COUNT(DISTINCT day) = 4018 THEN 0 ELSE 1 END AS problems
 FROM RELIABILITY.MART.FCT_COUNTY_DAY;
 
--- T21. The panel's storm days add up to the storm index, year by year, once Bedford
---      city's duplicate county-days are removed (expected 0 rows)
-WITH panel AS (SELECT year, SUM(CASE WHEN storm_day THEN 1 ELSE 0 END) AS storm_county_days FROM RELIABILITY.MART.FCT_COUNTY_DAY GROUP BY year),
-idx AS (
-  SELECT year, COUNT(*) AS storm_county_days FROM (
-    SELECT DISTINCT year, CASE WHEN county_id_fips = '51515' THEN '51019' ELSE county_id_fips END AS f, begin_yearmonth, begin_day
-    FROM RELIABILITY.STG.NOAA_VA_EVENTS
-    WHERE line_risk <> 'other' AND county_id_fips IN (SELECT county_id_fips FROM RELIABILITY.STG.DOMINION_VA_COUNTIES)
-  ) x GROUP BY year
-)
+-- T21. The panel's storm days add up to the storm index, year by year (both fold
+--      Bedford city into Bedford County, decision D22) (expected 0 rows)
+WITH panel AS (SELECT year, SUM(CASE WHEN storm_day THEN 1 ELSE 0 END) AS storm_county_days FROM RELIABILITY.MART.FCT_COUNTY_DAY GROUP BY year)
 SELECT p.year, p.storm_county_days, i.storm_county_days AS index_days
-FROM panel p JOIN idx i USING (year) WHERE p.storm_county_days <> i.storm_county_days;
+FROM panel p JOIN RELIABILITY.MART.STORM_INDEX i USING (year) WHERE p.storm_county_days <> i.storm_county_days;
 
 -- T22. Hourly customer-hours add up to the 15-minute total (expected 0 rows)
 SELECT 'mismatch' AS t FROM (SELECT SUM(customer_hours) AS a FROM RELIABILITY.MART.FCT_OUTAGE_COUNTY_HOUR) h,

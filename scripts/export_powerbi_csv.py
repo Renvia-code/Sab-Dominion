@@ -34,6 +34,19 @@ EXPORTS = [
      "SELECT * FROM mart.V_GROUP_INDEX ORDER BY peer_group, year"),
     ("saidi_weather_adjusted.csv", "MART.SAIDI_WEATHER_ADJUSTED",
      "SELECT * FROM mart.SAIDI_WEATHER_ADJUSTED ORDER BY year"),
+    # the two original weather summaries, same columns and number format as first committed (decision D22 re-export)
+    ("storm_index.csv", "MART.STORM_INDEX (Bedford city folded into Bedford County, D22)",
+     """SELECT year, CAST(storm_county_days AS INTEGER) AS storm_county_days, CAST(wind_days AS INTEGER) AS wind_days,
+       CAST(winter_days AS INTEGER) AS winter_days, CAST(tropical_days AS INTEGER) AS tropical_days,
+       CAST(severe_gust_days AS INTEGER) AS severe_gust_days
+FROM mart.STORM_INDEX ORDER BY year"""),
+    ("storm_vs_saidi.csv", "MART.V_STORM_VS_SAIDI (D22)",
+     """SELECT year, CAST(storm_county_days AS INTEGER) AS storm_county_days, CAST(wind_days AS INTEGER) AS wind_days,
+       CAST(winter_days AS INTEGER) AS winter_days, CAST(tropical_days AS INTEGER) AS tropical_days,
+       CAST(severe_gust_days AS INTEGER) AS severe_gust_days,
+       printf('%.3f', saidi_ex_med) AS saidi_ex_med, printf('%.3f', saifi_ex_med) AS saifi_ex_med,
+       printf('%.3f', storm_saidi) AS storm_saidi
+FROM mart.V_STORM_VS_SAIDI ORDER BY year"""),
     ("dom_load_annual.csv", "MART.DOM_LOAD_ANNUAL (2018 starts 1 Jul; 2026 runs to the last EIA-930 file)",
      "SELECT * FROM mart.DOM_LOAD_ANNUAL ORDER BY year"),
     ("dom_top50_hours.csv", "MART.DOM_TOP50_HOURS (union of two top-50 rankings: rank_today, rank_end_2025)",

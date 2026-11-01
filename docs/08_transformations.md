@@ -90,11 +90,11 @@ A tenth co-op, Prince George Electric, reported SAIDI but no SAIFI for 2025. A d
 
 **Step 3, county code.** For a county event the code is the state FIPS followed by the county FIPS padded to three digits: `'51' || LPAD('41', 3, '0')` = `51041`. `Thunderstorm Wind` maps to `line_risk = 'wind'`.
 
-**Step 6, county-day.** `STORM_INDEX` groups by year, county and date. The five rows become one row: county 51041, 18 July 2025, wind = 1. Across the 104 Dominion counties in Virginia, 2025 has 796 county-days with a wind, winter or tropical event. 2024 had 465.
+**Step 6, county-day.** `STORM_INDEX` groups by year, county and date. The five rows become one row: county 51041, 18 July 2025, wind = 1. Across Dominion's Virginia counties (EIA's 104 names, 103 areas once Bedford city is counted as part of Bedford County, decision D22), 2025 has 791 county-days with a wind, winter or tropical event. 2024 had 464.
 
 **Zone events.** The winter storm of 5 January 2025 was filed against forecast zones: `CZ_TYPE = Z`, `CZ_FIPS` 513 (Western Chesterfield), 514 (Eastern Chesterfield), 515 (Western Henrico), 516 (Eastern Henrico). The NWS zone-county correlation file maps each zone to its counties: zone 513 to Chesterfield (51041); zone 515 to Henrico (51087) and the City of Richmond (51760). Each mapped county receives a county-day. The correlation file has gaps (zone 514 maps only to Colonial Heights), which is one reason the index is treated as a measure of exposure rather than damage.
 
-**Dominion's counties.** EIA's 2025 Service Territory file lists 104 counties and cities for utility 19876 in Virginia. EIA writes "Alexandria City" and NOAA writes "City of Alexandria", so both spellings are tried. T7 confirms all 104 resolve to a FIPS code.
+**Dominion's counties.** EIA's 2025 Service Territory file lists 104 counties and cities for utility 19876 in Virginia. EIA writes "Alexandria City" and NOAA writes "City of Alexandria", so both spellings are tried. T7 confirms all 104 resolve to a FIPS code. One of them, "Bedford City", resolves to 51515, a city merged into Bedford County (51019) in 2013; NOAA's zone 34 maps to both codes, so `STORM_INDEX` folds 51515 into 51019 and each Bedford storm day counts once (D22).
 
 ## Worked example 4: hourly demand to the top-50 count
 
@@ -128,16 +128,16 @@ The staging view retains the reported value in `demand_mw_reported` and sets `de
 
 ## Worked example 5: weather adjustment
 
-Fit on 2015 to 2024: SAIDI ex-MED = 104.4 + 0.0514 x storm county-days. Mean SAIDI ex-MED over the ten years: 134.0.
+Fit on 2015 to 2024: SAIDI ex-MED = 104.3 + 0.0518 x storm county-days (after decision D22). Mean SAIDI ex-MED over the ten years: 134.0.
 
 | 2025 | Value |
 |---|---|
-| Storm county-days | 796 |
-| Predicted from weather | 104.4 + 0.0514 x 796 = **145.3** |
+| Storm county-days | 791 |
+| Predicted from weather | 104.3 + 0.0518 x 791 = **145.3** |
 | Actual | 144.4 |
 | Weather-adjusted | 144.4 - 145.3 + 134.0 = **133.1** |
 
-For 2019 (851 county-days, actual 149.9) the same calculation gives 135.8.
+For 2019 (848 county-days, actual 149.9) the same calculation gives 135.7.
 
 ## Cleaning rules
 

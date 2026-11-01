@@ -117,9 +117,15 @@ WHERE e.state = 'VIRGINIA';
 -- A storm county-day is one county with at least one line-risk event on one
 -- date. Counting county-days rather than events avoids counting multiple
 -- reports of one storm in one county more than once.
+-- Decision D22: Bedford city (51515) has been part of Bedford County (51019)
+-- since 2013, but EIA's 2025 territory file still lists it and NOAA's zone 34
+-- maps to both codes, so each zone-34 storm was counted twice. 51515 is folded
+-- into 51019 here, so the area counts once (38 county-days fewer over 2013-2025).
 CREATE OR REPLACE TABLE RELIABILITY.MART.STORM_INDEX COPY GRANTS AS
 WITH days AS (
-  SELECT year, county_id_fips, begin_yearmonth, begin_day,
+  SELECT year,
+         CASE WHEN county_id_fips = '51515' THEN '51019' ELSE county_id_fips END AS county_id_fips,  -- D22
+         begin_yearmonth, begin_day,
          MAX(CASE WHEN line_risk = 'wind'     THEN 1 ELSE 0 END) AS wind,
          MAX(CASE WHEN line_risk = 'winter'   THEN 1 ELSE 0 END) AS winter,
          MAX(CASE WHEN line_risk = 'tropical' THEN 1 ELSE 0 END) AS tropical,

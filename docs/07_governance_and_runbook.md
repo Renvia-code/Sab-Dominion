@@ -51,6 +51,18 @@ NOAA re-issues files with a new `_c` stamp when events are revised. Run `scripts
 
 Run `scripts/download_eia930.sh`, then `sql/06` and `sql/07`. The file for the current half-year grows daily.
 
+### Yearly (EAGLE-I, DOE-417, HURDAT2, degree days: sql/09 to 11)
+
+1. `bash scripts/download_eaglei.sh`, then `python -I scripts/extract_eaglei_va.py`; `bash scripts/download_context_sources.sh`, then `extract_census_va.py`, `extract_doe417.py`, `extract_hurdat2.py` and `extract_degree_days.py`.
+2. Create the two stages (the `CREATE ... IF NOT EXISTS` statements at the top of `sql/09` and `sql/10`), then upload uncompressed, because the COPY pattern in `sql/09` expects `.csv` names:
+   `PUT 'file://<repo>/data/raw/eaglei/va/eaglei_outages_va_20*.csv' @RELIABILITY.RAW.EAGLEI_STAGE/va/ AUTO_COMPRESS = FALSE OVERWRITE = TRUE`;
+   `MCC.csv`, `coverage_history.csv` and `data/raw/census/va_county_census.csv` to `@RELIABILITY.RAW.EAGLEI_STAGE`;
+   `cpc_degree_days_long.csv`, `hurdat2_points.csv` and `doe417_events_2014_2025.csv` to `@RELIABILITY.RAW.CONTEXT_STAGE`.
+3. Run `sql/09` (after `05`), `sql/10` (after `06`) and `sql/11` (after `09`). T13 to T31 are commented with their expected results. T21 compares the county-day panel with `STORM_INDEX`, so it fails until `STORM_INDEX` has been rebuilt with decision D22.
+4. `python -I scripts/run_local_duckdb_sources.py` builds the same tables in DuckDB; `python -I scripts/export_powerbi_csv.py` writes the CSV files the report imports.
+
+First Snowflake run, 1 November 2026, X-Small warehouse, about one minute of build time: every load matched its file, T13 to T31 passed except T21 (the pre-D22 index), and the new tables matched the DuckDB build on 25 row counts and totals.
+
 ### Example only: scheduling the tests in Snowflake
 
 ```sql

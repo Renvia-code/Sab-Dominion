@@ -8,13 +8,13 @@ The processing chain from source file to report figure, with worked examples on 
 
 | Step | Layer | Operation | Code |
 |---|---|---|---|
-| 1 Load | RAW | The file is copied into a table with every column as text. No values are changed or dropped. | `01`, `05`, `06`: `COPY INTO` |
+| 1 Load | RAW | The file is copied into a table with every column as text. No values are changed or dropped. | `01`, `05`, `06`, `09` to `11`: `COPY INTO` |
 | 2 Type | STG | Text is converted to numbers, dates and booleans. Thousands separators are removed. A value that fails conversion becomes NULL and T6 reports it. | `01`: `TRY_TO_NUMBER(REPLACE(x, ',', ''))` |
-| 3 Reshape | STG | EIA 2025: the two side-by-side column blocks become one column set with a `standard` label. NOAA: zone events are mapped to counties. EIA-930: rows are filtered to the DOM zone. | `01`: `UNION ALL`; `05`: zone join; `06`: `WHERE sub_region = 'DOM'` |
+| 3 Reshape | STG | EIA 2025: the two side-by-side column blocks become one column set with a `standard` label. NOAA: zone events are mapped to counties. EIA-930: rows are filtered to the DOM zone. EAGLE-I: one row per county and 15-minute slot, failed runs NULL. DOE-417: Area Affected read for Virginia. | `01`: `UNION ALL`; `05`: zone join; `06`: `WHERE sub_region = 'DOM'`; `09`: `EAGLEI_VA_15MIN`; `11`: `DOE417_EVENTS` |
 | 4 De-duplicate | STG | One row per utility, state and year. Where a utility filed under both standards, the IEEE row is kept. | `01`: `QUALIFY ROW_NUMBER() ... = 1` |
 | 5 Derive | MART | Customer-minutes and customer-interruptions are stored for aggregation. Peer groups are assigned by ID. | `02`: `FCT_RELIABILITY`, `DIM_UTILITY` |
-| 6 Index and fit | MART | Storm county-days per year. Weather fit. Hourly peaks, floor and top-50 ranking. | `05`, `06`, `07` |
-| 7 Test | MART | Twelve queries with stated expected results. | `04`, `05`, `06` |
+| 6 Index and fit | MART | Storm county-days per year. Weather fit. Hourly peaks, floor and top-50 ranking. County-day outage panel, outage events, restoration times, proxy major event days, event context. Load by month and hour, seasonal peaks, sales by sector. | `05`, `06`, `07`, `09`, `10`, `11` |
+| 7 Test | MART | 31 queries (T1 to T31) with stated expected results. | `04`, `05`, `06`, `09` to `11` |
 | 8 Present | Power BI | Measures sum numerators and divide once. | `powerbi/measures.dax` |
 
 ## Worked example 1: three-year SAIDI, 133.0
@@ -139,6 +139,36 @@ Fit on 2015 to 2024: SAIDI ex-MED = 104.3 + 0.0518 x storm county-days (after de
 
 For 2019 (848 county-days, actual 149.9) the same calculation gives 135.7.
 
+## Worked example 6: EAGLE-I readings to a county-day and the storm ratio
+
+Chesterfield County (51041) on 18 July 2025, the county and day of worked example 3. EAGLE-I counts customers out from every utility in the county, so this is Chesterfield's outages, not Dominion's alone (D15).
+
+**Step 1, readings.** The day runs midnight to midnight Eastern Standard Time, NOAA's convention: 05:00 UTC on 18 July to 04:45 UTC on 19 July, 96 slots. EAGLE-I has a row for 85 of them, none blank. A blank would be a failed collection run and stay NULL (D16); the 11 slots with no row had nobody out. Outages climbed after 19:00 EST and peaked at 4,560 customers out. The 85 counts sum to 54,052.
+
+**Step 2, customer-hours.** Each reading stands for 15 minutes: 54,052 x 0.25 = **13,513 customer-hours**. Chesterfield's customer basis is 155,017 (EAGLE-I's modelled count, D15), so 13,513 / 155.017 = **87.2 customer-hours per 1,000 customers**. The day before, 17 July, had 6.4.
+
+**Step 3, storm flag.** NOAA has a Thunderstorm Wind report in the county that day (gust 50 knots), so `FCT_COUNTY_DAY.storm_day` is true and the row is a storm county-day.
+
+**Step 4, the ratio.** Over 2015 to 2025, complete county-days in the 99 mapped counties (D20) split into 6,108 storm county-days averaging 332.8 customer-hours per 1,000 customers and 373,851 calm ones averaging 27.86: 332.8 / 27.86 = **11.9** (`scripts/storm_vs_calm_ratio.py`, which adds the bootstrap interval, 7.9 to 16.9). The next day, 19 July, shows why the calm average is not zero: with no NOAA report in Chesterfield it counts as calm, yet an outage peaking at 4,128 gave it 87.2 customer-hours per 1,000 as well.
+
+## Worked example 7: a territory event, its restoration and its context (Isaias)
+
+**Event.** Summed over the 103 Dominion counties, customers out first reached 10,000 at 07:45 UTC on 4 August 2020, and the last reading at or above it was at 06:00 UTC on 7 August, with no gap longer than 3 hours in between (D17): an event of 70.5 hours (first to last reading plus its 15 minutes) and 6,167,169 customer-hours. Peak 351,738 at 13:30 UTC; the highest level held for an hour (four readings) was 343,492. Background, the median of the 24 hours before the event: 2,316.
+
+**Restoration.** The excess at the peak is 351,738 - 2,316 = 349,422.
+
+| Level | Customers out | Reached, hours after the peak |
+|---|---|---|
+| 50% restored | 351,738 - 0.5 x 349,422 = 177,027 | 8.25 |
+| 90% restored | 351,738 - 0.9 x 349,422 = 37,258 | 33.5 |
+| 99% restored | 351,738 - 0.99 x 349,422 = 5,810 | 72.75 |
+
+A level counts as reached only when the 15-minute series stays below it for the next 3 hours (P25). `FCT_RESTORATION_CURVE` holds the hourly maximum for hours 0 to 167 after the peak: 37,446 out at hour 33 (share restored 0.899) and 31,431 at hour 34 (0.917).
+
+**Proxy major event day.** 4 August 2020 had 4,184,567 customer-hours in the 103 counties. The 2020 threshold uses the days of 2015 to 2019: alpha = 9.8256 and beta = 1.2389 are the mean and standard deviation of ln(daily customer-hours), and exp(9.8256 + 2.5 x 1.2389) = 409,595 (D18). 4 August and 5 August (1,647,235) are proxy major event days; 6 August (334,622) is not.
+
+**Context (sql/11).** HURDAT2 puts Isaias 59 km from Richmond between 24 hours before the event started and its peak, so `tropical_cyclone` = ISAIAS and `storm_type` = tropical; NOAA has 31 tropical and 24 wind county-days in 46 Dominion counties over the event's days. DOE-417's 2020 summary has one Dominion-area report in the window (row 203, area "Virginia:", began 4 August at 04:41 as filed, 508,000 customers affected), so it matches (D19). `size_ratio` = 351,738 / 508,000 = 0.69: EAGLE-I's figure is the most customers out at one time across every utility in the 103 counties, DOE-417's is customers affected over the event for the reporting utility.
+
 ## Cleaning rules
 
 | Rule | Applies to | Reason | Verification |
@@ -155,11 +185,20 @@ For 2019 (848 county-days, actual 149.9) the same calculation gives 135.7.
 | Count county-days, not events | `STORM_INDEX` | Multiple reports per storm | Grouping in `STORM_INDEX` |
 | Filter to PJM / DOM, key on UTC, cap at 60,000 MW | EIA-930 | Zone of interest, no clock-change duplicates, two anomalous rows | T10 returns 2, T11 and T12 return none |
 | Fit on 2015 to 2024, predict 2025 out of sample | `SAIDI_WEATHER_ADJUSTED` | The test year is excluded from the fit | Decision D6 |
+| Bedford city counted as Bedford County | NOAA, EIA-861 territory, EAGLE-I | Merged in 2013 but still listed by EIA, and NOAA zone 34 maps to both codes (D22) | T17 (103 Dominion counties), T21 |
+| Failed EAGLE-I runs stay NULL; a slot with no row is zero customers out | EAGLE-I | A blank is a failed collection run, not a quiet county (D16) | `failed_readings` on every county-day; the panel uses complete county-days |
+| One row per county and 15-minute slot | EAGLE-I | A slot loaded twice would double the customers out | T13, T15 |
+| Readings above twice the county's customer basis set to NULL, the reported value kept | EAGLE-I | Impossible counts, such as Fairfax city at 136,046 in March 2018 (D16) | T19 returns 22 county-days |
+| Days in Eastern Standard Time all year | EAGLE-I, NOAA | NOAA Storm Events uses it, so outage days and storm days line up | T21 |
+| Fairfax city, Manassas, Harrisonburg and Bristol off the map and out of the panel | EAGLE-I | Implausible or almost no readings (D20) | `map_flag` in `county_outage_map.csv` |
+| A restoration level counts only when the series stays below it for 3 hours; events ranked by the level held for one hour | EAGLE-I events | One-reading collection drops and 45-minute spikes (P25, D17) | T23 |
+| "WestVirginia" read as West Virginia; rows naming other states left out | DOE-417 | Free-text Area Affected, no utility column (D19) | `virginia_row` and `dominion_area` in `STG.DOE417_EVENTS`; Q17 lists every Dominion-area report and its match |
+| 2026 load runs to the last hour with a value | EIA-930 | The 2026 file has empty rows after 29 October (D21) | T28 |
 
 ## Verifying a report figure
 
 1. Locate the figure in `docs/05_metrics_and_measures.md`, which names the table and the calculation.
 2. Read the table definition in `docs/02_data_dictionary.md` to identify the source columns.
 3. Open the source file in `data/input/`, or download it from the link in `docs/01_sources.md` and locate the rows.
-4. Reproduce the calculation as above, or run `python scripts/run_local_duckdb.py` for the reliability mart.
+4. Reproduce the calculation as above, or run `python scripts/run_local_duckdb.py` for the reliability mart and `python -I scripts/run_local_duckdb_sources.py` for the storm, demand, EAGLE-I and event tables (T7 to T31; it needs the local source files in `data/raw/`).
 5. If the figure does not match, the relevant test in `docs/03_data_quality.md` indicates where to look.

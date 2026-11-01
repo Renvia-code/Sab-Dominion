@@ -105,6 +105,37 @@ Ratios are not averaged. Numerators and denominators are summed separately and d
 | Weather-normal sales growth, 2025 | total 4.5%, commercial 8.1%, residential 2.3% (DEV and DESC combined); DEV 5.4% | 4Q 2025 deck, slides 7 and 30 |
 | Reliability in the rate review | authorised ROE 9.80%, performance adjustment of plus or minus 0.50% on criteria including reliability. 25 bps of DEV earned ROE = $0.027 EPS (deck sensitivity) | 4Q 2025 deck, slides 42 and 48 |
 
+### Outages from EAGLE-I (added November 2026; sql/09 and 11)
+
+EAGLE-I counts customers out in a county from **every utility that serves it**, so these figures describe all utilities in Dominion's 103 Virginia counties, not Dominion's customers alone, and each chart says so (D15). The 33 Dominion-only counties are the check. A failed EAGLE-I run is NULL, not zero, and a 15-minute slot with no row means nobody out (D16). Days run midnight to midnight Eastern Standard Time. None of these figures is Dominion's SAIDI.
+
+| Figure | Value | Calculation |
+|---|---|---|
+| Customer-hours | Chesterfield County, 18 Jul 2025: 13,513 | sum of `customers_out` x 0.25 over the day's 15-minute readings (`FCT_COUNTY_DAY.customer_hours`; worked example 6 in `08`) |
+| Customer-hours per 1,000 customers | Chesterfield, 18 Jul 2025: 87.2 | customer-hours / `DIM_COUNTY.customers_basis` x 1,000 (basis 155,017; D15) |
+| Storm vs calm county-days, 2015 to 2025 | **11.9 times** (95% interval 7.9 to 16.9) | mean customer-hours per 1,000 customers on county-days with a NOAA line-risk storm report (6,108 county-days, mean 332.8) / on county-days without one (373,851, mean 27.86). Complete county-days only, the 99 mapped counties (D20). Interval: 2,000 bootstrap resamples of whole days, because one storm hits many counties at once. `scripts/storm_vs_calm_ratio.py`. An association, not the storm's causal effect: NOAA reports are partly triggered by damage, and outages that run past midnight land on a "calm" next day, which pulls the ratio down |
+| Outage minutes per customer by county, non-major days, 2015 to 2024 | 195 across the 103 counties; 55 (Prince William) to 633 (Pittsylvania) among counties with 20,000 or more customers | 60 x customer-hours on days that are not proxy major event days / `customers_basis`, for each year, then the mean of the ten years (`FCT_COUNTY_YEAR.outage_minutes_per_customer_non_med`; map: `data/output/county_outage_map.csv`, `map_flag = 'ok'`) |
+| Non-major county outage events per 10,000 customers | 9.5 a year (2015 to 2019), 10.0 (2020 to 2024) | `SUM(events_non_med) / SUM(customers_basis) x 10,000` over the 103 counties. County events scale with county size (D17), so compare a county with itself over time |
+| Proxy major event days | 2 to 18 a year, 2015 to 2025 | IEEE 1366 2.5 beta method on daily customer-hours in the 103 counties (D18): the 2020 threshold is exp(9.8256 + 2.5 x 1.2389) = 409,595 customer-hours, from 2015 to 2019 (worked example 7 in `08`). An approximation of, not Dominion's own, major event days |
+| Territory event | 486, Feb 2015 to Dec 2025 | 10,000 or more customers out in the 103 counties, gaps up to 3 hours merged (D17) |
+| Event peak, and peak held one hour | Isaias, 4 Aug 2020: 351,738 and 343,492 | `peak_customers_out`: the highest 15-minute count. `peak_sustained_1h`: the highest count held for four consecutive readings; events are ranked on it, so a 45-minute spike does not outrank a multi-day storm (D17) |
+| Hours to 50%, 90% and 99% restored | Isaias: 8.25, 33.5 and 72.75 | hours from the peak until the count falls below peak - share x (peak - background) and stays below for the next 3 hours; background = median of the 24 hours before the event (2,316 for Isaias) |
+| Restoration curve | Isaias: 60.5% restored 12 hours after the peak, 89.9% after 33 | `FCT_RESTORATION_CURVE.share_restored` = (peak - hourly maximum) / (peak - background), hours 0 to 167, events peaking at 50,000 or more |
+| Storm type, tropical cyclone | Isaias: tropical, ISAIAS | `FCT_EVENT_CONTEXT`: `tropical` when a HURDAT2 track point lies within 400 km of Richmond from 24 hours before the event starts to its peak, or NOAA has a tropical county-day on the event's days; otherwise `winter` or `wind`, whichever has more NOAA county-days, or `no NOAA line-risk report` |
+| DOE-417 customers affected, size ratio | Isaias: 508,000; 0.69 | matched report (D19); `size_ratio` = EAGLE-I peak / DOE-417 customers affected. Shown, not filtered on: the two count different things |
+
+### Load shape and sales (added November 2026; sql/07 and 10)
+
+| Figure | Value | Calculation |
+|---|---|---|
+| Growth by hour of day, 2019 to 2025 | hours ending 1 to 5 a.m. +39.0% to +41.0%; 1 to 5 p.m. +26.9% to +27.4% | `DOM_LOAD_PROFILE.growth_pct`: mean MW in that hour ending, 2025 / 2019 - 1 (PJM DOM zone, EIA-930) |
+| Winter and summer peaks by year | 2026 to 29 Oct: winter 25,413 MW (9 Feb), summer 25,384 MW (3 Jul) | `DOM_SEASONAL_PEAK`: highest hour in December, January and February of the same calendar year (winter) and in June, July and August (summer), as in `DOM_LOAD_ANNUAL`; 2026 runs to the hour ending midnight 29 Oct (D21) |
+| Average load by month and hour | | `DOM_LOAD_HOUR_MONTH.avg_mw` (heatmap); `hours_reported` shows the hours behind each cell |
+| Daily load with degree days | | `DOM_LOAD_DAILY`: daily average, maximum and minimum MW beside Virginia's population-weighted HDD and CDD (NOAA CPC) |
+| Commercial sales per commercial customer | 156 MWh (2013) to 238 MWh (2025) | `FCT_SALES_SECTOR.mwh_per_customer`: bundled plus delivery-only MWh / customers, Dominion Virginia (EIA-861). T29 checks the 2025 commercial total |
+
+The DOM zone is larger than Dominion's retail territory, and hourly load by customer class or county is not public, so none of these figures says which customers drove the growth (D14).
+
 ## Measure naming
 
 Measures use the metric name (`SAIDI ex MED`, `CAIDI 5yr`). Plain-language names are used in visual titles. Columns keep their Snowflake names, so each card can be traced to a column in `docs/02_data_dictionary.md`.

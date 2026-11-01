@@ -180,7 +180,7 @@ Design decisions, each with context, the decision, alternatives considered and c
 
 **Decision.** IEEE 1366's 2.5 beta method applied to daily EAGLE-I customer-hours in the 103 counties: a day is a proxy major event day when its customer-hours exceed exp(alpha + 2.5 beta), alpha and beta being the mean and standard deviation of ln(daily customer-hours) over the previous five years (2015 uses its own year).
 
-**Consequence.** "Non-major" EAGLE-I figures approximate, but are not, Dominion's ex-MED basis. They are never presented as Dominion's SAIDI (A5).
+**Consequence.** "Non-major" EAGLE-I figures approximate, but are not, Dominion's ex-MED basis. They are never presented as Dominion's SAIDI.
 
 ---
 

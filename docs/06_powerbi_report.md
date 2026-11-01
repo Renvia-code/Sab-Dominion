@@ -41,7 +41,7 @@ Headline: *Major-event-day exclusions account for about half of the reported all
 Stacked columns (ordinary vs major event days), scatter with trend line (correlation 0.70), weather-adjusted line, co-op index.
 
 ### 4. Fair comparison
-Headline: *Fourth of twelve on outage minutes. Restoration time is mid-range. Frequency is the gap. Half the peers use a different reporting method.*
+Headline: *Fourth of twelve on outage minutes. Restoration time is mid-range. Frequency is the gap. Ten of the twelve use IEEE 1366; Dominion and Alabama Power use their own rule.*
 Bar chart (the twelve utilities, Dominion and 11 peers, three-year average, ascending), quadrant scatter (all twelve utilities, labels in Dominion's quadrant, dashed lines at the medians; `peer_reliability_5yr.csv` holds them for the twelve and for the 11 peers alone, and Dominion falls in the same quadrant with either), table (region, storm rule, two period averages, change, five-year SAIFI and CAIDI, Dominion row shaded).
 
 ### 5. Growth

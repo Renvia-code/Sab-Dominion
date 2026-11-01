@@ -142,6 +142,19 @@ Measures use the metric name (`SAIDI ex MED`, `CAIDI 5yr`). Plain-language names
 
 Formatting measures (`Bar colour`, `Dot colour`, `Row colour`, `SAIFI label`, `CAIDI label`, `Index label`, `Adjusted label`, `Hour colour`, `Change colour`) return colour strings or conditional labels and are listed at the end of `powerbi/measures.dax`.
 
+## Trend tests, 2015 to 2025
+
+`scripts/trend_tests.py` fits an ordinary least-squares line against the year to each annual series for Dominion Virginia, 2015 to 2025 (eleven points, read from `data/output/fct_reliability.csv` and `saidi_weather_adjusted.csv`), and reports the slope, its 95% confidence interval and the two-sided p-value (t test, 9 degrees of freedom). `scripts/check_output_metrics.py` asserts the values below.
+
+| Series | Slope per year | 95% CI | p |
+|---|---:|---|---:|
+| SAIDI ex-MED (minutes) | +0.64 | -1.87 to +3.15 | 0.58 |
+| SAIFI ex-MED (interruptions per customer) | +0.0043 | -0.0111 to +0.0196 | 0.54 |
+| CAIDI ex-MED (minutes) | +0.17 | -0.94 to +1.28 | 0.74 |
+| Weather-adjusted SAIDI (minutes; `07` Q10) | +0.34 | -1.41 to +2.08 | 0.67 |
+
+Every interval includes zero: on eleven points none of these long-run trends is statistically clear, so the long run is described as a direction, not a finding. The weather-adjusted series comes from a fit on 2015 to 2024 (D6), so its interval understates the uncertainty; before decision D22 its upper bound was +2.09.
+
 ## Weather-model interpretation
 
 The regression was fitted on only ten annual observations (2015-2024); the correlation shows association, not causation. The unusually small 2025 prediction error should not be presented as evidence of consistent forecasting accuracy. Annual NOAA storm county-days and ex-MED SAIDI also differ in which event days they cover. Weather-adjusted SAIDI is a model-based comparison, not an audited reliability measure.

@@ -4,6 +4,7 @@ This checks arithmetic and that the saved CSVs agree with each other.
 It does not rebuild the NOAA or EIA-930 raw-data pipelines.
 """
 import csv
+import sys
 from math import isclose, sqrt
 from pathlib import Path
 
@@ -78,4 +79,16 @@ for r in rows("storm_county_year.csv"):
     by_year[int(r["year"])] = by_year.get(int(r["year"]), 0) + int(r["storm_days"])
 check(set(by_year) == set(range(2015, 2026)) and all(by_year[y] == int(storm[y]["storm_county_days"]) for y in by_year),
       "storm_county_year.csv adds up to storm_index.csv for every year 2015-2025")
+
+# Trend tests, 2015-2025 (scripts/trend_tests.py; docs/05 "Trend tests"): the values the documents quote
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import trend_tests  # noqa: E402  (standard library only; importing runs nothing)
+
+trends = {label: r for label, _unit, r in trend_tests.trend_table()}
+check(round(trends["SAIFI ex-MED"]["p"], 2) == 0.54, "SAIFI ex-MED trend 2015-2025: p = 0.54")
+check(round(trends["CAIDI ex-MED"]["p"], 2) == 0.74, "CAIDI ex-MED trend 2015-2025: p = 0.74")
+check(round(trends["SAIDI ex-MED"]["p"], 2) == 0.58, "SAIDI ex-MED trend 2015-2025: p = 0.58")
+adj = trends["Weather-adjusted SAIDI (sql/07 Q10)"]
+check((round(adj["slope"], 2), round(adj["lo"], 2), round(adj["hi"], 2), round(adj["p"], 2)) == (0.34, -1.41, 2.08, 0.67),
+      "weather-adjusted SAIDI trend: +0.34 min/yr, 95% CI -1.41 to +2.08, p = 0.67 (D22)")
 print("All committed-output checks passed.")

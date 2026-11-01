@@ -1,9 +1,20 @@
 file,rows,bytes,sha256,source,exported_at
-dim_utility.csv,1283,80679,bb2b473726f1e08f6ca2f4647702b94d08d64fc851b135d2e100dfbd67bd5f90,MART.DIM_UTILITY,2026-11-01T02:13:46Z
-dom_load_annual.csv,9,642,b7730c28b7ba1c2695cf41b7a2716465b287244262193e9a50fa58262af53e46,MART.DOM_LOAD_ANNUAL (2018 starts 1 Jul; 2026 runs to the last EIA-930 file),2026-11-01T02:13:46Z
-dom_load_profile.csv,24,606,fcbd80ca3a4171324f2c13bfbaa6c168980dd301d0e3427e33ff6bd12e5bddba,MART.DOM_LOAD_PROFILE,2026-11-01T02:13:46Z
+county_outage_map.csv,103,7833,5e158194089dc4d18ae63c5857498840f1af2ae7c0b548c802b91886ec7aeb53,"derived from MART.FCT_COUNTY_YEAR and FCT_COUNTY_DAY: one row per Dominion county for the map, 2015-2024 averages, map_flag",2026-11-01T02:44:03Z
+dim_county.csv,133,40582,023a7353056b3b512db1ea4136a9ffa7131329faf2e2b0df53783549b4e90364,"MART.DIM_COUNTY (133 Virginia counties and cities, Dominion-county rule and reason)",2026-11-01T02:44:03Z
+dim_utility.csv,1283,80679,bb2b473726f1e08f6ca2f4647702b94d08d64fc851b135d2e100dfbd67bd5f90,MART.DIM_UTILITY,2026-11-01T02:44:03Z
+dom_load_annual.csv,9,642,b7730c28b7ba1c2695cf41b7a2716465b287244262193e9a50fa58262af53e46,MART.DOM_LOAD_ANNUAL (2018 starts 1 Jul; 2026 runs to the last EIA-930 file),2026-11-01T02:44:03Z
+dom_load_daily.csv,3044,143171,c429fb3b3c7c2fb031f2663e03a8114efaa3c00e524ebd09c6f9cad0abc03bf6,MART.DOM_LOAD_DAILY (daily load with Virginia degree days; to 29 Oct 2026),2026-11-01T02:44:03Z
+dom_load_hour_month.csv,2400,64020,7aa8f1415dfb7158950039b3e3d48c69a9ce94349006a04a085068055cbde600,"MART.DOM_LOAD_HOUR_MONTH (year x month x hour, PJM DOM zone; to 29 Oct 2026)",2026-11-01T02:44:03Z
+dom_load_profile.csv,24,606,fcbd80ca3a4171324f2c13bfbaa6c168980dd301d0e3427e33ff6bd12e5bddba,MART.DOM_LOAD_PROFILE,2026-11-01T02:44:03Z
+dom_seasonal_peak.csv,18,713,7a57d02276eba7572762e6e5483789f3d06090c85777911623dcbda2fbad5a53,"MART.DOM_SEASONAL_PEAK (year x season, date and hour of the peak)",2026-11-01T02:44:03Z
 dom_top50_hours.csv,96,4870,d304a4635a706ede60baaf9aaf0b27d9e232f73677d0cf5808a1e4d7ebb42bf4,"MART.DOM_TOP50_HOURS (union of two top-50 rankings: rank_today, rank_end_2025)",2026-11-01T02:13:46Z
-fct_reliability.csv,13095,2043789,3181703f949b74e8fd9fa1a8555e640b8192cb417e4db6f5c7903f12b3f5e99b,MART.FCT_RELIABILITY,2026-11-01T02:13:46Z
-peer_reliability_5yr.csv,12,1454,4848bf678afdd14a201ef3776f7f502644be667107195b7c84ebf057e5a1c459,"derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large-utility peers (sql/03), SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks (1 = highest)",2026-11-01T02:13:46Z
-saidi_weather_adjusted.csv,11,638,404c4eaeea7f06f2f4151b28ebd71a50098fc7cb17a20a04300ef3179d4f95f0,MART.SAIDI_WEATHER_ADJUSTED,2026-11-01T02:13:46Z
-v_group_index.csv,91,7844,1dead2f911377c410b99d71d85e1ebb0af5f890d2cb9da8853b2eb5524489e95,MART.V_GROUP_INDEX,2026-11-01T02:13:46Z
+fct_county_year.csv,1133,115035,52dcd26659623a6ccc66776f5709072f81f39ffb364279e5c5abfd292c3f8729,MART.FCT_COUNTY_YEAR (103 Dominion counties x 2015-2025),2026-11-01T02:44:03Z
+fct_event_context.csv,486,106950,fa90ed44f85a5580b1ad29129b3673f61fc3d24d4f6d1485d0d4354cce81e4f4,"MART.FCT_EVENT_CONTEXT (every territory outage event with storm type, tropical cyclone and DOE-417 match)",2026-11-01T02:44:03Z
+fct_reliability.csv,13095,2043789,3181703f949b74e8fd9fa1a8555e640b8192cb417e4db6f5c7903f12b3f5e99b,MART.FCT_RELIABILITY,2026-11-01T02:44:03Z
+fct_restoration_curve.csv,9237,897561,7c901b7a1edae7b203e225a25393fee2b79133b81e4e3f95aaef323e595ad452,"MART.FCT_RESTORATION_CURVE (hourly, 7 days from the peak, territory events peaking at 50,000+)",2026-11-01T02:44:03Z
+fct_sales_sector.csv,52,3208,b61aca09cdf520c99cc8ddf82375c225d9eb72c3351df29dee12cf726b5162ee,"MART.FCT_SALES_SECTOR (Dominion VA retail sales by class, 2013-2025)",2026-11-01T02:44:03Z
+fct_territory_day.csv,4018,311847,4c07c627f77fdb8a582c7f0e37407a4a5dfd448014b018d50005384c893ae1a7,"MART.FCT_TERRITORY_DAY (103 Dominion counties together, one row per day, proxy major event days)",2026-11-01T02:44:03Z
+outage_events_top10.csv,10,1491,c184d88cef761c9b66cd01b83b4cbebbc6714f346eef81eaece554acdefb0956,derived from MART.FCT_EVENT_CONTEXT: the ten largest events by the level held for one hour,2026-11-01T02:44:03Z
+peer_reliability_5yr.csv,12,1454,4848bf678afdd14a201ef3776f7f502644be667107195b7c84ebf057e5a1c459,"derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large-utility peers (sql/03), SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks (1 = highest)",2026-11-01T02:44:03Z
+saidi_weather_adjusted.csv,11,638,404c4eaeea7f06f2f4151b28ebd71a50098fc7cb17a20a04300ef3179d4f95f0,MART.SAIDI_WEATHER_ADJUSTED,2026-11-01T02:44:03Z
+v_group_index.csv,91,7844,1dead2f911377c410b99d71d85e1ebb0af5f890d2cb9da8853b2eb5524489e95,MART.V_GROUP_INDEX,2026-11-01T02:44:03Z

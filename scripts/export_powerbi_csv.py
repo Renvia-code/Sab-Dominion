@@ -62,6 +62,58 @@ SELECT utility_key, utility_name, peer_group, utility_key = '19876|VA' AS is_dom
        ROUND(MEDIAN(saifi_2021_25) OVER (), 3) AS median_saifi_2021_25,
        ROUND(MEDIAN(caidi_2021_25) OVER (), 1) AS median_caidi_2021_25
 FROM u ORDER BY saifi_2021_25 DESC"""),
+    # ---- EAGLE-I county outages (sql/09) and event context (sql/11) ----
+    ("dim_county.csv", "MART.DIM_COUNTY (133 Virginia counties and cities, Dominion-county rule and reason)",
+     "SELECT * FROM mart.DIM_COUNTY ORDER BY county_fips"),
+    ("fct_county_year.csv", "MART.FCT_COUNTY_YEAR (103 Dominion counties x 2015-2025)",
+     "SELECT * FROM mart.FCT_COUNTY_YEAR ORDER BY county_fips, year"),
+    ("county_outage_map.csv",
+     "derived from MART.FCT_COUNTY_YEAR and FCT_COUNTY_DAY: one row per Dominion county for the map, 2015-2024 averages, map_flag",
+     """WITH r AS (
+  SELECT county_fips, SUM(readings) AS readings_2015_24
+  FROM mart.FCT_COUNTY_DAY WHERE year BETWEEN 2015 AND 2024 GROUP BY 1
+),
+y AS (
+  SELECT c.*, r.readings_2015_24,
+         CASE WHEN c.county_fips = '51600' THEN 'excluded: implausible readings 2018-2020'
+              WHEN r.readings_2015_24 < 1000 THEN 'excluded: almost no EAGLE-I readings (municipal utility)'
+              ELSE 'ok' END AS map_flag
+  FROM mart.FCT_COUNTY_YEAR c JOIN r USING (county_fips)
+)
+SELECT county_fips, county_label, dominion_only_county, MAX(customers_basis) AS customers_basis, map_flag,
+       MAX(readings_2015_24) AS readings_2015_24,
+       ROUND(60 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN customer_hours_non_med END) / MAX(customers_basis), 1) AS minutes_non_med_avg_2015_24,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_avg_2015_24,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2019 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2015_19,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2020 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2020_24,
+       ROUND(AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN storm_days END), 1) AS storm_days_avg_2015_24
+FROM y GROUP BY county_fips, county_label, dominion_only_county, map_flag ORDER BY county_fips"""),
+    ("fct_territory_day.csv", "MART.FCT_TERRITORY_DAY (103 Dominion counties together, one row per day, proxy major event days)",
+     """SELECT day, year, customer_hours, customers_out_max, failed_readings, storm_counties,
+       ROUND(alpha, 6) AS alpha, ROUND(beta, 6) AS beta, window_days,
+       ROUND(med_threshold_customer_hours, 1) AS med_threshold_customer_hours, is_med_proxy
+FROM mart.FCT_TERRITORY_DAY ORDER BY day"""),  # rounded: parallel float sums differ in the last bits
+    ("fct_event_context.csv", "MART.FCT_EVENT_CONTEXT (every territory outage event with storm type, tropical cyclone and DOE-417 match)",
+     "SELECT * FROM mart.FCT_EVENT_CONTEXT ORDER BY start_utc"),
+    ("outage_events_top10.csv", "derived from MART.FCT_EVENT_CONTEXT: the ten largest events by the level held for one hour",
+     """SELECT ROW_NUMBER() OVER (ORDER BY peak_sustained_1h DESC) AS rank, event_key, start_day,
+       CAST(peak_utc - INTERVAL '5 HOUR' AS DATE) AS peak_day, storm_type, tropical_cyclone,
+       peak_customers_out, peak_sustained_1h, ROUND(hours_above_threshold, 1) AS hours_above_10k,
+       ROUND(customer_hours) AS customer_hours, ROUND(hours_to_50pct, 1) AS hours_to_50pct,
+       ROUND(hours_to_90pct, 1) AS hours_to_90pct, ROUND(hours_to_99pct, 1) AS hours_to_99pct,
+       doe417_customers_max, starts_on_med_proxy_day
+FROM mart.FCT_EVENT_CONTEXT ORDER BY peak_sustained_1h DESC LIMIT 10"""),
+    ("fct_restoration_curve.csv", "MART.FCT_RESTORATION_CURVE (hourly, 7 days from the peak, territory events peaking at 50,000+)",
+     "SELECT * FROM mart.FCT_RESTORATION_CURVE ORDER BY event_key, hour_since_peak"),
+    # ---- load and sales (sql/10); EIA-930 to the hour ending midnight 29 Oct 2026 ----
+    ("dom_load_hour_month.csv", "MART.DOM_LOAD_HOUR_MONTH (year x month x hour, PJM DOM zone; to 29 Oct 2026)",
+     "SELECT * FROM mart.DOM_LOAD_HOUR_MONTH ORDER BY year, month, hour_no"),
+    ("dom_seasonal_peak.csv", "MART.DOM_SEASONAL_PEAK (year x season, date and hour of the peak)",
+     "SELECT * FROM mart.DOM_SEASONAL_PEAK ORDER BY year, season"),
+    ("dom_load_daily.csv", "MART.DOM_LOAD_DAILY (daily load with Virginia degree days; to 29 Oct 2026)",
+     "SELECT * FROM mart.DOM_LOAD_DAILY ORDER BY data_date"),
+    ("fct_sales_sector.csv", "MART.FCT_SALES_SECTOR (Dominion VA retail sales by class, 2013-2025)",
+     "SELECT * FROM mart.FCT_SALES_SECTOR ORDER BY year, customer_class"),
 ]
 
 

@@ -139,6 +139,28 @@ The fifty highest-demand hours ranked at two reference dates: `rank_end_2025` (r
 ### `MART.DOM_LOAD_PROFILE` (24 rows, hour of day)
 `avg_mw_2019`, `avg_mw_2025`, `growth_pct` for each hour ending 1 to 24.
 
+### Added in November 2026 (sql/09 to 11; sources S12 to S20 in `01_sources.md`)
+
+RAW tables, all VARCHAR as before: `EAGLEI_OUTAGES_VA` (11,608,442 rows, county x 15 minutes, with `source_file`), `EAGLEI_MCC`, `EAGLEI_COVERAGE_HISTORY`, `CENSUS_VA_COUNTY` (133), `HURDAT2_POINTS` (55,524), `DOE417_EVENTS` (3,702), `CPC_DEGREE_DAYS` (309,504). Staging views: `VA_COUNTY_CUSTOMERS` (customer basis, D15), `EAGLEI_VA_15MIN` (one row per county and slot; `customers_out` NULL for failed runs and impossible readings, `customers_out_reported` as published, D16), `EIA861_VA_COUNTY_UTILITY`, `HURDAT2_POINTS` (with `km_from_richmond`), `DOE417_EVENTS` (with `virginia_row`, `dominion_area`, D19), `VA_DEGREE_DAYS`.
+
+| Table | Grain, rows | Key columns |
+|---|---|---|
+| `MART.DIM_COUNTY` | county, 133 | `county_fips`, `county_label`, `customers_basis` and `customers_basis_source`, `dominion_county`, `dominion_only_county`, `dominion_county_rule`, `dominion_county_reason` |
+| `MART.FCT_OUTAGE_COUNTY_HOUR` | county x hour, all Virginia | `customers_out_max`, `customer_hours` (sum of 15-minute counts x 0.25), `readings`, `failed_readings` |
+| `MART.FCT_TERRITORY_15MIN` | 15 minutes, Nov 2014 to 2025 | `customers_out` in the 103 Dominion counties, `counties_with_value`, `counties_failed` |
+| `MART.FCT_COUNTY_DAY` | county x day (EST), 103 x 4,018 | `customer_hours`, `customer_hours_per_1k`, `customers_out_max`, `failed_readings`, NOAA flags `storm_day`, `storm_wind`, `storm_winter`, `storm_tropical`, `max_gust_kt` |
+| `MART.FCT_TERRITORY_DAY` | day, 4,018 | `customer_hours`, `customers_out_max`, `alpha`, `beta`, `med_threshold_customer_hours`, `is_med_proxy` (D18) |
+| `MART.FCT_COUNTY_YEAR` | county x year, 103 x 11 | `outage_minutes_per_customer` (all days and `_non_med`), `events`, `events_non_med`, `events_non_med_per_10k_customers`, `storm_days`, `failed_share` |
+| `MART.FCT_OUTAGE_EVENT` | event, 486 territory + 41,278 county | `scope`, `start_utc`, `peak_utc`, `end_utc`, `peak_customers_out`, `peak_sustained_1h`, `hours_above_threshold`, `customer_hours`, `background_customers_out`, `hours_to_50pct`, `hours_to_90pct`, `hours_to_99pct`, `starts_on_med_proxy_day` (D17) |
+| `MART.FCT_RESTORATION_CURVE` | territory event x hour since peak (0 to 167), events peaking at 50,000+ | `customers_out` (hourly max), `share_restored` (0 at the peak, 1 back to background) |
+| `MART.FCT_EVENT_CONTEXT` | territory event, 486 | the event columns plus `storm_type`, county-days by storm type, `tropical_cyclone` (HURDAT2 within 400 km of Richmond), `doe417_customers_max`, `size_ratio` |
+| `MART.DOM_LOAD_HOUR_MONTH` | year x month x hour, 2,400 | `avg_mw`, `max_mw`, `hours_reported` (to 29 Oct 2026, D21) |
+| `MART.DOM_SEASONAL_PEAK` | year x season, 18 | `peak_mw`, `peak_date`, `peak_hour_no` |
+| `MART.DOM_LOAD_DAILY` | day, 3,044 | `avg_mw`, `max_mw`, `min_mw`, `hours_reported`, `hdd`, `cdd` (Virginia, population-weighted) |
+| `MART.FCT_SALES_SECTOR` | year x class, 52 | `sales_mwh` (bundled + delivery), `customers`, `revenue_usd`, `mwh_per_customer`, `delivery_only_mwh` |
+
+The CSV copies of these tables for the Power BI Import are listed in `data/README.md`.
+
 ## Naming conventions
 
 - Tables and views upper case, columns lower case snake case, as Snowflake displays them.

@@ -29,6 +29,21 @@ Found by profiling RAW (`sql/00_look_first.sql`) or by a test on the first load.
 | P17 | EIA-861 vs annual report | EIA customers for Dominion VA are 2,675,735 and the annual report states 2,809k | Not an error. The report figure includes North Carolina. Stated on the scorecard | report |
 | P18 | EIA-861 | Prince George Electric filed SAIDI but no SAIFI for 2025. A group denominator summing all members' customers would include its 13,341 customers and understate the co-op SAIFI (1.849 instead of 1.887) | `V_GROUP_INDEX` denominators sum only the customers of utilities that reported the numerator. The co-op index (each year relative to 2015) is unchanged to one decimal (137.4) | `02`, `V_GROUP_INDEX` |
 | P19 | EIA-930 vs company reports | Dominion's earnings decks report DOM zone peaks of 22,189 MW (24 Dec 2022), 21,993 MW (28 Jul 2023) and 23,127 MW (16 Jul 2024). EIA-930 hourly maxima on the same days are 22,415, 22,050 and 23,220 MW, within 1.1% | Confirms EIA-930 as a proxy for the zone load. The difference is hourly-integrated EIA data against PJM's reported peak | `DOM_LOAD_ANNUAL`, `data/reference/dominion_ir_series.csv` |
+| P20 | EAGLE-I | A blank customer count is a failed collection run, not zero customers out. Failures cluster in late 2025: 46% of August and 45% of October 2025 county readings are blank | Kept NULL, never zero (D16). Customer-hours skip them, so 2025 EAGLE-I totals are undercounted; the county-day panel uses complete county-days only (D20) | `09`, `STG.EAGLEI_VA_15MIN.failed_run`, Q12 |
+| P21 | EAGLE-I | Rows with zero customers out appear only from 2022. Before that, a county with no outage has no row | Customer-hours are unaffected. Reading counts and failed-run shares are not comparable across 2022 | `09`, Q12 |
+| P22 | EAGLE-I | The 2023 file names the count column `sum` instead of `customers_out` | The extract keeps the file as published; the raw load reads the sixth column by position | `scripts/extract_eaglei_va.py`, `09` |
+| P23 | EAGLE-I | The modelled customer counts (`MCC.csv`) hold impossible values for small cities (Buena Vista 1, Waynesboro 6, Lexington 16), and the 2024 file's `total_customers` double-counts (Virginia sums to 4.9 million) | Customer basis = MCC unless missing or below half the county's ACS housing units, then housing units (7 counties). Virginia basis 4,002,493; the 103 Dominion counties 3,462,949 (D15) | `09`, `STG.VA_COUNTY_CUSTOMERS`, T17 |
+| P24 | EAGLE-I | Readings above twice a county's customers, for example Fairfax city at up to 136,046 out on 2-4 March 2018 against 12,701 customers | Set to NULL in staging; the reported value is kept in `customers_out_reported`. 22 county-days, 484 readings (D16) | `09`, T19 |
+| P25 | EAGLE-I | One-reading collection drops and short spikes in the territory total: on 18 June 2016 at 04:15 UTC it falls from 95,972 to 2,434 and returns to 183,062 the next reading; on 30 July 2019 Hampton Roads shows 159,742 out for 45 minutes | Restoration times count a level only when the series stays below it for 3 hours; events are ranked by the level held for one hour (`peak_sustained_1h`) (D17) | `09`, `FCT_OUTAGE_EVENT` |
+| P26 | EAGLE-I | Fairfax city (51600) carries implausible readings for long periods in 2018-2020 (231 readings above half its customers in 2019; about 2,000 to 4,500 rows a year before and after, 24,000 to 30,000 in those years) | Left off the county map and out of the county-day panel (D20). It stays in the territory total, where any misplaced Fairfax County outages still belong | `09`, A3, A1 |
+| P27 | EAGLE-I | Manassas, Harrisonburg and Bristol (municipal utilities) have almost no readings: fewer than 1,000 in 2015-2024 | Left off the county map and out of the panel (D20) | `09`, A3 |
+| P28 | EIA-861 vs NOAA | EIA's 2025 Service Territory still lists "Bedford City" for Dominion, merged into Bedford County in 2013, and NOAA's zone lookup maps zone 34 to both 51019 and 51515. Every zone-34 storm therefore adds two county-days to `STORM_INDEX` for one area: 38 extra county-days over 2013-2025 (1 in 2024, 5 in 2025) | **Identified, not yet changed** (decision pending). Folding 51515 into 51019 would give 464 and 791 instead of 465 and 796; the 2015-2024 correlation (0.70) and the 2025 prediction (145.3) are unchanged at the precision reported. sql/09 already folds 51515 into 51019 | `05`, `STORM_INDEX`, T21 |
+| P29 | DOE-417 | No utility or respondent column in any year; Area Affected is free text ("Virginia:", "HanoverCounty, Virginia", "Virginia; WestVirginia") | Matched to Dominion by area, date and size (D19) | `11`, `STG.DOE417_EVENTS` |
+| P30 | DOE-417 | The 2023 file has 32 August rows with a blank begin date; at least one repeats a July event | Kept with a NULL begin date; they cannot be matched | `scripts/extract_doe417.py`, `11` |
+| P31 | DOE-417 vs EAGLE-I | A report for 26 March 2024 (Hanover County, 50,000 customers, demand loss "160,000" MW) has no EAGLE-I event: the 103-county total stayed below 8,400 from 25 to 27 March | Left unmatched; one of the two sources is wrong and public data cannot say which | `11`, Q17 |
+| P32 | EIA-861 | `data/input/Reliability_2025_States.csv` shows 16 co-op customer counts rounded to whole customers; the final 2025 file holds fractions (for example 56,980.6) | No effect on any Dominion figure; every Dominion value equals the final file | A5 |
+| P33 | EIA-930 | The July-December 2026 file has rows for 30 October 2026 but no demand values; the last value is the hour ending midnight on 29 October 2026 (04:00 UTC 30 October). The committed `data/output/dom_annual.csv` stops at 21 October | Every 2026 figure is stated "to 29 Oct 2026" (D21); the 2026 peaks are the same under both cut-offs | `06`, `10` |
+| P34 | EIA-930 | `DOM_TOP50_HOURS` ranks with `ROW_NUMBER()` over `demand_mw`, and some hours tie (two hours at 23,134 MW in June 2025), so tied hours can swap rank numbers between builds. There is no tie at rank 50 in either ranking (24,120 vs 24,096 MW; 22,953 vs 22,941 MW), so which hours are in the top 50, and every count quoted from it, is stable | Not changed (sql/06 is the original build). A tie-breaker (`utc_ts`) in the `ORDER BY` would fix the numbering. The committed `dom_top50_hours.csv` is kept as exported on 1 November 2026 | `06` |
 
 ## Tests
 
@@ -48,6 +63,27 @@ Run after every load. A result other than the expected one stops the refresh unt
 | T10 | 06 | Hours with reported demand above 60,000 MW | 2 rows (18 October 2021) | 2 | Additional anomalous rows. Review the dates |
 | T11 | 06 | No UTC hour appears twice for the DOM zone | 0 rows | 0 | A file was loaded twice. Truncate and reload |
 | T12 | 06 | Each full year 2019 to 2025 has at least 8,700 reported hours | 0 rows | 0 | A six-month file is missing or truncated |
+| T13 | 09 | EAGLE-I raw row count equals the Virginia rows the extract wrote | 0 rows (11,608,442 loaded) | 0 | A file was loaded twice or truncated |
+| T14 | 09 | Every EAGLE-I row has a Virginia county code and a parsable timestamp | 0 rows | 0 | A format change in the source |
+| T15 | 09 | One row per county per 15-minute slot after staging | 0 rows | 0 | De-duplication in staging failed |
+| T16 | 09 | Every EAGLE-I county code is a Census county or city | 0 rows | 0 | A FIPS code changed |
+| T17 | 09 | 133 counties, 103 Dominion counties (EIA's 104 names less Bedford city), 30 to 40 Dominion-only | 1 row, 0 problems | 0 (33 Dominion-only) | The service territory file changed |
+| T18 | 09 | Every Virginia utility-county in the service territory resolves to a FIPS code | 0 rows | 0 | A county spelling changed |
+| T19 | 09 | County-days with readings above twice the customer basis (set to NULL) | 22 rows | 22 | New impossible readings: review before use |
+| T20 | 09 | County-day panel complete: 103 counties x 4,018 days | 1 row, 0 problems | 0 | A day or county is missing |
+| T21 | 09 | Panel storm days equal the storm index once Bedford city's duplicates are removed | 0 rows | 0 | The two storm definitions have drifted |
+| T22 | 09 | Hourly customer-hours add up to the 15-minute total | 0 rows | 0 | Aggregation error |
+| T23 | 09 | Restoration curves bounded 0 to 1 and start at the peak | 0 rows | 0 | Background or peak computed wrongly |
+| T24 | 09 | Every year 2015-2025 has 1 to 20 proxy major event days | 0 rows | 0 | The 2.5 beta threshold misbehaves |
+| T31 | 09 | County-year table: 103 x 11 rows, customer-hours equal the panel's | 1 row, 0 problems | 0 | Aggregation error |
+| T25 | 11 | HURDAT2 track points parse; 200 to 400 storms since 2014 | 1 row, 0 problems | 0 | Format change in HURDAT2 |
+| T26 | 11 | DOE-417: 3,702 rows; 2024 and 2025 equal the files' "Total Records" (622, 426) | 1 row, 0 problems | 0 | A summary file changed or failed to parse |
+| T27 | 11 | One context row per territory outage event | 1 row, 0 problems | 0 | A join multiplied rows |
+| T28 | 10 | Every month July 2018 to October 2026 has all 24 hours in the hour x month table | 0 rows | 0 | A six-month file is missing |
+| T29 | 10 | Commercial sales 2025 = 60,088,202 + 4,532,591 MWh (EIA-861 2025) | 0 rows | 0 | Wrong file or class mapping |
+| T30 | 10 | Virginia degree days: one HDD and one CDD per day from 2018, none negative | 1 row, 0 problems | 0 | A CPC file is missing |
+
+T13 to T31 run in the DuckDB mirror (`scripts/run_local_duckdb_sources.py`, which reads the expected result from each test's comment). The Snowflake run of sql/09 to 11 follows the same files.
 
 ### Form of the tests
 

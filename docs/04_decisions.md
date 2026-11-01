@@ -141,3 +141,69 @@ Design decisions, each with context, the decision, alternatives considered and c
 - This public-data project does not estimate the effect of the grid transformation programme. The weather-adjusted SAIDI series is a model-based comparison, not evidence of the programme's causal benefit; feeder-level project data would be required for that assessment.
 - The project does not rank Dominion nationally. It places Dominion within a defined peer set with reporting methods stated.
 - The project does not attribute load growth to data centres from the data. EIA-861 does not identify customers. It reports the shape of the growth (night hours rising faster than day hours and commercial sales rising far faster than commercial customer counts), which is consistent with round-the-clock load.
+
+---
+
+### D15. Dominion counties and the EAGLE-I customer basis
+
+**Context.** EAGLE-I reports customers out by county for every utility in that county, not by utility. Dominion shares most of its counties with co-ops and municipal utilities. EAGLE-I's own customer counts (`MCC.csv`) hold impossible values for some small cities (P23).
+
+**Decision.** A Dominion county is one where EIA-861's 2025 Service Territory lists utility 19876: 103 counties and cities (EIA's 104 names less Bedford city, merged into Bedford County in 2013). `DIM_COUNTY.dominion_only_county` marks the 33 where no other utility is listed, so EAGLE-I's counts there are Dominion customers; `dominion_county_rule` and `dominion_county_reason` carry the rule in words for every county. The customer basis per county is EAGLE-I's modelled count unless it is missing or below half the county's ACS housing units, in which case the housing units are used (7 counties).
+
+**Alternatives.** Allocating EAGLE-I counts between utilities by customer share. Rejected: outages are not spread in proportion to customers, and nothing public says how they split.
+
+**Consequence.** Every EAGLE-I figure is "all utilities in the 103 counties Dominion serves", stated on each chart. Dominion-only counties are the robustness check.
+
+---
+
+### D16. Failed EAGLE-I runs stay NULL; impossible readings are set to NULL
+
+**Decision.** A blank count is a failed collection run and stays NULL (P20). A reading above twice the county's customer basis is set to NULL in staging with the reported value kept (P24). Nothing is interpolated (as D7).
+
+**Consequence.** Totals skip failed runs, so periods with many failures (August to November 2025) are undercounted and flagged; the county-day panel uses complete county-days only.
+
+---
+
+### D17. Outage events and restoration times
+
+**Decision.** A territory event is a run of 15-minute readings with 10,000 or more customers out in the 103 counties (about 0.3% of the basis), with gaps of up to 3 hours merged. A county event is 1% or more of the county's customers out (at least 10), gaps up to 1 hour merged. Restoration is measured from the peak against the excess over the median of the 24 hours before the event: hours to 50%, 90% and 99% restored, counting a level only when the series stays below it for the next 3 hours (P25). Events are ranked by `peak_sustained_1h`, the highest level held for four consecutive readings.
+
+**Alternatives.** The first reading below the level (rejected: one failed reading ends the restoration early); ranking by the single highest reading (rejected: ranks a 45-minute spike above multi-day storms).
+
+**Consequence.** The thresholds are stated on the event table. Because the county threshold scales with county size, county event counts compare a county with itself over time, not counties with each other; maps use outage minutes per customer.
+
+---
+
+### D18. Proxy major event days for EAGLE-I
+
+**Context.** Dominion's own major event days are not public.
+
+**Decision.** IEEE 1366's 2.5 beta method applied to daily EAGLE-I customer-hours in the 103 counties: a day is a proxy major event day when its customer-hours exceed exp(alpha + 2.5 beta), alpha and beta being the mean and standard deviation of ln(daily customer-hours) over the previous five years (2015 uses its own year).
+
+**Consequence.** "Non-major" EAGLE-I figures approximate, but are not, Dominion's ex-MED basis. They are never presented as Dominion's SAIDI (A5).
+
+---
+
+### D19. DOE-417 reports are matched to Dominion by area, date and size
+
+**Context.** DOE-417 summaries have no utility column (P29).
+
+**Decision.** A report is a Dominion-area report when Area Affected names Virginia after "West Virginia" is removed and names no other state except North Carolina; rows that add West Virginia, Kentucky, Tennessee and others are left out (Appalachian Power and other utilities serve those combinations). It matches a territory event when it began from one day before the event's start day to one day after its end day and reports customers affected (or a weather event with the count unknown). `size_ratio` = EAGLE-I peak / DOE-417 customers affected is shown, not filtered on: the two measure different things (simultaneous peak for all utilities, against customers affected over the event for the reporting utility).
+
+**Consequence.** Matches are context for named events (Isaias: 508,000 customers affected), never a count of Dominion's major events.
+
+---
+
+### D20. Counties left off the county map and the county-day panel
+
+**Decision.** Fairfax city (P26) and the three municipal-utility cities with almost no EAGLE-I readings, Manassas, Harrisonburg and Bristol (P27), are left off the county map and out of the county-day panel. The panel also drops county-days with any failed reading. All four stay in the territory total and in `FCT_COUNTY_YEAR`, with a `map_flag` in the map export.
+
+**Consequence.** 99 counties are mapped; the panel keeps 379,959 of 413,854 county-days.
+
+---
+
+### D21. One cut-off for 2026 demand figures
+
+**Decision.** Every 2026 figure from EIA-930 runs to the last hour with a value in the file downloaded on 1 November 2026: the hour ending midnight on 29 October 2026 (P33). The text says "to 29 Oct 2026".
+
+**Consequence.** The 2026 peaks (winter 25,413 MW on 9 February, summer 25,384 MW on 3 July) are the same as in the committed 21 October snapshot; the 2026 totals, averages and medians differ slightly.

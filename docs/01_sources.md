@@ -19,6 +19,15 @@ Source register: publisher, vintage, grain, row counts loaded, licence, direct l
 | S9 | Dominion Energy 2025 Annual Report | Dominion Energy | Published 2026 | document | reference only | Company publication, quoted for comparison |
 | S10 | Virginia SCC grid transformation filings, Dominion grid resiliency pages | Virginia State Corporation Commission, Dominion Energy | 2025 to 2026 | document | reference only | Public filings |
 | S11 | Dominion Energy quarterly earnings call slides, 1Q 2024 to 2Q 2026 (ten decks) | Dominion Energy Investor Relations | May 2024 to July 2026 | document | figures transcribed to `data/reference/dominion_ir_series.csv` with deck and slide number | Company publication, quoted for comparison |
+| S12 | EAGLE-I county outage data, 15-minute (`eaglei_outages_YYYY.csv`), with modelled customer counts (`MCC.csv`) and coverage history | Oak Ridge National Laboratory for DOE CESER; figshare doi:10.6084/m9.figshare.24237376 (v4), downloaded from DOE's EAGLE-I Aviary | 1 Nov 2014 to 31 Dec 2025 | county x 15 minutes, all utilities in the county | 11,608,442 Virginia rows | CC BY 4.0; cite Brelsford et al. 2024, Scientific Data, and DOI 10.13139/ORNLNCCS/1975203 |
+| S13 | EIA-861 2025 and 2024 annual files, other sheets: `Sales_Ult_Cust`, `Dynamic_Pricing`, `Advanced_Meters`, `Distribution_Systems`, `Reliability_2024` | EIA | 2024, 2025 final | utility x state x year | 8 sheets | Public domain |
+| S14 | EIA-861M monthly sales to ultimate customers | EIA | Jan 2013 to Aug 2026 | utility x state x month | 554,265 (long) | Public domain |
+| S15 | Census cartographic boundaries 2024 (counties, 1:500,000); ACS 2020-2024 5-year B01003 and B25001; Population Estimates vintage 2025 | U.S. Census Bureau | 2024 to 2025 | county | 133 Virginia counties and cities | Public domain |
+| S16 | HURDAT2 Atlantic best tracks (`hurdat2-1851-2025-092326.txt`) | NOAA National Hurricane Center | 1851 to 2025 | storm x 6-hour fix | 55,524 points | Public domain |
+| S17 | Population-weighted daily heating and cooling degree days by state | NOAA Climate Prediction Center | 2018 to 29 Oct 2026 | state x day | 309,504 (long) | Public domain |
+| S18 | DOE-417 Electric Emergency Incident and Disturbance annual summaries | DOE CESER, hosted by PNNL | 2014 to 2025 | reported event | 3,702 | Public domain |
+| S19 | PJM 2026 Load Forecast Report tables | PJM Interconnection | January 2026 | zone x year | 34 sheets | PJM terms of use, quoted with sheet references |
+| S20 | Virginia SCC combined reports to the General Assembly, RD916 (2025) and HD5 (2025) | Virginia SCC, via the Virginia Legislative Information System | 2025 | document | reference only | Public record |
 
 ## Where each file lives in this repository
 
@@ -33,6 +42,8 @@ Source register: publisher, vintage, grain, row counts loaded, licence, direct l
 | S7 | `data/reference/Service_Territory_2025_Counties_States.csv` | Yes | Lookup |
 | S8 | not committed (420 MB) | No | `scripts/download_eia930.sh` fetches the 17 files |
 | S9, S10, S11 | not committed | No | Copyrighted documents. Page or slide references are given where a figure is quoted. S11 figures are transcribed to `data/reference/dominion_ir_series.csv` |
+| S12 to S20 | not committed (`data/raw/<source>/`, 2.2 GB for EAGLE-I) | No | `scripts/download_eaglei.sh` and `scripts/download_context_sources.sh` fetch them; each folder gets a `MANIFEST.csv` (file, rows, bytes, SHA-256, URL, download time). Extracts: `scripts/extract_eaglei_va.py` (MD5 checked against figshare), `extract_eia861.py`, `extract_census_va.py`, `extract_hurdat2.py`, `extract_degree_days.py`, `extract_doe417.py` |
+| S15 (derived) | `data/output/va_counties.geojson`, `data/output/va_counties.topojson` | Yes | Simplified boundaries for charts and the Power BI shape map |
 
 ## Direct links
 
@@ -49,6 +60,14 @@ Landing page, file used, field documentation and licence for each source.
 | S10 Dominion grid resiliency materials | https://www.dominionenergy.com/projects-and-facilities/electric-projects/energy-grid-transformation/grid-resiliency-projects | Same page and its FAQ | Hardening and undergrounding figures quoted in `docs/04_decisions.md` D14 | Company publication |
 | S10 Virginia SCC filings | https://www.scc.virginia.gov/ , case documents through the SCC docket search | Grid transformation plan filings and annual reliability reports by case number | | Public filings |
 | S11 Earnings call slides | https://investors.dominionenergy.com/ (Events and Presentations) | Quarterly decks, 1Q 2024 to 2Q 2026. Each value in `dominion_ir_series.csv` names its deck and slide | Slide footnotes define weather-normal sales, contracted capacity stages (SELOA, CLOA, ESA) and the biennial review terms | Company publication |
+| S12 EAGLE-I | https://eagle-i.doe.gov/ and https://doi.org/10.6084/m9.figshare.24237376 | `https://eagle-i.doe.gov/api/aviary/download?file=eaglei_outages_YYYY.csv` (zip per file; figshare's own download returns a bot challenge to scripts) | Data descriptor: Brelsford et al. (2024), Scientific Data; field list in the figshare record | CC BY 4.0 |
+| S13, S14 EIA-861, 861M | https://www.eia.gov/electricity/data/eia861/ and https://www.eia.gov/electricity/data/eia861m/ | `zip/f8612025.zip`, `zip/f8612024.zip`; 861M yearly workbooks (`sales_ult_cust_YYYY.xlsx` and earlier names) | Form instructions as S1 | Public domain |
+| S15 Census | https://www2.census.gov/ (paths in `scripts/download_context_sources.sh`) | `geo/tiger/GENZ2024/shp/cb_2024_us_county_500k.zip`; ACS summary file tables `acsdt5y2024-b01003.dat`, `-b25001.dat`; `co-est2025-alldata.csv` | ACS table shells | Public domain |
+| S16 HURDAT2 | https://www.nhc.noaa.gov/data/#hurdat | `hurdat2-1851-2025-092326.txt` | Format description linked from the same page | Public domain |
+| S17 CPC degree days | https://ftp.cpc.ncep.noaa.gov/htdocs/degree_days/weighted/daily_data/ | `ftp.cpc.ncep.noaa.gov/htdocs/degree_days/weighted/daily_data/YYYY/StatesCONUS.{Heating,Cooling}.txt` | Base 65 F, population weighted | Public domain |
+| S18 DOE-417 | https://doe417.pnnl.gov/ (the former www.oe.netl.doe.gov host no longer resolves) | `summaries/YYYY_Annual_Summary.xls` (2014-2023) and `.xlsx` (2024-2025) | Form DOE-417 instructions | Public domain |
+| S19 PJM load forecast | https://www.pjm.com/planning/resource-adequacy-planning/load-forecast-dev-process | `/-/media/DotCom/planning/res-adeq/load-forecast/2026-load-report-tables.xlsx` | The report's own notes | PJM terms of use |
+| S20 SCC reports | https://rga.lis.virginia.gov/ | `Published/2025/RD916/PDF`, `Published/2025/HD5/PDF`. The SCC's own site (scc.virginia.gov) refuses scripted access, so its dockets are a recorded gap | | Public record |
 
 To verify a figure: open the file at the link, locate the row identified in `docs/08_transformations.md` (line numbers for EIA-930 rows, event IDs for NOAA rows) and compare it with the value quoted there.
 
@@ -58,6 +77,11 @@ To verify a figure: open the file at the link, locate the row identified in `doc
 scripts/download_noaa.sh      # 13 files into data/raw/noaa/
 scripts/download_eia930.sh    # 17 files into data/raw/eia930/
 python scripts/extract_pudl.py   # rewrites data/input/pudl_*.csv from PUDL parquet
+bash scripts/download_eaglei.sh            # EAGLE-I zips from DOE Aviary into data/raw/eaglei/downloads/
+python scripts/extract_eaglei_va.py        # Virginia rows, MD5 check, Parquet, manifest
+bash scripts/download_context_sources.sh   # S13 to S20 into data/raw/<source>/
+python scripts/extract_eia861.py; python scripts/extract_census_va.py; python scripts/extract_hurdat2.py
+python scripts/extract_degree_days.py; python scripts/extract_doe417.py; python scripts/write_manifests.py
 ```
 
 EIA-861 2025 (S1, S7): download https://www.eia.gov/electricity/data/eia861/zip/f8612025.zip, open `Reliability_2025.xlsx` and `Service_Territory_2025.xlsx` and save the named sheets as CSV. The Reliability sheet has three header rows and uses "." for blanks; file format `FF_EIA_CSV` handles both (`SKIP_HEADER = 3`, `NULL_IF = ('.')`).

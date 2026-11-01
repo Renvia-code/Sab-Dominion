@@ -1,0 +1,9 @@
+file,rows,bytes,sha256,source,exported_at
+dim_utility.csv,1283,80679,bb2b473726f1e08f6ca2f4647702b94d08d64fc851b135d2e100dfbd67bd5f90,MART.DIM_UTILITY,2026-11-01T02:13:46Z
+dom_load_annual.csv,9,642,b7730c28b7ba1c2695cf41b7a2716465b287244262193e9a50fa58262af53e46,MART.DOM_LOAD_ANNUAL (2018 starts 1 Jul; 2026 runs to the last EIA-930 file),2026-11-01T02:13:46Z
+dom_load_profile.csv,24,606,fcbd80ca3a4171324f2c13bfbaa6c168980dd301d0e3427e33ff6bd12e5bddba,MART.DOM_LOAD_PROFILE,2026-11-01T02:13:46Z
+dom_top50_hours.csv,96,4870,d304a4635a706ede60baaf9aaf0b27d9e232f73677d0cf5808a1e4d7ebb42bf4,"MART.DOM_TOP50_HOURS (union of two top-50 rankings: rank_today, rank_end_2025)",2026-11-01T02:13:46Z
+fct_reliability.csv,13095,2043789,3181703f949b74e8fd9fa1a8555e640b8192cb417e4db6f5c7903f12b3f5e99b,MART.FCT_RELIABILITY,2026-11-01T02:13:46Z
+peer_reliability_5yr.csv,12,1454,4848bf678afdd14a201ef3776f7f502644be667107195b7c84ebf057e5a1c459,"derived from MART.FCT_RELIABILITY and MART.DIM_UTILITY: the 12 large-utility peers (sql/03), SAIDI 2023-25 mean, SAIFI and CAIDI 2021-25 means of the annual ex-MED values, ranks (1 = highest)",2026-11-01T02:13:46Z
+saidi_weather_adjusted.csv,11,638,404c4eaeea7f06f2f4151b28ebd71a50098fc7cb17a20a04300ef3179d4f95f0,MART.SAIDI_WEATHER_ADJUSTED,2026-11-01T02:13:46Z
+v_group_index.csv,91,7844,1dead2f911377c410b99d71d85e1ebb0af5f890d2cb9da8853b2eb5524489e95,MART.V_GROUP_INDEX,2026-11-01T02:13:46Z

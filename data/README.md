@@ -8,7 +8,7 @@ The original data files are stored separately from the supporting files and the 
 | --- | --- |
 | [`input/`](input/) | Four EIA/PUDL extracts covering reliability, customer meters and electricity sales. The historical reliability file covers 2013–2024; the separate EIA file provides 2025. |
 | [`reference/`](reference/) | Information used to interpret the data: Dominion's Virginia service counties, NOAA's weather-zone-to-county lookup, and selected figures from Dominion investor presentations. |
-| [`output/`](output/) | Three exported summaries: annual storm exposure, storms alongside SAIDI, and annual demand for the PJM DOM subregion. |
+| [`output/`](output/) | Exported summaries (annual storm exposure, storms alongside SAIDI, annual demand for the PJM DOM subregion), the mart tables the Power BI report imports, and simplified Virginia county boundaries for the map. |
 
 ## How I used the files
 
@@ -26,4 +26,6 @@ They are too large to keep in this repository. The download scripts in [`scripts
 
 I didn't manually change numbers to make the charts. The cleaning and calculations are defined in [`sql/`](../sql/). For exact sources and file counts, see [Sources](../docs/01_sources.md); for worked examples showing how a source row becomes a result, see [Transformations](../docs/08_transformations.md).
 
-**Output format note:** `data/output/dom_annual.csv` is a compact saved snapshot, not an exact export of every column in `MART.DOM_LOAD_ANNUAL`. Its year column is named `yr` (rather than `year`), and it does not include `peak_mw` or `hours_missing`. Use the SQL mart definition for the full set of fields.
+**Output format note:** `data/output/dom_annual.csv` is a compact saved snapshot, not an exact export of every column in `MART.DOM_LOAD_ANNUAL`. Its year column is named `yr` (rather than `year`), and it does not include `peak_mw` or `hours_missing`. Use the SQL mart definition for the full set of fields, or `dom_load_annual.csv` below.
+
+**Power BI exports:** [`scripts/export_powerbi_csv.py`](../scripts/export_powerbi_csv.py) writes the mart tables the report uses as CSV, so the report can refresh from a folder without a Snowflake connection: `fct_reliability.csv`, `dim_utility.csv`, `v_group_index.csv`, `saidi_weather_adjusted.csv`, `dom_load_annual.csv` (every column), `dom_top50_hours.csv`, `dom_load_profile.csv` and `peer_reliability_5yr.csv` (the twelve large-utility peers: SAIDI 2023–25, SAIFI and CAIDI 2021–25, with ranks). Column names are the mart's. They are exported from the local DuckDB build of the same SQL (`scripts/run_local_duckdb_sources.py`, which runs the tests), and [`powerbi_exports_manifest.csv`](output/powerbi_exports_manifest.csv) records the rows, bytes and SHA-256 of each file. [`va_counties.geojson`](output/va_counties.geojson) holds the 133 Virginia counties and independent cities (Census cartographic boundaries 2024, simplified) for the county map.

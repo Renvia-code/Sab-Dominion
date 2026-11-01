@@ -1,0 +1,9 @@
+# Packages for the download and extract scripts (scripts/extract_*.py), on top of requirements.txt.
+# The checks need only requirements.txt. Tested on 1 Nov 2026 with Python 3.12: duckdb 2.0.0,
+# pandas 3.1.0, numpy 2.5.4, openpyxl 3.1.5, xlrd 2.0.2, pyshp 3.1.6, shapely 2.2.0, topojson 2.2.
+-r requirements.txt
+openpyxl
+xlrd
+pyshp
+shapely
+topojson

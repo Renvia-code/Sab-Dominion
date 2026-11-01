@@ -74,6 +74,7 @@ To verify a figure: open the file at the link, locate the row identified in `doc
 ## How to re-download
 
 ```bash
+python -m pip install -r requirements-sources.txt   # packages the extract scripts need (checks need only requirements.txt)
 scripts/download_noaa.sh      # 13 files into data/raw/noaa/
 scripts/download_eia930.sh    # 17 files into data/raw/eia930/
 python scripts/extract_pudl.py   # rewrites data/input/pudl_*.csv from PUDL parquet

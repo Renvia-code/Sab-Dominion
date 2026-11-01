@@ -7,7 +7,7 @@
 # CSVs are on figshare (doi:10.6084/m9.figshare.24237376, version 4, 25 Feb 2026), whose
 # API publishes an MD5 per file; scripts/extract_eaglei_va.py checks every CSV against it.
 # figshare's own download links sit behind a bot challenge, which is why this script uses
-# the DOE page. Files are large (13.6 GB of CSV, about 1.4 GB zipped), so the extract
+# the DOE page. Files are large (11.6 GB of CSV, 1.66 GB zipped), so the extract
 # script keeps only the Virginia rows.
 set -euo pipefail
 BASE="https://eagle-i.doe.gov/api/aviary"

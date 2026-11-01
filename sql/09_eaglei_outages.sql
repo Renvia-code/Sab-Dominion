@@ -1,8 +1,8 @@
 -- =====================================================================
 -- DOMINION RELIABILITY MART  |  09: EAGLE-I county outages (ORNL), Virginia
--- Adds four raw tables, two staging views, seven mart tables, tests T13 to
--- T24 and four analysis queries. Run after 05 (it reuses STG.NOAA_VA_EVENTS
--- and STG.DOMINION_VA_COUNTIES).
+-- Adds four raw tables, three staging views, eight mart tables, tests T13
+-- to T24 and T31, and four analysis queries. Run after 05 (it reads
+-- STG.NOAA_VA_EVENTS, two of 05's raw tables and, in T21, STORM_INDEX).
 --
 -- EAGLE-I records, every 15 minutes, how many customers each county's
 -- utilities show as out on their public outage maps. It counts EVERY

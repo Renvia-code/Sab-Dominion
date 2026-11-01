@@ -120,4 +120,5 @@ share_2019 = con.execute(
 if share_2019 is not None:
     raise RuntimeError(f"Expected suppressed near-zero 2019 frequency share, got {share_2019}")
 print(f"Business check: rolling SAIDI averages = {avg_2024:.1f} and {avg_2025:.1f} minutes.")
-print("Core reliability checks passed. NOAA/EIA-930 checks require the full Snowflake pipeline.")
+print("Core reliability checks passed. The storm, demand, outage and event checks (T7-T31) run in "
+      "scripts/run_local_duckdb_sources.py, which needs the raw downloads in data/raw/.")

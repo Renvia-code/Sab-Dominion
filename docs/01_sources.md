@@ -15,7 +15,7 @@ Source register: publisher, vintage, grain, row counts loaded, licence, direct l
 | S5 | NOAA Storm Events Database, `StormEvents_details` yearly files | NOAA NCEI | 2013 to 2025 | one row per storm event | 831,288 | U.S. Government work, public domain |
 | S6 | NOAA forecast zone to county correlation (`zone_county_correlation.csv`) | NOAA NWS | Current | zone x county | 7,087 | Public domain |
 | S7 | EIA-861 Service Territory 2025, sheet `Counties_States` | EIA | 2025 final | utility x state x county | 11,803 | Public domain |
-| S8 | EIA-930 Hourly Demand by Subregion, six-month CSV files | EIA | July 2018 to 22 Oct 2026 | balancing authority x subregion x hour | 6,077,232 (72,864 for PJM/DOM) | Public domain |
+| S8 | EIA-930 Hourly Demand by Subregion, six-month CSV files | EIA | July 2018 to 30 Oct 2026 in the files downloaded 1 Nov 2026; values to the hour ending midnight 29 Oct (D21) | balancing authority x subregion x hour | 6,094,320 (73,056 hours for PJM/DOM). The first build, to 22 Oct, had 6,077,232 (72,864); the committed `dom_annual.csv` is that snapshot | Public domain |
 | S9 | Dominion Energy 2025 Annual Report | Dominion Energy | Published 2026 | document | reference only | Company publication, quoted for comparison |
 | S10 | Virginia SCC grid transformation filings, Dominion grid resiliency pages | Virginia State Corporation Commission, Dominion Energy | 2025 to 2026 | document | reference only | Public filings |
 | S11 | Dominion Energy quarterly earnings call slides, 1Q 2024 to 2Q 2026 (ten decks) | Dominion Energy Investor Relations | May 2024 to July 2026 | document | figures transcribed to `data/reference/dominion_ir_series.csv` with deck and slide number | Company publication, quoted for comparison |

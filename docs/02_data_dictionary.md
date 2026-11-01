@@ -47,7 +47,7 @@ NWS lookup: `state`, `zone`, `county_name`, `fips`. A forecast zone can span sev
 ### `RAW.EIA861_SERVICE_TERRITORY_2025` (11,803 rows, utility-state-county)
 Which counties each utility serves. `utility_number`, `state`, `county`.
 
-### `RAW.EIA930_SUBREGION` (6,077,232 rows, BA-subregion-hour, July 2018 to October 2026)
+### `RAW.EIA930_SUBREGION` (6,094,320 rows, BA-subregion-hour, July 2018 to 30 October 2026; 6,077,232 in the first build, to 22 October)
 `balancing_authority`, `sub_region`, `data_date`, `hour_number` (1 to 24, hour ending), `demand_mw`, `local_time_end`, `utc_time_end`.
 
 ## STG

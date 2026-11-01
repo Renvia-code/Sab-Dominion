@@ -1,5 +1,6 @@
 file,rows,bytes,sha256,source,exported_at
-county_outage_map.csv,103,7833,5e158194089dc4d18ae63c5857498840f1af2ae7c0b548c802b91886ec7aeb53,"derived from MART.FCT_COUNTY_YEAR and FCT_COUNTY_DAY: one row per Dominion county for the map, 2015-2024 averages, map_flag",2026-11-01T02:44:03Z
+county_outage_map.csv,103,7833,5e158194089dc4d18ae63c5857498840f1af2ae7c0b548c802b91886ec7aeb53,"derived from MART.FCT_COUNTY_YEAR and FCT_COUNTY_DAY: one row per Dominion county for the map, 2015-2024 averages, map_flag",2026-11-01T04:00:21Z
+county_outage_map_dominion_only.csv,33,2637,3d4ce4588ce7e3e2598ea75d722e635b0600456c62b947d63ba7c472a5d0db32,"as county_outage_map.csv, the 33 Dominion-only counties (31 with map_flag ok): EAGLE-I counts there are Dominion customers (D15)",2026-11-01T04:00:21Z
 dim_county.csv,133,40582,023a7353056b3b512db1ea4136a9ffa7131329faf2e2b0df53783549b4e90364,"MART.DIM_COUNTY (133 Virginia counties and cities, Dominion-county rule and reason)",2026-11-01T02:44:03Z
 dim_utility.csv,1283,80679,bb2b473726f1e08f6ca2f4647702b94d08d64fc851b135d2e100dfbd67bd5f90,MART.DIM_UTILITY,2026-11-01T02:44:03Z
 dom_load_annual.csv,9,642,b7730c28b7ba1c2695cf41b7a2716465b287244262193e9a50fa58262af53e46,MART.DOM_LOAD_ANNUAL (2018 starts 1 Jul; 2026 runs to the last EIA-930 file),2026-11-01T02:44:03Z

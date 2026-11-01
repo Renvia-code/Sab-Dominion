@@ -30,6 +30,28 @@ MANIFEST = OUT / "powerbi_exports_manifest.csv"
 PEERS = ("'19876|VA','5416|NC','3046|NC','7140|GA','195|AL','17539|SC',"
          "'1167|MD','15270|MD','14940|PA','14715|PA','6452|FL','6455|FL'")
 
+# The county map: one row per Dominion county, 2015-2024 averages, with the map_flag of decision D20.
+# EAGLE-I counts every utility in a county; in the Dominion-only counties that is Dominion alone.
+COUNTY_MAP_SQL = """WITH r AS (
+  SELECT county_fips, SUM(readings) AS readings_2015_24
+  FROM mart.FCT_COUNTY_DAY WHERE year BETWEEN 2015 AND 2024 GROUP BY 1
+),
+y AS (
+  SELECT c.*, r.readings_2015_24,
+         CASE WHEN c.county_fips = '51600' THEN 'excluded: implausible readings 2018-2020'
+              WHEN r.readings_2015_24 < 1000 THEN 'excluded: almost no EAGLE-I readings (municipal utility)'
+              ELSE 'ok' END AS map_flag
+  FROM mart.FCT_COUNTY_YEAR c JOIN r USING (county_fips)
+)
+SELECT county_fips, county_label, dominion_only_county, MAX(customers_basis) AS customers_basis, map_flag,
+       MAX(readings_2015_24) AS readings_2015_24,
+       ROUND(60 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN customer_hours_non_med END) / MAX(customers_basis), 1) AS minutes_non_med_avg_2015_24,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_avg_2015_24,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2019 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2015_19,
+       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2020 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2020_24,
+       ROUND(AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN storm_days END), 1) AS storm_days_avg_2015_24
+FROM y GROUP BY county_fips, county_label, dominion_only_county, map_flag"""
+
 # (file name, source object or description, query)
 EXPORTS = [
     ("fct_reliability.csv", "MART.FCT_RELIABILITY",
@@ -93,25 +115,10 @@ FROM u ORDER BY saifi_2021_25 DESC"""),
      "SELECT * FROM mart.FCT_COUNTY_YEAR ORDER BY county_fips, year"),
     ("county_outage_map.csv",
      "derived from MART.FCT_COUNTY_YEAR and FCT_COUNTY_DAY: one row per Dominion county for the map, 2015-2024 averages, map_flag",
-     """WITH r AS (
-  SELECT county_fips, SUM(readings) AS readings_2015_24
-  FROM mart.FCT_COUNTY_DAY WHERE year BETWEEN 2015 AND 2024 GROUP BY 1
-),
-y AS (
-  SELECT c.*, r.readings_2015_24,
-         CASE WHEN c.county_fips = '51600' THEN 'excluded: implausible readings 2018-2020'
-              WHEN r.readings_2015_24 < 1000 THEN 'excluded: almost no EAGLE-I readings (municipal utility)'
-              ELSE 'ok' END AS map_flag
-  FROM mart.FCT_COUNTY_YEAR c JOIN r USING (county_fips)
-)
-SELECT county_fips, county_label, dominion_only_county, MAX(customers_basis) AS customers_basis, map_flag,
-       MAX(readings_2015_24) AS readings_2015_24,
-       ROUND(60 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN customer_hours_non_med END) / MAX(customers_basis), 1) AS minutes_non_med_avg_2015_24,
-       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_avg_2015_24,
-       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2015 AND 2019 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2015_19,
-       ROUND(10000 * AVG(CASE WHEN year BETWEEN 2020 AND 2024 THEN events_non_med END) / MAX(customers_basis), 2) AS events_per_10k_2020_24,
-       ROUND(AVG(CASE WHEN year BETWEEN 2015 AND 2024 THEN storm_days END), 1) AS storm_days_avg_2015_24
-FROM y GROUP BY county_fips, county_label, dominion_only_county, map_flag ORDER BY county_fips"""),
+     COUNTY_MAP_SQL + " ORDER BY county_fips"),
+    ("county_outage_map_dominion_only.csv",
+     "as county_outage_map.csv, the 33 Dominion-only counties (31 with map_flag ok): EAGLE-I counts there are Dominion customers (D15)",
+     f"SELECT * FROM ({COUNTY_MAP_SQL}) WHERE dominion_only_county ORDER BY county_fips"),
     ("fct_territory_day.csv", "MART.FCT_TERRITORY_DAY (103 Dominion counties together, one row per day, proxy major event days)",
      """SELECT day, year, customer_hours, customers_out_max, failed_readings, storm_counties,
        ROUND(alpha, 6) AS alpha, ROUND(beta, 6) AS beta, window_days,

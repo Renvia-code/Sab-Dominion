@@ -1,0 +1,34 @@
+county_fips,county_label,dominion_only_county,customers_basis,map_flag,readings_2015_24,minutes_non_med_avg_2015_24,events_per_10k_avg_2015_24,events_per_10k_2015_19,events_per_10k_2020_24,storm_days_avg_2015_24
+51013,Arlington County,True,111055,ok,119415.0,147.2,2.04,1.8,2.29,5.5
+51036,Charles City County,True,2516,ok,36691.0,778.0,158.19,144.67,171.7,2.9
+51073,Gloucester County,True,15330,ok,70162.0,369.5,25.51,26.22,24.79,3.3
+51087,Henrico County,True,150139,ok,239215.0,276.6,3.59,2.88,4.3,5.4
+51095,James City County,True,32899,ok,75973.0,168.6,6.69,5.96,7.42,3.5
+51115,Mathews County,True,3233,ok,33421.0,743.5,116.92,115.06,118.78,2.5
+51119,Middlesex County,True,4296,ok,42950.0,674.8,93.34,90.32,96.37,3.2
+51127,New Kent County,True,8920,ok,52663.0,345.8,42.04,38.12,45.96,3.2
+51199,York County,True,28029,ok,79784.0,173.2,8.85,8.92,8.78,3.2
+51510,Alexandria city,True,67166,ok,85771.0,149.4,3.83,4.02,3.63,3.3
+51530,Buena Vista city,True,2949,ok,7210.0,99.6,30.52,26.45,34.59,3.4
+51540,Charlottesville city,True,20605,ok,55255.0,204.8,10.77,11.55,10.0,2.0
+51550,Chesapeake city,True,104567,ok,159405.0,123.8,2.47,2.41,2.52,5.4
+51570,Colonial Heights city,True,8524,ok,21116.0,207.6,17.01,13.84,20.18,1.7
+51580,Covington city,True,2882,ok,6782.0,117.1,26.02,24.29,27.76,2.7
+51595,Emporia city,True,2639,ok,8795.0,154.6,35.62,34.86,36.38,1.7
+51600,Fairfax city,True,12701,excluded: implausible readings 2018-2020,99604.0,1948.0,118.65,162.19,75.11,2.0
+51610,Falls Church city,True,6786,ok,19000.0,223.7,24.46,24.17,24.76,2.2
+51630,Fredericksburg city,True,14939,ok,25409.0,113.6,9.91,8.84,10.98,2.6
+51650,Hampton city,True,58889,ok,131166.0,139.1,4.21,4.28,4.14,3.1
+51660,Harrisonburg city,True,19411,excluded: almost no EAGLE-I readings (municipal utility),438.0,0.1,0.0,0.0,0.0,2.5
+51670,Hopewell city,True,9904,ok,36052.0,157.0,18.98,19.59,18.38,1.2
+51678,Lexington city,True,2808,ok,5607.0,95.0,24.57,25.64,23.5,3.1
+51700,Newport News city,True,84935,ok,150936.0,130.6,3.06,2.73,3.39,3.6
+51710,Norfolk city,True,116644,ok,146911.0,104.8,2.23,2.31,2.14,4.5
+51730,Petersburg city,True,14894,ok,52927.0,268.8,16.65,16.25,17.05,1.3
+51735,Poquoson city,True,4482,ok,24724.0,203.4,27.89,30.79,24.99,1.4
+51740,Portsmouth city,True,43205,ok,96083.0,134.2,4.95,5.14,4.77,2.5
+51760,Richmond city,True,112565,ok,61624.0,58.9,0.84,1.6,0.09,1.7
+51790,Staunton city,True,11216,ok,23534.0,195.0,14.0,11.59,16.41,2.8
+51810,Virginia Beach city,True,190947,ok,231117.0,141.8,1.62,1.85,1.38,5.9
+51820,Waynesboro city,True,10510,ok,23048.0,170.9,16.65,15.03,18.27,3.1
+51830,Williamsburg city,True,8943,ok,19515.0,106.8,14.98,15.43,14.54,1.8

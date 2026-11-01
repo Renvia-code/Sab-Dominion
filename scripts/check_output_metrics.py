@@ -92,6 +92,31 @@ check(all(float(dom[m]) < float(dom[v]) for v, m in (("saifi_2021_25", "median_s
                                                       ("saifi_2021_25", "median_saifi_2021_25_excl_dominion"),
                                                       ("caidi_2021_25", "median_caidi_2021_25_excl_dominion"))),
       "Dominion's SAIFI and CAIDI are above the median with or without Dominion (same quadrant)")
+allmap = {r["county_fips"]: r for r in rows("county_outage_map.csv")}
+dmap = rows("county_outage_map_dominion_only.csv")
+check(len(dmap) == 33 and sum(r["map_flag"] == "ok" for r in dmap) == 31
+      and all(r["dominion_only_county"] == "True" and r == allmap[r["county_fips"]] for r in dmap)
+      and sum(r["dominion_only_county"] == "True" for r in allmap.values()) == 33,
+      "county_outage_map_dominion_only.csv = the 33 Dominion-only rows of county_outage_map.csv (31 on the map)")
+county_year = rows("fct_county_year.csv")
+
+
+def minutes_non_med(fips):
+    """Outage minutes per customer on non-major days, customer-weighted over the counties, mean of 2015-2024."""
+    per_year = {}
+    for r in county_year:
+        if r["county_fips"] in fips and 2015 <= int(r["year"]) <= 2024:
+            ch, basis = per_year.get(r["year"], (0.0, 0.0))
+            per_year[r["year"]] = (ch + float(r["customer_hours_non_med"]), basis + float(r["customers_basis"]))
+    return sum(60 * ch / basis for ch, basis in per_year.values()) / len(per_year)
+
+
+on_map = {f for f, r in allmap.items() if r["map_flag"] == "ok"}
+dom_only = {f for f in on_map if allmap[f]["dominion_only_county"] == "True"}
+check((round(minutes_non_med(set(allmap)), 1), round(minutes_non_med(on_map), 1), round(minutes_non_med(dom_only), 1),
+       round(minutes_non_med(on_map - dom_only), 1)) == (195.3, 191.9, 159.2, 211.1),
+      "outage minutes per customer, non-major days, 2015-2024: 195.3 (103 counties), 191.9 (99 on the map), "
+      "159.2 (31 Dominion-only), 211.1 (68 shared)")
 svc = rows("storm_vs_calm.csv")
 by_subset = {r["subset"]: r for r in svc}
 first = svc[0]

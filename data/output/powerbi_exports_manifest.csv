@@ -20,6 +20,7 @@ reconciliation.csv,12,1797,3c6269b5cac6a24349ce80f6038f9b61bb7f6f0003e65dc5bfd08
 saidi_weather_adjusted.csv,11,638,c64593f28bb89cbe50cbd7d97f1c35a881958827e838a5922c8d68b587e836fa,MART.SAIDI_WEATHER_ADJUSTED,2026-11-01T02:49:47Z
 storm_county_year.csv,1133,24940,512e0045b30db1342eadc4b8e90af2a587a0164f2bffba32905708d2ef8ac9ae,"derived from MART.FCT_COUNTY_DAY: NOAA storm county-days by county, year and type, 103 Dominion counties, 2015-2025 (D22 fold)",2026-11-01T03:19:59Z
 storm_index.csv,13,361,d9615507180a531bce8058c37b2256a66a8be40825883df4014c797e63b30b6c,"MART.STORM_INDEX (Bedford city folded into Bedford County, D22)",2026-11-01T02:49:47Z
+storm_vs_calm.csv,19,2274,512393bf5bbc19ee8935e65f66ab7848f7d3b6dd59b19096a2a07a1839144809,"scripts/storm_vs_calm_ratio.py on MART.FCT_COUNTY_DAY and FCT_TERRITORY_DAY: outage customer-hours per 1,000 customers, storm vs calm county-days, 95% day-cluster bootstrap (2,000 resamples, seed 20261101)",2026-11-01T03:57:29Z
 storm_vs_saidi.csv,13,679,e24076db369416e4ab2375109530b4bc0f69f891f59dbf35a08ede297cda807a,MART.V_STORM_VS_SAIDI (D22),2026-11-01T02:49:47Z
 test_results.csv,31,3635,5ca93e8a2464c4bd2306a775572d6fc0e6039b67868da5269368f7f2cb6bdde2,"tests T1-T31 run on this DuckDB build (sql/04, 05, 06, 09 onward)",2026-11-01T03:19:59Z
 v_group_index.csv,91,7844,1dead2f911377c410b99d71d85e1ebb0af5f890d2cb9da8853b2eb5524489e95,MART.V_GROUP_INDEX,2026-11-01T02:44:03Z

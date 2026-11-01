@@ -7,7 +7,8 @@ Snowflake build. Column names are the mart's, lower case; the Power Query step u
 Writes data/output/powerbi_exports_manifest.csv (file, rows, bytes, sha256, source, exported_at).
 For the report's Data notes page it also writes reconciliation.csv (rebuilt figures against the
 values their publishers print) and test_results.csv (tests T1 onward, run read-only on the same
-database).
+database), and storm_vs_calm.csv (scripts/storm_vs_calm_ratio.py: storm against calm county-days,
+with bootstrap intervals).
 
 Run: .venv/Scripts/python.exe -I scripts/export_powerbi_csv.py [--only name1,name2]
 """
@@ -277,6 +278,20 @@ def main():
                                    "source": f"tests {rows[0]['test']}-{rows[-1]['test']} run on this DuckDB build (sql/04, 05, 06, 09 onward)",
                                    "exported_at": now}
         print(f"test_results.csv: {len(rows)} tests, {sum(r['status'] == 'PASS' for r in rows)} PASS")
+    if not only or "storm_vs_calm" in only:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import storm_vs_calm_ratio as svc  # importing it runs nothing
+        rows = svc.storm_vs_calm_table(con)
+        p = OUT / "storm_vs_calm.csv"
+        with p.open("w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(svc.COLUMNS)
+            w.writerows(rows)
+        old["storm_vs_calm.csv"] = {"file": "storm_vs_calm.csv", "rows": len(rows), "bytes": p.stat().st_size, "sha256": sha256(p),
+                                    "source": "scripts/storm_vs_calm_ratio.py on MART.FCT_COUNTY_DAY and FCT_TERRITORY_DAY: outage customer-hours "
+                                              f"per 1,000 customers, storm vs calm county-days, 95% day-cluster bootstrap ({svc.B:,} resamples, seed {svc.SEED})",
+                                    "exported_at": now}
+        print(f"storm_vs_calm.csv: {len(rows)} rows; all county-days {rows[0][-1]}")
     with MANIFEST.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["file", "rows", "bytes", "sha256", "source", "exported_at"], lineterminator="\n")
         w.writeheader()

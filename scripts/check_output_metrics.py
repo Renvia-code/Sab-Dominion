@@ -79,6 +79,22 @@ for r in rows("storm_county_year.csv"):
     by_year[int(r["year"])] = by_year.get(int(r["year"]), 0) + int(r["storm_days"])
 check(set(by_year) == set(range(2015, 2026)) and all(by_year[y] == int(storm[y]["storm_county_days"]) for y in by_year),
       "storm_county_year.csv adds up to storm_index.csv for every year 2015-2025")
+svc = rows("storm_vs_calm.csv")
+by_subset = {r["subset"]: r for r in svc}
+first = svc[0]
+check(len(svc) == 19 and first["subset"] == "All complete county-days, 2015-2025" and first["ratio_label"] == "11.9 (7.9 to 16.9)"
+      and (int(first["storm_county_days"]), int(first["calm_county_days"])) == (6108, 373851),
+      "storm vs calm county-days 2015-2025: 11.9 times (7.9 to 16.9), 6,108 storm and 373,851 calm county-days")
+check(round(float(first["storm_ch_per_1k"]), 1) == 332.8 and round(float(first["calm_ch_per_1k"]), 2) == 27.86,
+      "storm 332.8 and calm 27.86 customer-hours per 1,000 customers")
+check(by_subset["Non-major days (proxy major event days removed)"]["ratio_label"] == "9.9 (8.6 to 11.3)",
+      "storm vs calm on non-major days: 9.9 (8.6 to 11.3)")
+check(by_subset["Dominion-only counties"]["ratio_label"] == "19.9 (11.2 to 32.5)", "storm vs calm, Dominion-only counties: 19.9 (11.2 to 32.5)")
+years = [r for r in svc if r["subset"].isdigit()]
+check([int(r["subset"]) for r in years] == list(range(2015, 2026)) and all(float(r["ratio_ci_low"]) > 1 for r in years),
+      "storm vs calm, every year 2015-2025: the interval lies above 1")
+check(sum(int(r["storm_county_days"]) for r in years) == 6108 and sum(int(r["calm_county_days"]) for r in years) == 373851,
+      "storm vs calm: the yearly rows add up to the all-years row")
 
 # Trend tests, 2015-2025 (scripts/trend_tests.py; docs/05 "Trend tests"): the values the documents quote
 sys.path.insert(0, str(Path(__file__).resolve().parent))

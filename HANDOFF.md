@@ -29,7 +29,8 @@ Download `Sab-Dominion_data_raw.zip` from the Drive link, then, from the reposit
 ```powershell
 Get-FileHash C:\path\to\Sab-Dominion_data_raw.zip -Algorithm SHA256
 #   expect 196E1E92AF5C1CAAD6ADC60F9B8C90FD7E3C679482FCD39F22E7324122D0B9EC
-tar -xf C:\path\to\Sab-Dominion_data_raw.zip      # creates data\raw\... (paths in the zip start with data/raw/)
+C:\Windows\System32\tar.exe -xf C:\path\to\Sab-Dominion_data_raw.zip   # creates data\raw\... (paths in the zip start with data/raw/)
+# use the full path: Git for Windows can put its own tar first on PATH, and that one fails on "C:"
 py -3.12 -m venv .venv
 .venv\Scripts\python -m pip install -r requirements-sources.txt
 ```

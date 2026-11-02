@@ -1,0 +1,1764 @@
+Sun, Nov  1, 2026  8:35:31 AM
+USE WAREHOUSE SNOWFLAKE_LEARNING_WH;
++----------------------------------+
+| status                           |
+|----------------------------------|
+| Statement executed successfully. |
++----------------------------------+
+CREATE FILE FORMAT IF NOT EXISTS RELIABILITY.RAW.FF_EAGLEI_CSV
+  TYPE = CSV
+  SKIP_HEADER = 1
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  NULL_IF = ('')
+  EMPTY_FIELD_AS_NULL = TRUE
+  ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE;
++----------------------------------------------------+
+| status                                             |
+|----------------------------------------------------|
+| FF_EAGLEI_CSV already exists, statement succeeded. |
++----------------------------------------------------+
+CREATE STAGE IF NOT EXISTS RELIABILITY.RAW.EAGLEI_STAGE FILE_FORMAT = RELIABILITY.RAW.FF_EAGLEI_CSV;
++---------------------------------------------------+
+| status                                            |
+|---------------------------------------------------|
+| EAGLEI_STAGE already exists, statement succeeded. |
++---------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.RAW.EAGLEI_OUTAGES_VA (
+  fips_code VARCHAR, county VARCHAR, state VARCHAR, customers_out VARCHAR,
+  run_start_time VARCHAR, total_customers VARCHAR, source_file VARCHAR
+);
++-----------------------------------------------+
+| status                                        |
+|-----------------------------------------------|
+| Table EAGLEI_OUTAGES_VA successfully created. |
++-----------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.RAW.EAGLEI_MCC (county_fips VARCHAR, customers VARCHAR);
++----------------------------------------+
+| status                                 |
+|----------------------------------------|
+| Table EAGLEI_MCC successfully created. |
++----------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.RAW.EAGLEI_COVERAGE_HISTORY (
+  year VARCHAR, state VARCHAR, total_customers VARCHAR, min_covered VARCHAR,
+  max_covered VARCHAR, min_pct_covered VARCHAR, max_pct_covered VARCHAR
+);
++-----------------------------------------------------+
+| status                                              |
+|-----------------------------------------------------|
+| Table EAGLEI_COVERAGE_HISTORY successfully created. |
++-----------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.RAW.CENSUS_VA_COUNTY (
+  county_fips VARCHAR, name VARCHAR, namelsad VARCHAR, aland_sq_mi VARCHAR,
+  acs5_2024_population VARCHAR, acs5_2024_housing_units VARCHAR,
+  pep_population_2020 VARCHAR, pep_population_2025 VARCHAR
+);
++----------------------------------------------+
+| status                                       |
+|----------------------------------------------|
+| Table CENSUS_VA_COUNTY successfully created. |
++----------------------------------------------+
+COPY INTO RELIABILITY.RAW.EAGLEI_OUTAGES_VA FROM (
+  SELECT $1, $2, $3, $4, $5, $6, METADATA$FILENAME FROM @RELIABILITY.RAW.EAGLEI_STAGE/va/
+) PATTERN = '.*eaglei_outages_va_20[0-9]{2}\.csv';
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| file                                       | status | rows_parsed | rows_loaded | error_limit | errors_seen | first_error | first_error_line | first_error_character | first_error_column_name |
+|--------------------------------------------+--------+-------------+-------------+-------------+-------------+-------------+------------------+-----------------------+-------------------------|
+| eaglei_stage/va/eaglei_outages_va_2020.csv | LOADED | 998491      | 998491      | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2019.csv | LOADED | 1019738     | 1019738     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2021.csv | LOADED | 1034698     | 1034698     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2014.csv | LOADED | 42109       | 42109       | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2022.csv | LOADED | 1126937     | 1126937     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2018.csv | LOADED | 1085572     | 1085572     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2016.csv | LOADED | 840073      | 840073      | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2024.csv | LOADED | 1082901     | 1082901     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2015.csv | LOADED | 631998      | 631998      | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2023.csv | LOADED | 1013087     | 1013087     | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2017.csv | LOADED | 790945      | 790945      | 1           | 0           | None        | None             | None                  | None                    |
+| eaglei_stage/va/eaglei_outages_va_2025.csv | LOADED | 1941893     | 1941893     | 1           | 0           | None        | None             | None                  | None                    |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+COPY INTO RELIABILITY.RAW.EAGLEI_MCC FROM @RELIABILITY.RAW.EAGLEI_STAGE/MCC.csv;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| file                 | status | rows_parsed | rows_loaded | error_limit | errors_seen | first_error | first_error_line | first_error_character | first_error_column_name |
+|----------------------+--------+-------------+-------------+-------------+-------------+-------------+------------------+-----------------------+-------------------------|
+| eaglei_stage/MCC.csv | LOADED | 3234        | 3234        | 1           | 0           | None        | None             | None                  | None                    |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+COPY INTO RELIABILITY.RAW.EAGLEI_COVERAGE_HISTORY FROM @RELIABILITY.RAW.EAGLEI_STAGE/coverage_history.csv;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| file                              | status | rows_parsed | rows_loaded | error_limit | errors_seen | first_error | first_error_line | first_error_character | first_error_column_name |
+|-----------------------------------+--------+-------------+-------------+-------------+-------------+-------------+------------------+-----------------------+-------------------------|
+| eaglei_stage/coverage_history.csv | LOADED | 280         | 280         | 1           | 0           | None        | None             | None                  | None                    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+COPY INTO RELIABILITY.RAW.CENSUS_VA_COUNTY FROM @RELIABILITY.RAW.EAGLEI_STAGE/va_county_census.csv;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| file                              | status | rows_parsed | rows_loaded | error_limit | errors_seen | first_error | first_error_line | first_error_character | first_error_column_name |
+|-----------------------------------+--------+-------------+-------------+-------------+-------------+-------------+------------------+-----------------------+-------------------------|
+| eaglei_stage/va_county_census.csv | LOADED | 133         | 133         | 1           | 0           | None        | None             | None                  | None                    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+SELECT 'eaglei_va' AS t, COUNT(*) AS n FROM RELIABILITY.RAW.EAGLEI_OUTAGES_VA
+UNION ALL SELECT 'mcc', COUNT(*) FROM RELIABILITY.RAW.EAGLEI_MCC
+UNION ALL SELECT 'coverage', COUNT(*) FROM RELIABILITY.RAW.EAGLEI_COVERAGE_HISTORY
+UNION ALL SELECT 'census', COUNT(*) FROM RELIABILITY.RAW.CENSUS_VA_COUNTY;
++----------------------+
+| T         | N        |
+|-----------+----------|
+| eaglei_va | 11608442 |
+| mcc       | 3234     |
+| coverage  | 280      |
+| census    | 133      |
++----------------------+
+CREATE OR REPLACE VIEW RELIABILITY.STG.VA_COUNTY_CUSTOMERS AS
+SELECT c.county_fips,
+       TRY_TO_NUMBER(m.customers)                 AS eaglei_modelled_customers,
+       TRY_TO_NUMBER(c.acs5_2024_housing_units)   AS housing_units,
+       CASE WHEN TRY_TO_NUMBER(m.customers) IS NULL
+              OR TRY_TO_NUMBER(m.customers) < 0.5 * TRY_TO_NUMBER(c.acs5_2024_housing_units)
+            THEN TRY_TO_NUMBER(c.acs5_2024_housing_units)
+            ELSE TRY_TO_NUMBER(m.customers) END  AS customers_basis,
+       CASE WHEN TRY_TO_NUMBER(m.customers) IS NULL
+              OR TRY_TO_NUMBER(m.customers) < 0.5 * TRY_TO_NUMBER(c.acs5_2024_housing_units)
+            THEN 'ACS housing units (EAGLE-I modelled count missing or below half of housing units)'
+            ELSE 'EAGLE-I modelled customers (MCC.csv, 2022)' END AS customers_basis_source
+FROM RELIABILITY.RAW.CENSUS_VA_COUNTY c
+LEFT JOIN RELIABILITY.RAW.EAGLEI_MCC m ON LPAD(m.county_fips, 5, '0') = c.county_fips;
++------------------------------------------------+
+| status                                         |
+|------------------------------------------------|
+| View VA_COUNTY_CUSTOMERS successfully created. |
++------------------------------------------------+
+CREATE OR REPLACE VIEW RELIABILITY.STG.EAGLEI_VA_15MIN AS
+SELECT s.county_fips, s.county_name, s.ts_utc, s.customers_out_reported,
+       CASE WHEN s.customers_out_reported > 2 * b.customers_basis THEN NULL
+            ELSE s.customers_out_reported END                     AS customers_out,
+       s.customers_out_reported IS NULL                           AS failed_run,
+       s.source_rows, s.valued_rows, s.total_customers, s.source_file
+FROM (
+SELECT county_fips,
+       MIN(county)                    AS county_name,
+       ts_slot                        AS ts_utc,
+       MAX(customers_out)             AS customers_out_reported,
+       COUNT(*)                       AS source_rows,
+       COUNT(customers_out)           AS valued_rows,
+       MAX(total_customers)           AS total_customers,
+       MIN(source_file)               AS source_file
+FROM (
+  SELECT LPAD(fips_code, 5, '0')                                   AS county_fips,
+         county,
+         TIME_SLICE(TRY_CAST(run_start_time AS TIMESTAMP), 15, 'MINUTE') AS ts_slot,
+         TRY_CAST(customers_out AS INTEGER)                        AS customers_out,
+         TRY_CAST(total_customers AS INTEGER)                      AS total_customers,
+         source_file
+  FROM RELIABILITY.RAW.EAGLEI_OUTAGES_VA
+  WHERE state = 'Virginia'
+) r
+GROUP BY county_fips, ts_slot
+) s
+LEFT JOIN RELIABILITY.STG.VA_COUNTY_CUSTOMERS b ON b.county_fips = s.county_fips;
++--------------------------------------------+
+| status                                     |
+|--------------------------------------------|
+| View EAGLEI_VA_15MIN successfully created. |
++--------------------------------------------+
+CREATE OR REPLACE VIEW RELIABILITY.STG.EIA861_VA_COUNTY_UTILITY AS
+WITH eia AS (
+  SELECT DISTINCT TRY_TO_NUMBER(utility_number) AS utility_id, utility_name, county,
+         CASE WHEN county LIKE '% City' THEN 'City of ' || LEFT(county, LENGTH(county) - 5) ELSE county END AS noaa_name
+  FROM RELIABILITY.RAW.EIA861_SERVICE_TERRITORY_2025
+  WHERE state = 'VA'
+),
+lookup AS (
+  SELECT DISTINCT county_name, LPAD(fips, 5, '0') AS county_fips
+  FROM RELIABILITY.RAW.NOAA_ZONE_COUNTY
+  WHERE state = 'VA' AND fips <> '9999'
+)
+SELECT e.utility_id, e.utility_name, e.county AS eia_county,
+
+       CASE WHEN MIN(l.county_fips) = '51515' THEN '51019' ELSE MIN(l.county_fips) END AS county_fips
+FROM eia e
+LEFT JOIN lookup l ON LOWER(l.county_name) IN (LOWER(e.county), LOWER(e.noaa_name))
+GROUP BY e.utility_id, e.utility_name, e.county;
++-----------------------------------------------------+
+| status                                              |
+|-----------------------------------------------------|
+| View EIA861_VA_COUNTY_UTILITY successfully created. |
++-----------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.DIM_COUNTY COPY GRANTS AS
+WITH u AS (
+  SELECT county_fips,
+         COUNT(DISTINCT utility_id)                                     AS utilities_listed,
+         MAX(CASE WHEN utility_id = 19876 THEN 1 ELSE 0 END)            AS has_dominion
+  FROM RELIABILITY.STG.EIA861_VA_COUNTY_UTILITY
+  WHERE county_fips IS NOT NULL
+  GROUP BY county_fips
+),
+
+tc AS (
+  SELECT county_fips, MAX(total_customers) AS customers_2024
+  FROM RELIABILITY.STG.EAGLEI_VA_15MIN WHERE total_customers IS NOT NULL
+  GROUP BY county_fips
+)
+SELECT c.county_fips,
+       c.name                                                          AS county_name,
+       c.namelsad                                                      AS county_label,
+       c.namelsad LIKE '% city'                                        AS is_independent_city,
+       TRY_CAST(c.aland_sq_mi AS DOUBLE)                               AS land_sq_mi,
+       TRY_TO_NUMBER(c.acs5_2024_population)                           AS population_acs5_2024,
+       TRY_TO_NUMBER(c.acs5_2024_housing_units)                        AS housing_units_acs5_2024,
+       TRY_TO_NUMBER(c.pep_population_2025)                            AS population_2025,
+       b.eaglei_modelled_customers,
+       t.customers_2024                                                AS eaglei_file_customers_2024,
+       b.customers_basis,
+       b.customers_basis_source,
+       COALESCE(u.utilities_listed, 0)                                 AS utilities_listed,
+       COALESCE(u.has_dominion, 0) = 1                                 AS dominion_county,
+       COALESCE(u.has_dominion, 0) = 1 AND u.utilities_listed = 1      AS dominion_only_county,
+       CASE WHEN COALESCE(u.has_dominion, 0) = 1
+            THEN 'Dominion county: EIA-861 2025 Service Territory lists Dominion Energy Virginia (utility 19876) here'
+            ELSE 'Not a Dominion county: EIA-861 2025 Service Territory does not list utility 19876 here' END AS dominion_county_rule,
+       CASE WHEN COALESCE(u.has_dominion, 0) = 1 AND u.utilities_listed = 1
+              THEN 'Only Dominion is listed, so EAGLE-I outage counts here are Dominion customers'
+            WHEN COALESCE(u.has_dominion, 0) = 1
+              THEN 'Shared with ' || (u.utilities_listed - 1) || ' other utilit' || CASE WHEN u.utilities_listed = 2 THEN 'y' ELSE 'ies' END || ', whose customers EAGLE-I also counts'
+            ELSE 'EAGLE-I counts here are other utilities'' customers' END AS dominion_county_reason
+FROM RELIABILITY.RAW.CENSUS_VA_COUNTY c
+LEFT JOIN u   ON u.county_fips = c.county_fips
+LEFT JOIN RELIABILITY.STG.VA_COUNTY_CUSTOMERS b ON b.county_fips = c.county_fips
+LEFT JOIN tc  t ON t.county_fips = c.county_fips;
++----------------------------------------+
+| status                                 |
+|----------------------------------------|
+| Table DIM_COUNTY successfully created. |
++----------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_OUTAGE_COUNTY_HOUR COPY GRANTS AS
+SELECT county_fips,
+       DATE_TRUNC('HOUR', ts_utc)                AS hour_utc,
+       MAX(customers_out)                        AS customers_out_max,
+       SUM(customers_out) * 0.25                 AS customer_hours,
+       COUNT(customers_out)                      AS readings,
+       COUNT(*) - COUNT(customers_out)           AS failed_readings
+FROM RELIABILITY.STG.EAGLEI_VA_15MIN
+GROUP BY 1, 2;
++----------------------------------------------------+
+| status                                             |
+|----------------------------------------------------|
+| Table FCT_OUTAGE_COUNTY_HOUR successfully created. |
++----------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_TERRITORY_15MIN COPY GRANTS AS
+SELECT s.ts_utc,
+       SUM(s.customers_out)                      AS customers_out,
+       COUNT(s.customers_out)                    AS counties_with_value,
+       COUNT(*) - COUNT(s.customers_out)         AS counties_failed
+FROM RELIABILITY.STG.EAGLEI_VA_15MIN s
+JOIN RELIABILITY.MART.DIM_COUNTY c ON c.county_fips = s.county_fips AND c.dominion_county
+GROUP BY s.ts_utc;
++-------------------------------------------------+
+| status                                          |
+|-------------------------------------------------|
+| Table FCT_TERRITORY_15MIN successfully created. |
++-------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_COUNTY_DAY COPY GRANTS AS
+WITH days AS (
+  SELECT DISTINCT CAST(ts_utc - INTERVAL '5 HOUR' AS DATE) AS day
+  FROM RELIABILITY.STG.EAGLEI_VA_15MIN
+  WHERE ts_utc >= '2015-01-01 05:00:00' AND ts_utc < '2026-01-01 05:00:00'
+),
+counties AS (
+  SELECT county_fips, customers_basis, dominion_only_county FROM RELIABILITY.MART.DIM_COUNTY WHERE dominion_county
+),
+outage AS (
+  SELECT county_fips, CAST(ts_utc - INTERVAL '5 HOUR' AS DATE) AS day,
+         SUM(customers_out) * 0.25           AS customer_hours,
+         MAX(customers_out)                  AS customers_out_max,
+         COUNT(customers_out)                AS readings,
+         COUNT(*) - COUNT(customers_out)     AS failed_readings
+  FROM RELIABILITY.STG.EAGLEI_VA_15MIN
+  GROUP BY 1, 2
+),
+storm AS (
+  SELECT CASE WHEN county_id_fips = '51515' THEN '51019' ELSE county_id_fips END AS county_fips,
+         DATE_FROM_PARTS(CAST(FLOOR(begin_yearmonth / 100) AS INTEGER), CAST(MOD(begin_yearmonth, 100) AS INTEGER),
+                         CAST(begin_day AS INTEGER))                     AS day,
+         COUNT(*)                                                        AS storm_events,
+         MAX(CASE WHEN line_risk = 'wind'     THEN 1 ELSE 0 END)         AS storm_wind,
+         MAX(CASE WHEN line_risk = 'winter'   THEN 1 ELSE 0 END)         AS storm_winter,
+         MAX(CASE WHEN line_risk = 'tropical' THEN 1 ELSE 0 END)         AS storm_tropical,
+         MAX(CASE WHEN event_type = 'Thunderstorm Wind' THEN magnitude END) AS max_gust_kt
+  FROM RELIABILITY.STG.NOAA_VA_EVENTS
+  WHERE line_risk <> 'other' AND county_id_fips IS NOT NULL
+  GROUP BY 1, 2
+)
+SELECT c.county_fips,
+       d.day,
+       YEAR(d.day)                                         AS year,
+       MONTH(d.day)                                        AS month,
+       c.dominion_only_county,
+       c.customers_basis,
+       COALESCE(o.customer_hours, 0)                       AS customer_hours,
+       COALESCE(o.customers_out_max, 0)                    AS customers_out_max,
+       COALESCE(o.readings, 0)                             AS readings,
+       COALESCE(o.failed_readings, 0)                      AS failed_readings,
+       1000 * COALESCE(o.customer_hours, 0) / NULLIF(c.customers_basis, 0) AS customer_hours_per_1k,
+       COALESCE(s.storm_events, 0) > 0                     AS storm_day,
+       COALESCE(s.storm_events, 0)                         AS storm_events,
+       COALESCE(s.storm_wind, 0) = 1                       AS storm_wind,
+       COALESCE(s.storm_winter, 0) = 1                     AS storm_winter,
+       COALESCE(s.storm_tropical, 0) = 1                   AS storm_tropical,
+       s.max_gust_kt
+FROM counties c
+CROSS JOIN days d
+LEFT JOIN outage o ON o.county_fips = c.county_fips AND o.day = d.day
+LEFT JOIN storm  s ON s.county_fips = c.county_fips AND s.day = d.day;
++--------------------------------------------+
+| status                                     |
+|--------------------------------------------|
+| Table FCT_COUNTY_DAY successfully created. |
++--------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_TERRITORY_DAY COPY GRANTS AS
+WITH d AS (
+  SELECT day, year, SUM(customer_hours) AS customer_hours, SUM(failed_readings) AS failed_readings,
+         SUM(CASE WHEN storm_day THEN 1 ELSE 0 END) AS storm_counties
+  FROM RELIABILITY.MART.FCT_COUNTY_DAY
+  GROUP BY 1, 2
+),
+peak AS (
+  SELECT CAST(ts_utc - INTERVAL '5 HOUR' AS DATE) AS day, MAX(customers_out) AS customers_out_max
+  FROM RELIABILITY.MART.FCT_TERRITORY_15MIN GROUP BY 1
+),
+thr AS (
+  SELECT y.year,
+         AVG(LN(h.customer_hours))         AS alpha,
+         STDDEV_SAMP(LN(h.customer_hours)) AS beta,
+         COUNT(*)                          AS window_days
+  FROM (SELECT DISTINCT year FROM d) y
+  JOIN d h ON h.customer_hours > 0
+          AND ((y.year = 2015 AND h.year = 2015)
+            OR (y.year > 2015 AND h.year BETWEEN GREATEST(2015, y.year - 5) AND y.year - 1))
+  GROUP BY y.year
+)
+SELECT d.day, d.year, d.customer_hours, p.customers_out_max, d.failed_readings, d.storm_counties,
+       t.alpha, t.beta, t.window_days,
+       EXP(t.alpha + 2.5 * t.beta)                     AS med_threshold_customer_hours,
+       d.customer_hours > EXP(t.alpha + 2.5 * t.beta)  AS is_med_proxy
+FROM d
+JOIN thr t ON t.year = d.year
+LEFT JOIN peak p ON p.day = d.day;
++-----------------------------------------------+
+| status                                        |
+|-----------------------------------------------|
+| Table FCT_TERRITORY_DAY successfully created. |
++-----------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_OUTAGE_EVENT COPY GRANTS AS
+WITH terr AS (
+  SELECT ts_utc, customers_out,
+         MIN(customers_out) OVER (ORDER BY ts_utc ROWS BETWEEN CURRENT ROW AND 3 FOLLOWING)  AS min_next_hour,
+         MAX(customers_out) OVER (ORDER BY ts_utc ROWS BETWEEN CURRENT ROW AND 12 FOLLOWING) AS max_next_3h
+  FROM RELIABILITY.MART.FCT_TERRITORY_15MIN WHERE customers_out IS NOT NULL
+),
+t_above AS (
+  SELECT ts_utc, customers_out, min_next_hour,
+         CASE WHEN DATEDIFF('minute', LAG(ts_utc) OVER (ORDER BY ts_utc), ts_utc) <= 180 THEN 0 ELSE 1 END AS new_event
+  FROM terr WHERE customers_out >= 10000
+),
+t_ev AS (
+  SELECT ts_utc, customers_out, min_next_hour,
+         SUM(new_event) OVER (ORDER BY ts_utc ROWS UNBOUNDED PRECEDING) AS seq
+  FROM t_above
+),
+t_sum AS (
+  SELECT seq, MIN(ts_utc) AS start_utc, MAX(ts_utc) AS end_utc, MAX(customers_out) AS peak_customers_out,
+         MAX_BY(ts_utc, customers_out) AS peak_utc, COUNT(*) AS readings_above,
+         MAX(min_next_hour) AS peak_sustained_1h
+  FROM t_ev GROUP BY seq
+),
+t_base AS (
+  SELECT e.seq, MEDIAN(t.customers_out) AS background
+  FROM t_sum e JOIN terr t ON t.ts_utc >= e.start_utc - INTERVAL '24 HOUR' AND t.ts_utc < e.start_utc
+  GROUP BY e.seq
+),
+t_ch AS (
+  SELECT e.seq, SUM(t.customers_out) * 0.25 AS customer_hours
+  FROM t_sum e JOIN terr t ON t.ts_utc BETWEEN e.start_utc AND e.end_utc
+  GROUP BY e.seq
+),
+t_rest AS (
+  SELECT e.seq,
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.50 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_50,
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.10 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_90,
+         MIN(CASE WHEN t.max_next_3h <= b.background + 0.01 * (e.peak_customers_out - b.background) THEN t.ts_utc END) AS ts_99
+  FROM t_sum e
+  JOIN t_base b ON b.seq = e.seq
+  JOIN terr t ON t.ts_utc > e.peak_utc AND t.ts_utc <= e.peak_utc + INTERVAL '14 DAY'
+  GROUP BY e.seq
+),
+territory AS (
+  SELECT 'territory' AS scope, 'DOM103' AS area_code, e.seq,
+         e.start_utc, e.peak_utc, e.end_utc, e.peak_customers_out, e.peak_sustained_1h, e.readings_above,
+         c.customer_hours, b.background AS background_customers_out,
+         DATEDIFF('minute', e.peak_utc, r.ts_50) / 60.0 AS hours_to_50pct,
+         DATEDIFF('minute', e.peak_utc, r.ts_90) / 60.0 AS hours_to_90pct,
+         DATEDIFF('minute', e.peak_utc, r.ts_99) / 60.0 AS hours_to_99pct
+  FROM t_sum e
+  LEFT JOIN t_base b ON b.seq = e.seq
+  LEFT JOIN t_ch   c ON c.seq = e.seq
+  LEFT JOIN t_rest r ON r.seq = e.seq
+),
+cty AS (
+  SELECT s.county_fips, s.ts_utc, s.customers_out
+  FROM RELIABILITY.STG.EAGLEI_VA_15MIN s
+  JOIN RELIABILITY.MART.DIM_COUNTY d ON d.county_fips = s.county_fips AND d.dominion_county
+  WHERE s.customers_out >= GREATEST(10, 0.01 * d.customers_basis)
+),
+c_flag AS (
+  SELECT county_fips, ts_utc, customers_out,
+         CASE WHEN DATEDIFF('minute', LAG(ts_utc) OVER (PARTITION BY county_fips ORDER BY ts_utc), ts_utc) <= 60 THEN 0 ELSE 1 END AS new_event
+  FROM cty
+),
+c_ev AS (
+  SELECT county_fips, ts_utc, customers_out,
+         SUM(new_event) OVER (PARTITION BY county_fips ORDER BY ts_utc ROWS UNBOUNDED PRECEDING) AS seq
+  FROM c_flag
+),
+county AS (
+  SELECT 'county' AS scope, county_fips AS area_code, seq,
+         MIN(ts_utc) AS start_utc, MAX_BY(ts_utc, customers_out) AS peak_utc, MAX(ts_utc) AS end_utc,
+         MAX(customers_out) AS peak_customers_out, CAST(NULL AS DOUBLE) AS peak_sustained_1h, COUNT(*) AS readings_above,
+         SUM(customers_out) * 0.25 AS customer_hours, CAST(NULL AS DOUBLE) AS background_customers_out,
+         CAST(NULL AS DOUBLE) AS hours_to_50pct, CAST(NULL AS DOUBLE) AS hours_to_90pct, CAST(NULL AS DOUBLE) AS hours_to_99pct
+  FROM c_ev GROUP BY county_fips, seq
+),
+both_scopes AS (
+  SELECT * FROM territory
+  UNION ALL
+  SELECT * FROM county
+)
+SELECT b.scope || '|' || b.area_code || '|' || CAST(b.start_utc AS VARCHAR)  AS event_key,
+       b.scope, b.area_code, b.start_utc, b.peak_utc, b.end_utc,
+       CAST(b.start_utc - INTERVAL '5 HOUR' AS DATE)                         AS start_day,
+       YEAR(b.start_utc - INTERVAL '5 HOUR')                                 AS year,
+       b.peak_customers_out, b.peak_sustained_1h, b.readings_above,
+       DATEDIFF('minute', b.start_utc, b.end_utc) / 60.0 + 0.25               AS hours_above_threshold,
+       b.customer_hours, b.background_customers_out,
+       b.hours_to_50pct, b.hours_to_90pct, b.hours_to_99pct,
+       COALESCE(m.is_med_proxy, FALSE)                                       AS starts_on_med_proxy_day
+FROM both_scopes b
+LEFT JOIN RELIABILITY.MART.FCT_TERRITORY_DAY m ON m.day = CAST(b.start_utc - INTERVAL '5 HOUR' AS DATE);
++----------------------------------------------+
+| status                                       |
+|----------------------------------------------|
+| Table FCT_OUTAGE_EVENT successfully created. |
++----------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_RESTORATION_CURVE COPY GRANTS AS
+SELECT e.event_key, e.peak_utc, e.peak_customers_out, e.background_customers_out,
+       FLOOR(DATEDIFF('minute', e.peak_utc, t.ts_utc) / 60)                                AS hour_since_peak,
+       MAX(t.customers_out)                                                                AS customers_out,
+       LEAST(1, GREATEST(0, (e.peak_customers_out - MAX(t.customers_out))
+                            / NULLIF(e.peak_customers_out - e.background_customers_out, 0))) AS share_restored
+FROM RELIABILITY.MART.FCT_OUTAGE_EVENT e
+JOIN RELIABILITY.MART.FCT_TERRITORY_15MIN t
+  ON t.ts_utc >= e.peak_utc AND t.ts_utc < e.peak_utc + INTERVAL '7 DAY' AND t.customers_out IS NOT NULL
+WHERE e.scope = 'territory' AND e.peak_customers_out >= 50000
+GROUP BY e.event_key, e.peak_utc, e.peak_customers_out, e.background_customers_out,
+         FLOOR(DATEDIFF('minute', e.peak_utc, t.ts_utc) / 60);
++---------------------------------------------------+
+| status                                            |
+|---------------------------------------------------|
+| Table FCT_RESTORATION_CURVE successfully created. |
++---------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_COUNTY_YEAR COPY GRANTS AS
+WITH cd AS (
+  SELECT d.county_fips, d.year,
+         SUM(d.customer_hours)                                                   AS customer_hours,
+         SUM(CASE WHEN NOT t.is_med_proxy THEN d.customer_hours ELSE 0 END)      AS customer_hours_non_med,
+         SUM(CASE WHEN d.storm_day THEN 1 ELSE 0 END)                            AS storm_days,
+         SUM(d.failed_readings)                                                  AS failed_readings,
+         SUM(d.readings + d.failed_readings)                                     AS slots_with_rows
+  FROM RELIABILITY.MART.FCT_COUNTY_DAY d
+  JOIN RELIABILITY.MART.FCT_TERRITORY_DAY t ON t.day = d.day
+  GROUP BY 1, 2
+),
+ev AS (
+  SELECT area_code AS county_fips, year,
+         COUNT(*)                                                     AS events,
+         SUM(CASE WHEN NOT starts_on_med_proxy_day THEN 1 ELSE 0 END) AS events_non_med
+  FROM RELIABILITY.MART.FCT_OUTAGE_EVENT
+  WHERE scope = 'county'
+  GROUP BY 1, 2
+)
+SELECT cd.county_fips, c.county_name, c.county_label, c.dominion_only_county, cd.year, c.customers_basis,
+       cd.customer_hours, cd.customer_hours_non_med,
+       ROUND(60 * cd.customer_hours / NULLIF(c.customers_basis, 0), 1)          AS outage_minutes_per_customer,
+       ROUND(60 * cd.customer_hours_non_med / NULLIF(c.customers_basis, 0), 1)  AS outage_minutes_per_customer_non_med,
+       COALESCE(ev.events, 0)                                                   AS events,
+       COALESCE(ev.events_non_med, 0)                                           AS events_non_med,
+       ROUND(10000 * COALESCE(ev.events_non_med, 0) / NULLIF(c.customers_basis, 0), 2) AS events_non_med_per_10k_customers,
+       cd.storm_days,
+       ROUND(cd.failed_readings / NULLIF(cd.slots_with_rows, 0), 4)             AS failed_share
+FROM cd
+JOIN RELIABILITY.MART.DIM_COUNTY c ON c.county_fips = cd.county_fips
+LEFT JOIN ev ON ev.county_fips = cd.county_fips AND ev.year = cd.year;
++---------------------------------------------+
+| status                                      |
+|---------------------------------------------|
+| Table FCT_COUNTY_YEAR successfully created. |
++---------------------------------------------+
+SELECT CASE WHEN COUNT(*) = 103 * 11
+             AND ABS(SUM(customer_hours) - (SELECT SUM(customer_hours) FROM RELIABILITY.MART.FCT_COUNTY_DAY)) < 1
+            THEN 0 ELSE 1 END AS problems
+FROM RELIABILITY.MART.FCT_COUNTY_YEAR;
++----------+
+| PROBLEMS |
+|----------|
+| 0        |
++----------+
+SELECT COUNT(*) AS n FROM RELIABILITY.RAW.EAGLEI_OUTAGES_VA HAVING COUNT(*) <> 11608442;
+No data
+
+SELECT fips_code, run_start_time FROM RELIABILITY.RAW.EAGLEI_OUTAGES_VA
+WHERE fips_code NOT LIKE '51___' OR TRY_CAST(run_start_time AS TIMESTAMP) IS NULL;
+No data
+
+SELECT county_fips, ts_utc FROM RELIABILITY.STG.EAGLEI_VA_15MIN GROUP BY 1, 2 HAVING COUNT(*) > 1;
+No data
+
+SELECT DISTINCT s.county_fips FROM RELIABILITY.STG.EAGLEI_VA_15MIN s
+LEFT JOIN RELIABILITY.MART.DIM_COUNTY d ON d.county_fips = s.county_fips WHERE d.county_fips IS NULL;
+No data
+
+SELECT CASE WHEN COUNT(*) = 133 AND SUM(CASE WHEN dominion_county THEN 1 ELSE 0 END) = 103
+             AND SUM(CASE WHEN dominion_only_county THEN 1 ELSE 0 END) BETWEEN 30 AND 40 THEN 0 ELSE 1 END AS problems
+FROM RELIABILITY.MART.DIM_COUNTY;
++----------+
+| PROBLEMS |
+|----------|
+| 0        |
++----------+
+SELECT * FROM RELIABILITY.STG.EIA861_VA_COUNTY_UTILITY WHERE county_fips IS NULL;
+No data
+
+SELECT s.county_fips, CAST(s.ts_utc AS DATE) AS utc_day, COUNT(*) AS readings,
+       MAX(s.customers_out_reported) AS max_reported, MAX(d.customers_basis) AS customers_basis
+FROM RELIABILITY.STG.EAGLEI_VA_15MIN s JOIN RELIABILITY.MART.DIM_COUNTY d ON d.county_fips = s.county_fips
+WHERE s.customers_out_reported < 0 OR s.customers_out_reported > 2 * d.customers_basis
+GROUP BY 1, 2;
++----------------------------------------------------------------------+
+| COUNTY_FIPS | UTC_DAY    | READINGS | MAX_REPORTED | CUSTOMERS_BASIS |
+|-------------+------------+----------+--------------+-----------------|
+| 51600       | 2018-03-03 | 96       | 133341       | 12701           |
+| 51045       | 2024-09-27 | 22       | 3218         | 1256            |
+| 51600       | 2018-03-02 | 62       | 136046       | 12701           |
+| 51091       | 2016-02-06 | 8        | 2874         | 1392            |
+| 51037       | 2018-10-12 | 16       | 13319        | 5148            |
+| 51600       | 2019-07-17 | 9        | 39933        | 12701           |
+| 51091       | 2016-02-12 | 3        | 2878         | 1392            |
+| 51119       | 2018-09-11 | 2        | 10054        | 4296            |
+| 51091       | 2017-03-01 | 8        | 2870         | 1392            |
+| 51600       | 2020-10-29 | 3        | 27655        | 12701           |
+| 51600       | 2019-05-23 | 15       | 53115        | 12701           |
+| 51111       | 2018-10-12 | 6        | 9719         | 4827            |
+| 51119       | 2024-04-25 | 1        | 10124        | 4296            |
+| 51600       | 2019-05-30 | 1        | 25761        | 12701           |
+| 51115       | 2018-10-12 | 20       | 6636         | 3233            |
+| 51045       | 2018-11-16 | 12       | 3093         | 1256            |
+| 51037       | 2018-10-11 | 5        | 11782        | 5148            |
+| 51600       | 2019-05-24 | 16       | 41797        | 12701           |
+| 51600       | 2018-03-04 | 78       | 55649        | 12701           |
+| 51045       | 2024-09-28 | 93       | 3261         | 1256            |
+| 51125       | 2025-09-15 | 7        | 13224        | 5606            |
+| 51119       | 2021-05-15 | 1        | 10192        | 4296            |
++----------------------------------------------------------------------+
+SELECT CASE WHEN COUNT(*) = 103 * 4018 AND COUNT(DISTINCT day) = 4018 THEN 0 ELSE 1 END AS problems
+FROM RELIABILITY.MART.FCT_COUNTY_DAY;
++----------+
+| PROBLEMS |
+|----------|
+| 0        |
++----------+
+WITH panel AS (SELECT year, SUM(CASE WHEN storm_day THEN 1 ELSE 0 END) AS storm_county_days FROM RELIABILITY.MART.FCT_COUNTY_DAY GROUP BY year)
+SELECT p.year, p.storm_county_days, i.storm_county_days AS index_days
+FROM panel p JOIN RELIABILITY.MART.STORM_INDEX i USING (year) WHERE p.storm_county_days <> i.storm_county_days;
++---------------------------------------+
+| YEAR | STORM_COUNTY_DAYS | INDEX_DAYS |
+|------+-------------------+------------|
+| 2017 | 419               | 420        |
+| 2018 | 683               | 687        |
+| 2019 | 848               | 851        |
+| 2021 | 673               | 676        |
+| 2022 | 718               | 723        |
+| 2020 | 429               | 431        |
+| 2015 | 521               | 526        |
+| 2016 | 594               | 597        |
+| 2025 | 791               | 796        |
+| 2023 | 390               | 391        |
+| 2024 | 464               | 465        |
++---------------------------------------+
+SELECT 'mismatch' AS t FROM (SELECT SUM(customer_hours) AS a FROM RELIABILITY.MART.FCT_OUTAGE_COUNTY_HOUR) h,
+     (SELECT SUM(customers_out) * 0.25 AS b FROM RELIABILITY.STG.EAGLEI_VA_15MIN) s
+WHERE ABS(h.a - s.b) > 1;
+No data
+
+SELECT event_key FROM RELIABILITY.MART.FCT_RESTORATION_CURVE
+WHERE share_restored < 0 OR share_restored > 1 OR (hour_since_peak = 0 AND share_restored > 0.5);
+No data
+
+SELECT year, SUM(CASE WHEN is_med_proxy THEN 1 ELSE 0 END) AS med_days FROM RELIABILITY.MART.FCT_TERRITORY_DAY
+WHERE year BETWEEN 2015 AND 2025 GROUP BY year
+HAVING SUM(CASE WHEN is_med_proxy THEN 1 ELSE 0 END) NOT BETWEEN 1 AND 20;
+No data
+
+SELECT YEAR(ts_utc) AS year, COUNT(*) AS county_slots, SUM(valued_rows) AS valued,
+       COUNT(*) - COUNT(customers_out) AS failed_slots,
+       SUM(CASE WHEN customers_out = 0 THEN 1 ELSE 0 END) AS zero_rows,
+       COUNT(DISTINCT county_fips) AS counties
+FROM RELIABILITY.STG.EAGLEI_VA_15MIN GROUP BY 1 ORDER BY 1;
++---------------------------------------------------------------------+
+| YEAR | COUNTY_SLOTS | VALUED  | FAILED_SLOTS | ZERO_ROWS | COUNTIES |
+|------+--------------+---------+--------------+-----------+----------|
+| 2014 | 42109        | 42109   | 0            | 0         | 72       |
+| 2015 | 631998       | 631998  | 0            | 0         | 127      |
+| 2016 | 840073       | 840073  | 11           | 0         | 128      |
+| 2017 | 790945       | 790509  | 444          | 0         | 132      |
+| 2018 | 1085572      | 1082724 | 3145         | 0         | 132      |
+| 2019 | 1019738      | 996512  | 23267        | 0         | 132      |
+| 2020 | 998491       | 975244  | 23250        | 0         | 132      |
+| 2021 | 1034698      | 1010657 | 24042        | 0         | 132      |
+| 2022 | 1126937      | 1126937 | 0            | 9405      | 133      |
+| 2023 | 1013087      | 1013087 | 0            | 9927      | 133      |
+| 2024 | 1082901      | 1082901 | 116          | 36667     | 133      |
+| 2025 | 1941893      | 1727276 | 214624       | 617740    | 132      |
++---------------------------------------------------------------------+
+SELECT event_key, start_utc, peak_utc, peak_customers_out, ROUND(hours_above_threshold, 1) AS hours_above_10k,
+       ROUND(customer_hours) AS customer_hours, ROUND(background_customers_out) AS background,
+       ROUND(hours_to_50pct, 1) AS h50, ROUND(hours_to_90pct, 1) AS h90, ROUND(hours_to_99pct, 1) AS h99
+FROM RELIABILITY.MART.FCT_OUTAGE_EVENT WHERE scope = 'territory'
+ORDER BY peak_customers_out DESC LIMIT 10;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| EVENT_KEY                                | START_UTC           | PEAK_UTC            | PEAK_CUSTOMERS_OUT | HOURS_ABOVE_10K | CUSTOMER_HOURS | BACKGROUND | H50  | H90   | H99   |
+|------------------------------------------+---------------------+---------------------+--------------------+-----------------+----------------+------------+------+-------+-------|
+| territory|DOM103|2018-10-11 19:15:00.000 | 2018-10-11 19:15:00 | 2018-10-12 07:45:00 | 558729             | 111.3           | 17777997       | 744.0      | 15.8 | 60.5  | 106.8 |
+| territory|DOM103|2018-03-02 04:30:00.000 | 2018-03-02 04:30:00 | 2018-03-02 22:15:00 | 419136             | 106.0           | 13157187       | 477.0      | 18.8 | 55.0  | 104.5 |
+| territory|DOM103|2020-08-04 07:45:00.000 | 2020-08-04 07:45:00 | 2020-08-04 13:30:00 | 351738             | 70.5            | 6167169        | 2316.0     | 8.3  | 33.5  | 72.8  |
+| territory|DOM103|2022-01-03 10:30:00.000 | 2022-01-03 10:30:00 | 2022-01-03 20:00:00 | 314644             | 150.0           | 13690025       | 963.0      | 21.3 | 102.8 | 167.0 |
+| territory|DOM103|2021-02-13 10:30:00.000 | 2021-02-13 10:30:00 | 2021-02-13 21:15:00 | 281707             | 229.0           | 16477335       | 361.0      | 40.5 | 101.5 | 265.0 |
+| territory|DOM103|2016-10-08 22:30:00.000 | 2016-10-08 22:30:00 | 2016-10-09 13:15:00 | 269298             | 74.3            | 8005782        | 1223.0     | 11.3 | 52.8  | 77.8  |
+| territory|DOM103|2016-06-16 23:15:00.000 | 2016-06-16 23:15:00 | 2016-06-17 03:45:00 | 234951             | 88.5            | 7034682        | 963.0      | 19.5 | 65.8  | 97.3  |
+| territory|DOM103|2025-06-19 19:00:00.000 | 2025-06-19 19:00:00 | 2025-06-19 22:30:00 | 225609             | 31.0            | 2093646        | 1447.0     | 4.5  | 22.0  | 36.8  |
+| territory|DOM103|2025-02-12 06:00:00.000 | 2025-02-12 06:00:00 | 2025-02-16 22:45:00 | 187074             | 135.5           | 8200827        | 920.0      | 3.0  | 20.3  | 29.0  |
+| territory|DOM103|2019-07-30 21:00:00.000 | 2019-07-30 21:00:00 | 2019-07-30 21:15:00 | 159742             | 0.8             | 79440          | 2038.0     | 0.3  | 0.5   | 2.3   |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+WITH y AS (
+  SELECT year, COUNT(*) AS days, SUM(CASE WHEN is_med_proxy THEN 1 ELSE 0 END) AS med_days,
+         SUM(customer_hours) AS ch_all, SUM(CASE WHEN NOT is_med_proxy THEN customer_hours ELSE 0 END) AS ch_ex_med
+  FROM RELIABILITY.MART.FCT_TERRITORY_DAY GROUP BY year
+),
+basis AS (SELECT SUM(customers_basis) AS customers FROM RELIABILITY.MART.DIM_COUNTY WHERE dominion_county)
+SELECT y.year, y.med_days, ROUND(60 * y.ch_all / b.customers, 1) AS eaglei_minutes_per_customer_all,
+       ROUND(60 * y.ch_ex_med / b.customers, 1) AS eaglei_minutes_per_customer_ex_med,
+       f.saidi_all, f.saidi_ex_med
+FROM y CROSS JOIN basis b
+LEFT JOIN RELIABILITY.MART.FCT_RELIABILITY f ON f.utility_key = '19876|VA' AND f.year = y.year
+WHERE y.year BETWEEN 2015 AND 2025 ORDER BY y.year;
++-------------------------------------------------------------------------------------------------------------------+
+| YEAR | MED_DAYS | EAGLEI_MINUTES_PER_CUSTOMER_ALL | EAGLEI_MINUTES_PER_CUSTOMER_EX_MED | SAIDI_ALL | SAIDI_EX_MED |
+|------+----------+---------------------------------+------------------------------------+-----------+--------------|
+| 2015 | 2        | 140.8                           | 121.7                              | 183.103   | 119.642      |
+| 2016 | 15       | 494.4                           | 176.9                              | 199.918   | 138.225      |
+| 2017 | 3        | 197.0                           | 167.5                              | 166.670   | 117.410      |
+| 2018 | 18       | 842.8                           | 200.2                              | 266.763   | 149.604      |
+| 2019 | 5        | 299.6                           | 250.9                              | 260.113   | 149.874      |
+| 2020 | 6        | 349.2                           | 197.4                              | 316.999   | 140.989      |
+| 2021 | 12       | 516.2                           | 213.4                              | 318.788   | 133.601      |
+| 2022 | 14       | 555.2                           | 214.7                              | 421.475   | 136.047      |
+| 2023 | 3        | 244.4                           | 208.3                              | 190.198   | 123.322      |
+| 2024 | 10       | 312.7                           | 201.5                              | 172.100   | 131.300      |
+| 2025 | 15       | 466.8                           | 202.8                              | 306.700   | 144.400      |
++-------------------------------------------------------------------------------------------------------------------+
+SELECT area_code AS county_fips, year, COUNT(*) AS events
+FROM RELIABILITY.MART.FCT_OUTAGE_EVENT
+WHERE scope = 'county' AND NOT starts_on_med_proxy_day AND year BETWEEN 2015 AND 2025
+GROUP BY 1, 2 ORDER BY 1, 2;
++-----------------------------+
+| COUNTY_FIPS | YEAR | EVENTS |
+|-------------+------+--------|
+| 51001       | 2015 | 36     |
+| 51001       | 2016 | 43     |
+| 51001       | 2018 | 9      |
+| 51001       | 2019 | 42     |
+| 51001       | 2020 | 47     |
+| 51001       | 2021 | 42     |
+| 51001       | 2022 | 45     |
+| 51001       | 2023 | 49     |
+| 51001       | 2024 | 26     |
+| 51001       | 2025 | 41     |
+| 51003       | 2015 | 32     |
+| 51003       | 2016 | 34     |
+| 51003       | 2017 | 58     |
+| 51003       | 2018 | 76     |
+| 51003       | 2019 | 66     |
+| 51003       | 2020 | 64     |
+| 51003       | 2021 | 61     |
+| 51003       | 2022 | 54     |
+| 51003       | 2023 | 64     |
+| 51003       | 2024 | 61     |
+| 51003       | 2025 | 53     |
+| 51005       | 2015 | 17     |
+| 51005       | 2016 | 19     |
+| 51005       | 2017 | 16     |
+| 51005       | 2018 | 25     |
+| 51005       | 2019 | 48     |
+| 51005       | 2020 | 48     |
+| 51005       | 2021 | 48     |
+| 51005       | 2022 | 49     |
+| 51005       | 2023 | 55     |
+| 51005       | 2024 | 54     |
+| 51005       | 2025 | 82     |
+| 51007       | 2015 | 13     |
+| 51007       | 2016 | 64     |
+| 51007       | 2017 | 59     |
+| 51007       | 2018 | 49     |
+| 51007       | 2019 | 44     |
+| 51007       | 2020 | 50     |
+| 51007       | 2021 | 38     |
+| 51007       | 2022 | 52     |
+| 51007       | 2023 | 46     |
+| 51007       | 2024 | 39     |
+| 51007       | 2025 | 65     |
+| 51009       | 2015 | 38     |
+| 51009       | 2016 | 35     |
+| 51009       | 2017 | 23     |
+| 51009       | 2018 | 38     |
+| 51009       | 2019 | 46     |
+| 51009       | 2020 | 28     |
+| 51009       | 2021 | 38     |
+| 51009       | 2022 | 51     |
+| 51009       | 2023 | 58     |
+| 51009       | 2024 | 53     |
+| 51009       | 2025 | 36     |
+| 51011       | 2015 | 9      |
+| 51011       | 2016 | 21     |
+| 51011       | 2017 | 33     |
+| 51011       | 2018 | 44     |
+| 51011       | 2019 | 28     |
+| 51011       | 2020 | 29     |
+| 51011       | 2021 | 29     |
+| 51011       | 2022 | 36     |
+| 51011       | 2023 | 31     |
+| 51011       | 2024 | 38     |
+| 51011       | 2025 | 34     |
+| 51013       | 2015 | 11     |
+| 51013       | 2016 | 16     |
+| 51013       | 2017 | 18     |
+| 51013       | 2018 | 27     |
+| 51013       | 2019 | 28     |
+| 51013       | 2020 | 32     |
+| 51013       | 2021 | 31     |
+| 51013       | 2022 | 21     |
+| 51013       | 2023 | 23     |
+| 51013       | 2024 | 20     |
+| 51013       | 2025 | 36     |
+| 51015       | 2015 | 22     |
+| 51015       | 2016 | 60     |
+| 51015       | 2017 | 42     |
+| 51015       | 2018 | 39     |
+| 51015       | 2019 | 38     |
+| 51015       | 2020 | 39     |
+| 51015       | 2021 | 29     |
+| 51015       | 2022 | 42     |
+| 51015       | 2023 | 43     |
+| 51015       | 2024 | 61     |
+| 51015       | 2025 | 61     |
+| 51017       | 2016 | 2      |
+| 51017       | 2017 | 2      |
+| 51017       | 2018 | 5      |
+| 51017       | 2019 | 55     |
+| 51017       | 2020 | 75     |
+| 51017       | 2021 | 55     |
+| 51017       | 2022 | 63     |
+| 51017       | 2023 | 67     |
+| 51017       | 2024 | 62     |
+| 51017       | 2025 | 66     |
+| 51019       | 2015 | 30     |
+| 51019       | 2016 | 43     |
+| 51019       | 2017 | 28     |
+| 51019       | 2018 | 37     |
+| 51019       | 2019 | 51     |
+| 51019       | 2020 | 47     |
+| 51019       | 2021 | 32     |
+| 51019       | 2022 | 42     |
+| 51019       | 2023 | 47     |
+| 51019       | 2024 | 41     |
+| 51019       | 2025 | 42     |
+| 51023       | 2015 | 47     |
+| 51023       | 2016 | 35     |
+| 51023       | 2017 | 43     |
+| 51023       | 2018 | 76     |
+| 51023       | 2019 | 89     |
+| 51023       | 2020 | 62     |
+| 51023       | 2021 | 66     |
+| 51023       | 2022 | 56     |
+| 51023       | 2023 | 59     |
+| 51023       | 2024 | 58     |
+| 51023       | 2025 | 78     |
+| 51025       | 2015 | 32     |
+| 51025       | 2016 | 55     |
+| 51025       | 2017 | 63     |
+| 51025       | 2018 | 48     |
+| 51025       | 2019 | 40     |
+| 51025       | 2020 | 34     |
+| 51025       | 2021 | 54     |
+| 51025       | 2022 | 36     |
+| 51025       | 2023 | 47     |
+| 51025       | 2024 | 42     |
+| 51025       | 2025 | 55     |
+| 51027       | 2015 | 36     |
+| 51027       | 2016 | 50     |
+| 51027       | 2017 | 30     |
+| 51027       | 2018 | 63     |
+| 51027       | 2019 | 48     |
+| 51027       | 2020 | 45     |
+| 51027       | 2021 | 34     |
+| 51027       | 2022 | 53     |
+| 51027       | 2023 | 44     |
+| 51027       | 2024 | 47     |
+| 51027       | 2025 | 56     |
+| 51029       | 2015 | 17     |
+| 51029       | 2016 | 13     |
+| 51029       | 2017 | 56     |
+| 51029       | 2018 | 43     |
+| 51029       | 2019 | 50     |
+| 51029       | 2020 | 55     |
+| 51029       | 2021 | 41     |
+| 51029       | 2022 | 47     |
+| 51029       | 2023 | 60     |
+| 51029       | 2024 | 52     |
+| 51029       | 2025 | 61     |
+| 51031       | 2015 | 32     |
+| 51031       | 2016 | 51     |
+| 51031       | 2017 | 48     |
+| 51031       | 2018 | 53     |
+| 51031       | 2019 | 47     |
+| 51031       | 2020 | 44     |
+| 51031       | 2021 | 29     |
+| 51031       | 2022 | 55     |
+| 51031       | 2023 | 39     |
+| 51031       | 2024 | 43     |
+| 51031       | 2025 | 44     |
+| 51033       | 2015 | 17     |
+| 51033       | 2016 | 30     |
+| 51033       | 2017 | 57     |
+| 51033       | 2018 | 43     |
+| 51033       | 2019 | 25     |
+| 51033       | 2020 | 23     |
+| 51033       | 2021 | 29     |
+| 51033       | 2022 | 28     |
+| 51033       | 2023 | 27     |
+| 51033       | 2024 | 29     |
+| 51033       | 2025 | 33     |
+| 51035       | 2015 | 44     |
+| 51035       | 2016 | 30     |
+| 51035       | 2017 | 37     |
+| 51035       | 2018 | 41     |
+| 51035       | 2019 | 56     |
+| 51035       | 2020 | 43     |
+| 51035       | 2021 | 40     |
+| 51035       | 2022 | 54     |
+| 51035       | 2023 | 48     |
+| 51035       | 2024 | 48     |
+| 51035       | 2025 | 39     |
+| 51036       | 2015 | 32     |
+| 51036       | 2016 | 31     |
+| 51036       | 2017 | 40     |
+| 51036       | 2018 | 42     |
+| 51036       | 2019 | 37     |
+| 51036       | 2020 | 51     |
+| 51036       | 2021 | 38     |
+| 51036       | 2022 | 43     |
+| 51036       | 2023 | 33     |
+| 51036       | 2024 | 51     |
+| 51036       | 2025 | 53     |
+| 51037       | 2015 | 24     |
+| 51037       | 2016 | 62     |
+| 51037       | 2017 | 60     |
+| 51037       | 2018 | 82     |
+| 51037       | 2019 | 50     |
+| 51037       | 2020 | 48     |
+| 51037       | 2021 | 59     |
+| 51037       | 2022 | 55     |
+| 51037       | 2023 | 36     |
+| 51037       | 2024 | 42     |
+| 51037       | 2025 | 63     |
+| 51041       | 2015 | 24     |
+| 51041       | 2016 | 35     |
+| 51041       | 2017 | 42     |
+| 51041       | 2018 | 36     |
+| 51041       | 2019 | 38     |
+| 51041       | 2020 | 37     |
+| 51041       | 2021 | 34     |
+| 51041       | 2022 | 51     |
+| 51041       | 2023 | 50     |
+| 51041       | 2024 | 45     |
+| 51041       | 2025 | 49     |
+| 51043       | 2015 | 44     |
+| 51043       | 2016 | 52     |
+| 51043       | 2017 | 60     |
+| 51043       | 2018 | 43     |
+| 51043       | 2019 | 38     |
+| 51043       | 2020 | 40     |
+| 51043       | 2021 | 35     |
+| 51043       | 2022 | 45     |
+| 51043       | 2023 | 38     |
+| 51043       | 2024 | 39     |
+| 51043       | 2025 | 47     |
+| 51047       | 2015 | 23     |
+| 51047       | 2016 | 38     |
+| 51047       | 2017 | 25     |
+| 51047       | 2018 | 27     |
+| 51047       | 2019 | 23     |
+| 51047       | 2020 | 31     |
+| 51047       | 2021 | 30     |
+| 51047       | 2022 | 32     |
+| 51047       | 2023 | 30     |
+| 51047       | 2024 | 32     |
+| 51047       | 2025 | 25     |
+| 51049       | 2015 | 29     |
+| 51049       | 2016 | 46     |
+| 51049       | 2017 | 38     |
+| 51049       | 2018 | 48     |
+| 51049       | 2019 | 52     |
+| 51049       | 2020 | 61     |
+| 51049       | 2021 | 53     |
+| 51049       | 2022 | 62     |
+| 51049       | 2023 | 47     |
+| 51049       | 2024 | 60     |
+| 51049       | 2025 | 62     |
+| 51053       | 2015 | 35     |
+| 51053       | 2016 | 61     |
+| 51053       | 2017 | 61     |
+| 51053       | 2018 | 57     |
+| 51053       | 2019 | 54     |
+| 51053       | 2020 | 46     |
+| 51053       | 2021 | 60     |
+| 51053       | 2022 | 53     |
+| 51053       | 2023 | 56     |
+| 51053       | 2024 | 36     |
+| 51053       | 2025 | 57     |
+| 51057       | 2015 | 39     |
+| 51057       | 2016 | 40     |
+| 51057       | 2017 | 50     |
+| 51057       | 2018 | 46     |
+| 51057       | 2019 | 37     |
+| 51057       | 2020 | 26     |
+| 51057       | 2021 | 23     |
+| 51057       | 2022 | 33     |
+| 51057       | 2023 | 36     |
+| 51057       | 2024 | 34     |
+| 51057       | 2025 | 31     |
+| 51059       | 2015 | 11     |
+| 51059       | 2016 | 12     |
+| 51059       | 2017 | 12     |
+| 51059       | 2020 | 2      |
+| 51059       | 2021 | 20     |
+| 51059       | 2022 | 8      |
+| 51059       | 2023 | 15     |
+| 51059       | 2024 | 13     |
+| 51059       | 2025 | 10     |
+| 51061       | 2015 | 39     |
+| 51061       | 2016 | 42     |
+| 51061       | 2017 | 40     |
+| 51061       | 2018 | 41     |
+| 51061       | 2019 | 55     |
+| 51061       | 2020 | 49     |
+| 51061       | 2021 | 53     |
+| 51061       | 2022 | 59     |
+| 51061       | 2023 | 35     |
+| 51061       | 2024 | 56     |
+| 51061       | 2025 | 56     |
+| 51065       | 2015 | 16     |
+| 51065       | 2016 | 12     |
+| 51065       | 2017 | 30     |
+| 51065       | 2018 | 45     |
+| 51065       | 2019 | 47     |
+| 51065       | 2020 | 42     |
+| 51065       | 2021 | 42     |
+| 51065       | 2022 | 36     |
+| 51065       | 2023 | 55     |
+| 51065       | 2024 | 33     |
+| 51065       | 2025 | 45     |
+| 51067       | 2015 | 38     |
+| 51067       | 2016 | 43     |
+| 51067       | 2017 | 38     |
+| 51067       | 2018 | 48     |
+| 51067       | 2019 | 53     |
+| 51067       | 2020 | 22     |
+| 51067       | 2021 | 15     |
+| 51067       | 2024 | 7      |
+| 51067       | 2025 | 53     |
+| 51073       | 2015 | 28     |
+| 51073       | 2016 | 41     |
+| 51073       | 2017 | 44     |
+| 51073       | 2018 | 49     |
+| 51073       | 2019 | 39     |
+| 51073       | 2020 | 43     |
+| 51073       | 2021 | 40     |
+| 51073       | 2022 | 42     |
+| 51073       | 2023 | 24     |
+| 51073       | 2024 | 41     |
+| 51073       | 2025 | 47     |
+| 51075       | 2015 | 29     |
+| 51075       | 2016 | 41     |
+| 51075       | 2017 | 47     |
+| 51075       | 2018 | 53     |
+| 51075       | 2019 | 53     |
+| 51075       | 2020 | 41     |
+| 51075       | 2021 | 34     |
+| 51075       | 2022 | 50     |
+| 51075       | 2023 | 44     |
+| 51075       | 2024 | 52     |
+| 51075       | 2025 | 55     |
+| 51079       | 2015 | 18     |
+| 51079       | 2016 | 20     |
+| 51079       | 2017 | 25     |
+| 51079       | 2018 | 18     |
+| 51079       | 2019 | 26     |
+| 51079       | 2020 | 15     |
+| 51079       | 2021 | 18     |
+| 51079       | 2022 | 33     |
+| 51079       | 2023 | 24     |
+| 51079       | 2024 | 23     |
+| 51079       | 2025 | 24     |
+| 51081       | 2015 | 25     |
+| 51081       | 2016 | 35     |
+| 51081       | 2017 | 33     |
+| 51081       | 2018 | 31     |
+| 51081       | 2019 | 18     |
+| 51081       | 2020 | 20     |
+| 51081       | 2021 | 23     |
+| 51081       | 2022 | 22     |
+| 51081       | 2023 | 24     |
+| 51081       | 2024 | 26     |
+| 51081       | 2025 | 11     |
+| 51083       | 2015 | 40     |
+| 51083       | 2016 | 62     |
+| 51083       | 2017 | 58     |
+| 51083       | 2018 | 45     |
+| 51083       | 2019 | 54     |
+| 51083       | 2020 | 57     |
+| 51083       | 2021 | 38     |
+| 51083       | 2022 | 51     |
+| 51083       | 2023 | 43     |
+| 51083       | 2024 | 49     |
+| 51083       | 2025 | 44     |
+| 51085       | 2015 | 27     |
+| 51085       | 2016 | 24     |
+| 51085       | 2017 | 35     |
+| 51085       | 2018 | 43     |
+| 51085       | 2019 | 45     |
+| 51085       | 2020 | 31     |
+| 51085       | 2021 | 33     |
+| 51085       | 2022 | 43     |
+| 51085       | 2023 | 33     |
+| 51085       | 2024 | 42     |
+| 51085       | 2025 | 41     |
+| 51087       | 2015 | 23     |
+| 51087       | 2016 | 28     |
+| 51087       | 2017 | 30     |
+| 51087       | 2018 | 65     |
+| 51087       | 2019 | 70     |
+| 51087       | 2020 | 53     |
+| 51087       | 2021 | 52     |
+| 51087       | 2022 | 66     |
+| 51087       | 2023 | 80     |
+| 51087       | 2024 | 72     |
+| 51087       | 2025 | 39     |
+| 51089       | 2015 | 46     |
+| 51089       | 2016 | 55     |
+| 51089       | 2017 | 39     |
+| 51089       | 2018 | 45     |
+| 51089       | 2019 | 45     |
+| 51089       | 2020 | 51     |
+| 51089       | 2021 | 26     |
+| 51089       | 2022 | 38     |
+| 51089       | 2023 | 46     |
+| 51089       | 2024 | 37     |
+| 51089       | 2025 | 46     |
+| 51093       | 2015 | 16     |
+| 51093       | 2016 | 41     |
+| 51093       | 2017 | 21     |
+| 51093       | 2018 | 26     |
+| 51093       | 2019 | 38     |
+| 51093       | 2020 | 47     |
+| 51093       | 2021 | 25     |
+| 51093       | 2022 | 44     |
+| 51093       | 2023 | 47     |
+| 51093       | 2024 | 53     |
+| 51093       | 2025 | 52     |
+| 51095       | 2015 | 12     |
+| 51095       | 2016 | 24     |
+| 51095       | 2017 | 12     |
+| 51095       | 2018 | 26     |
+| 51095       | 2019 | 24     |
+| 51095       | 2020 | 23     |
+| 51095       | 2021 | 21     |
+| 51095       | 2022 | 20     |
+| 51095       | 2023 | 26     |
+| 51095       | 2024 | 32     |
+| 51095       | 2025 | 19     |
+| 51097       | 2015 | 31     |
+| 51097       | 2016 | 44     |
+| 51097       | 2017 | 43     |
+| 51097       | 2018 | 49     |
+| 51097       | 2019 | 46     |
+| 51097       | 2020 | 48     |
+| 51097       | 2021 | 33     |
+| 51097       | 2022 | 28     |
+| 51097       | 2023 | 28     |
+| 51097       | 2024 | 20     |
+| 51097       | 2025 | 35     |
+| 51099       | 2015 | 34     |
+| 51099       | 2016 | 27     |
+| 51099       | 2017 | 29     |
+| 51099       | 2018 | 21     |
+| 51099       | 2019 | 27     |
+| 51099       | 2020 | 39     |
+| 51099       | 2021 | 31     |
+| 51099       | 2022 | 36     |
+| 51099       | 2023 | 25     |
+| 51099       | 2024 | 34     |
+| 51099       | 2025 | 45     |
+| 51101       | 2015 | 17     |
+| 51101       | 2016 | 27     |
+| 51101       | 2017 | 33     |
+| 51101       | 2018 | 23     |
+| 51101       | 2019 | 20     |
+| 51101       | 2020 | 23     |
+| 51101       | 2021 | 23     |
+| 51101       | 2022 | 23     |
+| 51101       | 2023 | 34     |
+| 51101       | 2024 | 23     |
+| 51101       | 2025 | 37     |
+| 51103       | 2015 | 35     |
+| 51103       | 2016 | 49     |
+| 51103       | 2017 | 32     |
+| 51103       | 2018 | 42     |
+| 51103       | 2019 | 41     |
+| 51103       | 2020 | 40     |
+| 51103       | 2021 | 30     |
+| 51103       | 2022 | 30     |
+| 51103       | 2023 | 20     |
+| 51103       | 2024 | 33     |
+| 51103       | 2025 | 33     |
+| 51107       | 2015 | 12     |
+| 51107       | 2016 | 22     |
+| 51107       | 2017 | 17     |
+| 51107       | 2018 | 8      |
+| 51107       | 2019 | 32     |
+| 51107       | 2020 | 21     |
+| 51107       | 2021 | 23     |
+| 51107       | 2022 | 25     |
+| 51107       | 2023 | 27     |
+| 51107       | 2024 | 18     |
+| 51107       | 2025 | 26     |
+| 51109       | 2015 | 35     |
+| 51109       | 2016 | 59     |
+| 51109       | 2017 | 50     |
+| 51109       | 2018 | 60     |
+| 51109       | 2019 | 61     |
+| 51109       | 2020 | 58     |
+| 51109       | 2021 | 36     |
+| 51109       | 2022 | 62     |
+| 51109       | 2023 | 61     |
+| 51109       | 2024 | 47     |
+| 51109       | 2025 | 53     |
+| 51111       | 2015 | 29     |
+| 51111       | 2016 | 37     |
+| 51111       | 2017 | 49     |
+| 51111       | 2018 | 73     |
+| 51111       | 2019 | 62     |
+| 51111       | 2020 | 54     |
+| 51111       | 2021 | 58     |
+| 51111       | 2022 | 45     |
+| 51111       | 2023 | 36     |
+| 51111       | 2024 | 43     |
+| 51111       | 2025 | 42     |
+| 51113       | 2015 | 35     |
+| 51113       | 2016 | 44     |
+| 51113       | 2017 | 44     |
+| 51113       | 2018 | 50     |
+| 51113       | 2019 | 42     |
+| 51113       | 2020 | 36     |
+| 51113       | 2021 | 27     |
+| 51113       | 2022 | 35     |
+| 51113       | 2023 | 46     |
+| 51113       | 2024 | 38     |
+| 51113       | 2025 | 56     |
+| 51115       | 2015 | 19     |
+| 51115       | 2016 | 37     |
+| 51115       | 2017 | 42     |
+| 51115       | 2018 | 54     |
+| 51115       | 2019 | 34     |
+| 51115       | 2020 | 35     |
+| 51115       | 2021 | 38     |
+| 51115       | 2022 | 51     |
+| 51115       | 2023 | 40     |
+| 51115       | 2024 | 28     |
+| 51115       | 2025 | 52     |
+| 51117       | 2015 | 36     |
+| 51117       | 2016 | 42     |
+| 51117       | 2017 | 55     |
+| 51117       | 2018 | 56     |
+| 51117       | 2019 | 49     |
+| 51117       | 2020 | 36     |
+| 51117       | 2021 | 35     |
+| 51117       | 2022 | 48     |
+| 51117       | 2023 | 66     |
+| 51117       | 2024 | 46     |
+| 51117       | 2025 | 51     |
+| 51119       | 2015 | 29     |
+| 51119       | 2016 | 36     |
+| 51119       | 2017 | 41     |
+| 51119       | 2018 | 46     |
+| 51119       | 2019 | 42     |
+| 51119       | 2020 | 42     |
+| 51119       | 2021 | 46     |
+| 51119       | 2022 | 39     |
+| 51119       | 2023 | 38     |
+| 51119       | 2024 | 42     |
+| 51119       | 2025 | 47     |
+| 51125       | 2015 | 22     |
+| 51125       | 2016 | 21     |
+| 51125       | 2017 | 57     |
+| 51125       | 2018 | 80     |
+| 51125       | 2019 | 73     |
+| 51125       | 2020 | 60     |
+| 51125       | 2021 | 74     |
+| 51125       | 2022 | 86     |
+| 51125       | 2023 | 75     |
+| 51125       | 2024 | 68     |
+| 51125       | 2025 | 58     |
+| 51127       | 2015 | 27     |
+| 51127       | 2016 | 39     |
+| 51127       | 2017 | 31     |
+| 51127       | 2018 | 39     |
+| 51127       | 2019 | 34     |
+| 51127       | 2020 | 36     |
+| 51127       | 2021 | 36     |
+| 51127       | 2022 | 40     |
+| 51127       | 2023 | 39     |
+| 51127       | 2024 | 54     |
+| 51127       | 2025 | 41     |
+| 51133       | 2015 | 40     |
+| 51133       | 2016 | 46     |
+| 51133       | 2017 | 47     |
+| 51133       | 2018 | 44     |
+| 51133       | 2019 | 50     |
+| 51133       | 2020 | 35     |
+| 51133       | 2021 | 35     |
+| 51133       | 2022 | 39     |
+| 51133       | 2023 | 45     |
+| 51133       | 2024 | 48     |
+| 51133       | 2025 | 60     |
+| 51135       | 2015 | 15     |
+| 51135       | 2016 | 40     |
+| 51135       | 2017 | 52     |
+| 51135       | 2018 | 43     |
+| 51135       | 2019 | 42     |
+| 51135       | 2020 | 44     |
+| 51135       | 2021 | 34     |
+| 51135       | 2022 | 32     |
+| 51135       | 2023 | 26     |
+| 51135       | 2024 | 25     |
+| 51135       | 2025 | 30     |
+| 51137       | 2015 | 26     |
+| 51137       | 2016 | 41     |
+| 51137       | 2017 | 23     |
+| 51137       | 2018 | 32     |
+| 51137       | 2019 | 48     |
+| 51137       | 2020 | 28     |
+| 51137       | 2021 | 31     |
+| 51137       | 2022 | 41     |
+| 51137       | 2023 | 45     |
+| 51137       | 2024 | 35     |
+| 51137       | 2025 | 38     |
+| 51139       | 2015 | 25     |
+| 51139       | 2016 | 44     |
+| 51139       | 2017 | 51     |
+| 51139       | 2018 | 23     |
+| 51139       | 2019 | 31     |
+| 51139       | 2020 | 26     |
+| 51139       | 2021 | 27     |
+| 51139       | 2022 | 35     |
+| 51139       | 2023 | 40     |
+| 51139       | 2024 | 48     |
+| 51139       | 2025 | 75     |
+| 51143       | 2015 | 29     |
+| 51143       | 2016 | 38     |
+| 51143       | 2017 | 32     |
+| 51143       | 2018 | 36     |
+| 51143       | 2019 | 38     |
+| 51143       | 2020 | 70     |
+| 51143       | 2021 | 66     |
+| 51143       | 2022 | 95     |
+| 51143       | 2023 | 59     |
+| 51143       | 2024 | 56     |
+| 51143       | 2025 | 53     |
+| 51145       | 2015 | 23     |
+| 51145       | 2016 | 59     |
+| 51145       | 2017 | 42     |
+| 51145       | 2018 | 40     |
+| 51145       | 2019 | 51     |
+| 51145       | 2020 | 48     |
+| 51145       | 2021 | 44     |
+| 51145       | 2022 | 47     |
+| 51145       | 2023 | 71     |
+| 51145       | 2024 | 66     |
+| 51145       | 2025 | 42     |
+| 51147       | 2015 | 18     |
+| 51147       | 2016 | 31     |
+| 51147       | 2017 | 42     |
+| 51147       | 2018 | 56     |
+| 51147       | 2019 | 42     |
+| 51147       | 2020 | 40     |
+| 51147       | 2021 | 47     |
+| 51147       | 2022 | 50     |
+| 51147       | 2023 | 37     |
+| 51147       | 2024 | 41     |
+| 51147       | 2025 | 37     |
+| 51149       | 2015 | 1      |
+| 51149       | 2016 | 9      |
+| 51149       | 2017 | 8      |
+| 51149       | 2018 | 20     |
+| 51149       | 2019 | 18     |
+| 51149       | 2020 | 10     |
+| 51149       | 2021 | 22     |
+| 51149       | 2022 | 15     |
+| 51149       | 2023 | 22     |
+| 51149       | 2024 | 18     |
+| 51149       | 2025 | 37     |
+| 51153       | 2015 | 9      |
+| 51153       | 2016 | 15     |
+| 51153       | 2017 | 11     |
+| 51153       | 2018 | 9      |
+| 51153       | 2019 | 16     |
+| 51153       | 2020 | 10     |
+| 51153       | 2021 | 7      |
+| 51153       | 2022 | 17     |
+| 51153       | 2023 | 12     |
+| 51153       | 2024 | 11     |
+| 51153       | 2025 | 20     |
+| 51157       | 2015 | 35     |
+| 51157       | 2016 | 42     |
+| 51157       | 2017 | 48     |
+| 51157       | 2018 | 47     |
+| 51157       | 2019 | 57     |
+| 51157       | 2020 | 41     |
+| 51157       | 2021 | 37     |
+| 51157       | 2022 | 59     |
+| 51157       | 2023 | 41     |
+| 51157       | 2024 | 61     |
+| 51157       | 2025 | 55     |
+| 51159       | 2015 | 20     |
+| 51159       | 2016 | 24     |
+| 51159       | 2017 | 20     |
+| 51159       | 2025 | 14     |
+| 51163       | 2015 | 5      |
+| 51163       | 2016 | 13     |
+| 51163       | 2017 | 8      |
+| 51163       | 2018 | 12     |
+| 51163       | 2019 | 60     |
+| 51163       | 2020 | 61     |
+| 51163       | 2021 | 41     |
+| 51163       | 2022 | 55     |
+| 51163       | 2023 | 66     |
+| 51163       | 2024 | 52     |
+| 51163       | 2025 | 63     |
+| 51165       | 2015 | 26     |
+| 51165       | 2016 | 43     |
+| 51165       | 2017 | 37     |
+| 51165       | 2018 | 41     |
+| 51165       | 2019 | 40     |
+| 51165       | 2020 | 30     |
+| 51165       | 2021 | 27     |
+| 51165       | 2022 | 40     |
+| 51165       | 2023 | 30     |
+| 51165       | 2024 | 35     |
+| 51165       | 2025 | 36     |
+| 51171       | 2015 | 20     |
+| 51171       | 2016 | 46     |
+| 51171       | 2017 | 43     |
+| 51171       | 2018 | 32     |
+| 51171       | 2019 | 53     |
+| 51171       | 2020 | 35     |
+| 51171       | 2021 | 33     |
+| 51171       | 2022 | 52     |
+| 51171       | 2023 | 37     |
+| 51171       | 2024 | 49     |
+| 51171       | 2025 | 51     |
+| 51175       | 2015 | 17     |
+| 51175       | 2016 | 21     |
+| 51175       | 2017 | 26     |
+| 51175       | 2018 | 25     |
+| 51175       | 2019 | 50     |
+| 51175       | 2020 | 50     |
+| 51175       | 2021 | 50     |
+| 51175       | 2022 | 43     |
+| 51175       | 2023 | 54     |
+| 51175       | 2024 | 47     |
+| 51175       | 2025 | 58     |
+| 51177       | 2015 | 22     |
+| 51177       | 2016 | 30     |
+| 51177       | 2017 | 36     |
+| 51177       | 2018 | 27     |
+| 51177       | 2019 | 29     |
+| 51177       | 2020 | 22     |
+| 51177       | 2021 | 28     |
+| 51177       | 2022 | 36     |
+| 51177       | 2023 | 33     |
+| 51177       | 2024 | 38     |
+| 51177       | 2025 | 33     |
+| 51179       | 2015 | 12     |
+| 51179       | 2016 | 29     |
+| 51179       | 2017 | 29     |
+| 51179       | 2018 | 25     |
+| 51179       | 2019 | 24     |
+| 51179       | 2020 | 19     |
+| 51179       | 2021 | 20     |
+| 51179       | 2022 | 46     |
+| 51179       | 2023 | 19     |
+| 51179       | 2024 | 38     |
+| 51179       | 2025 | 32     |
+| 51181       | 2015 | 12     |
+| 51181       | 2016 | 9      |
+| 51181       | 2017 | 13     |
+| 51181       | 2018 | 8      |
+| 51181       | 2019 | 31     |
+| 51181       | 2020 | 12     |
+| 51181       | 2021 | 26     |
+| 51181       | 2022 | 24     |
+| 51181       | 2023 | 33     |
+| 51181       | 2024 | 41     |
+| 51181       | 2025 | 31     |
+| 51183       | 2015 | 22     |
+| 51183       | 2016 | 12     |
+| 51183       | 2017 | 27     |
+| 51183       | 2018 | 30     |
+| 51183       | 2019 | 34     |
+| 51183       | 2020 | 29     |
+| 51183       | 2021 | 29     |
+| 51183       | 2022 | 29     |
+| 51183       | 2023 | 27     |
+| 51183       | 2024 | 33     |
+| 51183       | 2025 | 35     |
+| 51185       | 2015 | 40     |
+| 51185       | 2016 | 28     |
+| 51185       | 2017 | 32     |
+| 51185       | 2018 | 57     |
+| 51185       | 2019 | 41     |
+| 51185       | 2020 | 49     |
+| 51185       | 2021 | 41     |
+| 51185       | 2022 | 44     |
+| 51185       | 2023 | 37     |
+| 51185       | 2024 | 35     |
+| 51185       | 2025 | 46     |
+| 51187       | 2015 | 36     |
+| 51187       | 2016 | 28     |
+| 51187       | 2017 | 34     |
+| 51187       | 2018 | 19     |
+| 51187       | 2019 | 23     |
+| 51187       | 2020 | 21     |
+| 51187       | 2021 | 24     |
+| 51187       | 2022 | 23     |
+| 51187       | 2023 | 22     |
+| 51187       | 2024 | 26     |
+| 51187       | 2025 | 31     |
+| 51193       | 2015 | 34     |
+| 51193       | 2016 | 31     |
+| 51193       | 2017 | 51     |
+| 51193       | 2018 | 36     |
+| 51193       | 2019 | 43     |
+| 51193       | 2020 | 39     |
+| 51193       | 2021 | 32     |
+| 51193       | 2022 | 44     |
+| 51193       | 2023 | 35     |
+| 51193       | 2024 | 42     |
+| 51193       | 2025 | 37     |
+| 51199       | 2015 | 13     |
+| 51199       | 2016 | 23     |
+| 51199       | 2017 | 24     |
+| 51199       | 2018 | 33     |
+| 51199       | 2019 | 32     |
+| 51199       | 2020 | 27     |
+| 51199       | 2021 | 21     |
+| 51199       | 2022 | 23     |
+| 51199       | 2023 | 32     |
+| 51199       | 2024 | 20     |
+| 51199       | 2025 | 30     |
+| 51510       | 2015 | 20     |
+| 51510       | 2016 | 30     |
+| 51510       | 2017 | 27     |
+| 51510       | 2018 | 36     |
+| 51510       | 2019 | 22     |
+| 51510       | 2020 | 32     |
+| 51510       | 2021 | 27     |
+| 51510       | 2022 | 17     |
+| 51510       | 2023 | 26     |
+| 51510       | 2024 | 20     |
+| 51510       | 2025 | 31     |
+| 51530       | 2015 | 3      |
+| 51530       | 2016 | 9      |
+| 51530       | 2017 | 11     |
+| 51530       | 2018 | 6      |
+| 51530       | 2019 | 10     |
+| 51530       | 2020 | 13     |
+| 51530       | 2021 | 10     |
+| 51530       | 2022 | 12     |
+| 51530       | 2023 | 6      |
+| 51530       | 2024 | 10     |
+| 51530       | 2025 | 8      |
+| 51540       | 2015 | 17     |
+| 51540       | 2016 | 18     |
+| 51540       | 2017 | 26     |
+| 51540       | 2018 | 26     |
+| 51540       | 2019 | 32     |
+| 51540       | 2020 | 21     |
+| 51540       | 2021 | 16     |
+| 51540       | 2022 | 14     |
+| 51540       | 2023 | 31     |
+| 51540       | 2024 | 21     |
+| 51540       | 2025 | 20     |
+| 51550       | 2015 | 23     |
+| 51550       | 2016 | 22     |
+| 51550       | 2017 | 23     |
+| 51550       | 2018 | 26     |
+| 51550       | 2019 | 32     |
+| 51550       | 2020 | 33     |
+| 51550       | 2021 | 21     |
+| 51550       | 2022 | 26     |
+| 51550       | 2023 | 25     |
+| 51550       | 2024 | 27     |
+| 51550       | 2025 | 28     |
+| 51570       | 2015 | 11     |
+| 51570       | 2016 | 7      |
+| 51570       | 2017 | 14     |
+| 51570       | 2018 | 13     |
+| 51570       | 2019 | 14     |
+| 51570       | 2020 | 22     |
+| 51570       | 2021 | 13     |
+| 51570       | 2022 | 19     |
+| 51570       | 2023 | 16     |
+| 51570       | 2024 | 16     |
+| 51570       | 2025 | 14     |
+| 51580       | 2015 | 5      |
+| 51580       | 2016 | 8      |
+| 51580       | 2017 | 9      |
+| 51580       | 2018 | 5      |
+| 51580       | 2019 | 8      |
+| 51580       | 2020 | 6      |
+| 51580       | 2021 | 8      |
+| 51580       | 2022 | 6      |
+| 51580       | 2023 | 8      |
+| 51580       | 2024 | 12     |
+| 51580       | 2025 | 9      |
+| 51595       | 2015 | 6      |
+| 51595       | 2016 | 8      |
+| 51595       | 2017 | 11     |
+| 51595       | 2018 | 13     |
+| 51595       | 2019 | 8      |
+| 51595       | 2020 | 5      |
+| 51595       | 2021 | 11     |
+| 51595       | 2022 | 10     |
+| 51595       | 2023 | 12     |
+| 51595       | 2024 | 10     |
+| 51595       | 2025 | 9      |
+| 51600       | 2015 | 16     |
+| 51600       | 2016 | 14     |
+| 51600       | 2017 | 45     |
+| 51600       | 2018 | 489    |
+| 51600       | 2019 | 466    |
+| 51600       | 2020 | 388    |
+| 51600       | 2021 | 18     |
+| 51600       | 2022 | 26     |
+| 51600       | 2023 | 26     |
+| 51600       | 2024 | 19     |
+| 51600       | 2025 | 28     |
+| 51610       | 2015 | 17     |
+| 51610       | 2016 | 14     |
+| 51610       | 2017 | 15     |
+| 51610       | 2018 | 18     |
+| 51610       | 2019 | 18     |
+| 51610       | 2020 | 21     |
+| 51610       | 2021 | 17     |
+| 51610       | 2022 | 16     |
+| 51610       | 2023 | 16     |
+| 51610       | 2024 | 14     |
+| 51610       | 2025 | 24     |
+| 51630       | 2015 | 15     |
+| 51630       | 2016 | 15     |
+| 51630       | 2017 | 9      |
+| 51630       | 2018 | 14     |
+| 51630       | 2019 | 13     |
+| 51630       | 2020 | 14     |
+| 51630       | 2021 | 16     |
+| 51630       | 2022 | 25     |
+| 51630       | 2023 | 11     |
+| 51630       | 2024 | 16     |
+| 51630       | 2025 | 22     |
+| 51650       | 2015 | 23     |
+| 51650       | 2016 | 29     |
+| 51650       | 2017 | 22     |
+| 51650       | 2018 | 23     |
+| 51650       | 2019 | 29     |
+| 51650       | 2020 | 20     |
+| 51650       | 2021 | 20     |
+| 51650       | 2022 | 29     |
+| 51650       | 2023 | 27     |
+| 51650       | 2024 | 26     |
+| 51650       | 2025 | 26     |
+| 51670       | 2015 | 18     |
+| 51670       | 2016 | 28     |
+| 51670       | 2017 | 12     |
+| 51670       | 2018 | 18     |
+| 51670       | 2019 | 21     |
+| 51670       | 2020 | 19     |
+| 51670       | 2021 | 17     |
+| 51670       | 2022 | 16     |
+| 51670       | 2023 | 21     |
+| 51670       | 2024 | 18     |
+| 51670       | 2025 | 20     |
+| 51678       | 2015 | 4      |
+| 51678       | 2016 | 6      |
+| 51678       | 2017 | 4      |
+| 51678       | 2018 | 5      |
+| 51678       | 2019 | 17     |
+| 51678       | 2020 | 9      |
+| 51678       | 2021 | 1      |
+| 51678       | 2022 | 12     |
+| 51678       | 2023 | 9      |
+| 51678       | 2024 | 2      |
+| 51678       | 2025 | 8      |
+| 51685       | 2015 | 3      |
+| 51685       | 2016 | 8      |
+| 51685       | 2017 | 3      |
+| 51685       | 2019 | 5      |
+| 51685       | 2020 | 6      |
+| 51685       | 2022 | 5      |
+| 51685       | 2023 | 7      |
+| 51685       | 2024 | 8      |
+| 51685       | 2025 | 8      |
+| 51700       | 2015 | 23     |
+| 51700       | 2016 | 17     |
+| 51700       | 2017 | 18     |
+| 51700       | 2018 | 22     |
+| 51700       | 2019 | 36     |
+| 51700       | 2020 | 39     |
+| 51700       | 2021 | 29     |
+| 51700       | 2022 | 30     |
+| 51700       | 2023 | 17     |
+| 51700       | 2024 | 29     |
+| 51700       | 2025 | 33     |
+| 51710       | 2015 | 27     |
+| 51710       | 2016 | 26     |
+| 51710       | 2017 | 22     |
+| 51710       | 2018 | 29     |
+| 51710       | 2019 | 31     |
+| 51710       | 2020 | 29     |
+| 51710       | 2021 | 19     |
+| 51710       | 2022 | 27     |
+| 51710       | 2023 | 38     |
+| 51710       | 2024 | 12     |
+| 51710       | 2025 | 33     |
+| 51730       | 2015 | 19     |
+| 51730       | 2016 | 30     |
+| 51730       | 2017 | 24     |
+| 51730       | 2018 | 22     |
+| 51730       | 2019 | 26     |
+| 51730       | 2020 | 20     |
+| 51730       | 2021 | 30     |
+| 51730       | 2022 | 27     |
+| 51730       | 2023 | 19     |
+| 51730       | 2024 | 31     |
+| 51730       | 2025 | 36     |
+| 51735       | 2015 | 7      |
+| 51735       | 2016 | 11     |
+| 51735       | 2017 | 14     |
+| 51735       | 2018 | 21     |
+| 51735       | 2019 | 16     |
+| 51735       | 2020 | 9      |
+| 51735       | 2021 | 9      |
+| 51735       | 2022 | 15     |
+| 51735       | 2023 | 17     |
+| 51735       | 2024 | 6      |
+| 51735       | 2025 | 17     |
+| 51740       | 2015 | 27     |
+| 51740       | 2016 | 22     |
+| 51740       | 2017 | 17     |
+| 51740       | 2018 | 22     |
+| 51740       | 2019 | 23     |
+| 51740       | 2020 | 18     |
+| 51740       | 2021 | 27     |
+| 51740       | 2022 | 21     |
+| 51740       | 2023 | 22     |
+| 51740       | 2024 | 15     |
+| 51740       | 2025 | 30     |
+| 51760       | 2015 | 28     |
+| 51760       | 2016 | 38     |
+| 51760       | 2017 | 21     |
+| 51760       | 2018 | 3      |
+| 51760       | 2020 | 2      |
+| 51760       | 2022 | 1      |
+| 51760       | 2024 | 2      |
+| 51760       | 2025 | 26     |
+| 51790       | 2015 | 8      |
+| 51790       | 2016 | 20     |
+| 51790       | 2017 | 14     |
+| 51790       | 2018 | 10     |
+| 51790       | 2019 | 13     |
+| 51790       | 2020 | 13     |
+| 51790       | 2021 | 25     |
+| 51790       | 2022 | 22     |
+| 51790       | 2023 | 14     |
+| 51790       | 2024 | 18     |
+| 51790       | 2025 | 14     |
+| 51800       | 2015 | 16     |
+| 51800       | 2016 | 23     |
+| 51800       | 2017 | 38     |
+| 51800       | 2018 | 26     |
+| 51800       | 2019 | 33     |
+| 51800       | 2020 | 36     |
+| 51800       | 2021 | 33     |
+| 51800       | 2022 | 27     |
+| 51800       | 2023 | 42     |
+| 51800       | 2024 | 39     |
+| 51800       | 2025 | 39     |
+| 51810       | 2015 | 28     |
+| 51810       | 2016 | 32     |
+| 51810       | 2017 | 37     |
+| 51810       | 2018 | 42     |
+| 51810       | 2019 | 38     |
+| 51810       | 2020 | 33     |
+| 51810       | 2021 | 26     |
+| 51810       | 2022 | 27     |
+| 51810       | 2023 | 24     |
+| 51810       | 2024 | 22     |
+| 51810       | 2025 | 46     |
+| 51820       | 2015 | 16     |
+| 51820       | 2016 | 17     |
+| 51820       | 2017 | 16     |
+| 51820       | 2018 | 15     |
+| 51820       | 2019 | 15     |
+| 51820       | 2020 | 26     |
+| 51820       | 2021 | 18     |
+| 51820       | 2022 | 19     |
+| 51820       | 2023 | 14     |
+| 51820       | 2024 | 19     |
+| 51820       | 2025 | 26     |
+| 51830       | 2015 | 13     |
+| 51830       | 2016 | 18     |
+| 51830       | 2017 | 15     |
+| 51830       | 2018 | 10     |
+| 51830       | 2019 | 13     |
+| 51830       | 2020 | 10     |
+| 51830       | 2021 | 11     |
+| 51830       | 2022 | 15     |
+| 51830       | 2023 | 15     |
+| 51830       | 2024 | 14     |
+| 51830       | 2025 | 20     |
++-----------------------------+
+Sun, Nov  1, 2026  8:36:14 AM

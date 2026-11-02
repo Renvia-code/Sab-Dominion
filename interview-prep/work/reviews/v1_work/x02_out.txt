@@ -1,0 +1,25 @@
+tokens: 2345 | uncovered: 36
+       .42 | brief_html | crisp 30-second answer on what you do and built; early impressions tra
+       0.8 | brief_html,brief_pdf | 0.8
+     19876 | brief_html,brief_pdf | Source: EIA-861 2025 final and PUDL (EIA-861) 2013–2024, Dominion Ener
+       2.5 | brief_html | C: An MED is a day so far above normal that it would swamp the year. E
+        24 | brief_html | for 2023–25, up from 130 for 2022–24, and explains it (p. 10): “This i
+        24 | brief_html | Reported 3-year SAIDI ex-MED, 2022–24 → 2023–25 · Annual Report p. 10
+        80 | brief_html,brief_pdf | 80
+      −.11 | brief_html | Real results helped (r = .20); “image creation” hurt (r = −.11 to −.19
+      −.19 | brief_html | Real results helped (r = .20); “image creation” hurt (r = −.11 to −.19
+      −.19 | brief_html | correlate at r = −.19. Rehearse to a mock panel; that it calms you is 
+       .42 | brief_pdf | built; early impressions tracked final ratings (r = .42).
+       2.5 | brief_pdf | judged as storm response. P: 2.5β: the logs of five years of daily
+       2.5 | brief_pdf | SAIDI; the threshold is T = e^(α+2.5β). · 2025: MEDs were 53% of
+        24 | brief_pdf | events, of 133 minutes for 2023–25, up from 130 for 2022–24, and expla
+        24 | brief_pdf | Reported 3-year SAIDI ex-MED, 2022–24 → 2023–25 ·
+      −.11 | brief_pdf | −.11 to −.19). Use the resume's numbers exactly.
+      −.19 | brief_pdf | −.11 to −.19). Use the resume's numbers exactly.
+      −.19 | brief_pdf | Anxiety and scores correlate at r = −.19. Rehearse to a
+       2.5 | d_adopted_pdf,d_adopted_s,d_public_pdf,d_public_s | Major event days (MED): IEEE 1366's 2.5 beta method takes five years o
+       2.5 | d_adopted_pdf,d_public_pdf | the mean and standard deviation of ln(daily SAIDI); a day above exp(α 
+        24 | d_adopted_s,d_public_s | [ALT] Columns for the 24 hours of the day: growth in average load from
+       2.5 | qsheet_html | A day extreme enough to swamp the trend, set aside by rule. IEEE 1366'
+       2.5 | qsheet_pdf | IEEE 1366's 2.5-beta method: from five years of daily SAIDI, a day
+       2.5 | qsheet_pdf | is a major event day when its SAIDI exceeds exp(α + 2.5β), α and

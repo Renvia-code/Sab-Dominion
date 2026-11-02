@@ -1,0 +1,2 @@
+caption: Outage minutes per customer on non-major days, 2015-2024 average, 99 Dominion counties (all utilities, EAGLE-I); inset: Isaias 2020 share of excess outages restored by hour
+source: EAGLE-I (ORNL/DOE) via D: data/output/county_outage_map.csv, va_counties.geojson, fct_restoration_curve.csv, outage_events_top10.csv; findings.md A2, A3

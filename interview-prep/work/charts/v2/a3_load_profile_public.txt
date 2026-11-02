@@ -1,0 +1,2 @@
+caption: Growth in average load by hour, 2019 to 2025, PJM DOM zone (EIA-930); labels as in origin/main docs/05
+source: EIA-930 via MART.DOM_LOAD_PROFILE (sql/07 on origin/main); docs/05 'Growth by hour of day'

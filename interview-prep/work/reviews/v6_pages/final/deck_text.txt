@@ -1,0 +1,493 @@
+
+
+===== deck page 1 =====
+Dominion Energy Virginia reliability: what 
+public data shows, and where I'd look first
+Independent analysis of public data
+Saketh Bollina
+November 3, 2026
+Data: EIA-861 · PUDL · NOAA Storm Events · EAGLE-I · EIA-930
+
+
+===== deck page 2 =====
+Outage minutes rose from 130 to 133; 2025 had more storms and 
+more interruptions
+130 → 133
+Reported 3-year average outage minutes per 
+customer, excluding major events
+Rebuilt from EIA-861: 130.2 → 133.0
+2025 (144.4) replaced 2022 (136.0) in the window.
+Dominion attributes the rise primarily to increased 
+storm activity (2025 Annual Report, p. 10). 2025 
+sits on the storm line, with no clear trend once 
+storms are counted (A2).
+Why it matters: a stormy year can move a 3-year average. With outage records, I'd ask whether non-storm 
+interruptions are rising underneath.
+Source: EIA-861 2025 final and PUDL (EIA-861) 2013–2024, Dominion Energy Virginia, excluding major event days; 3-year means of annual 
+values. NOAA Storm Events (A2). Reported figures: Dominion Energy 2025 Annual Report, p. 10.
+2
+
+
+===== deck page 3 =====
+Among 12 large utilities, Dominion's interruption length is mid-pack; 
+frequency is the gap
+1.21
+interruptions per customer a year: 4th 
+highest of the 12 (peer median 0.93)
+110 min
+per interruption: mid-pack, 6th of the 
+12 (peer median 99.5)
+Methods differ: Dominion uses its own 
+(non-IEEE) major-event rule, most peers 
+IEEE 1366, so ranks are indicative.
+Why it matters: if frequency is where Dominion differs, the next question is which causes drive interruptions, 
+and that needs outage records.
+Source: EIA-861 / PUDL 2021–2025, excluding major event days, means of annual values. Dominion and 11 peers: twelve large investor-
+owned utilities in PJM and the Southeast, selected by EIA ID before results were computed; medians exclude Dominion.
+3
+
+
+===== deck page 4 =====
+County-days with storms had about 12 times the outage hours of 
+calm days
+11.9×
+storm vs calm county-days (95% CI 7.9–16.9)
+Holds on non-major days (9.9×), in 
+Dominion-only counties (19.9×) and in every 
+year 2015–2025.
+EAGLE-I counts every utility's customers in a 
+county. An association: storm reports partly 
+follow damage.
+Why it matters: reporting reliability next to storm exposure would keep a stormy year from being read as a 
+trend.
+Source: EAGLE-I (ORNL) and NOAA Storm Events, 2015–2025: 6,108 storm county-days with complete outage readings in 99 counties 
+(EAGLE-I); complete days only (2025: 74% of county-days). 95% intervals: 2,000 resamples of whole days.
+4
+
+
+===== deck page 5 =====
+The Power BI report: one page per question, on customer-weighted 
+measures
+A detail of the Summary page: the 2025 cards and the CAIDI trend
+FCT_RELIABILITY
+utility × state × year
+many:1
+DIM_UTILITY
+peer group
+A small star at the core; the other tables are pre-built 
+summaries for particular pages, so most stand alone. 
+18 tables, one DataFolder parameter.
+Customer-weighted measures; the cards follow the 
+year slicer:
+Selected SAIDI =
+VAR SelectedYear =
+    SELECTEDVALUE('Dashboard Year'[Year], 2025)
+RETURN
+    CALCULATE([SAIDI ex MED],
+        FCT_RELIABILITY[YEAR] = SelectedYear)
+Why it matters: Power BI reporting leads the role's duties, and the same model and measures could carry a 
+program-tracking report.
+Source: Power BI Desktop, the project's report: a detail of the Summary page, year 2025. Tables are CSV exports (16 from the local DuckDB 
+mirror, 2 from the workbook) imported through a folder parameter; measures as in the project's measures.dax.
+5
+
+
+===== deck page 6 =====
+Built with production habits: tested, documented, and reconciled to 
+the reported numbers
+Original build, Oct 27–31, 2026
+Added Nov 1, 2026
+Sources
+EIA-861 / PUDL, 
+NOAA Storm 
+Events, EIA-930
+EAGLE-I, DOE-417, 
+HURDAT2, degree 
+days, Census, 
+EIA-861M
+Downloads
+download scripts
+scripts for the new 
+sources, each with 
+a manifest
+SQL layers
+sql/01–08: RAW → 
+STG → MART
+sql/09–11; all of it 
+run in a local 
+DuckDB mirror 
+(22 s)
+Tests
+T1–T12
+T13–T31: all 31 
+pass
+CSV exports
+18 files with a 
+manifest of row 
+counts and 
+checksums
+Power BI Import
+template: 18 tables 
+via one DataFolder 
+setting; opens 
+offline
+Snowflake: holds the October build, sql/01–08 and T1–T12, where 
+the report was developed in DirectQuery (D13). The same SQL loads 
+the new tables there in one optional step (README step 7).
+Reconciled: 12 of 12 match the published figures.
+Documented: data dictionary; decisions D1–D22; peers fixed by 
+EIA ID before results.
+Why it matters: the same habits would serve the team's reports: reconcile first, test every load, write each 
+definition down.
+Source: Project repository: sql/01–11, tests T1–T31 (T1–T12 the October build), data dictionary, decisions log D1–D22. Build time of the 
+local DuckDB mirror measured November 1, 2026.
+6
+
+
+===== deck page 7 =====
+With Dominion's outage, meter and circuit data: the questions I'd 
+bring and what I'd build
+Days 1–30
+Learn and reconcile
+Learn how outages, meter events 
+and circuits are recorded and 
+reported.
+Rebuild one year's SAIDI, SAIFI and 
+CAIDI and reconcile them to the 
+filed figures.
+Deliverable: a reconciled baseline 
+with written definitions
+Days 31–60
+Ask about frequency
+By circuit and cause code, storm 
+days apart from calm days; repeat 
+interruptions (CEMIn).
+Outage times from meter last-gasp 
+and restore messages (99.8% of 
+meters are smart), checked against 
+OMS.
+Deliverable: tested views and a 
+data dictionary
+Days 61–90
+Build the tracking report
+Track mainfeeder hardening 
+against matched untreated feeders 
+(same pre-period performance), 
+weather-normalized, in support of 
+the program's selection rule.
+Deliverable: a Power BI program-
+tracking report, refreshed on a 
+schedule
+Why it matters: these are questions to check first with the people who own each definition, not conclusions.
+Source: A plan: Dominion data is named by type only, and none was used here. Smart meters: EIA-861 2025 (advanced meters as a share 
+of all meters). Grid Resiliency: Dominion Energy website, read November 1, 2026.
+7
+
+
+===== deck page 8 =====
+Three takeaways: a stormier year, a frequency gap, and storms by 
+county
+1
+A stormier year
+More storms and more 
+interruptions in 2025; no clear 
+trend once storms are counted
+2
+Frequency is the peer gap
+So causes are the question, and 
+answering it needs outage 
+records by cause code
+3
+Storms by county
+Storm county-days carry far more 
+outage hours, so report reliability 
+beside storm exposure
+I've built a tested Snowflake → Power BI pipeline on public reliability data.
+How my experience maps   Mercury Insurance, Data Analyst
+Snowflake pipeline, 20M+ rows
+→ this project's mart
+Root-cause analysis on joined data
+→ what I'd do with cause codes in the 
+first 90 days
+Metadata and business definitions
+→ the data dictionary
+Thank you. I'd like to do this work with your team.
+Source: Takeaways: slides 2–4. Experience: Mercury Insurance, Data Analyst, 2026 to present.
+8
+
+
+===== deck page 9 =====
+Definitions: SAIDI = SAIFI × CAIDI, and major event days are set 
+aside by rule
+SAIDI
+outage minutes per customer 
+per year
+=
+SAIFI
+interruptions per customer 
+per year: how often
+×
+CAIDI
+minutes per interruption: how 
+long
+Dominion 2025: 1.320 × 109.4 = 144.4 minutes (excluding major event days)
+Major event days (MED): IEEE 1366's 2.5 beta method takes five years of daily SAIDI, drops zero days, and sets α and β as 
+the mean and standard deviation of ln(daily SAIDI); a day above exp(α + 2.5β) is an MED.
+Dominion reports to EIA under a non-IEEE rule (“Other” in EIA-861); most peers in this deck use IEEE 1366.
+With major event days, 2025 SAIDI was 306.7 minutes, against 144.4 without them: MEDs held 53%.
+Log split: ln(SAIDI ratio) = ln(SAIFI ratio) + ln(CAIDI ratio). From 2022, duration fell, so frequency accounts for more than all 
+of the rise; from 2023, 79%.
+Source: IEEE Std 1366; EIA-861 reliability, Dominion Energy Virginia, 2022, 2023 and 2025.
+A1
+
+
+===== deck page 10 =====
+The weather fit is a check on one year, not a forecast
+Year
+Storm
+county-days
+SAIDI
+ex‑MED
+From
+the fit
+Difference
+2015
+521
+119.6
+131.3
+−11.6
+2016
+594
+138.2
+135.0
++3.2
+2017
+419
+117.4
+126.0
+−8.6
+2018
+683
+149.6
+139.7
++9.9
+2019
+848
+149.9
+148.2
++1.7
+2020
+429
+141.0
+126.5
++14.5
+2021
+673
+133.6
+139.1
+−5.5
+2022
+718
+136.0
+141.5
+−5.4
+2023
+390
+123.3
+124.5
+−1.1
+2024
+464
+131.3
+128.3
++3.0
+2025 (not in fit)
+791
+144.4
+145.3
+−0.9
+Fit on 2015–2024 (n = 10): SAIDI = 104.3 + 
+0.0518 × storm county-days; r = 0.70 
+(t = 2.75, p = 0.025; 95% CI 0.12 to 0.92), 
+R² 0.49.
+Why 2015: the change to automated outage 
+recording that year shifts the level (decision 
+D6).
+2025, left out of the fit: 145.3 from the fit 
+(95% prediction interval 122.3–168.2), 144.4 
+actual.
+Adjusted for storm days, the trend since 
+2015 is not distinguishable from zero: about 
++0.3 minutes a year (95% range −1.4 to 
++2.1).
+Source: NOAA Storm Events and EIA-861, 2015–2025; ordinary least squares on ten annual points (exploratory). Storm county-days count 
+Bedford city once (decision D22).
+A2
+
+
+===== deck page 11 =====
+Overnight demand grew faster than afternoon demand; winter rivals 
+summer for the peak
++39–41%
+average load, hours ending 1–5 a.m., 
+2019 → 2025 (1–5 p.m.: about +27%)
+Winter
+set the yearly peak in 2019, 2022 and 
+2025; 2026 so far: winter 25,413 vs 
+summer 25,384 MW, a tie
+Highest hour of the year +26%, lowest 
+hour +52%.
+I'd add winter and overnight views to 
+load and outage reports.
+Source: EIA-930 hourly demand, PJM Dominion (DOM) zone, which is wider than Dominion's retail territory; 2019 and 2025 full years; 2026 
+to the hour ending midnight, Oct 29. Winter = Dec–Feb, summer = Jun–Aug.
+A3
+
+
+===== deck page 12 =====
+Every number traces to a public source; the tables behind them are 
+tested after each load
+Source
+Publisher
+Years
+Grain
+Rows
+EIA-861 Reliability, 2025 final
+EIA
+2025
+utility × state × year
+977
+PUDL EIA-861 reliability
+Catalyst Cooperative
+2013–2024
+utility × state × year
+24,358
+EIA-861 Service Territory
+EIA
+2025
+utility × county
+11,803
+NOAA Storm Events
+NOAA NCEI
+2013–2025
+storm event
+831,288
+EAGLE-I county outages
+ORNL for DOE
+Nov 2014–2025
+county × 15 minutes
+11,608,442
+EIA-930 hourly demand
+EIA
+Jul 2018–Oct 2026
+region × hour
+6,094,320
+HURDAT2 storm tracks
+NOAA NHC
+1851–2025
+storm × 6-hour fix
+55,524
+DOE-417 disturbance reports
+DOE
+2014–2025
+reported event
+3,702
+CPC degree days
+NOAA CPC
+2018–Oct 2026
+state × day
+309,504
+Dominion Energy 2025 Annual Report
+Dominion Energy
+2025
+document (130, 133)
+reference
+Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025 equals EIA's 
+published 306.7, 144.4 and 2,675,735 customers); T7–T9 on NOAA storms; T10–T12 on EIA-930 demand; T13–T31 on the new tables. 
+Reconciled 12 of 12 against the annual report and the EIA-861 files.
+Source: Project documentation: sources register (publisher, vintage, license) and data-quality tests; all public data.
+A4
+
+
+===== deck page 13 =====
+What public data cannot show, and what would answer it
+Public data limit
+What would answer it (Dominion data, by type)
+One number per utility per year (EIA-861)
+Outage records by event, circuit and cause
+Storms counted by county, not by line
+Outage records with cause codes and circuit location
+Methods differ between utilities
+Dominion's daily SAIDI and its filing method
+The DOM zone is wider than the retail territory
+Meter interval data by circuit
+No customer identities: growth can't be attributed
+Customer class and large-load records
+Source: Project scope limits (decision D14) and the sources above.
+A5
+
+
+===== deck page 14 =====
+The ten largest outage events since 2014: three tropical, two winter, 
+five wind
+# Peak day
+Storm type
+Peak
+customers out
+Held
+1 h
+Hours to
+clear 90%
+1 Oct 12, 2018
+Tropical (Michael)
+558,729
+545,548
+60.5
+2 Mar 2, 2018
+Wind
+419,136
+401,776
+55.0
+3 Aug 4, 2020
+Tropical (Isaias)
+351,738
+343,492
+33.5
+4 Jan 3, 2022
+Winter
+314,644
+308,015
+102.8
+5 Feb 13, 2021
+Winter
+281,707
+271,359
+101.5
+6 Oct 9, 2016
+Tropical (Matthew)
+269,298
+265,401
+52.8
+7 Jun 16, 2016
+Wind
+234,951
+233,003
+65.8
+8 Jun 19, 2025
+Wind
+225,609
+209,475
+22.0
+9 Feb 16, 2025
+Wind
+187,074
+172,538
+20.3
+10 May 14, 2018
+Wind
+159,532
+151,385
+20.0
+Source: EAGLE-I (ORNL), all utilities in Dominion's 103 counties, Nov 2014–2025; storm type from NOAA and HURDAT2. Cleared = (peak − 
+customers out) ÷ (peak − pre-event level): a net count, not a utility's “% of affected customers restored”.
+A6

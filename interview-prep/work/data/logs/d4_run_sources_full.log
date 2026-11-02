@@ -1,0 +1,95 @@
+01-02 reliability mart rebuilt: FCT_RELIABILITY 13,095 rows (expected 13,095)
+raw rows: {'NOAA_STORM_EVENTS': '831,288', 'NOAA_ZONE_COUNTY': '7,087', 'EIA861_SERVICE_TERRITORY_2025': '11,803', 'EIA930_SUBREGION': '6,094,320'} (expected 831,288 / 7,087 / 11,803 / 6,094,320 with the 2026 H2 file to 30 Oct 2026)
+
+==== 05_noaa_storms.sql ====
+T7: 0 rows (expected None)  [0.0s]
+T8: 1 rows (expected None)  [0.0s]
+ last_month
+     202512
+T9: 1 rows (expected None)  [0.0s]
+ unmapped_zone_rows
+                  0
+
+==== 06_eia930_demand.sql ====
+T10: 2 rows (expected None)  [0.0s]
+ data_date  hour_no  demand_mw_reported
+2021-10-18       23          1526640000
+2021-10-18       24          1038460000
+T11: 0 rows (expected None)  [0.0s]
+T12: 0 rows (expected None)  [0.0s]
+
+==== 07_weather_adjusted_and_profile.sql ====
+
+==== 09_eaglei_outages.sql ====
+loaded raw.EAGLEI_OUTAGES_VA: 11,608,442 rows  [2.7s]
+loaded raw.EAGLEI_MCC: 3,234 rows  [0.0s]
+loaded raw.EAGLEI_COVERAGE_HISTORY: 280 rows  [0.0s]
+loaded raw.CENSUS_VA_COUNTY: 133 rows  [0.0s]
+T31: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+T13: 0 rows (expected ('rows', 0))  [0.0s]
+T14: 0 rows (expected ('rows', 0))  [0.0s]
+T15: 0 rows (expected ('rows', 0))  [0.7s]
+T16: 0 rows (expected ('rows', 0))  [0.5s]
+T17: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+T18: 0 rows (expected ('rows', 0))  [0.0s]
+T19: 22 rows (expected ('rows', 22))  [0.6s]
+T20: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+T21: 0 rows (expected ('rows', 0))  [0.1s]
+T22: 0 rows (expected ('rows', 0))  [0.5s]
+T23: 0 rows (expected ('rows', 0))  [0.0s]
+T24: 0 rows (expected ('rows', 0))  [0.0s]
+
+==== 10_load_and_sales.sql ====
+loaded raw.CPC_DEGREE_DAYS: 309,504 rows  [0.1s]
+T28: 0 rows (expected ('rows', 0))  [0.0s]
+T29: 0 rows (expected ('rows', 0))  [0.0s]
+T30: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+
+==== 11_event_context.sql ====
+loaded raw.HURDAT2_POINTS: 55,524 rows  [0.1s]
+loaded raw.DOE417_EVENTS: 3,702 rows  [0.0s]
+T25: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+T26: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+T27: 1 rows (expected ('value', 'problems', '0'))  [0.0s]
+ problems
+        0
+
+==== TESTS ====
+T7: PASS (('rows', 0))
+T8: PASS (('value', 'last_month', '202512'))
+T9: PASS (('value', 'unmapped_zone_rows', '0'))
+T10: PASS (('rows', 2))
+T11: PASS (('rows', 0))
+T12: PASS (('rows', 0))
+T31: PASS (('value', 'problems', '0'))
+T13: PASS (('rows', 0))
+T14: PASS (('rows', 0))
+T15: PASS (('rows', 0))
+T16: PASS (('rows', 0))
+T17: PASS (('value', 'problems', '0'))
+T18: PASS (('rows', 0))
+T19: PASS (('rows', 22))
+T20: PASS (('value', 'problems', '0'))
+T21: PASS (('rows', 0))
+T22: PASS (('rows', 0))
+T23: PASS (('rows', 0))
+T24: PASS (('rows', 0))
+T28: PASS (('rows', 0))
+T29: PASS (('rows', 0))
+T30: PASS (('value', 'problems', '0'))
+T25: PASS (('value', 'problems', '0'))
+T26: PASS (('value', 'problems', '0'))
+T27: PASS (('value', 'problems', '0'))
+All 25 tests passed. Database: data/raw/duckdb/reliability_local.duckdb

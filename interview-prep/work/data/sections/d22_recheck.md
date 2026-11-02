@@ -1,0 +1,27 @@
+## D22 re-check: numbers that depend on the storm index
+
+Decision D22 (fix ordered by the orchestrator at 08:16) folds Bedford city (51515) into Bedford County (51019) in `STORM_INDEX` (sql/05). Everything downstream was rebuilt (`run_local_duckdb_sources.py`: T7-T31 pass; `check_output_metrics.py` passes with the D22 expectations) and the committed `storm_index.csv`, `storm_vs_saidi.csv` and `saidi_weather_adjusted.csv` were re-exported. Use the new F04 pair, **464 -> 791**, everywhere; the headline correlation, prediction and weather-adjusted value are unchanged at the precision quoted.
+
+| Quantity | Pre-D22 | After D22 | Status |
+|---|---|---|---|
+| Storm county-days 2024 -> 2025 (F04) | 465 -> 796 | 464 -> 791 | changed |
+| Storm county-days 2019 (record year) | 851 | 848 | changed |
+| r, storm county-days vs SAIDI ex-MED, 2015-2024 (F05) | 0.696 (0.70) | 0.697 (0.70), p = 0.025 | unchanged at 2 dp |
+| r with SAIFI ex-MED | 0.41 | 0.41 | unchanged |
+| Fit slope, min per storm county-day | 0.0514 | 0.0518 | changed |
+| Fit intercept | 104.4 | 104.3 | changed |
+| Predicted 2025 SAIDI ex-MED | 145.27 (145.3) | 145.25 (145.3) | unchanged at 1 dp |
+| Weather-adjusted 2025 | 133.13 (133.1) | 133.15 (SQL: 133.1) | unchanged at 1 dp |
+| Weather-adjusted 2019 | 135.8 | 135.7 | changed |
+| Q10 slope of weather-adjusted SAIDI, 2015-2025 | +0.34 min/yr, 95% CI -1.41 to +2.09, p 0.67 | +0.34 min/yr, 95% CI -1.41 to +2.08, p 0.67 | unchanged at 2 dp |
+| A1 storm vs calm county-days | 11.9x (7.9 to 16.9) | 11.9x (7.9 to 16.9) | unchanged: the county-day panel already folded 51515 into 51019 |
+
+```sql
+SELECT s.year, s.storm_county_days, f.saidi_ex_med, f.saifi_ex_med
+FROM mart.STORM_INDEX s JOIN mart.FCT_RELIABILITY f ON f.year = s.year AND f.utility_key = '19876|VA'
+ORDER BY s.year
+;
+SELECT year, weather_adjusted_saidi FROM mart.SAIDI_WEATHER_ADJUSTED ORDER BY year
+```
+
+Python: `scipy.stats.pearsonr` and `linregress` on the 2015-2024 rows (fit), and on 2015-2025 for the Q10 trend; the A1 ratio is read from the A1 section, re-run after D22. Snowflake: not rebuilt. `RELIABILITY.MART.STORM_INDEX`, `V_STORM_VS_SAIDI` and `SAIDI_WEATHER_ADJUSTED` in Snowflake still hold the pre-D22 values until the owner re-runs sql/05 and sql/07 (this run is add-only and does not replace existing objects). The Power BI workbook `powerbi/Dominion_Reliability_PowerBI_Data.xlsx` (sheet `StormIndex`) also holds pre-D22 values; the report should bind to `data/output/storm_vs_saidi.csv` instead.

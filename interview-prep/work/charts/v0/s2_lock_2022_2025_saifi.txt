@@ -1,0 +1,2 @@
+caption: 2022 to 2025 change in SAIDI, SAIFI, CAIDI ex-MED, and SAIFI 2013-2025; Dominion Energy Virginia
+source: EIA-861 2025 final and PUDL; data/output/storm_vs_saidi.csv; D findings.md S2.1-S2.2

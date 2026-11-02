@@ -1,0 +1,102 @@
+/* Interview brief and question sheet: print stylesheet (US Letter portrait).
+   One family: Segoe UI (300 Light, 350 Semilight, 400 Regular, 600 Semibold).
+   Colour roles from docs/00_conventions.md; see palette.md. */
+
+@font-face { font-family: "Pack Sans"; font-weight: 300; src: local("Segoe UI Light"), local("SegoeUI-Light"); }
+@font-face { font-family: "Pack Sans"; font-weight: 350; src: local("Segoe UI Semilight"), local("SegoeUI-Semilight"); }
+@font-face { font-family: "Pack Sans"; font-weight: 400; src: local("Segoe UI"), local("SegoeUI"); }
+@font-face { font-family: "Pack Sans"; font-weight: 400; font-style: italic; src: local("Segoe UI Italic"), local("SegoeUI-Italic"); }
+@font-face { font-family: "Pack Sans"; font-weight: 600; src: local("Segoe UI Semibold"), local("SegoeUI-Semibold"); }
+@font-face { font-family: "Pack Sans"; font-weight: 700; src: local("Segoe UI Bold"), local("SegoeUI-Bold"); }
+
+:root {
+  --subject: #0A66C2;
+  --context: #B8BCC2;
+  --third: #D5A20B;
+  --dark: #1F2A44;
+  --ink: #1F2A44;
+  --ink-2: #374151;
+  --muted: #6B7280;
+  --rule: #D1D5DB;
+  --grid: #E5E7EB;
+  --tint: #F3F6FA;
+  --subject-tint: #E8F0FB;
+  --paper: #FFFFFF;
+
+  --body: 10.5pt;
+  --body-lh: 15pt;
+  --small: 8.5pt;
+  --small-lh: 11.5pt;
+  --h1: 24pt;
+  --h2: 13.5pt;
+  --hero: 40pt;
+
+  --margin-x: 0.75in;
+  --col-gap: 0.25in;
+}
+
+@page {
+  size: 8.5in 11in;
+  margin: 0.7in 0.75in 0.75in 0.75in;
+  @bottom-left { content: "Dominion Energy Virginia reliability · interview brief"; font: 400 8.5pt "Pack Sans", "Segoe UI", sans-serif; color: #6B7280; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 400 8.5pt "Pack Sans", "Segoe UI", sans-serif; color: #6B7280; }
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  font-family: "Pack Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  color: var(--ink);
+  background: var(--paper);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  hyphens: manual;
+}
+
+/* One idea per page */
+.page { break-after: page; position: relative; }
+.page:last-child { break-after: auto; }
+
+h1, h2, h3 { margin: 0; font-weight: 600; color: var(--ink); text-wrap: balance; }
+h1 { font-size: var(--h1); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 10pt; }
+h2 { font-size: var(--h2); line-height: 1.25; margin: 16pt 0 5pt; }
+h3 { font-size: var(--body); line-height: var(--body-lh); margin: 10pt 0 2pt; }
+p { margin: 0 0 7pt; text-wrap: pretty; orphans: 3; widows: 3; }
+.lede { font-size: 13pt; line-height: 18pt; font-weight: 350; color: var(--ink-2); max-width: 6.2in; margin-bottom: 14pt; }
+.small, figcaption, .source { font-size: var(--small); line-height: var(--small-lh); color: var(--muted); }
+.source { margin-top: 3pt; }
+strong { font-weight: 600; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Section marker: page number of the section in the brief, not an uppercase eyebrow */
+.section-no { font-size: var(--small); color: var(--subject); font-weight: 600; margin-bottom: 4pt; }
+
+/* Hero numbers set as typography */
+.figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--col-gap); margin: 12pt 0 16pt; }
+.figure .value { font-size: var(--hero); line-height: 1; font-weight: 300; letter-spacing: -0.02em; }
+.figure .value.subject { color: var(--subject); }
+.figure .label { font-size: var(--small); line-height: var(--small-lh); color: var(--ink-2); margin-top: 5pt; }
+.figure { border-top: 1.5pt solid var(--ink); padding-top: 6pt; }
+.figure.is-subject { border-top-color: var(--subject); }
+
+/* Tables: hairline rules, tabular figures, no zebra */
+table { width: 100%; border-collapse: collapse; font-size: 9.5pt; line-height: 12.5pt; margin: 6pt 0 4pt; }
+th { text-align: left; font-weight: 600; color: var(--ink); border-bottom: 1pt solid var(--ink); padding: 3pt 6pt 3pt 0; vertical-align: bottom; }
+td { border-bottom: 0.5pt solid var(--rule); padding: 3pt 6pt 3pt 0; vertical-align: top; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+tr.is-subject td { background: var(--subject-tint); }
+
+figure { margin: 8pt 0 10pt; }
+figure svg { display: block; width: 100%; height: auto; }
+
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+.note { border-left: 2pt solid var(--subject); padding: 2pt 0 2pt 9pt; color: var(--ink-2); margin: 8pt 0; }
+.placeholder { background: #FFF6D6; padding: 0 2pt; border-radius: 2pt; }

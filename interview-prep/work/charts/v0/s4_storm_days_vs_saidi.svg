@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="568.8pt" height="298.8pt" viewBox="0 0 568.8 298.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-01T08:08:17.760562</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 298.8 
+L 568.8 298.8 
+L 568.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 65.412 249.498 
+L 554.58 249.498 
+L 554.58 8.964 
+L 65.412 8.964 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 109.881818 249.498 
+L 109.881818 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="109.881818" y="265.326369" transform="rotate(-0 109.881818 265.326369)">400</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 198.821455 249.498 
+L 198.821455 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="198.821455" y="265.326369" transform="rotate(-0 198.821455 265.326369)">500</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 287.761091 249.498 
+L 287.761091 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="287.761091" y="265.326369" transform="rotate(-0 287.761091 265.326369)">600</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 376.700727 249.498 
+L 376.700727 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="376.700727" y="265.326369" transform="rotate(-0 376.700727 265.326369)">700</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 465.640364 249.498 
+L 465.640364 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="465.640364" y="265.326369" transform="rotate(-0 465.640364 265.326369)">800</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 554.58 249.498 
+L 554.58 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="554.58" y="265.326369" transform="rotate(-0 554.58 265.326369)">900</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="309.996" y="285.161652" transform="rotate(-0 309.996 285.161652)">Storm county-days in Dominion's Virginia counties (NOAA)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13">
+      <path d="M 65.412 249.498 
+L 554.58 249.498 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_8">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="59.412" y="254.412185" transform="rotate(-0 59.412 254.412185)">100</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_15">
+      <path d="M 65.412 169.32 
+L 554.58 169.32 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_9">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="59.412" y="174.234185" transform="rotate(-0 59.412 174.234185)">120</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <path d="M 65.412 89.142 
+L 554.58 89.142 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_10">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="59.412" y="94.056185" transform="rotate(-0 59.412 94.056185)">140</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <path d="M 65.412 8.964 
+L 554.58 8.964 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_20"/>
+     <g id="text_11">
+      <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="59.412" y="13.878185" transform="rotate(-0 59.412 13.878185)">160</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="27.474969" y="129.231" transform="rotate(-90 27.474969 129.231)">SAIDI ex-MED, minutes per customer</text>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <path d="M 92.093891 153.701873 
+L 536.792073 50.722499 
+" clip-path="url(#pb015858c4e)" style="fill: none; stroke: #6b7280; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 65.412 249.498 
+L 554.58 249.498 
+" style="fill: none; stroke: #b8bcc2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="md9bd4ea77d" d="M 0 4.472136 
+C 1.186024 4.472136 2.323632 4.000923 3.162278 3.162278 
+C 4.000923 2.323632 4.472136 1.186024 4.472136 0 
+C 4.472136 -1.186024 4.000923 -2.323632 3.162278 -3.162278 
+C 2.323632 -4.000923 1.186024 -4.472136 0 -4.472136 
+C -1.186024 -4.472136 -2.323632 -4.000923 -3.162278 -3.162278 
+C -4.000923 -2.323632 -4.472136 -1.186024 -4.472136 0 
+C -4.472136 1.186024 -4.000923 2.323632 -3.162278 3.162278 
+C -2.323632 4.000923 -1.186024 4.472136 0 4.472136 
+z
+" style="stroke: #ffffff; stroke-width: 1.8"/>
+    </defs>
+    <g clip-path="url(#pb015858c4e)">
+     <use xlink:href="#md9bd4ea77d" x="221.94576" y="170.755186" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="285.092902" y="96.257798" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="127.669745" y="179.703051" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="365.138575" y="50.640524" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="510.999578" y="49.558121" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="137.453105" y="85.177198" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="355.355215" y="114.794951" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="397.156844" y="104.989182" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="101.877251" y="156.002434" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+     <use xlink:href="#md9bd4ea77d" x="167.692582" y="124.01943" style="fill: #b8bcc2; stroke: #ffffff; stroke-width: 1.8"/>
+    </g>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #374151" x="127.669745" y="201.53142" transform="rotate(-0 127.669745 201.53142)">2017</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #374151" x="510.999578" y="36.717057" transform="rotate(-0 510.999578 36.717057)">2019</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #374151" x="101.877251" y="177.830803" transform="rotate(-0 101.877251 177.830803)">2023</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #374151" x="167.692582" y="145.847799" transform="rotate(-0 167.692582 145.847799)">2024</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="471.082778" y="84.331209" transform="rotate(-0 471.082778 84.331209)">2025</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #374151" x="548.354225" y="240.307931" transform="rotate(-0 548.354225 240.307931)">Fit 2015–2024: r = 0.70, n = 10 years, R² 0.48</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #1f2a44" x="548.354225" y="221.643586" transform="rotate(-0 548.354225 221.643586)">2025 (not in the fit): 144.4 actual, 145.3 from the fit</text>
+   </g>
+   <g id="PathCollection_2">
+    <defs>
+     <path id="m28d0857d86" d="M 0 5.91608 
+C 1.568963 5.91608 3.073876 5.292724 4.1833 4.1833 
+C 5.292724 3.073876 5.91608 1.568963 5.91608 0 
+C 5.91608 -1.568963 5.292724 -3.073876 4.1833 -4.1833 
+C 3.073876 -5.292724 1.568963 -5.91608 0 -5.91608 
+C -1.568963 -5.91608 -3.073876 -5.292724 -4.1833 -4.1833 
+C -5.292724 -3.073876 -5.91608 -1.568963 -5.91608 0 
+C -5.91608 1.568963 -5.292724 3.073876 -4.1833 4.1833 
+C -3.073876 5.292724 -1.568963 5.91608 0 5.91608 
+z
+" style="stroke: #ffffff; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#pb015858c4e)">
+     <use xlink:href="#m28d0857d86" x="462.082778" y="71.50284" style="fill: #0a66c2; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb015858c4e">
+   <rect x="65.412" y="8.964" width="489.168" height="240.534"/>
+  </clipPath>
+ </defs>
+</svg>

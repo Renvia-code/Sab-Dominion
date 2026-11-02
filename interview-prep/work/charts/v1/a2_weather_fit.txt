@@ -1,0 +1,2 @@
+fit 2015-2024: intercept 104.2616 slope 0.051820 r 0.6973 r2 0.4862
+source: data/output/storm_vs_saidi.csv after D22 (re-exported 08:19); D findings.md B0 D22 table

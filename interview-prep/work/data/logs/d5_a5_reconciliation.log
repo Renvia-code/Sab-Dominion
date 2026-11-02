@@ -1,0 +1,37 @@
+## A5 Reconciliation: rebuilt against reported
+
+**Finding.** Every headline number rebuilt from public files matches its published source: the 3-year SAIDI (130.2 and 133.0 against the reported 130 and 133), the 2024 and 2025 EIA-861 values to the published decimals, the storm county-days rebuilt from the raw NOAA files, and 2025 commercial sales. EAGLE-I, an independent source built from utilities' outage maps, tracks EIA's SAIDI only loosely (2015-2024, n = 10: r = 0.65 on non-major days, p = 0.04; r = 0.53 for all events, p = 0.12) and sits at a different level, because it counts every utility in the 103 counties, uses a proxy major-event rule and misses failed collection runs. EAGLE-I is therefore used for where and when outages happened, never to restate Dominion's SAIDI.
+
+**Chart-ready table:** `interview-prep/work/data/output/a5_reconciliation.csv`.
+
+| Metric | Rebuilt | Reported | Difference | Reported source | Verdict |
+|---|---:|---:|---:|---|---|
+| 3-year SAIDI ex-MED, 2022-2024 | 130.200 | 130.000 | +0.200 | Dominion annual report (rounded); R checks the page | MATCH (rounding) |
+| 3-year SAIDI ex-MED, 2023-2025 | 133.000 | 133.000 | +0.000 | Dominion annual report (rounded); R checks the page | MATCH (rounding) |
+| SAIDI ex-MED 2025 | 144.400 | 144.400 | +0.000 | EIA-861 2025 final file | MATCH |
+| SAIFI ex-MED 2025 | 1.320 | 1.320 | +0.000 | EIA-861 2025 final file | MATCH |
+| CAIDI ex-MED 2025 | 109.394 | 109.394 | +0.000 | EIA-861 2025 final file | MATCH |
+| SAIDI all events 2025 | 306.700 | 306.700 | +0.000 | EIA-861 2025 final file | MATCH |
+| SAIDI ex-MED 2024 | 131.300 | 131.300 | +0.000 | EIA-861 2024 file (repo uses PUDL) | MATCH |
+| SAIFI ex-MED 2024 | 1.210 | 1.210 | +0.000 | EIA-861 2024 file (repo uses PUDL) | MATCH |
+| CAIDI ex-MED 2024 | 108.512 | 108.512 | -0.000 | EIA-861 2024 file (repo uses PUDL) | MATCH |
+| SAIDI all events 2024 | 172.100 | 172.100 | +0.000 | EIA-861 2024 file (repo uses PUDL) | MATCH |
+| Storm county-days 2024 (raw NOAA rebuild) | 465.000 | 465.000 | +0.000 | committed data/output/storm_index.csv | MATCH |
+| Storm county-days 2025 (raw NOAA rebuild) | 796.000 | 796.000 | +0.000 | committed data/output/storm_index.csv | MATCH |
+| Commercial sales 2025, MWh (bundled + delivery) | 64,620,793.000 | 64,620,793.000 | +0.000 | EIA-861 2025 Sales_Ult_Cust (60,088,202 + 4,532,591) | MATCH |
+
+Queries:
+
+```sql
+    year  med_proxy_days  eaglei_min_all  eaglei_min_ex_med  saidi_all  saidi_ex_med
+0   2015             2.0           140.8              121.7    183.103       119.642
+1   2016            15.0           494.4              176.9    199.918       138.225
+2   2017             3.0           197.0              167.5    166.670       117.410
+3   2018            18.0           842.8              200.2    266.763       149.604
+4   2019             5.0           299.6              250.9    260.113       149.874
+5   2020             6.0           349.2              197.4    316.999       140.989
+6   2021            12.0           516.2              213.4    318.788       133.601
+7   2022            14.0           555.2              214.7    421.475       136.047
+8   2023             3.0           244.4              208.3    190.198       123.322
+9   2024            10.0           312.7              201.5    172.100       131.300
+10  2025            15.0           466.8              202.8    306.700       144.400

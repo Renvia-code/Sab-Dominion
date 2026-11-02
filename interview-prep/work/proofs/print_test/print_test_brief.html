@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Print test: brief</title>
+<style>/* Interview brief and question sheet: print stylesheet (US Letter portrait).
+   One family: Segoe UI (300 Light, 350 Semilight, 400 Regular, 600 Semibold).
+   Colour roles from docs/00_conventions.md; see palette.md. */
+
+@font-face { font-family: "Pack Sans"; font-weight: 300; src: local("Segoe UI Light"), local("SegoeUI-Light"); }
+@font-face { font-family: "Pack Sans"; font-weight: 350; src: local("Segoe UI Semilight"), local("SegoeUI-Semilight"); }
+@font-face { font-family: "Pack Sans"; font-weight: 400; src: local("Segoe UI"), local("SegoeUI"); }
+@font-face { font-family: "Pack Sans"; font-weight: 400; font-style: italic; src: local("Segoe UI Italic"), local("SegoeUI-Italic"); }
+@font-face { font-family: "Pack Sans"; font-weight: 600; src: local("Segoe UI Semibold"), local("SegoeUI-Semibold"); }
+@font-face { font-family: "Pack Sans"; font-weight: 700; src: local("Segoe UI Bold"), local("SegoeUI-Bold"); }
+
+:root {
+  --subject: #0A66C2;
+  --context: #B8BCC2;
+  --third: #D5A20B;
+  --dark: #1F2A44;
+  --ink: #1F2A44;
+  --ink-2: #374151;
+  --muted: #6B7280;
+  --rule: #D1D5DB;
+  --grid: #E5E7EB;
+  --tint: #F3F6FA;
+  --subject-tint: #E8F0FB;
+  --paper: #FFFFFF;
+
+  --body: 10.5pt;
+  --body-lh: 15pt;
+  --small: 8.5pt;
+  --small-lh: 11.5pt;
+  --h1: 24pt;
+  --h2: 13.5pt;
+  --hero: 40pt;
+
+  --margin-x: 0.75in;
+  --col-gap: 0.25in;
+}
+
+@page {
+  size: 8.5in 11in;
+  margin: 0.7in 0.75in 0.75in 0.75in;
+  @bottom-left { content: "Dominion Energy Virginia reliability \2014 interview brief"; font: 400 8pt "Pack Sans", "Segoe UI", sans-serif; color: #6B7280; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 400 8pt "Pack Sans", "Segoe UI", sans-serif; color: #6B7280; }
+}
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  font-family: "Pack Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  color: var(--ink);
+  background: var(--paper);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  hyphens: manual;
+}
+
+/* One idea per page */
+.page { break-after: page; position: relative; }
+.page:last-child { break-after: auto; }
+
+h1, h2, h3 { margin: 0; font-weight: 600; color: var(--ink); text-wrap: balance; }
+h1 { font-size: var(--h1); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 10pt; }
+h2 { font-size: var(--h2); line-height: 1.25; margin: 16pt 0 5pt; }
+h3 { font-size: var(--body); line-height: var(--body-lh); margin: 10pt 0 2pt; }
+p { margin: 0 0 7pt; text-wrap: pretty; orphans: 3; widows: 3; }
+.lede { font-size: 13pt; line-height: 18pt; font-weight: 350; color: var(--ink-2); max-width: 6.2in; margin-bottom: 14pt; }
+.small, figcaption, .source { font-size: var(--small); line-height: var(--small-lh); color: var(--muted); }
+.source { margin-top: 3pt; }
+strong { font-weight: 600; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Section marker: page number of the section in the brief, not an uppercase eyebrow */
+.section-no { font-size: var(--small); color: var(--subject); font-weight: 600; margin-bottom: 4pt; }
+
+/* Hero numbers set as typography */
+.figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--col-gap); margin: 12pt 0 16pt; }
+.figure .value { font-size: var(--hero); line-height: 1; font-weight: 300; letter-spacing: -0.02em; }
+.figure .value.subject { color: var(--subject); }
+.figure .label { font-size: var(--small); line-height: var(--small-lh); color: var(--ink-2); margin-top: 5pt; }
+.figure { border-top: 1.5pt solid var(--ink); padding-top: 6pt; }
+.figure.is-subject { border-top-color: var(--subject); }
+
+/* Tables: hairline rules, tabular figures, no zebra */
+table { width: 100%; border-collapse: collapse; font-size: 9pt; line-height: 12pt; margin: 6pt 0 4pt; }
+th { text-align: left; font-weight: 600; color: var(--ink); border-bottom: 1pt solid var(--ink); padding: 3pt 6pt 3pt 0; vertical-align: bottom; }
+td { border-bottom: 0.5pt solid var(--rule); padding: 3pt 6pt 3pt 0; vertical-align: top; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+tr.is-subject td { background: var(--subject-tint); }
+
+figure { margin: 8pt 0 10pt; }
+figure svg { display: block; width: 100%; height: auto; }
+
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
+.note { border-left: 2pt solid var(--subject); padding: 2pt 0 2pt 9pt; color: var(--ink-2); margin: 8pt 0; }
+.placeholder { background: #FFF6D6; padding: 0 2pt; border-radius: 2pt; }
+</style></head>
+<body>
+<section class="page">
+  <div class="section-no">1 · The project on one page</div>
+  <h1>Outage minutes rose because customers lost power more often, not because outages lasted longer</h1>
+  <p class="lede">Print test of the brief’s type scale: lede 13&nbsp;pt Semilight, body 10.5&nbsp;pt, small 8.5&nbsp;pt,
+  hero figures 40&nbsp;pt Light. Figures below are the repo’s verified 2023→2025 EIA-861 values.</p>
+  <div class="figures">
+    <div class="figure"><div class="value">+17%</div><div class="label">SAIDI ex-MED, 123.3 → 144.4 minutes per customer</div></div>
+    <div class="figure is-subject"><div class="value subject">+13%</div><div class="label">SAIFI ex-MED, 1.165 → 1.320 interruptions per customer</div></div>
+    <div class="figure"><div class="value">+3%</div><div class="label">CAIDI ex-MED, 105.9 → 109.4 minutes per interruption</div></div>
+  </div>
+  <h2>Body text at 10.5&nbsp;pt</h2>
+  <p>Dominion reported that its rolling three-year average SAIDI rose from about 130 minutes (2022–2024) to 133 minutes
+  (2023–2025), excluding major event days. These are overlapping rolling averages, not two separate periods. The public
+  EIA-861 data shows the same direction and lets you split the change into frequency and duration: SAIDI&nbsp;=&nbsp;SAIFI&nbsp;×&nbsp;CAIDI,
+  so ln(SAIDI ratio)&nbsp;=&nbsp;ln(SAIFI ratio)&nbsp;+&nbsp;ln(CAIDI ratio).</p>
+  <figure><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="496.8pt" height="172.8pt" viewBox="0 0 496.8 172.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-01T07:11:53.335886</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 172.8 
+L 496.8 172.8 
+L 496.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 34.776 148.608 
+L 437.184 148.608 
+L 437.184 13.824 
+L 34.776 13.824 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="49.68" y="160.796232" transform="rotate(-0 49.68 160.796232)">2015</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="86.94" y="160.796232" transform="rotate(-0 86.94 160.796232)">2016</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="124.2" y="160.796232" transform="rotate(-0 124.2 160.796232)">2017</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="161.46" y="160.796232" transform="rotate(-0 161.46 160.796232)">2018</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="198.72" y="160.796232" transform="rotate(-0 198.72 160.796232)">2019</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="235.98" y="160.796232" transform="rotate(-0 235.98 160.796232)">2020</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="273.24" y="160.796232" transform="rotate(-0 273.24 160.796232)">2021</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="310.5" y="160.796232" transform="rotate(-0 310.5 160.796232)">2022</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="347.76" y="160.796232" transform="rotate(-0 347.76 160.796232)">2023</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="385.02" y="160.796232" transform="rotate(-0 385.02 160.796232)">2024</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11"/>
+     <g id="text_11">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="422.28" y="160.796232" transform="rotate(-0 422.28 160.796232)">2025</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_12">
+      <path d="M 34.776 121.6512 
+L 437.184 121.6512 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_13"/>
+     <g id="text_12">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="28.776" y="124.745316" transform="rotate(-0 28.776 124.745316)">1.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14">
+      <path d="M 34.776 94.6944 
+L 437.184 94.6944 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_13">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="28.776" y="97.788516" transform="rotate(-0 28.776 97.788516)">1.1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_16">
+      <path d="M 34.776 67.7376 
+L 437.184 67.7376 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_17"/>
+     <g id="text_14">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="28.776" y="70.831716" transform="rotate(-0 28.776 70.831716)">1.2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18">
+      <path d="M 34.776 40.7808 
+L 437.184 40.7808 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_19"/>
+     <g id="text_15">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="28.776" y="43.874916" transform="rotate(-0 28.776 43.874916)">1.3</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_20">
+      <path d="M 34.776 13.824 
+L 437.184 13.824 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.7; stroke-linecap: round"/>
+     </g>
+     <g id="line2d_21"/>
+     <g id="text_16">
+      <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #6b7280" x="28.776" y="16.918116" transform="rotate(-0 28.776 16.918116)">1.4</text>
+     </g>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #6b7280" x="9.8135" y="81.216" transform="rotate(-90 9.8135 81.216)">Interruptions per customer</text>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <path d="M 49.68 79.86816 
+L 86.94 47.52 
+L 124.2 94.6944 
+L 161.46 39.972096 
+L 198.72 55.876608 
+L 235.98 51.56352 
+L 273.24 77.981184 
+L 310.5 68.007168 
+L 347.76 77.17248 
+L 385.02 65.04192 
+L 422.28 35.38944 
+" clip-path="url(#p027029a5b2)" style="fill: none; stroke: #0a66c2; stroke-width: 1.56; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 34.776 148.608 
+L 437.184 148.608 
+" style="fill: none; stroke: #b8bcc2; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f2a44" x="198.72" y="48.876608" transform="rotate(-0 198.72 48.876608)">1.24</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f2a44" x="347.76" y="70.17248" transform="rotate(-0 347.76 70.17248)">1.165</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 8.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f2a44" x="422.28" y="28.38944" transform="rotate(-0 422.28 28.38944)">1.32</text>
+   </g>
+   <g id="line2d_23">
+    <defs>
+     <path id="m74c7d264ae" d="M 0 2.75 
+C 0.729309 2.75 1.428845 2.460243 1.944544 1.944544 
+C 2.460243 1.428845 2.75 0.729309 2.75 0 
+C 2.75 -0.729309 2.460243 -1.428845 1.944544 -1.944544 
+C 1.428845 -2.460243 0.729309 -2.75 0 -2.75 
+C -0.729309 -2.75 -1.428845 -2.460243 -1.944544 -1.944544 
+C -2.460243 -1.428845 -2.75 -0.729309 -2.75 0 
+C -2.75 0.729309 -2.460243 1.428845 -1.944544 1.944544 
+C -1.428845 2.460243 -0.729309 2.75 0 2.75 
+z
+" style="stroke: #ffffff; stroke-width: 1.2"/>
+    </defs>
+    <g clip-path="url(#p027029a5b2)">
+     <use xlink:href="#m74c7d264ae" x="198.72" y="55.876608" style="fill: #0a66c2; stroke: #ffffff; stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="line2d_24">
+    <g clip-path="url(#p027029a5b2)">
+     <use xlink:href="#m74c7d264ae" x="347.76" y="77.17248" style="fill: #0a66c2; stroke: #ffffff; stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="line2d_25">
+    <g clip-path="url(#p027029a5b2)">
+     <use xlink:href="#m74c7d264ae" x="422.28" y="35.38944" style="fill: #0a66c2; stroke: #ffffff; stroke-width: 1.2"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p027029a5b2">
+   <rect x="34.776" y="13.824" width="402.408" height="134.784"/>
+  </clipPath>
+ </defs>
+</svg>
+<figcaption>SAIFI ex-MED, Dominion Energy Virginia, 2015–2025. Labels on 2019, 2023 and 2025 only.
+  Source: EIA-861 (2025 final), PUDL 2015–2024; data/output/storm_vs_saidi.csv.</figcaption></figure>
+  <h2>Pipeline diagram (drawn, not written)</h2>
+  <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496.8 68.4" width="496.8pt" height="68.4pt" role="img" aria-label="Pipeline: public sources to RAW, STG, MART, tests, then Power BI"><rect x="0.0" y="6" width="71.1" height="56.4" rx="4" fill="#FFFFFF" stroke="#B8BCC2" stroke-width="1"/><text x="8.0" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">Public sources</text><text x="8.0" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">EIA-861 · PUDL · NOAA · EIA-930</text><path d="M73.1,34.2 L82.1,34.2" stroke="#6B7280" stroke-width="1"/><path d="M79.1,31.2 L83.1,34.2 L79.1,37.2" fill="none" stroke="#6B7280" stroke-width="1"/><rect x="85.1" y="6" width="71.1" height="56.4" rx="4" fill="#FFFFFF" stroke="#B8BCC2" stroke-width="1"/><text x="93.1" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">RAW</text><text x="93.1" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">as published, all text</text><path d="M158.3,34.2 L167.3,34.2" stroke="#6B7280" stroke-width="1"/><path d="M164.3,31.2 L168.3,34.2 L164.3,37.2" fill="none" stroke="#6B7280" stroke-width="1"/><rect x="170.3" y="6" width="71.1" height="56.4" rx="4" fill="#FFFFFF" stroke="#B8BCC2" stroke-width="1"/><text x="178.3" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">STG</text><text x="178.3" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">typed, cleaned</text><path d="M243.4,34.2 L252.4,34.2" stroke="#6B7280" stroke-width="1"/><path d="M249.4,31.2 L253.4,34.2 L249.4,37.2" fill="none" stroke="#6B7280" stroke-width="1"/><rect x="255.4" y="6" width="71.1" height="56.4" rx="4" fill="#E8F0FB" stroke="#0A66C2" stroke-width="1"/><text x="263.4" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">MART</text><text x="263.4" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">facts, dimensions, views</text><path d="M328.5,34.2 L337.5,34.2" stroke="#6B7280" stroke-width="1"/><path d="M334.5,31.2 L338.5,34.2 L334.5,37.2" fill="none" stroke="#6B7280" stroke-width="1"/><rect x="340.5" y="6" width="71.1" height="56.4" rx="4" fill="#FFFFFF" stroke="#B8BCC2" stroke-width="1"/><text x="348.5" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">Tests</text><text x="348.5" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">T1–T12</text><path d="M413.7,34.2 L422.7,34.2" stroke="#6B7280" stroke-width="1"/><path d="M419.7,31.2 L423.7,34.2 L419.7,37.2" fill="none" stroke="#6B7280" stroke-width="1"/><rect x="425.7" y="6" width="71.1" height="56.4" rx="4" fill="#FFFFFF" stroke="#B8BCC2" stroke-width="1"/><text x="433.7" y="32.2" font-family="Segoe UI" font-weight="600" font-size="9.5" fill="#1F2A44">Power BI</text><text x="433.7" y="45.2" font-family="Segoe UI" font-size="7.5" fill="#374151">Import, measures</text></svg></figure>
+  <h2>Sequential ramp, light to dark (greyscale proof must read in order)</h2>
+  <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496.8 54.0" width="496.8pt" height="54.0pt"><rect x="1.0" y="0" width="53.2" height="29.7" rx="2" fill="#EAF3FE"/><text x="27.6" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#EAF3FE</text><rect x="56.2" y="0" width="53.2" height="29.7" rx="2" fill="#C9E0FE"/><text x="82.8" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#C9E0FE</text><rect x="111.4" y="0" width="53.2" height="29.7" rx="2" fill="#AACAF4"/><text x="138.0" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#AACAF4</text><rect x="166.6" y="0" width="53.2" height="29.7" rx="2" fill="#86B1E8"/><text x="193.2" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#86B1E8</text><rect x="221.8" y="0" width="53.2" height="29.7" rx="2" fill="#6298DC"/><text x="248.4" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#6298DC</text><rect x="277.0" y="0" width="53.2" height="29.7" rx="2" fill="#3C7ECF"/><text x="303.6" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#3C7ECF</text><rect x="332.2" y="0" width="53.2" height="29.7" rx="2" fill="#0A66C2"/><text x="358.8" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#0A66C2</text><rect x="387.4" y="0" width="53.2" height="29.7" rx="2" fill="#00519F"/><text x="414.0" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#00519F</text><rect x="442.6" y="0" width="53.2" height="29.7" rx="2" fill="#013C78"/><text x="469.2" y="44.3" text-anchor="middle" font-family="Segoe UI" font-size="7.5" fill="#6B7280">#013C78</text></svg></figure>
+  <table>
+    <thead><tr><th>Measure</th><th class="r">2023</th><th class="r">2025</th><th class="r">Change</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td>SAIDI ex-MED</td><td class="r">123.3</td><td class="r">144.4</td><td class="r">+17%</td><td>outage minutes per customer per year</td></tr>
+      <tr class="is-subject"><td>SAIFI ex-MED</td><td class="r">1.165</td><td class="r">1.320</td><td class="r">+13%</td><td>interruptions per customer per year</td></tr>
+      <tr><td>CAIDI ex-MED</td><td class="r">105.9</td><td class="r">109.4</td><td class="r">+3%</td><td>minutes per interruption</td></tr>
+    </tbody>
+  </table>
+  <p class="note">A placeholder the candidate fills in looks like this: <span class="placeholder">[you: start date]</span>.</p>
+</section>
+<section class="page">
+  <h1>Second page: running footer and page counter</h1>
+  <p class="small">Small text at 8.5&nbsp;pt for captions and source lines. Curly quotes “like this”, an ellipsis … and a
+  non-breaking space in 26,000&nbsp;MW.</p>
+</section>
+</body></html>

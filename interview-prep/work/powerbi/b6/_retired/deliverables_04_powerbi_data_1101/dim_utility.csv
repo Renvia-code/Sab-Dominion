@@ -1,0 +1,1284 @@
+utility_id,state,utility_key,utility_name,entity_type,peer_group
+10000,KS,10000|KS,Evergy Metro,Investor Owned,Other
+10000,MO,10000|MO,Evergy Metro,Investor Owned,Other
+10005,KS,10005|KS,"Evergy Kansas South, Inc",Investor Owned,Other
+10009,TX,10009|TX,Karnes Electric Coop Inc,Cooperative,Other
+10019,KS,10019|KS,FreeState Electric Coop,Cooperative,Other
+10056,WI,10056|WI,City of Kaukauna (WI),Municipal,Other
+10063,UT,10063|UT,Kaysville City Corporation,Municipal,Other
+10071,HI,10071|HI,Kauai Island Utility Cooperative,Cooperative,Other
+1009,MN,1009|MN,City of Austin - (MN),Municipal,Other
+1015,TX,1015|TX,Austin Energy,Municipal,Other
+10170,OK,10170|OK,"Kiamichi Electric Coop, Inc",Cooperative,Other
+10171,KY,10171|KY,Kentucky Utilities Co,Investor Owned,Other
+10171,VA,10171|VA,Kentucky Utilities Co,Investor Owned,Other
+10210,AK,10210|AK,Ketchikan Public Utilities,Municipal,Other
+10226,FL,10226|FL,"Utility Board of the City of Key West, F",Municipal,Other
+10326,WA,10326|WA,PUD No 1 of Kittitas County,Political Subdivision,Other
+10331,TN,10331|TN,Kingsport Power Co,Investor Owned,Other
+10345,NC,10345|NC,City of Kinston - (NC),Municipal,Other
+10370,MO,10370|MO,City of Kirkwood - (MO),Municipal,Other
+10376,FL,10376|FL,Kissimmee Utility Authority,Municipal,Other
+10378,NM,10378|NM,"Kit Carson Electric Coop, Inc",Cooperative,Other
+10393,WA,10393|WA,PUD No 1 of Klickitat County,Political Subdivision,Other
+10421,TN,10421|TN,Knoxville Utilities Board,Municipal,Other
+10448,IN,10448|IN,Kosciusko County Rural E M C,Cooperative,Other
+10454,ID,10454|ID,Kootenai Electric Cooperative,Cooperative,Other
+1050,CA,1050|CA,City of Azusa,Municipal,Other
+10539,CO,10539|CO,"La Plata Electric Assn, Inc",Cooperative,Other
+10558,SD,10558|SD,"LaCreek Electric Assn, Inc",Cooperative,Other
+10562,IN,10562|IN,Lagrange County Rural E M C,Cooperative,Other
+10579,TN,10579|TN,City of LaFollette,Municipal,Other
+10599,OK,10599|OK,"Lake Region Electric Coop, Inc - (OK)",Cooperative,Other
+10603,MO,10603|MO,"Laclede Electric Coop, Inc",Cooperative,Other
+10618,MN,10618|MN,Lake Region Electric Cooperative - (MN),Cooperative,Other
+10620,FL,10620|FL,City of Lake Worth Beach - (FL),Municipal,Other
+10623,FL,10623|FL,City of Lakeland - (FL),Municipal,Other
+10624,GA,10624|GA,Southern Rivers Energy,Cooperative,Other
+10625,TX,10625|TX,"Lamb County Electric Coop, Inc",Cooperative,Other
+1062,VA,1062|VA,BARC Electric Coop Inc,Cooperative,Virginia co-op
+10633,CO,10633|CO,City of Lamar - (CO),Municipal,Other
+10649,TX,10649|TX,Lamar County Elec Coop Assn,Cooperative,Other
+10668,OH,10668|OH,Licking Rural Electric Inc,Cooperative,Other
+10681,OR,10681|OR,Lane Electric Coop Inc,Cooperative,Other
+10697,MN,10697|MN,Lake Country Power,Cooperative,Other
+10704,MI,10704|MI,City of Lansing - (MI),Municipal,Other
+10724,CA,10724|CA,Lassen Municipal Utility District,Municipal,Other
+10768,SC,10768|SC,"Laurens Electric Coop, Inc",Cooperative,Other
+10798,IN,10798|IN,Lawrenceburg Municipal Utils,Municipal,Other
+10801,KS,10801|KS,"Leavenworth-Jefferson E C, Inc",Cooperative,Other
+10814,MN,10814|MN,City of Le Sueur - (MN),Municipal,Other
+10817,NM,10817|NM,"Lea County Electric Coop, Inc - (NM)",Cooperative,Other
+10817,TX,10817|TX,"Lea County Electric Coop, Inc - (NM)",Cooperative,Other
+10857,FL,10857|FL,"Lee County Electric Coop, Inc - (FL)",Cooperative,Other
+10868,FL,10868|FL,City of Leesburg - (FL),Municipal,Other
+10879,UT,10879|UT,Lehi City Corporation,Municipal,Other
+108,WI,108|WI,Adams-Columbia Electric Coop,Cooperative,Other
+10906,TN,10906|TN,City of Lenoir - (TN),Municipal,Other
+10944,WA,10944|WA,PUD No 1 of Lewis County - (WA),Political Subdivision,Other
+10960,TN,10960|TN,City of Lewisburg - (TN),Municipal,Other
+10966,NC,10966|NC,City of Lexington - (NC),Municipal,Other
+11011,KY,11011|KY,Licking Valley Rural E C C,Cooperative,Other
+11018,NE,11018|NE,Lincoln Electric System,Municipal,Other
+11022,MT,11022|MT,"Lincoln Electric Coop, Inc",Cooperative,Other
+11053,IA,11053|IA,Corridor Energy Cooperative,Cooperative,Other
+11124,CA,11124|CA,City of Lodi - (CA),Municipal,Other
+11135,UT,11135|UT,City of Logan - (UT),Municipal,Other
+11148,CA,11148|CA,City of Lompoc - (CA),Municipal,Other
+11171,NY,11171|NY,Long Island Power Authority,State,Other
+11187,CO,11187|CO,City of Longmont,Municipal,Other
+11200,OH,11200|OH,"Lorain-Medina R E C, Inc",Cooperative,Other
+11203,OH,11203|OH,Logan County Coop Power & Light,Cooperative,Other
+11204,NM,11204|NM,Los Alamos County - (NM),Municipal,Other
+11208,CA,11208|CA,Los Angeles Department of Water & Power,Municipal,Other
+11241,LA,11241|LA,Entergy Louisiana LLC,Investor Owned,Other
+11249,KY,11249|KY,Louisville Gas & Electric Co,Investor Owned,Other
+11251,NE,11251|NE,Loup River Public Power Dist,Political Subdivision,Other
+11256,CO,11256|CO,City of Loveland - (CO),Municipal,Other
+11268,MI,11268|MI,City of Lowell - (MI),Municipal,Other
+11272,MT,11272|MT,"Lower Yellowstone R E A, Inc",Cooperative,Other
+11272,ND,11272|ND,"Lower Yellowstone R E A, Inc",Cooperative,Other
+11291,NC,11291|NC,Lumbee River Elec Member Corp,Cooperative,Other
+11292,TX,11292|TX,City of Lubbock - (TX),Municipal,Other
+11298,IA,11298|IA,Lyon Rural Electric Coop,Cooperative,Other
+11318,NC,11318|NC,City of Lumberton - (NC),Municipal,Other
+11332,MN,11332|MN,City of Luverne - (MN),Municipal,Other
+11345,MN,11345|MN,"Lyon-Lincoln Electric Cooperative, Inc.",Cooperative,Other
+11355,SC,11355|SC,"Lynches River Elec Coop, Inc",Cooperative,Other
+11364,TX,11364|TX,"Lyntegar Electric Coop, Inc",Cooperative,Other
+11460,MO,11460|MO,City of Macon - (MO),Municipal,Other
+11463,MO,11463|MO,Macon Electric Coop,Cooperative,Other
+11476,NJ,11476|NJ,Borough of Madison - (NJ),Municipal,Other
+11479,WI,11479|WI,Madison Gas & Electric Co,Investor Owned,Other
+1149,AL,1149|AL,Baldwin County El Member Corp,Cooperative,Other
+11501,TX,11501|TX,Magic Valley Electric Coop Inc,Cooperative,Other
+11519,MS,11519|MS,Magnolia Electric Power Assn,Cooperative,Other
+11522,ME,11522|ME,Maine Public Service Co,Investor Owned,Other
+11560,VA,11560|VA,City of Manassas - (VA),Municipal,Other
+11571,WI,11571|WI,Manitowoc Public Utilities,Municipal,Other
+11586,MA,11586|MA,Town of Mansfield - (MA),Municipal,Other
+11624,MA,11624|MA,City of Marblehead - (MA),Municipal,Other
+11646,GA,11646|GA,City of Marietta - (GA),Municipal,Other
+1167,MD,1167|MD,Baltimore Gas & Electric Co,Investor Owned,Mid-Atlantic IOU peer
+11691,OK,11691|OK,City of Marlow - (OK),Municipal,Other
+11693,SC,11693|SC,"Marlboro Electric Coop, Inc",Cooperative,Other
+11701,MI,11701|MI,City of Marquette - (MI),Municipal,Other
+1170,SC,1170|SC,Bamberg Board of Public Works,Municipal,Other
+11731,MN,11731|MN,City of Marshall - (MN),Municipal,Other
+11732,MO,11732|MO,City of Marshall - (MO),Municipal,Other
+11740,WI,11740|WI,City of Marshfield - (WI),Municipal,Other
+1175,TX,1175|TX,"Bandera Electric Coop, Inc",Cooperative,Other
+11770,VA,11770|VA,City of Martinsville - (VA),Municipal,Other
+11788,IA,11788|IA,Consumers Energy Coop - (IA),Cooperative,Other
+11789,TN,11789|TN,Maryville Utilities,Municipal,Other
+1179,ME,1179|ME,Versant Power,Investor Owned,Other
+11804,MA,11804|MA,Massachusetts Electric Co,Investor Owned,Other
+11811,NY,11811|NY,Town of Massena - (NY),Municipal,Other
+1181,WI,1181|WI,Village of Bangor - (WI),Municipal,Other
+11824,AK,11824|AK,Matanuska Electric Assn Inc,Cooperative,Other
+11843,HI,11843|HI,Maui Electric Co Ltd,Investor Owned,Other
+11910,MN,11910|MN,McLeod Cooperative Power Assn,Cooperative,Other
+12087,ND,12087|ND,McKenzie Electric Coop Inc,Cooperative,Other
+12186,TN,12186|TN,McMinnville Electric System,Municipal,Other
+12187,OR,12187|OR,City of McMinnville - (OR),Municipal,Other
+12199,MT,12199|MT,Montana-Dakota Utilities Co,Investor Owned,Other
+12199,ND,12199|ND,Montana-Dakota Utilities Co,Investor Owned,Other
+12199,SD,12199|SD,Montana-Dakota Utilities Co,Investor Owned,Other
+12199,WY,12199|WY,Montana-Dakota Utilities Co,Investor Owned,Other
+12208,KS,12208|KS,City of McPherson - (KS),Municipal,Other
+12227,MN,12227|MN,Meeker Coop Light & Power Assn,Cooperative,Other
+12243,KY,12243|KY,Meade County Rural E C C,Cooperative,Other
+12260,VA,12260|VA,Mecklenburg Electric Cooperative,Cooperative,Virginia co-op
+12268,TX,12268|TX,"Medina Electric Coop, Inc",Cooperative,Other
+12293,TN,12293|TN,City of Memphis - (TN),Municipal,Other
+12296,MA,12296|MA,Town of Merrimac - (MA),Municipal,Other
+12298,WI,12298|WI,City of Menasha - (WI),Municipal,Other
+12301,ND,12301|ND,Nodak Electric Coop Inc,Cooperative,Other
+12330,TN,12330|TN,Meriwether Lewis Electric Coop,Cooperative,Other
+1233,MN,1233|MN,City of Barnesville - (MN),Municipal,Other
+12341,IA,12341|IA,MidAmerican Energy Co,Investor Owned,Other
+12341,IL,12341|IL,MidAmerican Energy Co,Investor Owned,Other
+12341,SD,12341|SD,MidAmerican Energy Co,Investor Owned,Other
+12351,AZ,12351|AZ,City of Mesa - (AZ),Municipal,Other
+12377,MI,12377|MI,Midwest Energy Cooperative - (MI),Cooperative,Other
+12377,OH,12377|OH,Midwest Energy Cooperative - (MI),Cooperative,Other
+12390,PA,12390|PA,Metropolitan Edison Co,Investor Owned,Other
+12395,IL,12395|IL,Menard Electric Coop,Cooperative,Other
+12439,OR,12439|OR,"Midstate Electric Coop, Inc",Cooperative,Other
+12450,IA,12450|IA,Midland Power Coop,Cooperative,Other
+12452,TX,12452|TX,Mid-South Electric Coop Assn,Cooperative,Other
+12462,SC,12462|SC,Mid-Carolina Electric Coop Inc,Cooperative,Other
+12463,MT,12463|MT,"Mid-Yellowstone Elec Coop, Inc",Cooperative,Other
+12470,TN,12470|TN,Middle Tennessee E M C,Cooperative,Other
+12473,MA,12473|MA,Town of Middleborough - (MA),Municipal,Other
+12515,OH,12515|OH,"Midwest Electric, Inc - (OH)",Cooperative,Other
+1251,WI,1251|WI,Barron Electric Coop,Cooperative,Other
+12524,KS,12524|KS,Midwest Energy Inc - (KS),Cooperative,Other
+12532,TN,12532|TN,City of Milan - (TN),Municipal,Other
+12539,NE,12539|NE,Midwest Electric Member Corp - (NE),Cooperative,Other
+12540,DE,12540|DE,City of Milford - (DE),Municipal,Other
+12546,MN,12546|MN,Mille Lacs Energy Cooperative,Cooperative,Other
+12642,IA,12642|IA,Maquoketa Valley Rrl Elec Coop,Cooperative,Other
+12647,MN,12647|MN,"ALLETE, Inc.",Investor Owned,Other
+12651,MN,12651|MN,Minnesota Valley Electric Coop,Cooperative,Other
+12660,OH,12660|OH,Village of Minster - (OH),Municipal,Other
+12685,MS,12685|MS,Entergy Mississippi LLC,Investor Owned,Other
+12686,MS,12686|MS,Mississippi Power Co,Investor Owned,Other
+12692,ID,12692|ID,"Missoula Electric Coop, Inc",Cooperative,Other
+12692,MT,12692|MT,"Missoula Electric Coop, Inc",Cooperative,Other
+12698,MO,12698|MO,Evergy Missouri West,Investor Owned,Other
+12706,GA,12706|GA,Mitchell Electric Member Corp,Cooperative,Other
+1273,TX,1273|TX,"Bartlett Electric Coop, Inc",Cooperative,Other
+12745,CA,12745|CA,Modesto Irrigation District,Political Subdivision,Other
+12782,MO,12782|MO,City of Monett - (MO),Municipal,Other
+12796,WV,12796|WV,Monongahela Power Co,Investor Owned,Other
+12801,NC,12801|NC,City of Monroe - (NC),Municipal,Other
+12803,IL,12803|IL,"Monroe County Elec Coop, Inc",Cooperative,Other
+12825,MT,12825|MT,NorthWestern Energy LLC - (MT),Investor Owned,Other
+1283,IN,1283|IN,Bartholomew County Rural E M C,Cooperative,Other
+12860,CO,12860|CO,Morgan County Rural Elec Assn,Cooperative,Other
+12866,CO,12866|CO,Moon Lake Electric Assn Inc,Cooperative,Other
+12866,UT,12866|UT,Moon Lake Electric Assn Inc,Cooperative,Other
+12894,MN,12894|MN,City of Moorhead - (MN),Municipal,Other
+12901,NM,12901|NM,Mora-San Miguel Elec Coop,Cooperative,Other
+12929,IN,12929|IN,South Central Indiana REMC,Cooperative,Other
+12944,NC,12944|NC,City of Morganton - (NC),Municipal,Other
+12988,TN,12988|TN,City of Morristown - (TN),Municipal,Other
+12989,VT,12989|VT,Village of Morrisville - (VT),Municipal,Other
+12990,OH,12990|OH,Consolidated Cooperative,Cooperative,Other
+1300,FL,1300|FL,City of Bartow - (FL),Municipal,Other
+1301,MO,1301|MO,"Barton County Elec Coop, Inc",Cooperative,Other
+13027,NC,13027|NC,"Mountain Electric Coop, Inc",Cooperative,Other
+13027,TN,13027|TN,"Mountain Electric Coop, Inc",Cooperative,Other
+13029,KS,13029|KS,City of Moundridge - (KS),Municipal,Other
+13032,IL,13032|IL,Mt Carmel Public Utility Co,Investor Owned,Other
+13033,FL,13033|FL,City of Mount Dora - (FL),Municipal,Other
+13036,WI,13036|WI,Village of Mt. Horeb - (WI),Municipal,Other
+13050,CO,13050|CO,"Mountain Parks Electric, Inc",Cooperative,Other
+13058,CO,13058|CO,"Mountain View Elec Assn, Inc",Cooperative,Other
+13119,TN,13119|TN,City of Murfreesboro,Municipal,Other
+13137,UT,13137|UT,City of Murray - (UT),Municipal,Other
+13138,KY,13138|KY,City of Murray - (KY),Municipal,Other
+13143,IA,13143|IA,Board of Water Electric & Communications,Municipal,Other
+13145,WI,13145|WI,Village of Muscoda - (WI),Municipal,Other
+13196,ND,13196|ND,Northern Plains Electric Coop,Cooperative,Other
+13206,MA,13206|MA,Nantucket Electric Co,Investor Owned,Other
+13208,IL,13208|IL,City of Naperville - (IL),Municipal,Other
+13209,OH,13209|OH,City of Napoleon - (OH),Municipal,Other
+13214,RI,13214|RI,The Narragansett Electric Co,Investor Owned,Other
+13216,TN,13216|TN,Nashville Electric Service,Municipal,Other
+13227,MS,13227|MS,Natchez Trace Elec Power Assn,Cooperative,Other
+1325,IL,1325|IL,City of Batavia - (IL),Municipal,Other
+13314,AZ,13314|AZ,Navajo Tribal Utility Authority,State,Other
+13314,NM,13314|NM,Navajo Tribal Utility Authority,State,Other
+13314,UT,13314|UT,Navajo Tribal Utility Authority,State,Other
+13337,NE,13337|NE,Nebraska Public Power District,Political Subdivision,Other
+13386,KS,13386|KS,"Nemaha-Marshall E C A, Inc",Cooperative,Other
+13387,WA,13387|WA,"Nespelem Valley Elec Coop, Inc",Cooperative,Other
+13407,NV,13407|NV,Nevada Power Co,Investor Owned,Other
+13416,NC,13416|NC,City of New Bern - (NC),Municipal,Other
+13418,TX,13418|TX,City of New Braunfels - (TX),Municipal,Other
+13424,DE,13424|DE,New Castle Municipal Serv Comm,Municipal,Other
+13441,NH,13441|NH,New Hampshire Elec Coop Inc,Cooperative,Other
+13448,WI,13448|WI,City of New Holstein - (WI),Municipal,Other
+13471,WV,13471|WV,City of New Martinsville - (WV),Municipal,Other
+13478,LA,13478|LA,"Entergy New Orleans, LLC",Investor Owned,Other
+13480,MN,13480|MN,New Prague Utilities Comm,Municipal,Other
+13481,WI,13481|WI,City of New Richmond,Municipal,Other
+13482,NC,13482|NC,New River Light & Power Co,State,Other
+13485,FL,13485|FL,New Smyrna Beach City of,Municipal,Other
+13488,MN,13488|MN,New Ulm Public Utilities Comm,Municipal,Other
+13511,NY,13511|NY,New York State Elec & Gas Corp,Investor Owned,Other
+13519,DE,13519|DE,City of Newark - (DE),Municipal,Other
+13521,FL,13521|FL,City of Newberry - (FL),Municipal,Other
+13524,SC,13524|SC,"Newberry Electric Coop, Inc",Cooperative,Other
+13547,GA,13547|GA,"Newnan Wtr, Sewer & Light Comm",Municipal,Other
+13561,NC,13561|NC,City of Newton - (NC),Municipal,Other
+13563,OH,13563|OH,City of Newton Falls - (OH),Municipal,Other
+13573,NY,13573|NY,Niagara Mohawk Power Corp.,Investor Owned,Other
+13604,MI,13604|MI,City of Niles - (MI),Municipal,Other
+13640,VA,13640|VA,Northern Virginia Elec Coop,Cooperative,Virginia co-op
+13647,IN,13647|IN,Noble County R E M C,Cooperative,Other
+13651,KY,13651|KY,Nolin Rural Electric Coop Corp,Cooperative,Other
+13664,NE,13664|NE,Norris Public Power District,Political Subdivision,Other
+1366,MI,1366|MI,City of Bay City - (MI),Municipal,Other
+13675,IA,13675|IA,Nishnabotna Valley R E C,Cooperative,Other
+13676,AR,13676|AR,"North Arkansas Elec Coop, Inc",Cooperative,Other
+13679,MA,13679|MA,Town of North Attleborough - (MA),Municipal,Other
+13684,MN,13684|MN,Nobles Cooperative Electric,Cooperative,Other
+13685,WY,13685|WY,"Niobrara Electric Assn, Inc",Cooperative,Other
+13690,MO,13690|MO,North Central MO Elec Coop Inc,Cooperative,Other
+13693,OH,13693|OH,"North Central Elec Coop, Inc - (OH)",Cooperative,Other
+13694,ND,13694|ND,"North Central Elec Coop, Inc",Cooperative,Other
+13698,NE,13698|NE,North Central Public Pwr Dist,Political Subdivision,Other
+13700,MN,13700|MN,North Itasca Electric Coop Inc,Cooperative,Other
+13704,OH,13704|OH,"North Western Elec Coop, Inc",Cooperative,Other
+13716,GA,13716|GA,North Georgia Elec Member Corp,Cooperative,Other
+13718,AR,13718|AR,City of North Little Rock - (AR),Municipal,Other
+13730,MN,13730|MN,City of North St Paul - (MN),Municipal,Other
+13731,MN,13731|MN,"North Star Electric Coop, Inc",Cooperative,Other
+13735,MS,13735|MS,Northcentral Mississippi E P A,Cooperative,Other
+13750,SD,13750|SD,"Northern Electric Coop, Inc",Cooperative,Other
+13756,IN,13756|IN,Northern Indiana Pub Serv Co,Investor Owned,Other
+13757,TX,13757|TX,North Plains Electric Coop Inc,Cooperative,Other
+13758,ID,13758|ID,"Northern Lights, Inc",Cooperative,Other
+13758,MT,13758|MT,"Northern Lights, Inc",Cooperative,Other
+13758,WA,13758|WA,"Northern Lights, Inc",Cooperative,Other
+13762,VA,13762|VA,"Northern Neck Elec Coop, Inc",Cooperative,Virginia co-op
+13777,NM,13777|NM,Northern Rio Arriba E Coop Inc,Cooperative,Other
+13780,MI,13780|MI,Northern States Power Co,Investor Owned,Other
+13780,WI,13780|WI,Northern States Power Co,Investor Owned,Other
+13781,MN,13781|MN,Northern States Power Co - Minnesota,Investor Owned,Other
+13781,ND,13781|ND,Northern States Power Co - Minnesota,Investor Owned,Other
+13781,SD,13781|SD,Northern States Power Co - Minnesota,Investor Owned,Other
+13783,LA,13783|LA,Northeast Louisiana Power Coop Inc.,Cooperative,Other
+13788,OR,13788|OR,Northern Wasco County PUD - (OR),Political Subdivision,Other
+13799,KS,13799|KS,Prairie Land Electric Coop Inc,Cooperative,Other
+13805,NE,13805|NE,Northwest Rural Pub Pwr Dist,Political Subdivision,Other
+13809,SD,13809|SD,NorthWestern Energy - (SD),Investor Owned,Other
+13830,TX,13830|TX,Nueces Electric Cooperative,Cooperative,Other
+13831,CT,13831|CT,City of Norwich - (CT),Municipal,Other
+13838,OK,13838|OK,"Northfork Electric Coop, Inc",Cooperative,Other
+13839,MA,13839|MA,City of Norwood - (MA),Municipal,Other
+13932,OH,13932|OH,Village of Oak Harbor - (OH),Municipal,Other
+13936,WI,13936|WI,Oakdale Electric Coop,Cooperative,Other
+13955,FL,13955|FL,City of Ocala,Municipal,Other
+13963,WI,13963|WI,Oconomowoc Utilities,Municipal,Other
+13964,WI,13964|WI,Oconto Electric Cooperative,Cooperative,Other
+13966,OK,13966|OK,City of Olustee,Municipal,Other
+13998,OH,13998|OH,Ohio Edison Co,Investor Owned,Other
+14006,OH,14006|OH,Ohio Power Co,Investor Owned,Other
+14055,WA,14055|WA,PUD No 1 of Okanogan County,Political Subdivision,Other
+14062,OK,14062|OK,Oklahoma Electric Coop Inc,Cooperative,Other
+14063,AR,14063|AR,Oklahoma Gas & Electric Co,Investor Owned,Other
+14063,OK,14063|OK,Oklahoma Gas & Electric Co,Investor Owned,Other
+14074,WA,14074|WA,"Okanogan County Elec Coop, Inc",Cooperative,Other
+14107,MN,14107|MN,City of Olivia - (MN),Municipal,Other
+14109,OR,14109|OR,"Oregon Trail El Cons Coop, Inc",Cooperative,Other
+14127,NE,14127|NE,Omaha Public Power District,Political Subdivision,Other
+14146,AL,14146|AL,City of Opelika - (AL),Municipal,Other
+14154,NY,14154|NY,Orange & Rockland Utils Inc,Investor Owned,Other
+14156,MI,14156|MI,Ontonagon County R E A,Cooperative,Other
+14164,SC,14164|SC,City of Orangeburg - (SC),Municipal,Other
+14170,WA,14170|WA,Orcas Power & Light Coop,Cooperative,Other
+14175,SC,14175|SC,"Tri-County Electric Coop, Inc (SC)",Cooperative,Other
+14178,MN,14178|MN,"P K M Electric Coop, Inc",Cooperative,Other
+14192,MO,14192|MO,Osage Valley Elec Coop Assn,Cooperative,Other
+14194,OH,14194|OH,City of Orrville - (OH),Municipal,Other
+14196,MN,14196|MN,City of Ortonville - (MN),Municipal,Other
+14202,IA,14202|IA,"Osceola Electric Coop, Inc",Cooperative,Other
+14229,KS,14229|KS,City of Ottawa - (KS),Municipal,Other
+14232,MN,14232|MN,Otter Tail Power Co,Investor Owned,Other
+14232,ND,14232|ND,Otter Tail Power Co,Investor Owned,Other
+14232,SD,14232|SD,Otter Tail Power Co,Investor Owned,Other
+14245,NV,14245|NV,Overton Power District No 5,Political Subdivision,Other
+14246,MN,14246|MN,City of Owatonna - (MN),Municipal,Other
+14251,KY,14251|KY,Owen Electric Coop Inc,Cooperative,Other
+14268,KY,14268|KY,City of Owensboro - (KY),Municipal,Other
+14275,MS,14275|MS,City of Oxford - (MS),Municipal,Other
+14289,AR,14289|AR,Ozarks Electric Coop Corp - (AR),Cooperative,Other
+14289,OK,14289|OK,Ozarks Electric Coop Corp - (AR),Cooperative,Other
+14324,WA,14324|WA,PUD No 2 of Pacific County,Political Subdivision,Other
+14328,CA,14328|CA,Pacific Gas & Electric Co.,Investor Owned,Other
+14354,CA,14354|CA,PacifiCorp,Investor Owned,Other
+14354,ID,14354|ID,PacifiCorp,Investor Owned,Other
+14354,OR,14354|OR,PacifiCorp,Investor Owned,Other
+14354,UT,14354|UT,PacifiCorp,Investor Owned,Other
+14354,WA,14354|WA,PacifiCorp,Investor Owned,Other
+14354,WY,14354|WY,PacifiCorp,Investor Owned,Other
+14371,KY,14371|KY,City of Paducah - (KY),Municipal,Other
+14381,OH,14381|OH,City of Painesville - (OH),Municipal,Other
+14398,SC,14398|SC,Palmetto Electric Coop Inc,Cooperative,Other
+14401,CA,14401|CA,City of Palo Alto - (CA),Municipal,Other
+14424,LA,14424|LA,"Panola-Harrison Elec Coop, Inc",Cooperative,Other
+14424,TX,14424|TX,"Panola-Harrison Elec Coop, Inc",Cooperative,Other
+14455,TN,14455|TN,City of Paris - (TN),Municipal,Other
+14468,MN,14468|MN,People's Cooperative Services,Cooperative,Other
+14471,IN,14471|IN,Parke County Rural E M C,Cooperative,Other
+14534,CA,14534|CA,City of Pasadena - (CA),Municipal,Other
+14557,SC,14557|SC,"Pee Dee Electric Coop, Inc",Cooperative,Other
+14563,MS,14563|MS,Pearl River Valley El Pwr Assn,Cooperative,Other
+1456,VA,1456|VA,Town of Bedford - (VA),Municipal,Other
+1458,LA,1458|LA,"Beauregard Electric Coop, Inc",Cooperative,Other
+14599,OH,14599|OH,"Paulding-Putman Elec Coop, Inc",Cooperative,Other
+14606,FL,14606|FL,"Peace River Electric Coop, Inc",Cooperative,Other
+14610,FL,14610|FL,Orlando Utilities Comm,Municipal,Other
+14624,WA,14624|WA,PUD No 2 of Grant County - (WA),Political Subdivision,Other
+14626,TX,14626|TX,"Pedernales Electric Coop, Inc",Cooperative,Other
+14653,WA,14653|WA,PUD No 1 of Pend Oreille County,Political Subdivision,Other
+14668,WA,14668|WA,Peninsula Light Company,Cooperative,Other
+14711,PA,14711|PA,Pennsylvania Electric Co,Investor Owned,Other
+14715,PA,14715|PA,PPL Electric Utilities Corp,Investor Owned,Mid-Atlantic IOU peer
+14716,PA,14716|PA,Pennsylvania Power Co,Investor Owned,Other
+14717,NC,14717|NC,Pee Dee Electric Member Corp,Cooperative,Other
+14724,KY,14724|KY,Pennyrile Rural Electric Coop,Cooperative,Other
+14775,OK,14775|OK,People's Electric Cooperative,Cooperative,Other
+14792,PA,14792|PA,Borough of Perkasie - (PA),Municipal,Other
+14839,IN,14839|IN,City of Peru - (IN),Municipal,Other
+14864,AR,14864|AR,Petit Jean Electric Coop Corp,Cooperative,Other
+14940,PA,14940|PA,PECO Energy Co,Investor Owned,Mid-Atlantic IOU peer
+15016,TN,15016|TN,Pickwick Electric Coop,Cooperative,Other
+15023,NC,15023|NC,Piedmont Electric Member Corp,Cooperative,Other
+15034,WI,15034|WI,Pierce-Pepin Coop Services,Cooperative,Other
+15045,PA,15045|PA,Pike County Light & Power Co,Investor Owned,Other
+15048,AZ,15048|AZ,Electrical Dist No2 Pinal County,Political Subdivision,Other
+15054,OH,15054|OH,"Pioneer Rural Elec Coop, Inc - (OH)",Cooperative,Other
+15073,KS,15073|KS,"Pioneer Electric Coop, Inc - (KS)",Cooperative,Other
+15095,OH,15095|OH,City of Piqua - (OH),Municipal,Other
+15138,MO,15138|MO,"Platte-Clay Electric Coop, Inc",Cooperative,Other
+15141,TN,15141|TN,Plateau Electric Cooperative,Cooperative,Other
+15159,WI,15159|WI,City of Plymouth - (WI),Municipal,Other
+15175,LA,15175|LA,Pointe Coupee Elec Member Corp,Cooperative,Other
+15188,NE,15188|NE,Polk County Rural Pub Pwr Dist,Political Subdivision,Other
+15202,OK,15202|OK,City of Ponca City - (OK),Municipal,Other
+15229,MO,15229|MO,City of Poplar Bluff - (MO),Municipal,Other
+1523,MA,1523|MA,Town of Belmont - (MA),Municipal,Other
+15248,OR,15248|OR,Portland General Electric Co,Investor Owned,Other
+15257,CO,15257|CO,"Poudre Valley REA, Inc",Cooperative,Other
+15263,MD,15263|MD,The Potomac Edison Company,Investor Owned,Other
+15263,WV,15263|WV,The Potomac Edison Company,Investor Owned,Other
+15270,DC,15270|DC,Potomac Electric Power Co,Investor Owned,Other
+15270,MD,15270|MD,Potomac Electric Power Co,Investor Owned,Mid-Atlantic IOU peer
+15291,IA,15291|IA,Prairie Energy Coop,Cooperative,Other
+15293,TN,15293|TN,Powell Valley Electric Coop,Cooperative,Other
+15293,VA,15293|VA,Powell Valley Electric Coop,Cooperative,Virginia co-op
+1529,MN,1529|MN,"Beltrami Electric Coop, Inc",Cooperative,Other
+15308,CA,15308|CA,Plumas-Sierra Rural Elec Coop,Cooperative,Other
+15311,OK,15311|OK,Prague Public Works Authority,Municipal,Other
+15340,MI,15340|MI,Presque Isle Elec & Gas Coop,Cooperative,Other
+15344,WI,15344|WI,Polk-Burnett Electric Coop,Cooperative,Other
+15356,WI,15356|WI,Price Electric Coop Inc,Cooperative,Other
+15386,KY,15386|KY,City of Princeton - (KY),Municipal,Other
+15387,MN,15387|MN,Princeton Public Utils Comm,Municipal,Other
+15410,VA,15410|VA,Prince George Electric Coop,Cooperative,Virginia co-op
+15419,WA,15419|WA,PUD No 3 of Mason County,Political Subdivision,Other
+15444,UT,15444|UT,Provo City Corp,Municipal,Other
+15466,CO,15466|CO,Public Service Co of Colorado,Investor Owned,Other
+15470,IN,15470|IN,"Duke Energy Indiana, LLC",Investor Owned,Other
+15472,NH,15472|NH,Public Service Co of NH,Investor Owned,Other
+15473,NM,15473|NM,Public Service Co of NM,Investor Owned,Other
+15474,OK,15474|OK,Public Service Co of Oklahoma,Investor Owned,Other
+15477,NJ,15477|NJ,Public Service Elec & Gas Co,Investor Owned,Other
+15500,WA,15500|WA,Puget Sound Energy Inc,Investor Owned,Other
+15507,TN,15507|TN,City of Pulaski - (TN),Municipal,Other
+15566,FL,15566|FL,City of Quincy - (FL),Municipal,Other
+155,MN,155|MN,Agralite Electric Coop,Cooperative,Other
+15671,NC,15671|NC,Randolph Electric Member Corp,Cooperative,Other
+15700,GA,15700|GA,Rayle Electric Membership Corp,Cooperative,Other
+1571,NC,1571|NC,Town of Benson - (NC),Municipal,Other
+15748,MA,15748|MA,Town of Reading - (MA),Municipal,Other
+15750,MN,15750|MN,Redwood Electric Coop,Cooperative,Other
+15783,CA,15783|CA,City of Redding - (CA),Municipal,Other
+1579,WA,1579|WA,PUD No 1 of Benton County,Political Subdivision,Other
+15845,MN,15845|MN,Renville-Sibley Coop Pwr Assn,Cooperative,Other
+1591,TX,1591|TX,"Big Country Electric Coop, Inc",Cooperative,Other
+15938,WI,15938|WI,Rice Lake Utilities,Municipal,Other
+15978,WI,15978|WI,City of Richland Center - (WI),Municipal,Other
+15979,WA,15979|WA,City of Richland - (WA),Municipal,Other
+15989,IN,15989|IN,City of Richmond - (IN),Municipal,Other
+16057,NM,16057|NM,"Rio Grande Electric Coop, Inc",Cooperative,Other
+16057,TX,16057|TX,"Rio Grande Electric Coop, Inc",Cooperative,Other
+16060,WI,16060|WI,Riverland Energy Cooperative,Cooperative,Other
+16063,TX,16063|TX,"Rita Blanca Electric Coop, Inc",Cooperative,Other
+16082,WI,16082|WI,City of River Falls,Municipal,Other
+16088,CA,16088|CA,City of Riverside - (CA),Municipal,Other
+16101,NC,16101|NC,Roanoke Electric Member Corp,Cooperative,Other
+1613,SC,1613|SC,Berkeley Electric Coop Inc,Cooperative,Other
+16146,TX,16146|TX,"Navasota Valley Elec Coop, Inc",Cooperative,Other
+1615,MD,1615|MD,Town of Berlin - (MD),Municipal,Other
+16179,IL,16179|IL,Rochelle Municipal Utilities - (IL),Municipal,Other
+16181,MN,16181|MN,Rochester Public Utilities,Municipal,Other
+16183,NY,16183|NY,Rochester Gas & Electric Corp,Investor Owned,Other
+16195,SC,16195|SC,City of Rock Hill - (SC),Municipal,Other
+16196,IL,16196|IL,Rock Energy Cooperative,Cooperative,Other
+16196,WI,16196|WI,Rock Energy Cooperative,Cooperative,Other
+16213,NJ,16213|NJ,Rockland Electric Co,Investor Owned,Other
+16217,NY,16217|NY,Village of Rockville Centre - (NY),Municipal,Other
+16223,TN,16223|TN,City of Rockwood - (TN),Municipal,Other
+16226,NC,16226|NC,City of Rocky Mount - (NC),Municipal,Other
+16259,MO,16259|MO,City of Rolla - (MO),Municipal,Other
+1625,WA,1625|WA,Benton Rural Electric Assn,Cooperative,Other
+16284,MN,16284|MN,"Roseau Electric Coop, Inc",Cooperative,Other
+16286,SD,16286|SD,Rosebud Electric Coop Inc,Cooperative,Other
+16295,CA,16295|CA,City of Roseville - (CA),Municipal,Other
+162,SC,162|SC,Aiken Electric Coop Inc,Cooperative,Other
+16368,MN,16368|MN,Runestone Electric Assn,Cooperative,Other
+16377,MA,16377|MA,Town of Rowley - (MA),Municipal,Other
+16382,OK,16382|OK,"Rural Electric Coop, Inc - (OK)",Cooperative,Other
+16420,IL,16420|IL,Rural Electric Conven Coop,Cooperative,Other
+16440,KS,16440|KS,City of Russell - (KS),Municipal,Other
+16461,TX,16461|TX,"Rusk County Electric Coop, Inc",Cooperative,Other
+16463,LA,16463|LA,City of Ruston - (LA),Municipal,Other
+16496,NC,16496|NC,Rutherford Elec Member Corp,Cooperative,Other
+16511,MO,16511|MO,Sac-Osage Electric Coop Inc,Cooperative,Other
+16534,CA,16534|CA,Sacramento Municipal Util Dist,Political Subdivision,Other
+16555,OR,16555|OR,Salem Electric - (OR),Cooperative,Other
+16558,VA,16558|VA,City of Salem - (VA),Municipal,Other
+16565,ID,16565|ID,Salmon River Electric Coop Inc,Cooperative,Other
+16572,AZ,16572|AZ,Salt River Project,Political Subdivision,Other
+16587,KY,16587|KY,Salt River Electric Coop Corp,Cooperative,Other
+16603,CO,16603|CO,"San Luis Valley R E C, Inc",Cooperative,Other
+16604,TX,16604|TX,City of San Antonio - (TX),Municipal,Other
+16606,SC,16606|SC,"Santee Electric Coop, Inc",Cooperative,Other
+16609,CA,16609|CA,San Diego Gas & Electric Co,Investor Owned,Other
+16611,IA,16611|IA,Access Energy Coop,Cooperative,Other
+16613,TX,16613|TX,Sam Houston Electric Coop Inc,Cooperative,Other
+16616,CO,16616|CO,"San Isabel Electric Assn, Inc",Cooperative,Other
+16627,TX,16627|TX,San Patricio Electric Coop Inc,Cooperative,Other
+16638,TX,16638|TX,"San Bernard Electric Coop, Inc",Cooperative,Other
+16649,CO,16649|CO,Sangre De Cristo Elec Assn Inc,Cooperative,Other
+16655,CA,16655|CA,City of Santa Clara - (CA),Municipal,Other
+16679,MN,16679|MN,City of Sauk Centre - (MN),Municipal,Other
+16740,WI,16740|WI,Scenic Rivers Energy Coop,Cooperative,Other
+16751,MO,16751|MO,Three Rivers Electric Coop,Cooperative,Other
+1675,WY,1675|WY,Big Horn Rural Electric Co,Cooperative,Other
+16805,MO,16805|MO,SEMO Electric Cooperative,Cooperative,Other
+16829,AL,16829|AL,City of Scottsboro - (AL),Municipal,Other
+16852,DE,16852|DE,City of Seaford- (DE),Municipal,Other
+16854,KS,16854|KS,"Heartland Rural Elec Coop, Inc",Cooperative,Other
+16865,GA,16865|GA,Sawnee Electric Membership Corporation,Cooperative,Other
+16868,WA,16868|WA,City of Seattle - (WA),Municipal,Other
+16900,TX,16900|TX,City of Seguin - (TX),Municipal,Other
+16920,KS,16920|KS,Sedgwick County El Coop Assn Inc,Cooperative,Other
+16921,SC,16921|SC,City of Seneca - (SC),Municipal,Other
+16930,TN,16930|TN,Sequachee Valley Electric Coop,Cooperative,Other
+16949,TN,16949|TN,Sevier County Electric System,Municipal,Other
+16971,MN,16971|MN,Shakopee Public Utilities Comm,Municipal,Other
+17008,TX,17008|TX,Sharyland Utilities LP,Investor Owned,Other
+17011,WI,17011|WI,Shawano Municipal Utilities,Municipal,Other
+17037,NC,17037|NC,City of Shelby - (NC),Municipal,Other
+17038,IN,17038|IN,RushShelby Energy,Cooperative,Other
+17040,IL,17040|IL,"Shelby Electric Coop, Inc",Cooperative,Other
+17044,KY,17044|KY,"Shelby Energy Coop, Inc - (KY)",Cooperative,Other
+17047,TN,17047|TN,City of Shelbyville - (TN),Municipal,Other
+17066,VA,17066|VA,Shenandoah Valley Elec Coop,Cooperative,Virginia co-op
+1708,KY,1708|KY,Big Sandy Rural Elec Coop Corp,Cooperative,Other
+17127,MA,17127|MA,Town of Shrewsbury - (MA),Municipal,Other
+17166,NV,17166|NV,Sierra Pacific Power Co,Investor Owned,Other
+17177,MO,17177|MO,City of Sikeston - (MO),Municipal,Other
+17184,AR,17184|AR,City of Siloam Springs - (AR),Municipal,Other
+1723,WA,1723|WA,"Big Bend Electric Coop, Inc",Cooperative,Other
+17252,AL,17252|AL,Singing River Elec Cooperative,Cooperative,Other
+17252,MS,17252|MS,Singing River Elec Cooperative,Cooperative,Other
+17260,IA,17260|IA,North West Rural Electric Coop,Cooperative,Other
+17267,MN,17267|MN,Sioux Valley SW Elec Coop,Cooperative,Other
+17267,SD,17267|SD,Sioux Valley SW Elec Coop,Cooperative,Other
+17279,WA,17279|WA,PUD No 1 of Skamania Co,Political Subdivision,Other
+17324,WI,17324|WI,Slinger Utilities,Municipal,Other
+1736,OR,1736|OR,Blachly-Lane County Coop El Assn,Cooperative,Other
+17470,WA,17470|WA,PUD No 1 of Snohomish County - (WA),Political Subdivision,Other
+17534,AL,17534|AL,"South Alabama Elec Coop, Inc",Cooperative,Other
+17539,SC,17539|SC,"Dominion Energy South Carolina, Inc",Investor Owned,Southeast IOU peer
+17543,SC,17543|SC,South Carolina Public Service Authority,State,Other
+17548,NE,17548|NE,South Central Public Pwr Dist,Political Subdivision,Other
+17550,MN,17550|MN,South Central Electric Assn,Cooperative,Other
+17560,MA,17560|MA,Town of South Hadley - (MA),Municipal,Other
+17564,KY,17564|KY,South Kentucky Rural E C C,Cooperative,Other
+17565,LA,17565|LA,South Louisiana Elec Coop Assn,Cooperative,Other
+17572,NC,17572|NC,South River Elec Member Corp,Cooperative,Other
+17585,IL,17585|IL,"Southeastern IL Elec Coop, Inc",Cooperative,Other
+17592,CO,17592|CO,Southeast Colorado Power Assn,Cooperative,Other
+17593,MT,17593|MT,"Southeast Electric Coop, Inc",Cooperative,Other
+17599,IN,17599|IN,Southeastern Indiana R E M C,Cooperative,Other
+17603,OK,17603|OK,Southeastern Electric Coop Inc - (OK),Cooperative,Other
+17609,CA,17609|CA,Southern California Edison Co,Investor Owned,Other
+17612,CA,17612|CA,Bear Valley Electric Service,Investor Owned,Other
+17631,IL,17631|IL,Southern Illinois Elec Coop,Cooperative,Other
+17633,IN,17633|IN,Southern Indiana Gas & Elec Co,Investor Owned,Other
+17637,MD,17637|MD,Southern Maryland Elec Coop Inc,Cooperative,Other
+1763,SC,1763|SC,"Black River Electric Coop, Inc - (SC)",Cooperative,Other
+17643,IA,17643|IA,"Southern Iowa Elec Coop, Inc",Cooperative,Other
+17647,MS,17647|MS,Southern Pine Electric Cooperative,Cooperative,Other
+17671,AR,17671|AR,Southwest Arkansas E C C,Cooperative,Other
+17683,MS,17683|MS,Southwest Mississippi E P A,Cooperative,Other
+17684,LA,17684|LA,Southwest Louisiana E M C,Cooperative,Other
+17692,NE,17692|NE,Southwest Public Power Dist,Political Subdivision,Other
+17694,TN,17694|TN,Southwest Tennessee E M C,Cooperative,Other
+17697,IL,17697|IL,Southwestern Electric Coop Inc - (IL),Cooperative,Other
+17698,AR,17698|AR,Southwestern Electric Power Co,Investor Owned,Other
+17698,LA,17698|LA,Southwestern Electric Power Co,Investor Owned,Other
+17698,TX,17698|TX,Southwestern Electric Power Co,Investor Owned,Other
+1769,SD,1769|SD,"Black Hills Electric Coop, Inc",Cooperative,Other
+17718,NM,17718|NM,Southwestern Public Service Co,Investor Owned,Other
+17718,TX,17718|TX,Southwestern Public Service Co,Investor Owned,Other
+1775,MO,1775|MO,Black River Electric Coop - (MO),Cooperative,Other
+17783,IA,17783|IA,City of Spencer - (IA),Municipal,Other
+17828,IL,17828|IL,City of Springfield - (IL),Municipal,Other
+17832,GA,17832|GA,Snapping Shoals El Member Corp,Cooperative,Other
+17833,MO,17833|MO,City Utilities of Springfield - (MO),Municipal,Other
+17839,OR,17839|OR,City of Springfield - (OR),Municipal,Other
+17845,UT,17845|UT,City of Springville - (UT),Municipal,Other
+17860,IL,17860|IL,City of St Charles - (IL),Municipal,Other
+17868,WI,17868|WI,St Croix Electric Coop,Cooperative,Other
+17874,UT,17874|UT,City of St George - (UT),Municipal,Other
+17896,CA,17896|CA,City of Shasta Lake - (CA),Municipal,Other
+17900,MN,17900|MN,City of Saint Peter,Municipal,Other
+17979,NE,17979|NE,Stanton County Public Pwr Dist,Political Subdivision,Other
+18004,FL,18004|FL,City of Starke - (FL),Municipal,Other
+18006,MS,18006|MS,City of Starkville,Municipal,Other
+18019,MN,18019|MN,Stearns Cooperative Elec Assn,Cooperative,Other
+18022,NC,18022|NC,City of Statesville - (NC),Municipal,Other
+18047,MN,18047|MN,Steele-Waseca Cooperative Electric,Cooperative,Other
+18085,OH,18085|OH,South Central Power Company,Cooperative,Other
+18087,MA,18087|MA,Town of Sterling - (MA),Municipal,Other
+18100,IN,18100|IN,Steuben County Rural E M C,Cooperative,Other
+18102,NY,18102|NY,"Steuben Rural Elec Coop, Inc",Cooperative,Other
+18125,OK,18125|OK,Stillwater Utilities Authority,Municipal,Other
+18181,WI,18181|WI,City of Stoughton - (WI),Municipal,Other
+18199,TX,18199|TX,"Swisher Electric Coop, Inc",Cooperative,Other
+18203,AL,18203|AL,Tallapoosa River Elec Coop Inc,Cooperative,Other
+18206,UT,18206|UT,Strawberry Electric Serv Dist,Political Subdivision,Other
+18249,WI,18249|WI,City of Sturgeon Bay - (WI),Municipal,Other
+18252,MI,18252|MI,City of Sturgis - (MI),Municipal,Other
+18280,AZ,18280|AZ,Sulphur Springs Valley E C Inc,Cooperative,Other
+18304,FL,18304|FL,"Sumter Electric Coop, Inc",Cooperative,Other
+18305,GA,18305|GA,Sumter Electric Member Corp,Cooperative,Other
+18312,WI,18312|WI,Sun Prairie Utilities,Municipal,Other
+18336,WI,18336|WI,Superior Water and Light Co,Investor Owned,Other
+18339,NC,18339|NC,Surry-Yadkin Elec Member Corp,Cooperative,Other
+18360,FL,18360|FL,Suwannee Valley Elec Coop Inc,Cooperative,Other
+18383,WI,18383|WI,Taylor Electric Coop - (WI),Cooperative,Other
+18395,AL,18395|AL,Sylacauga Utilities Board,Municipal,Other
+18401,MT,18401|MT,"Sun River Electric Coop, Inc",Cooperative,Other
+18429,WA,18429|WA,City of Tacoma - (WA),Municipal,Other
+18445,FL,18445|FL,City of Tallahassee - (FL),Municipal,Other
+18446,IA,18446|IA,T I P Rural Electric Coop,Cooperative,Other
+18447,MS,18447|MS,Tallahatchie Valley E P A,Cooperative,Other
+18449,FL,18449|FL,"Talquin Electric Coop, Inc",Cooperative,Other
+18454,FL,18454|FL,Tampa Electric Co,Investor Owned,Other
+18488,MA,18488|MA,City of Taunton - (MA),Municipal,Other
+18498,KY,18498|KY,Taylor County Rural E C C,Cooperative,Other
+18499,GA,18499|GA,Three Notch Elec Member Corp,Cooperative,Other
+18538,IN,18538|IN,City of Tell City - (IN),Municipal,Other
+18643,TN,18643|TN,Tennessee Valley Electric Coop,Cooperative,Other
+1871,MN,1871|MN,City of Blooming Prairie - (MN),Municipal,Other
+1883,MN,1883|MN,Blue Earth Light & Water,Municipal,Other
+18848,GA,18848|GA,City of Thomasville - (GA),Municipal,Other
+1884,MN,1884|MN,BENCO Electric Cooperative,Cooperative,Other
+1886,KY,1886|KY,Blue Grass Energy Coop Corp,Cooperative,Other
+18895,MI,18895|MI,Thumb Electric Coop of Mich,Cooperative,Other
+1889,NC,1889|NC,Blue Ridge Elec Member Corp - (NC),Cooperative,Other
+1890,SC,1890|SC,Blue Ridge Electric Coop Inc - (SC),Cooperative,Other
+1891,GA,1891|GA,Blue Ridge Mountain EMC - (GA),Cooperative,Other
+1892,TX,1892|TX,"Bluebonnet Electric Coop, Inc",Cooperative,Other
+18940,IN,18940|IN,Tipmont Rural Elec Member Corp,Cooperative,Other
+18941,OH,18941|OH,City of Tipp City - (OH),Municipal,Other
+18955,IL,18955|IL,"Tri-County Electric Coop, Inc (IL)",Cooperative,Other
+18956,GA,18956|GA,Tri-County Elec Member Corp (GA),Cooperative,Other
+18957,NC,18957|NC,Tri-County Elec Member Corp (NC),Cooperative,Other
+18961,MS,18961|MS,Twin County Electric Pwr Assn,Cooperative,Other
+18962,KS,18962|KS,Twin Valley Electric Coop Inc,Cooperative,Other
+18976,TX,18976|TX,Trinity Valley Elec Coop Inc,Cooperative,Other
+1898,SD,1898|SD,"Bon Homme Yankton El Assn, Inc",Cooperative,Other
+18997,OH,18997|OH,The Toledo Edison Co,Investor Owned,Other
+19027,AL,19027|AL,"Tombigbee Electric Coop, Inc",Cooperative,Other
+19108,NC,19108|NC,Tideland Electric Member Corp,Cooperative,Other
+19125,MI,19125|MI,City of Traverse City - (MI),Municipal,Other
+19150,MO,19150|MO,Trenton Municipal Utilities - (MO),Municipal,Other
+19156,WY,19156|WY,Powder River Energy Corp,Cooperative,Other
+19157,IA,19157|IA,MiEnergy Cooperative,Cooperative,Other
+19157,MN,19157|MN,MiEnergy Cooperative,Cooperative,Other
+19158,MO,19158|MO,Tri-County Electric Coop Assn (MO),Cooperative,Other
+19159,TX,19159|TX,"Tri-County Electric Coop, Inc (TX)",Cooperative,Other
+19160,OK,19160|OK,"Tri-County Electric Coop, Inc (OK)",Cooperative,Other
+19161,FL,19161|FL,"Tri-County Electric Coop, Inc (FL)",Cooperative,Other
+19162,KY,19162|KY,Tri-County Elec Member Corp (TN),Cooperative,Other
+19162,TN,19162|TN,Tri-County Elec Member Corp (TN),Cooperative,Other
+19189,AZ,19189|AZ,Trico Electric Cooperative Inc,Cooperative,Other
+19219,AL,19219|AL,Diverse Power Incorporated,Cooperative,Other
+19219,GA,19219|GA,Diverse Power Incorporated,Cooperative,Other
+19225,AL,19225|AL,City of Troy - (AL),Municipal,Other
+19229,CA,19229|CA,Truckee Donner P U D,Political Subdivision,Other
+19266,TN,19266|TN,Tullahoma Board-Public Utils,Municipal,Other
+19281,CA,19281|CA,Turlock Irrigation District,Political Subdivision,Other
+19293,SD,19293|SD,Southeastern Electric Coop Inc - (SD),Cooperative,Other
+19324,WI,19324|WI,Two Rivers Water & Light,Municipal,Other
+19325,OR,19325|OR,Umatilla Electric Coop Assn,Cooperative,Other
+1936,TN,1936|TN,Bolivar Energy Authority,Municipal,Other
+19390,PA,19390|PA,"UGI Utilities, Inc",Investor Owned,Other
+19396,MI,19396|MI,Tri-County Electric Coop (MI),Cooperative,Other
+19435,NC,19435|NC,Union Electric Membership Corp - (NC),Cooperative,Other
+19436,MO,19436|MO,Union Electric Co - (MO),Investor Owned,Other
+19437,IA,19437|IA,Western Iowa Power Coop,Cooperative,Other
+19445,IN,19445|IN,"Southern Indiana R E C, Inc",Cooperative,Other
+19446,KY,19446|KY,Duke Energy Kentucky,Investor Owned,Other
+19490,TX,19490|TX,United Electric Coop Service Inc - (TX),Cooperative,Other
+19493,SD,19493|SD,Union County Electric Coop Inc,Cooperative,Other
+19497,CT,19497|CT,United Illuminating Co,Investor Owned,Other
+19499,CO,19499|CO,"United Power, Inc",Cooperative,Other
+19501,OH,19501|OH,"Union Rural Electric Coop, Inc",Cooperative,Other
+19502,ID,19502|ID,"United Electric Co-op, Inc - (ID)",Cooperative,Other
+19545,MT,19545|MT,"Black Hills Power, Inc.",Investor Owned,Other
+19545,SD,19545|SD,"Black Hills Power, Inc.",Investor Owned,Other
+19545,WY,19545|WY,"Black Hills Power, Inc.",Investor Owned,Other
+19547,HI,19547|HI,Hawaiian Electric Co Inc,Investor Owned,Other
+19558,AK,19558|AK,Homer Electric Assn Inc,Cooperative,Other
+19574,TN,19574|TN,Upper Cumberland E M C,Cooperative,Other
+19578,MI,19578|MI,Upper Peninsula Power Company,Investor Owned,Other
+19579,TX,19579|TX,Upshur Rural Elec Coop Corp,Cooperative,Other
+195,AL,195|AL,Alabama Power Co,Investor Owned,Southeast IOU peer
+19667,IN,19667|IN,Utilities Dist-Western IN REMC,Cooperative,Other
+19728,AZ,19728|AZ,"UNS Electric, Inc",Investor Owned,Other
+19785,OK,19785|OK,Verdigris Valley Elec Coop Inc,Cooperative,Other
+19790,ND,19790|ND,Verendrye Electric Coop Inc,Cooperative,Other
+19791,VT,19791|VT,"Vermont Electric Cooperative, Inc",Cooperative,Other
+19798,CA,19798|CA,City of Vernon - (CA),Municipal,Other
+19804,FL,19804|FL,City of Vero Beach - (FL),Municipal,Other
+19805,OH,19805|OH,Village of Versailles - (OH),Municipal,Other
+19806,TX,19806|TX,"Victoria Electric Coop, Inc",Cooperative,Other
+19813,WI,19813|WI,Vernon Electric Coop,Cooperative,Other
+19820,KS,19820|KS,Victory Electric Coop Assn Inc,Cooperative,Other
+19840,NV,19840|NV,"Valley Electric Assn, Inc",Cooperative,Other
+19876,NC,19876|NC,Virginia Electric & Power Co,Investor Owned,Other
+19876,VA,19876|VA,Virginia Electric & Power Co,Investor Owned,Dominion Energy Virginia
+19882,VA,19882|VA,Virginia Tech Electric Service,State,Other
+19887,IN,19887|IN,Wabash County Rural E M C,Cooperative,Other
+19898,TN,19898|TN,Volunteer Electric Coop,Cooperative,Other
+19947,MN,19947|MN,City of Wadena - (MN),Municipal,Other
+19951,OH,19951|OH,City of Wadsworth - (OH),Municipal,Other
+19974,NC,19974|NC,Town of Wake Forest - (NC),Municipal,Other
+19981,NC,19981|NC,Wake Electric Membership Corp,Cooperative,Other
+2001,MO,2001|MO,Boone Electric Coop,Cooperative,Other
+20038,CT,20038|CT,Town of Wallingford - (CT),Municipal,Other
+20065,GA,20065|GA,Walton Electric Member Corp,Cooperative,Other
+20077,OH,20077|OH,City of Wapakoneta - (OH),Municipal,Other
+2008,NV,2008|NV,City of Boulder City - (NV),Municipal,Other
+20111,IN,20111|IN,Warren County Rural E M C,Cooperative,Other
+20130,KY,20130|KY,Warren Rural Elec Coop Corp,Cooperative,Other
+20134,MN,20134|MN,City of Warroad,Municipal,Other
+20135,UT,20135|UT,City of Washington - (UT),Municipal,Other
+20136,MN,20136|MN,City of Waseca - (MN),Municipal,Other
+20146,GA,20146|GA,Washington Elec Member Corp,Cooperative,Other
+20169,ID,20169|ID,Avista Corp,Investor Owned,Other
+20169,WA,20169|WA,Avista Corp,Investor Owned,Other
+20187,SD,20187|SD,Watertown Municipal Utilities,Municipal,Other
+20211,WI,20211|WI,Village of Waunakee - (WI),Municipal,Other
+20213,WI,20213|WI,Waupun Utilities,Municipal,Other
+20214,IA,20214|IA,Waverly Municipal Elec Utility,Municipal,Other
+20216,IN,20216|IN,Whitewater Valley Rural EMC,Cooperative,Other
+20224,MO,20224|MO,City of Waynesville - (MO),Municipal,Other
+20228,TN,20228|TN,Weakley County Mun Elec Sys,Municipal,Other
+20230,TX,20230|TX,Weatherford Mun Utility System,Municipal,Other
+20310,MA,20310|MA,Town of Wellesley - (MA),Municipal,Other
+20318,MO,20318|MO,Webster Electric Coop,Cooperative,Other
+20334,PA,20334|PA,Wellsborough Electric Co,Investor Owned,Other
+20363,MO,20363|MO,West Central Electric Coop Inc - (MO),Cooperative,Other
+20368,SD,20368|SD,West Central Electric Coop Inc - (SD),Cooperative,Other
+20371,FL,20371|FL,"West Florida El Coop Assn, Inc",Cooperative,Other
+20377,KY,20377|KY,West Kentucky Rural E C C,Cooperative,Other
+20387,PA,20387|PA,West Penn Power Company,Investor Owned,Other
+20401,SD,20401|SD,West River Electric Assn Inc,Cooperative,Other
+20404,TX,20404|TX,AEP Texas North Company,Investor Owned,Other
+20413,ND,20413|ND,Mountrail-Williams Elec Coop,Cooperative,Other
+20422,SD,20422|SD,Whetstone Valley Elec Coop Inc,Cooperative,Other
+20455,MA,20455|MA,Western Massachusetts Electric Company,Investor Owned,Other
+20456,NE,20456|NE,Twin Valleys Public Power Dist,Political Subdivision,Other
+20477,OH,20477|OH,City of Westerville - (OH),Municipal,Other
+20481,MA,20481|MA,City of Westfield - (MA),Municipal,Other
+2049,TX,2049|TX,"Bowie-Cass Electric Coop, Inc",Cooperative,Other
+20510,KS,20510|KS,"Wheatland Electric Coop, Inc",Cooperative,Other
+20521,WV,20521|WV,Wheeling Power Co,Investor Owned,Other
+2054,OH,2054|OH,City of Bowling Green - (OH),Municipal,Other
+2056,KY,2056|KY,City of Bowling Green - (KY),Municipal,Other
+20576,CO,20576|CO,"White River Electric Assn, Inc",Cooperative,Other
+20603,IN,20603|IN,Northeastern Rural E M C,Cooperative,Other
+20639,MN,20639|MN,"Wild Rice Electric Coop, Inc",Cooperative,Other
+20737,MN,20737|MN,Willmar Municipal Utilities (MN),Municipal,Other
+20785,NC,20785|NC,City of Wilson - (NC),Municipal,Other
+20793,TN,20793|TN,City of Winchester - (TN),Municipal,Other
+207,CA,207|CA,Alameda Municipal Power,Municipal,Other
+20806,MN,20806|MN,City of Windom,Municipal,Other
+20824,IL,20824|IL,Village of Winnetka - (IL),Municipal,Other
+20841,AL,20841|AL,"Wiregrass Electric Coop, Inc",Cooperative,Other
+20847,MI,20847|MI,Wisconsin Electric Power Co,Investor Owned,Other
+20847,WI,20847|WI,Wisconsin Electric Power Co,Investor Owned,Other
+20856,WI,20856|WI,Wisconsin Power & Light Co,Investor Owned,Other
+20860,MI,20860|MI,Wisconsin Public Service Corp,Investor Owned,Other
+20860,WI,20860|WI,Wisconsin Public Service Corp,Investor Owned,Other
+20862,WI,20862|WI,Wisconsin Rapids W W & L Comm,Municipal,Other
+20885,FL,20885|FL,Withlacoochee River Elec Coop,Cooperative,Other
+2089,CT,2089|CT,Bozrah Light & Power Company,Municipal,Other
+20927,TX,20927|TX,"Wood County Electric Coop, Inc",Cooperative,Other
+20948,TX,20948|TX,Wise Electric Coop Inc,Cooperative,Other
+20951,IA,20951|IA,Woodbury County Rural E C A,Cooperative,Other
+20963,AR,20963|AR,Woodruff Electric Coop Corp,Cooperative,Other
+20996,MN,20996|MN,Wright-Hennepin Coop Elec Assn,Cooperative,Other
+21002,SC,21002|SC,York Electric Coop Inc,Cooperative,Other
+21013,MN,21013|MN,City of Worthington - (MN),Municipal,Other
+21048,MI,21048|MI,Wyandotte Municipal Serv Comm - (MI),Municipal,Other
+21075,CO,21075|CO,Y-W Electric Assn Inc,Cooperative,Other
+21079,NE,21079|NE,Wyrulec Company,Cooperative,Other
+21079,WY,21079|WY,Wyrulec Company,Cooperative,Other
+21081,CO,21081|CO,Yampa Valley Electric Assn Inc,Cooperative,Other
+21081,WY,21081|WY,Yampa Valley Electric Assn Inc,Cooperative,Other
+21101,OH,21101|OH,Village of Yellow Springs - (OH),Municipal,Other
+21111,NE,21111|NE,Perennial Public Power Dist,Political Subdivision,Other
+21158,MI,21158|MI,City of Zeeland - (MI),Municipal,Other
+21244,VA,21244|VA,"Southside Electric Coop, Inc",Cooperative,Virginia co-op
+2138,MN,2138|MN,Brainerd Public Utilities,Municipal,Other
+213,AK,213|AK,Alaska Electric Light & Power Co.,Investor Owned,Other
+2144,MA,2144|MA,Town of Braintree - (MA),Municipal,Other
+21513,MT,21513|MT,"Fergus Electric Coop, Inc",Cooperative,Other
+21526,SC,21526|SC,City of Laurens - (SC),Municipal,Other
+21538,AZ,21538|AZ,"Mohave Electric Cooperative, Inc.",Cooperative,Other
+21567,LA,21567|LA,"Washington-St Tammany E C, Inc",Cooperative,Other
+21632,NC,21632|NC,EnergyUnited Elec Member Corp,Cooperative,Other
+219,AK,219|AK,Alaska Power and Telephone Co,Investor Owned,Other
+22053,KY,22053|KY,Kentucky Power Co,Investor Owned,Other
+2205,OH,2205|OH,Village of Brewster - (OH),Municipal,Other
+2212,SC,2212|SC,"Broad River Electric Coop, Inc",Cooperative,Other
+2247,TN,2247|TN,City of Bristol - (TN),Municipal,Other
+2248,VA,2248|VA,Bristol Virginia Utilities,Municipal,Other
+22500,KS,22500|KS,"Evergy Kansas Central, Inc",Investor Owned,Other
+22815,MS,22815|MS,Delta Electric Power Assn,Cooperative,Other
+22822,IN,22822|IN,Clark County Rural E M C - (IN),Cooperative,Other
+2285,SD,2285|SD,City of Brookings - (SD),Municipal,Other
+230,GA,230|GA,Albany Utility Board,Municipal,Other
+2316,MN,2316|MN,Brown County Rural Elec Assn,Cooperative,Other
+232,NC,232|NC,City of Albemarle - (NC),Municipal,Other
+23326,NM,23326|NM,"Sierra Electric Coop, Inc",Cooperative,Other
+2409,TX,2409|TX,Brownsville Public Utilities Board,Municipal,Other
+240,NC,240|NC,Albemarle Electric Member Corp,Cooperative,Other
+241,AL,241|AL,Albertville Municipal Utilities Board,Municipal,Other
+24211,AZ,24211|AZ,Tucson Electric Power Co,Investor Owned,Other
+2439,OH,2439|OH,City of Bryan - (OH),Municipal,Other
+2442,TX,2442|TX,City of Bryan - (TX),Municipal,Other
+24558,MI,24558|MI,City of Escanaba,Municipal,Other
+24590,NH,24590|NH,Unitil Energy Systems,Investor Owned,Other
+24753,IN,24753|IN,Boone County Rural EMC,Cooperative,Other
+2485,MN,2485|MN,City of Buffalo - (MN),Municipal,Other
+24889,NC,24889|NC,Brunswick Electric Member Corp,Cooperative,Other
+24949,ND,24949|ND,Cass County Elec Coop Inc,Cooperative,Other
+2502,OH,2502|OH,"Buckeye Rural Elec Coop, Inc",Cooperative,Other
+2507,CA,2507|CA,City of Burbank Water and Power - (CA),Municipal,Other
+25177,MN,25177|MN,Dakota Electric Association,Cooperative,Other
+25295,IN,25295|IN,Western Indiana Energy REMC,Cooperative,Other
+2641,KS,2641|KS,"Butler Rural El Coop Assn, Inc - (KS)",Cooperative,Other
+26510,NH,26510|NH,Liberty Utilities (Granite State Electri,Investor Owned,Other
+2651,OH,2651|OH,Butler Rural Electric Coop Inc - (OH),Cooperative,Other
+2652,IA,2652|IA,Butler County Rural Elec Coop - (IA),Cooperative,Other
+2655,SD,2655|SD,"Butte Electric Coop, Inc",Cooperative,Other
+26765,IA,26765|IA,Pella Cooperative Elec Assn,Cooperative,Other
+26916,MT,26916|MT,"Ravalli County Elec Coop, Inc",Cooperative,Other
+26934,MN,26934|MN,"Red Lake Electric Coop, Inc",Cooperative,Other
+26939,MN,26939|MN,Red River Valley Coop Pwr Assn,Cooperative,Other
+27222,TN,27222|TN,City of Ripley - (TN),Municipal,Other
+27238,MO,27238|MO,"Southwest Electric Coop, Inc",Cooperative,Other
+27316,VT,27316|VT,Town of Stowe- (VT),Municipal,Other
+27369,TX,27369|TX,Taylor Electric Coop Inc - (TX),Cooperative,Other
+27422,MN,27422|MN,Todd-Wadena Electric Coop,Cooperative,Other
+27599,IN,27599|IN,Carroll-White REMC,Cooperative,Other
+276,MS,276|MS,Alcorn County Elec Power Assn,Cooperative,Other
+2812,GA,2812|GA,City of Calhoun - (GA),Municipal,Other
+2849,MS,2849|MS,Central Electric Power Assn - (MS),Cooperative,Other
+28541,OR,28541|OR,Clatskanie Peoples Util Dist,Political Subdivision,Other
+28604,TX,28604|TX,Kerrville Public Utility Board,Municipal,Other
+28978,TX,28978|TX,City of San Marcos - (TX),Municipal,Other
+2911,OK,2911|OK,"Canadian Valley Elec Coop, Inc",Cooperative,Other
+2955,OR,2955|OR,Canby Utility Board,Municipal,Other
+295,MN,295|MN,City of Alexandria - (MN),Municipal,Other
+2960,TN,2960|TN,"Caney Fork Electric Coop, Inc",Cooperative,Other
+2961,KS,2961|KS,"Caney Valley El Coop Assn, Inc",Cooperative,Other
+296,KS,296|KS,"Alfalfa Electric Coop, Inc",Cooperative,Other
+296,OK,296|OK,"Alfalfa Electric Coop, Inc",Cooperative,Other
+2982,NC,2982|NC,Cape Hatteras Elec Member Corp,Cooperative,Other
+2985,ND,2985|ND,"Capital Electric Coop, Inc",Cooperative,Other
+2998,WY,2998|WY,"Carbon Power & Light, Inc",Cooperative,Other
+3046,NC,3046|NC,Duke Energy Progress - (NC),Investor Owned,Southeast IOU peer
+3046,SC,3046|SC,Duke Energy Progress - (NC),Investor Owned,Other
+30517,AL,30517|AL,"Pioneer Electric Coop, Inc - (AL)",Cooperative,Other
+30518,AZ,30518|AZ,Electrical Dist No3 Pinal County,Political Subdivision,Other
+305,MI,305|MI,Alger-Delta Coop Electric Assn,Cooperative,Other
+3076,OH,3076|OH,"Carroll Electric Coop, Inc - (OH)",Cooperative,Other
+3081,GA,3081|GA,Carroll Electric Member Corp - (GA),Cooperative,Other
+3093,AR,3093|AR,Carroll Electric Coop Corp - (AR),Cooperative,Other
+3093,MO,3093|MO,Carroll Electric Coop Corp - (AR),Cooperative,Other
+309,IA,309|IA,City of Algona - (IA),Municipal,Other
+3107,NC,3107|NC,Carteret-Craven El Member Corp,Cooperative,Other
+3113,MO,3113|MO,City of Carthage - (MO),Municipal,Other
+31833,FL,31833|FL,Okefenoke Rural El Member Corp,Cooperative,Other
+31833,GA,31833|GA,Okefenoke Rural El Member Corp,Cooperative,Other
+3203,IA,3203|IA,Cedar Falls Utilities,Municipal,Other
+3208,WI,3208|WI,Cedarburg Light & Water Comm,Municipal,Other
+3222,AL,3222|AL,Central Alabama Electric Coop,Cooperative,Other
+3226,OK,3226|OK,"Central Rural Electric Cooperative, Inc",Cooperative,Other
+3245,FL,3245|FL,"Central Florida Elec Coop, Inc",Cooperative,Other
+3248,GA,3248|GA,Central Georgia El Member Corp,Cooperative,Other
+3249,NY,3249|NY,Central Hudson Gas & Elec Corp,Investor Owned,Other
+3250,NC,3250|NC,Central Electric Membership Corp. - (NC),Cooperative,Other
+3264,OR,3264|OR,Central Lincoln People's Ut Dt,Political Subdivision,Other
+3265,LA,3265|LA,Cleco Power LLC,Investor Owned,Other
+3266,ME,3266|ME,Central Maine Power Co,Investor Owned,Other
+3268,MO,3268|MO,Central Missouri Elec Coop Inc,Cooperative,Other
+3273,NM,3273|NM,"Central New Mexico El Coop, Inc",Cooperative,Other
+3278,TX,3278|TX,AEP Texas Central Company,Investor Owned,Other
+3282,TX,3282|TX,"Central Texas Elec Coop, Inc",Cooperative,Other
+3287,NM,3287|NM,"Central Valley Elec Coop, Inc",Cooperative,Other
+3291,VA,3291|VA,Central Virginia Electric Coop,Cooperative,Virginia co-op
+3293,WI,3293|WI,Central Wisconsin Elec Coop,Cooperative,Other
+3295,WA,3295|WA,City of Centralia - (WA),Municipal,Other
+329,IA,329|IA,"Allamakee-Clayton El Coop, Inc",Cooperative,Other
+3314,IA,3314|IA,"Chariton Valley Elec Coop, Inc",Cooperative,Other
+3329,PA,3329|PA,Borough of Chambersburg - (PA),Municipal,Other
+3355,KS,3355|KS,City of Chanute,Municipal,Other
+3390,OK,3390|OK,"Caddo Electric Coop, Inc",Cooperative,Other
+3400,MN,3400|MN,City of Chaska - (MN),Municipal,Other
+3408,TN,3408|TN,City of Chattanooga - (TN),Municipal,Other
+3413,WA,3413|WA,PUD No 1 of Chelan County - (WA),Political Subdivision,Other
+3420,WA,3420|WA,City of Cheney - (WA),Municipal,Other
+3436,MI,3436|MI,Cherryland Electric Coop Inc,Cooperative,Other
+3461,WY,3461|WY,Cheyenne Light Fuel & Power,Investor Owned,Other
+3470,TX,3470|TX,Cherokee County Elec Coop Assn - (TX),Cooperative,Other
+3477,MA,3477|MA,City of Chicopee - (MA),Municipal,Other
+3478,OK,3478|OK,Cimarron Electric Coop,Cooperative,Other
+3486,MO,3486|MO,Chillicothe Municipal Utils,Municipal,Other
+3502,FL,3502|FL,"Choctawhatche Elec Coop, Inc",Cooperative,Other
+3503,MD,3503|MD,"Choptank Electric Cooperative, Inc",Cooperative,Other
+3522,AK,3522|AK,Chugach Electric Assn Inc,Cooperative,Other
+3527,OK,3527|OK,Choctaw Electric Coop Inc,Cooperative,Other
+3542,OH,3542|OH,Duke Energy Ohio Inc,Investor Owned,Other
+3597,PA,3597|PA,Citizens Electric Co - (PA),Investor Owned,Other
+3600,MO,3600|MO,Citizens Electric Corporation - (MO),Cooperative,Other
+36189,OH,36189|OH,"Mid-Ohio Energy Coop, Inc",Cooperative,Other
+3634,MO,3634|MO,City of Nixa - (MO),Municipal,Other
+3644,WA,3644|WA,PUD No 1 of Clallam County,Political Subdivision,Other
+3647,OK,3647|OK,City of Claremore,Municipal,Other
+3660,WA,3660|WA,PUD No 1 of Clark County - (WA),Political Subdivision,Other
+3687,KY,3687|KY,Clark Energy Coop Inc - (KY),Cooperative,Other
+3704,TN,3704|TN,City of Clarksville - (TN),Municipal,Other
+3712,AR,3712|AR,Clay County Electric Coop Corp - (AR),Cooperative,Other
+3712,MO,3712|MO,Clay County Electric Coop Corp - (AR),Cooperative,Other
+3722,IA,3722|IA,Clarke Electric Coop Inc - (IA),Cooperative,Other
+3726,IL,3726|IL,Clay Electric Coop Inc,Cooperative,Other
+3739,ID,3739|ID,Clearwater Power Company,Cooperative,Other
+3755,OH,3755|OH,Cleveland Electric Illum Co,Investor Owned,Other
+3757,FL,3757|FL,"Clay Electric Cooperative, Inc - (FL)",Cooperative,Other
+3758,TN,3758|TN,City of Cleveland - (TN),Municipal,Other
+3762,OH,3762|OH,City of Cleveland - (OH),Municipal,Other
+3764,MN,3764|MN,Clearwater-Polk Elec Coop Inc,Cooperative,Other
+3774,FL,3774|FL,City of Clewiston,Municipal,Other
+3804,SC,3804|SC,Clinton Combined Utility Sys,Municipal,Other
+38084,MI,38084|MI,Great Lakes Energy Coop,Cooperative,Other
+3812,TN,3812|TN,City of Clinton - (TN),Municipal,Other
+3828,MI,3828|MI,Cloverland Electric Co-op,Cooperative,Other
+3841,MS,3841|MS,Coast Electric Power Assn - (MS),Cooperative,Other
+3843,GA,3843|GA,Coastal Electric Member Corp - (GA),Cooperative,Other
+3844,SC,3844|SC,"Coastal Electric Coop, Inc",Cooperative,Other
+3855,TN,3855|TN,Columbia Power System - (TN),Municipal,Other
+3881,WY,3881|WY,City of Cody,Municipal,Other
+3892,KS,3892|KS,City of Coffeyville - (KS),Municipal,Other
+3915,MI,3915|MI,Coldwater Board of Public Util,Municipal,Other
+3916,GA,3916|GA,Cobb Electric Membership Corp,Cooperative,Other
+392,MI,392|MI,Alpena Power Co,Investor Owned,Other
+3940,TX,3940|TX,City of College Station - (TX),Municipal,Other
+3989,CO,3989|CO,City of Colorado Springs - (CO),Municipal,Other
+4003,CA,4003|CA,City of Colton - (CA),Municipal,Other
+40051,TX,40051|TX,Texas-New Mexico Power Co,Investor Owned,Other
+4008,OR,4008|OR,Columbia Power Coop Assn Inc,Cooperative,Other
+40165,AZ,40165|AZ,"Dixie Escalante R E A, Inc",Cooperative,Other
+40165,UT,40165|UT,"Dixie Escalante R E A, Inc",Cooperative,Other
+40166,TN,40166|TN,"Chickasaw Electric Coop, Inc",Cooperative,Other
+40228,VA,40228|VA,Rappahannock Electric Coop,Cooperative,Virginia co-op
+40236,TN,40236|TN,"Forked Deer Electric Coop, Inc",Cooperative,Other
+40291,PA,40291|PA,"Sullivan County R E C, Inc - (PA)",Cooperative,Other
+40302,MS,40302|MS,North East Mississippi EPA,Cooperative,Other
+40304,MN,40304|MN,Minnesota Valley Coop L&P Assn,Cooperative,Other
+4040,IA,4040|IA,Calhoun County Elec Coop Assn,Cooperative,Other
+4041,WA,4041|WA,"Columbia Rural Elec Assn, Inc",Cooperative,Other
+40437,OR,40437|OR,Emerald People's Utility Dist,Political Subdivision,Other
+40438,OR,40438|OR,Columbia River Peoples Ut Dist,Political Subdivision,Other
+4045,MO,4045|MO,City of Columbia - (MO),Municipal,Other
+40606,NE,40606|NE,City of Grand Island - (NE),Municipal,Other
+4063,MO,4063|MO,Co-Mo Electric Coop Inc,Cooperative,Other
+4065,OH,4065|OH,City of Columbus - (OH),Municipal,Other
+4068,MS,4068|MS,City of Columbus - (MS),Municipal,Other
+407,GA,407|GA,Altamaha Electric Member Corp,Cooperative,Other
+4110,IL,4110|IL,Commonwealth Edison Co,Investor Owned,Other
+4117,VA,4117|VA,Community Electric Coop,Cooperative,Virginia co-op
+4146,TX,4146|TX,Concho Valley Elec Coop Inc,Cooperative,Other
+4150,NC,4150|NC,City of Concord - (NC),Municipal,Other
+4176,CT,4176|CT,Connecticut Light & Power Co,Investor Owned,Other
+4226,NY,4226|NY,Consolidated Edison Co-NY Inc,Investor Owned,Other
+4237,MO,4237|MO,Consolidated Electric Coop,Cooperative,Other
+4254,MI,4254|MI,Consumers Energy Co - (MI),Investor Owned,Other
+4262,TX,4262|TX,Cooke County Elec Coop Assn,Cooperative,Other
+4265,NM,4265|NM,Continental Divide El Coop Inc,Cooperative,Other
+4280,AR,4280|AR,Conway Corporation,Municipal,Other
+4296,OK,4296|OK,"Cookson Hills Elec Coop, Inc",Cooperative,Other
+4317,OR,4317|OR,"Coos-Curry Electric Coop, Inc",Cooperative,Other
+4327,AL,4327|AL,Coosa Valley Electric Coop Inc,Cooperative,Other
+4346,MN,4346|MN,Cooperative L&P Assn Lake County,Cooperative,Other
+4362,IL,4362|IL,Corn Belt Energy Corporation,Cooperative,Other
+4365,NC,4365|NC,Town of Cornelius - (NC),Municipal,Other
+4373,NE,4373|NE,Cornhusker Public Power Dist,Political Subdivision,Other
+4390,CA,4390|CA,City of Corona - (CA),Municipal,Other
+4401,OK,4401|OK,"Cotton Electric Coop, Inc",Cooperative,Other
+4430,AL,4430|AL,"Covington Electric Coop, Inc",Cooperative,Other
+4432,GA,4432|GA,Coweta-Fayette El Member Corp,Cooperative,Other
+44372,TX,44372|TX,Oncor Electric Delivery Company LLC,Investor Owned,Other
+4442,WA,4442|WA,PUD No 1 of Cowlitz County,Political Subdivision,Other
+4471,VA,4471|VA,Craig-Botetourt Electric Coop,Cooperative,Virginia co-op
+4471,WV,4471|WV,Craig-Botetourt Electric Coop,Cooperative,Other
+4508,IN,4508|IN,"Crawfordsville Elec, Lgt & Pwr",Municipal,Other
+4509,AR,4509|AR,Craighead Electric Coop Corp,Cooperative,Other
+4524,MO,4524|MO,"Crawford Electric Coop, Inc",Cooperative,Other
+4538,GA,4538|GA,Crisp County Power Comm,Political Subdivision,Other
+4577,MN,4577|MN,Crow Wing Cooperative Power & Light Comp,Cooperative,Other
+4618,AL,4618|AL,"Cullman Electric Coop, Inc",Cooperative,Other
+4622,KY,4622|KY,"Cumberland Valley Electric, Inc.",Cooperative,Other
+4624,TN,4624|TN,Cumberland Elec Member Corp,Cooperative,Other
+4671,NE,4671|NE,Custer Public Power District,Political Subdivision,Other
+4675,MO,4675|MO,Cuivre River Electric Coop Inc,Cooperative,Other
+4683,OH,4683|OH,City of Cuyahoga Falls - (OH),Municipal,Other
+4704,KS,4704|KS,"DS&O Electric Cooperative, Inc.",Cooperative,Other
+4717,ND,4717|ND,Dakota Valley Elec Coop Inc,Cooperative,Other
+4743,OR,4743|OR,"Consumers Power, Inc",Cooperative,Other
+4796,OH,4796|OH,"Darke Rural Electric Coop, Inc",Cooperative,Other
+4848,IN,4848|IN,Daviess Martin County R E M C,Cooperative,Other
+4911,NE,4911|NE,Dawson Power District,Political Subdivision,Other
+4922,OH,4922|OH,Dayton Power & Light Co,Investor Owned,Other
+4939,TX,4939|TX,"Deaf Smith Electric Coop, Inc",Cooperative,Other
+4958,AL,4958|AL,Decatur Utilities,Municipal,Other
+4960,IN,4960|IN,Decatur County Rural E M C,Cooperative,Other
+4975,TX,4975|TX,Deep East Texas Elec Coop Inc,Cooperative,Other
+49986,IA,49986|IA,Southwest Iowa Rural Elec Coop,Cooperative,Other
+5021,NY,5021|NY,Delaware County Elec Coop Inc,Cooperative,Other
+5027,DE,5027|DE,Delmarva Power,Investor Owned,Other
+5027,MD,5027|MD,Delmarva Power,Investor Owned,Other
+5063,TX,5063|TX,City of Denton - (TX),Municipal,Other
+5070,DE,5070|DE,Delaware Electric Cooperative,Cooperative,Other
+5078,TX,5078|TX,"Denton County Elec Coop, Inc",Cooperative,Other
+5086,CO,5086|CO,Delta Montrose Electric Assn,Cooperative,Other
+5109,MI,5109|MI,DTE Electric Company,Investor Owned,Other
+5111,MN,5111|MN,City of Detroit Lakes - (MN),Municipal,Other
+5148,TN,5148|TN,City of Dickson,Municipal,Other
+5175,MS,5175|MS,Dixie Electric Power Assn - (MS),Cooperative,Other
+5202,LA,5202|LA,Dixie Electric Membership Corp - (LA),Cooperative,Other
+5204,AL,5204|AL,Dixie Electric Coop - (AL),Cooperative,Other
+5309,AL,5309|AL,City of Dothan - (AL),Municipal,Other
+5336,OH,5336|OH,City of Dover - (OH),Municipal,Other
+5394,IN,5394|IN,Dubois Rural Electric Coop Inc,Cooperative,Other
+5399,TN,5399|TN,Duck River Elec Member Corp,Cooperative,Other
+5416,NC,5416|NC,"Duke Energy Carolinas, LLC",Investor Owned,Southeast IOU peer
+5416,SC,5416|SC,"Duke Energy Carolinas, LLC",Investor Owned,Other
+5417,WI,5417|WI,Dunn County Electric Coop,Cooperative,Other
+5429,OK,5429|OK,City of Duncan - (OK),Municipal,Other
+5438,AZ,5438|AZ,"Duncan Valley Elec Coop, Inc",Cooperative,Other
+5480,MA,5480|MA,Town of Danvers,Municipal,Other
+5487,PA,5487|PA,Duquesne Light Co,Investor Owned,Other
+54913,MA,54913|MA,NSTAR Electric Company,Investor Owned,Other
+5509,TN,5509|TN,City of Dyersburg,Municipal,Other
+5531,IL,5531|IL,Enerstar Power Corp,Cooperative,Other
+5535,IL,5535|IL,Egyptian Electric Coop Assn,Cooperative,Other
+554,IA,554|IA,City of Ames - (IA),Municipal,Other
+5574,MN,5574|MN,East Central Energy,Cooperative,Other
+5575,MN,5575|MN,City of East Grand Forks - (MN),Municipal,Other
+55787,CA,55787|CA,City of Moreno Valley - (CA),Municipal,Other
+5578,MS,5578|MS,East Mississippi Elec Pwr Assn,Cooperative,Other
+5585,IL,5585|IL,Eastern Illinois Elec Coop,Cooperative,Other
+5588,IA,5588|IA,East-Central Iowa Rural Elec Coop,Cooperative,Other
+55936,LA,55936|LA,Entergy Gulf States - LA LLC,Investor Owned,Other
+55937,TX,55937|TX,Entergy Texas Inc.,Investor Owned,Other
+55982,TX,55982|TX,Heart of Texas Electric Coop,Cooperative,Other
+5598,OK,5598|OK,East Central Oklahoma Elec Coop Inc,Cooperative,Other
+5605,IA,5605|IA,Eastern Iowa Light & Power Coop,Cooperative,Other
+5609,ME,5609|ME,Eastern Maine Electric Coop,Cooperative,Other
+56146,CO,56146|CO,"Black Hills Colorado Electric, LLC",Investor Owned,Other
+5625,MD,5625|MD,Easton Utilities Comm,Municipal,Other
+562,GA,562|GA,Amicalola Electric Member Corp,Cooperative,Other
+5632,WI,5632|WI,Eau Claire Electric Coop,Cooperative,Other
+5644,SC,5644|SC,"Edisto Electric Coop, Inc",Cooperative,Other
+5656,NC,5656|NC,Edgecombe-Martin County E M C,Cooperative,Other
+5661,OK,5661|OK,City of Edmond - (OK),Municipal,Other
+56621,WA,56621|WA,Yakama Power,Cooperative,Other
+56697,IL,56697|IL,Ameren Illinois Company,Investor Owned,Other
+5701,NM,5701|NM,El Paso Electric Co,Investor Owned,Other
+5701,TX,5701|TX,El Paso Electric Co,Investor Owned,Other
+57483,CA,57483|CA,Liberty Utilities,Investor Owned,Other
+5773,MN,5773|MN,City of Elk River,Municipal,Other
+5780,NE,5780|NE,Elkhorn Rural Public Pwr Dist,Political Subdivision,Other
+58124,FL,58124|FL,City of Winter Park - (FL),Municipal,Other
+5860,AR,5860|AR,Empire District Electric Co,Investor Owned,Other
+5860,KS,5860|KS,Empire District Electric Co,Investor Owned,Other
+5860,MO,5860|MO,Empire District Electric Co,Investor Owned,Other
+5860,OK,5860|OK,Empire District Electric Co,Investor Owned,Other
+5862,CO,5862|CO,"Empire Electric Assn, Inc",Cooperative,Other
+58789,CA,58789|CA,DOD USMC Marine Air Ground Combat,Federal,Other
+59013,WA,59013|WA,PUD No 1 of Jefferson County,Political Subdivision,Other
+5905,GA,5905|GA,Excelsior Electric Member Corp,Cooperative,Other
+590,CA,590|CA,City of Anaheim - (CA),Municipal,Other
+5929,SC,5929|SC,"Fairfield Electric Coop, Inc",Cooperative,Other
+5930,NY,5930|NY,Village of Fairport - (NY),Municipal,Other
+5935,PA,5935|PA,Borough of Ephrata - (PA),Municipal,Other
+5961,TN,5961|TN,Town of Erwin - (TN),Municipal,Other
+599,AK,599|AK,Anchorage Municipal Light and Power,Municipal,Other
+6022,OR,6022|OR,City of Eugene - (OR),Municipal,Other
+60482,OK,60482|OK,CKenergy Electric Cooperative,Cooperative,Other
+60631,MI,60631|MI,Upper Michigan Energy Resources Corp.,Investor Owned,Other
+60839,KS,60839|KS,Southern Pioneer Electric Company,Cooperative,Other
+6112,IA,6112|IA,"Farmers Electric Coop, Inc - (IA)",Cooperative,Other
+6145,AL,6145|AL,City of Fairhope - (AL),Municipal,Other
+6168,IA,6168|IA,Farmers Electric Coop - (IA),Cooperative,Other
+6169,ID,6169|ID,Fall River Rural Elec Coop Inc,Cooperative,Other
+6169,MT,6169|MT,Fall River Rural Elec Coop Inc,Cooperative,Other
+6169,WY,6169|WY,Fall River Rural Elec Coop Inc,Cooperative,Other
+6173,TX,6173|TX,Fannin County Electric Coop,Cooperative,Other
+6181,MO,6181|MO,"Farmers Electric Coop, Inc - (MO)",Cooperative,Other
+6182,TX,6182|TX,"Farmers Electric Coop, Inc - (TX)",Cooperative,Other
+6194,KY,6194|KY,Farmers Rural Electric Coop Corp - (KY),Cooperative,Other
+6198,NM,6198|NM,"Farmers Electric Coop, Inc - (NM)",Cooperative,Other
+6204,NM,6204|NM,City of Farmington - (NM),Municipal,Other
+6234,TN,6234|TN,City of Fayetteville,Municipal,Other
+6235,NC,6235|NC,Fayetteville Public Works Commission,Municipal,Other
+6258,MN,6258|MN,Federated Rural Electric Assn,Cooperative,Other
+6272,SD,6272|SD,"FEM Electric Assn, Inc",Cooperative,Other
+6335,OH,6335|OH,"Firelands Electric Coop, Inc",Cooperative,Other
+6342,AR,6342|AR,First Electric Coop Corp,Cooperative,Other
+636,IN,636|IN,City of Anderson - (IN),Municipal,Other
+6374,MA,6374|MA,Fitchburg Gas & Elec Light Co,Investor Owned,Other
+6395,MT,6395|MT,Flathead Electric Coop Inc,Cooperative,Other
+6411,GA,6411|GA,Flint Electric Membership Corp,Cooperative,Other
+6424,WI,6424|WI,Florence Utility Comm,Municipal,Other
+6427,TX,6427|TX,City of Floresville,Municipal,Other
+6431,KS,6431|KS,"Flint Hills Rural E C A, Inc",Cooperative,Other
+6442,KY,6442|KY,Fleming-Mason Energy Coop Inc,Cooperative,Other
+6443,FL,6443|FL,"Florida Keys El Coop Assn, Inc",Cooperative,Other
+6452,FL,6452|FL,Florida Power & Light Co,Investor Owned,Florida IOU peer
+6455,FL,6455|FL,"Duke Energy Florida, LLC",Investor Owned,Florida IOU peer
+6457,FL,6457|FL,Florida Public Utilities Co,Investor Owned,Other
+6491,AL,6491|AL,Foley Board of Utilities,Municipal,Other
+65261,AZ,65261|AZ,Gila River Indian Utility Authority (GRICUA),Cooperative,Other
+65353,TX,65353|TX,Arrow Energy TX LLC,Retail Power Marketer,Other
+6582,OR,6582|OR,City of Forest Grove,Municipal,Other
+6604,CO,6604|CO,City of Fort Collins - (CO),Municipal,Other
+66073,SC,66073|SC,MPD Electric Cooperative,Cooperative,Other
+6608,TN,6608|TN,Fort Loudoun Electric Coop,Cooperative,Other
+66101,PA,66101|PA,FirstEnergy Pennsylvania Electric Co,Investor Owned,Other
+6610,CO,6610|CO,City of Fort Morgan,Municipal,Other
+6616,FL,6616|FL,Fort Pierce Utilities Authority,Municipal,Other
+6638,CO,6638|CO,City of Fountain,Municipal,Other
+6640,NC,6640|NC,Four County Elec Member Corp,Cooperative,Other
+6641,MS,6641|MS,4-County Electric Power Assn,Cooperative,Other
+6708,KY,6708|KY,City of Frankfort - (KY),Municipal,Other
+6709,SC,6709|SC,Easley Combined Utility System,Municipal,Other
+6716,WA,6716|WA,PUD No 1 of Franklin County,Political Subdivision,Other
+6722,IA,6722|IA,Franklin Rural Electric Coop - (IA),Cooperative,Other
+6775,NY,6775|NY,Village of Freeport - (NY),Municipal,Other
+6779,NE,6779|NE,City of Fremont - (NE),Municipal,Other
+6782,MN,6782|MN,Freeborn Mower Electric Cooperative,Cooperative,Other
+6784,NC,6784|NC,French Broad Elec Member Corp,Cooperative,Other
+6804,OH,6804|OH,Frontier Power Company,Cooperative,Other
+6839,MO,6839|MO,City of Fulton - (MO),Municipal,Other
+6894,SC,6894|SC,City of Gaffney - (SC),Municipal,Other
+689,MN,689|MN,Connexus Energy,Cooperative,Other
+6909,FL,6909|FL,Gainesville Regional Utilities,Municipal,Other
+691,MN,691|MN,City of Anoka,Municipal,Other
+6923,TN,6923|TN,City of Gallatin - (TN),Municipal,Other
+6941,KS,6941|KS,City of Garden City,Municipal,Other
+694,CA,694|CA,Anza Electric Coop Inc,Cooperative,Other
+6957,UT,6957|UT,"Garkane Energy Coop, Inc",Cooperative,Other
+6958,TX,6958|TX,City of Garland - (TX),Municipal,Other
+7027,NC,7027|NC,City of Gastonia - (NC),Municipal,Other
+7090,GA,7090|GA,GreyStone Power Corporation,Cooperative,Other
+7096,IL,7096|IL,City of Geneva - (IL),Municipal,Other
+7129,TX,7129|TX,City of Georgetown - (TX),Municipal,Other
+7140,GA,7140|GA,Georgia Power Co,Investor Owned,Southeast IOU peer
+7174,TN,7174|TN,Gibson Electric Members Corp,Cooperative,Other
+719,NC,719|NC,Town of Apex- (NC),Municipal,Other
+7222,WY,7222|WY,City of Gillette - (WY),Municipal,Other
+7264,FL,7264|FL,"Glades Electric Coop, Inc",Cooperative,Other
+7270,KY,7270|KY,City of Glasgow - (KY),Municipal,Other
+727,TN,727|TN,Appalachian Electric Coop,Cooperative,Other
+7294,CA,7294|CA,City of Glendale - (CA),Municipal,Other
+7303,IA,7303|IA,Raccoon Valley Electric Cooperative,Cooperative,Other
+733,VA,733|VA,Appalachian Power Co,Investor Owned,Appalachian Power (VA)
+733,WV,733|WV,Appalachian Power Co,Investor Owned,Other
+7353,AK,7353|AK,Golden Valley Elec Assn Inc,Cooperative,Other
+7450,GA,7450|GA,Grady Electric Membership Corp,Cooperative,Other
+7456,AZ,7456|AZ,Graham County Electric Coop Inc,Cooperative,Other
+7460,MN,7460|MN,Goodhue County Coop Elec Assn,Cooperative,Other
+7483,MI,7483|MI,City of Grand Haven - (MI),Municipal,Other
+7489,MN,7489|MN,Grand Rapids Public Util Comm,Municipal,Other
+7490,OK,7490|OK,Grand River Dam Authority,State,Other
+7496,NC,7496|NC,Town of Granite Falls - (NC),Municipal,Other
+7548,WA,7548|WA,PUD No 1 of Grays Harbor County,Political Subdivision,Other
+7558,KY,7558|KY,Grayson Rural Electric Coop Corp,Cooperative,Other
+7559,TX,7559|TX,"Grayson-Collin Elec Coop, Inc",Cooperative,Other
+7563,CO,7563|CO,Grand Valley Power,Cooperative,Other
+7601,VT,7601|VT,Green Mountain Power Corp,Investor Owned,Other
+7624,NY,7624|NY,Village of Greene - (NY),Municipal,Other
+7625,TN,7625|TN,City of Greeneville - (TN),Municipal,Other
+7627,IN,7627|IN,City of Greenfield - (IN),Municipal,Other
+7634,TX,7634|TX,City of Greenville - (TX),Municipal,Other
+7639,NC,7639|NC,Greenville Utilities Comm,Municipal,Other
+7646,SC,7646|SC,Greenwood CPW,Municipal,Other
+7651,MS,7651|MS,Greenwood Utilities Comm,Municipal,Other
+7654,SC,7654|SC,Greer Commission of Public Wks,Municipal,Other
+7715,MA,7715|MA,Town of Groton - (MA),Municipal,Other
+7716,CT,7716|CT,Groton Dept of Utilities - (CT),Municipal,Other
+7720,MO,7720|MO,"Grundy Electric Coop, Inc",Cooperative,Other
+7752,TX,7752|TX,Guadalupe Valley Elec Coop Inc,Cooperative,Other
+7785,FL,7785|FL,"Gulf Coast Electric Coop, Inc",Cooperative,Other
+7787,CO,7787|CO,Gunnison County Elec Assn.,Cooperative,Other
+7801,FL,7801|FL,Gulf Power Co,Investor Owned,Other
+7864,IA,7864|IA,Grundy County Rural Elec Coop,Cooperative,Other
+7870,SD,7870|SD,H-D Electric Coop Inc,Cooperative,Other
+7887,GA,7887|GA,Habersham Electric Membership Corp,Cooperative,Other
+7891,OH,7891|OH,Guernsey-Muskingum El Coop Inc,Cooperative,Other
+7977,OH,7977|OH,City of Hamilton - (OH),Municipal,Other
+7978,NC,7978|NC,Halifax Electric Member Corp,Cooperative,Other
+8000,IN,8000|IN,NineStar Connect,Cooperative,Other
+8034,OH,8034|OH,Hancock-Wood Electric Coop Inc,Cooperative,Other
+803,AZ,803|AZ,Arizona Public Service Co,Investor Owned,Other
+8055,MO,8055|MO,City of Hannibal - (MO),Municipal,Other
+8104,VT,8104|VT,Town of Hardwick,Municipal,Other
+8122,IA,8122|IA,Harlan Municipal Utilities - (IA),Municipal,Other
+8147,TN,8147|TN,City of Harriman - (TN),Municipal,Other
+814,AR,814|AR,Entergy Arkansas LLC,Investor Owned,Other
+8179,IN,8179|IN,Harrison County Rural E M C,Cooperative,Other
+817,AR,817|AR,Arkansas Valley Elec Coop Corp,Cooperative,Other
+817,OK,817|OK,Arkansas Valley Elec Coop Corp,Cooperative,Other
+8192,WV,8192|WV,"Harrison Rural Elec Assn, Inc",Cooperative,Other
+8198,VA,8198|VA,City of Harrisonburg - (VA),Municipal,Other
+8199,MO,8199|MO,City of Harrisonville - (MO),Municipal,Other
+8210,GA,8210|GA,Hart Electric Member Corp,Cooperative,Other
+8212,WI,8212|WI,Hartford Electric,Municipal,Other
+8245,NE,8245|NE,City of Hastings - (NE),Municipal,Other
+8276,FL,8276|FL,Havana Power & Light Company,Municipal,Other
+8283,IA,8283|IA,Harrison County Rrl Elec Coop,Cooperative,Other
+8287,HI,8287|HI,Hawaii Electric Light Co Inc,Investor Owned,Other
+8298,IA,8298|IA,Hawkeye Tri-County El Coop Inc,Cooperative,Other
+8319,IA,8319|IA,Heartland Power Coop,Cooperative,Other
+8319,MN,8319|MN,Heartland Power Coop,Cooperative,Other
+8333,NC,8333|NC,Haywood Electric Member Corp,Cooperative,Other
+8348,CA,8348|CA,City of Healdsburg - (CA),Municipal,Other
+8366,UT,8366|UT,Heber Light & Power Company,Municipal,Other
+8447,IN,8447|IN,Hendricks County Rural E M C,Cooperative,Other
+8449,KY,8449|KY,Henderson City Utility Comm,Municipal,Other
+8466,IN,8466|IN,Henry County Rural E M C,Cooperative,Other
+8493,MO,8493|MO,City of Hermann,Municipal,Other
+84,MD,84|MD,A & N Electric Coop,Cooperative,Other
+84,VA,84|VA,A & N Electric Coop,Cooperative,Virginia co-op
+8515,OR,8515|OR,City of Hermiston,Municipal,Other
+8543,MN,8543|MN,Hibbing Public Utilities Comm,Municipal,Other
+8566,WY,8566|WY,High Plains Power Inc,Cooperative,Other
+8567,MO,8567|MO,City of Higginsville - (MO),Municipal,Other
+8571,NC,8571|NC,Town of High Point,Municipal,Other
+8573,IL,8573|IL,City of Highland,Municipal,Other
+8620,TX,8620|TX,"HILCO Electric Cooperative, Inc.",Cooperative,Other
+8631,MI,8631|MI,Hillsdale Board of Public Wks,Municipal,Other
+8699,WA,8699|WA,Inland Power & Light Company,Cooperative,Other
+8723,MI,8723|MI,City of Holland - (MI),Municipal,Other
+8761,OH,8761|OH,Holmes-Wayne Electric Coop Inc,Cooperative,Other
+8764,TN,8764|TN,"Holston Electric Coop, Inc",Cooperative,Other
+8773,CO,8773|CO,"Holy Cross Electric Assn, Inc",Cooperative,Other
+8774,MA,8774|MA,City of Holyoke - (MA),Municipal,Other
+8786,SC,8786|SC,Horry Electric Coop Inc,Cooperative,Other
+8795,FL,8795|FL,City of Homestead - (FL),Municipal,Other
+8796,MA,8796|MA,City of Hingham - (MA),Municipal,Other
+8824,IL,8824|IL,M J M Electric Cooperative Inc,Cooperative,Other
+8840,AR,8840|AR,City of Hope - (AR),Municipal,Other
+887,MN,887|MN,"Arrowhead Electric Coop, Inc",Cooperative,Other
+8898,TX,8898|TX,Houston County Elec Coop Inc,Cooperative,Other
+8901,TX,8901|TX,CenterPoint Energy,Investor Owned,Other
+8972,OH,8972|OH,City of Hudson - (OH),Municipal,Other
+8973,MA,8973|MA,Town of Hudson - (MA),Municipal,Other
+902,MA,902|MA,Town of Ashburnham - (MA),Municipal,Other
+9087,NC,9087|NC,Town of Huntersville - (NC),Municipal,Other
+9094,AL,9094|AL,City of Huntsville - (AL),Municipal,Other
+9096,LA,9096|LA,City of Lafayette - (LA),Municipal,Other
+9128,UT,9128|UT,Hurricane City Power,Municipal,Other
+9130,MN,9130|MN,Hutchinson Utilities Comm,Municipal,Other
+9144,VT,9144|VT,Village of Hyde Park - (VT),Municipal,Other
+9187,ID,9187|ID,City of Idaho Falls - (ID),Municipal,Other
+9191,ID,9191|ID,Idaho Power Co,Investor Owned,Other
+9191,OR,9191|OR,Idaho Power Co,Investor Owned,Other
+9209,IL,9209|IL,Illinois Rural Electric Coop,Cooperative,Other
+9216,CA,9216|CA,Imperial Irrigation District,Political Subdivision,Other
+9230,IA,9230|IA,City of Independence - (IA),Municipal,Other
+9231,MO,9231|MO,City of Independence - (MO),Municipal,Other
+9246,OK,9246|OK,"Indian Electric Coop, Inc",Cooperative,Other
+925,AR,925|AR,"Ashley Chicot Elec Coop, Inc",Cooperative,Other
+9273,IN,9273|IN,AES Indiana,Investor Owned,Other
+9275,IA,9275|IA,Indianola Municipal Utilities,Municipal,Other
+9292,KY,9292|KY,Inter County Energy Coop Corp - (KY),Cooperative,Other
+9324,IN,9324|IN,Indiana Michigan Power Co,Investor Owned,Other
+9324,MI,9324|MI,Indiana Michigan Power Co,Investor Owned,Other
+9331,MO,9331|MO,Intercounty Electric Coop Assn - (MO),Cooperative,Other
+9336,CO,9336|CO,CORE Electric Cooperative,Cooperative,Other
+9417,IA,9417|IA,Interstate Power and Light Co,Investor Owned,Other
+9417,MN,9417|MN,Interstate Power and Light Co,Investor Owned,Other
+9425,IA,9425|IA,Iowa Lakes Electric Coop,Cooperative,Other
+9442,MA,9442|MA,Town of Ipswich - (MA),Municipal,Other
+9475,MN,9475|MN,Itasca-Mantrap Co-op Electrical Assn,Cooperative,Other
+9572,OH,9572|OH,Village of Jackson Center - (OH),Municipal,Other
+9575,KY,9575|KY,Jackson Energy Coop Corp - (KY),Cooperative,Other
+9576,IN,9576|IN,Jackson County Rural E M C - (IN),Cooperative,Other
+9601,GA,9601|GA,Jackson Electric Member Corp - (GA),Cooperative,Other
+9603,MO,9603|MO,City of Jackson - (MO),Municipal,Other
+9605,KY,9605|KY,Jackson Purchase Energy Corporation,Cooperative,Other
+9612,TN,9612|TN,City of Jackson - (TN),Municipal,Other
+9613,IN,9613|IN,City of Lebanon - (IN),Municipal,Other
+9616,FL,9616|FL,Beaches Energy Services,Municipal,Other
+9617,FL,9617|FL,JEA,Municipal,Other
+963,NJ,963|NJ,Atlantic City Electric Co,Investor Owned,Other
+9645,NY,9645|NY,Jamestown Board of Public Util,Municipal,Other
+9665,IN,9665|IN,Jasper County Rural E M C,Cooperative,Other
+9667,IN,9667|IN,City of Jasper - (IN),Municipal,Other
+9668,TX,9668|TX,"Jasper-Newton Elec Coop, Inc",Cooperative,Other
+9682,LA,9682|LA,"Jefferson Davis Elec Coop, Inc",Cooperative,Other
+9689,GA,9689|GA,Jefferson Electric Member Corp,Cooperative,Other
+9699,NM,9699|NM,"Jemez Mountains Elec Coop, Inc",Cooperative,Other
+9726,NJ,9726|NJ,Jersey Central Power & Lt Co,Investor Owned,Other
+9739,AL,9739|AL,Joe Wheeler Elec Member Corp,Cooperative,Other
+9750,IL,9750|IL,"Jo-Carroll Energy, Inc",Cooperative,Other
+9777,TN,9777|TN,Johnson City - (TN),Municipal,Other
+9778,IN,9778|IN,Johnson County Rural E M C,Cooperative,Other
+97,IL,97|IL,Adams Electric Coop,Cooperative,Other
+9837,NC,9837|NC,Jones-Onslow Elec Member Corp,Cooperative,Other
+993,NE,993|NE,Auburn Board of Public Works,Municipal,Other
+994,IN,994|IN,City of Auburn - (IN),Municipal,Other
+9964,KY,9964|KY,Kenergy Corp,Cooperative,Other
+9991,MN,9991|MN,Kandiyohi Power Coop,Cooperative,Other
+9996,KS,9996|KS,City of Kansas City - (KS),Municipal,Other
+9999,IN,9999|IN,Kankakee Valley Rural E M C,Cooperative,Other

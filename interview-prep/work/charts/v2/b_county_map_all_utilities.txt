@@ -1,0 +1,2 @@
+caption: All utilities in each of Dominion's Virginia counties (EAGLE-I): outage minutes per customer a year, non-major days, 2015-2024 average; 99 of 103 shown
+source: data/output/county_outage_map.csv (map_flag = 'ok'), va_counties.geojson (D findings A3, C5-5)

@@ -1,0 +1,46 @@
+fetching eaglei_outages_2024.csv (attempt 1)
+fetching eaglei_outages_2025.csv (attempt 1)
+fetching eaglei_outages_2023.csv (attempt 1)
+fetching eaglei_outages_2022.csv (attempt 1)
+done eaglei_outages_2024.zip
+fetching eaglei_outages_2020.csv (attempt 1)
+done eaglei_outages_2023.zip
+fetching eaglei_outages_2021.csv (attempt 1)
+done eaglei_outages_2022.zip
+fetching eaglei_outages_2019.csv (attempt 1)
+done eaglei_outages_2025.zip
+fetching eaglei_outages_2018.csv (attempt 1)
+done eaglei_outages_2020.zip
+fetching eaglei_outages_2017.csv (attempt 1)
+done eaglei_outages_2017.zip
+fetching eaglei_outages_2016.csv (attempt 1)
+done eaglei_outages_2019.zip
+fetching eaglei_outages_2015.csv (attempt 1)
+done eaglei_outages_2021.zip
+have eaglei_outages_2014.zip
+fetching MCC.csv (attempt 1)
+done MCC.zip
+fetching coverage_history.csv (attempt 1)
+done coverage_history.zip
+done eaglei_outages_2018.zip
+done eaglei_outages_2016.zip
+done eaglei_outages_2015.zip
+---
+total 1619860
+-rw-r--r-- 1 oni 197121     17792 Nov  1 07:06 aviary_files_2026-11-01.json
+-rw-r--r-- 1 oni 197121      6101 Nov  1 07:18 coverage_history.zip
+-rw-r--r-- 1 oni 197121   7804840 Nov  1 07:06 eaglei_outages_2014.zip
+-rw-r--r-- 1 oni 197121  61558216 Nov  1 07:20 eaglei_outages_2015.zip
+-rw-r--r-- 1 oni 197121  63108468 Nov  1 07:19 eaglei_outages_2016.zip
+-rw-r--r-- 1 oni 197121  79405892 Nov  1 07:17 eaglei_outages_2017.zip
+-rw-r--r-- 1 oni 197121 149742531 Nov  1 07:19 eaglei_outages_2018.zip
+-rw-r--r-- 1 oni 197121 175410080 Nov  1 07:18 eaglei_outages_2019.zip
+-rw-r--r-- 1 oni 197121 191837902 Nov  1 07:15 eaglei_outages_2020.zip
+-rw-r--r-- 1 oni 197121 186080858 Nov  1 07:18 eaglei_outages_2021.zip
+-rw-r--r-- 1 oni 197121 197329381 Nov  1 07:13 eaglei_outages_2022.zip
+-rw-r--r-- 1 oni 197121 200283274 Nov  1 07:12 eaglei_outages_2023.zip
+-rw-r--r-- 1 oni 197121  91125913 Nov  1 07:09 eaglei_outages_2024.zip
+-rw-r--r-- 1 oni 197121 254958615 Nov  1 07:14 eaglei_outages_2025.zip
+-rw-r--r-- 1 oni 197121     12375 Nov  1 07:06 figshare_24237376_2026-11-01.json
+-rw-r--r-- 1 oni 197121     18621 Nov  1 07:18 MCC.zip
+expected: 14 zips (12 years, MCC, coverage history); then run scripts/extract_eaglei_va.py

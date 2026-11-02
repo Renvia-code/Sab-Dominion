@@ -1,0 +1,4 @@
+subset,county_days,customer_hours_per_1k,ci_low,ci_high
+storm,6108,332.795,225.602,453.433
+calm,373851,27.863,23.093,33.222
+ratio,,11.944,7.919,16.891

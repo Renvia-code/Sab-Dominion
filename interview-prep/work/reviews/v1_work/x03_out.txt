@@ -1,0 +1,60 @@
+weakly covered (number matches a claim value, but no claim row ties it to this document and wording): 59
+    $690M | brief_html,brief_pdf                     | via C-Q-06                       | $690M · 440
+      440 | brief_html,brief_pdf                     | via C-Q-06                       | $690M · 440
+     0:35 | brief_html,brief_pdf                     | via 0:35                         | 0:35
+     0:55 | brief_html,brief_pdf                     | via 0:55                         | 0:55
+      1.0 | brief_html,brief_pdf                     | via C-A6-01;C-S3-04;C-S3-04P     | 1.0
+      120 | brief_html,brief_pdf                     | via C-S4-05;C-S4-05P             | 120
+      140 | brief_html,brief_pdf                     | via C-S4-05;C-S4-05P             | 140
+     1:00 | brief_html,brief_pdf                     | via 1:00                         | 1:00
+     1:05 | brief_html,brief_pdf                     | via 1:05                         | 1:05
+     1:10 | brief_html,brief_pdf                     | via 1:10                         | 1:10
+      20M | brief_html                               | via C-A6-01;C-S4-09;C-S8-01      | 20M+ · 71% → 90% · 17% · +9%
+      71% | brief_html                               | via C-Q-03                       | 20M+ · 71% → 90% · 17% · +9%
+      25% | brief_html,brief_pdf                     | via C-Q-08                       | 25% · 3-2
+24,957 MW | brief_html                               | via C-S5-04                      | 39–41%. The highest hour of the year rose 26% (19,803 → 24,957 MW) and the lowest 52% (7,1
+10,903 MW | brief_html                               | via C-S5-04                      | 39–41%. The highest hour of the year rose 26% (19,803 → 24,957 MW) and the lowest 52% (7,1
+       60 | brief_html,brief_pdf                     | via C-A6-01                      | 60
+       61 | brief_html,brief_pdf                     | via C-A6-01                      | 61–90 · Track
+       25 | brief_html                               | via C-Q-08                       | A2–A3 · The 25 hardest questions 10
+      71% | brief_html                               | via C-Q-03                       | C: Evaluation and reconciliation are different, and I keep them apart. P: Evaluation: a 15
+      20M | brief_html                               | via C-A6-01;C-S4-09;C-S8-01      | C: [you: what it fed and what you owned] . P: Policy, claims and billing data (20M+ rows) 
+       25 | brief_html                               | via C-Q-08                       | Drill the question sheet and the 25 hardest by recall: cover the answer, say it aloud, the
+      20M | brief_html                               | via C-A6-01;C-S4-09;C-S8-01      | Q16 Mercury pipeline. "The 20M-row Snowflake pipeline: grain, loads, and which part was yo
+      .20 | brief_html                               | via C-B-03                       | Real results helped (r = .20); “image creation” hurt (r = −.11 to −.19). Use the resume's 
+    20:00 | brief_html                               | via 20:00                        | Stop at 20:00 and sleep (Lim & Dinges 2010: strong). Tuesday: say the 30-second opener twi
+       25 | brief_html,brief_pdf                     | via C-Q-08                       | The 25 hardest questions, by panelist
+     7:40 | brief_html,brief_pdf                     | via 7:40                         | Times are the speaker notes read at about 130 words a minute: about 7:40, leaving two minu
+      25% | brief_html                               | via C-Q-08                       | Travel up to 25%; three office days, two remote · the posting
+25,413 MW | brief_html                               | via C-S5-03                      | unadjusted), so weather does not explain it. 2026 to October 29: winter 25,413 MW against 
+25,384 MW | brief_html                               | via C-S5-03                      | unadjusted), so weather does not explain it. 2026 to October 29: winter 25,413 MW against 
+      20M | brief_pdf                                | via C-A6-01;C-S4-09;C-S8-01      | 20M+ · 71% → 90% · 17% ·
+      71% | brief_pdf                                | via C-Q-03                       | 20M+ · 71% → 90% · 17% ·
+       25 | brief_pdf                                | via C-Q-08                       | 5. Drill the question sheet and the 25 hardest by recall: cover the answer, say it aloud, 
+    20:00 | brief_pdf                                | via 20:00                        | 7. Stop at 20:00 and sleep (Lim & Dinges 2010: strong). Tuesday: say the 30-second opener 
+       25 | brief_pdf                                | via C-Q-08                       | A2–A3 · The 25 hardest questions
+      20M | brief_pdf                                | via C-A6-01;C-S4-09;C-S8-01      | Q16 Mercury pipeline. "The 20M-row Snowflake pipeline: grain,
+      .20 | brief_pdf                                | via C-B-03                       | Real results helped (r = .20); “image creation” hurt (r =
+      25% | brief_pdf                                | via C-Q-08                       | Travel up to 25%; three office days, two remote · the
+      71% | brief_pdf                                | via C-Q-03                       | apart. P: Evaluation: a 150-question test set, 71% → 90%. · At
+      20M | brief_pdf                                | via C-A6-01;C-S4-09;C-S8-01      | billing data (20M+ rows) for the pilot. · [you: the grain,
+25,413 MW | brief_pdf                                | via C-S5-03                      | rose 33% (32% unadjusted), so weather does not explain it. 2026 to October 29: winter 25,4
+25,384 MW | brief_pdf                                | via C-S5-03                      | summer 25,384 MW, a tie.
+24,957 MW | brief_pdf                                | via C-S5-04                      | the rise was 39–41%. The highest hour of the year rose 26% (19,803 → 24,957 MW) and the lo
+10,903 MW | brief_pdf                                | via C-S5-04                      | → 10,903 MW). Winter set the yearly peak in 2019, 2022 and 2025.
+     +3.0 | d_adopted_pdf                            | via C-A6-01;C-Q-01;C-Q-14;C-Q-16 | +3.0
+       61 | d_adopted_pdf,d_adopted_slides,d_public_ | via C-A6-01                      | Days 61–90
+25,384 MW | d_adopted_pdf                            | via C-S5-03                      | summer 25,384 MW, a tie
+     +3.0 | d_adopted_slides                         | via C-A6-01;C-Q-01;C-Q-14;C-Q-16 | [TBL] 2024 | 464 | 131.3 | 128.3 | +3.0
+        7 | d_adopted_slides                         | via C-Q-16                       | [TBL] 7 | Jun 16, 2016 | Wind | 234,951 | 233,003 | 65.8
+        8 | d_adopted_slides                         | via C-S4-08;C-S5-07              | [TBL] 8 | Jun 19, 2025 | Wind | 225,609 | 209,475 | 22.0
+25,384 MW | d_adopted_slides                         | via C-S5-03                      | set the yearly peak in 2019, 2022 and 2025; 2026 so far: winter 25,413 vs summer 25,384 MW
+     1366 | qsheet_html                              | via C-S3-07                      | A day extreme enough to swamp the trend, set aside by rule. IEEE 1366's 2.5-beta method: f
+      20M | qsheet_html                              | via C-A6-01;C-S4-09;C-S8-01      | Business intelligence analyst: three years building dashboards, reporting and data pipelin
+      20M | qsheet_html                              | via C-A6-01;C-S4-09;C-S8-01      | Compute you size and pay for while it runs, separate from storage. Size it to the job, set
+      20M | qsheet_html                              | via C-A6-01;C-S4-09;C-S8-01      | Strong: CTEs, window functions and multi-table joins in a working pipeline. At Mercury I w
+      20M | qsheet_pdf                               | via C-A6-01;C-S4-09;C-S8-01      | 20M+ rows, that kept a pilot's data current. In the review, within a
+        5 | qsheet_pdf                               | via C-B-01;C-S4-05;C-S4-13;C-S6- | 5. What are the next steps in the process?
+     1366 | qsheet_pdf                               | via C-S3-07                      | IEEE 1366's 2.5-beta method: from five years of daily SAIDI, a day
+      20M | qsheet_pdf                               | via C-A6-01;C-S4-09;C-S8-01      | claims and billing (20M+ rows) and owned the evaluation
+      20M | qsheet_pdf                               | via C-A6-01;C-S4-09;C-S8-01      | warehouse pipeline (20M+ rows); in the review, RAW, STG and

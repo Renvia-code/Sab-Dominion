@@ -1,0 +1,14 @@
+metric,rebuilt,reported,difference,reported_source,verdict
+"3-year SAIDI ex-MED, 2022-2024",130.2,130.0,0.2,Dominion annual report (rounded); R checks the page,MATCH (rounding)
+"3-year SAIDI ex-MED, 2023-2025",133.0,133.0,0.0,Dominion annual report (rounded); R checks the page,MATCH (rounding)
+SAIDI ex-MED 2025,144.4,144.4,0.0,EIA-861 2025 final file,MATCH
+SAIFI ex-MED 2025,1.32,1.32,0.0,EIA-861 2025 final file,MATCH
+CAIDI ex-MED 2025,109.394,109.394,0.0,EIA-861 2025 final file,MATCH
+SAIDI all events 2025,306.7,306.7,0.0,EIA-861 2025 final file,MATCH
+SAIDI ex-MED 2024,131.3,131.3,0.0,EIA-861 2024 file (repo uses PUDL),MATCH
+SAIFI ex-MED 2024,1.21,1.21,0.0,EIA-861 2024 file (repo uses PUDL),MATCH
+CAIDI ex-MED 2024,108.512,108.512,-0.0,EIA-861 2024 file (repo uses PUDL),MATCH
+SAIDI all events 2024,172.1,172.1,0.0,EIA-861 2024 file (repo uses PUDL),MATCH
+Storm county-days 2024 (raw NOAA rebuild),464.0,464.0,0.0,committed data/output/storm_index.csv,MATCH
+Storm county-days 2025 (raw NOAA rebuild),791.0,791.0,0.0,committed data/output/storm_index.csv,MATCH
+"Commercial sales 2025, MWh (bundled + delivery)",64620793.0,64620793.0,0.0,"EIA-861 2025 Sales_Ult_Cust (60,088,202 + 4,532,591)",MATCH

@@ -1,0 +1,647 @@
+Dominion interview brief
+Interview brief · Saketh Bollina · panel interview, Tuesday, November 3, 2026
+Dominion Energy Virginia reliability: what public data shows, and where I'd look first
+The project on one page, and the talk 1
+Dominion on a page, and the glossary 2
+Finding 1 · 130 → 133: a stormier year 3
+Finding 2 · Frequency is the peer gap 4
+Finding 3 · Weather: on the storm line 5
+Finding 4 · Demand: nights and winters 6
+The Power BI report, and the build 7
+The role, and the first 90 days 8
+A1 · Know every number 9
+A2–A3 · The 25 hardest questions 10
+A4 · Delivery and rehearsal 12
+All figures come from public data or Dominion's own publications; none is internal. If adopted marks
+material that depends on adopting the repo upgrade; [you: …] is yours to fill in.
+The project on one page
+Dominion's reported outage minutes rose from 130 to 133; rebuilt from public EIA-861 data they are
+130.2 and 133.0. 2025 had more storms and more interruptions, and once storms are counted there is no clear
+underlying trend. Against its peers, Dominion's gap is how often customers lose power, not how long.
++2.8
+minutes: the rebuilt 3-year
+average, 130.2 → 133.0. 2025 (144.4) replaced 2022 (136.0) in the window
++10%
+both storm county-days and interruptions per
+customer (SAIFI), 2022 → 2025; minutes per interruption (CAIDI) −4%
+4th highest
+of 12 on frequency (SAIFI 2021–25: 1.21);
+6th of 12 on minutes per interruption. Peer medians differ by deck: page 4
+The eight-minute talk, slide by slide
+#
+Slide
+Say it in one line
+Adopted ·
+public
+1
+Title
+Independent analysis of public data; nothing internal.
+0:28 · 0:25
+2
+130 → 133
+2025 replaced 2022 in the window; SAIFI +10%, CAIDI −4%, storm county-days
++10%. Dominion attributes the rise “primarily” to storms; 2025 sits on the storm line.
+1:13 · 1:13
+3
+Dominion and 11 peers
+Length mid-pack (6th of 12), frequency 4th highest; methods
+differ, so ranks are indicative.
+0:48 · 0:44
+4
+Storms
+If adopted Storm county-days had about 12 times the outage hours of calm days
+(11.9×, 95% CI 7.9–16.9), an association. Public-only: r = 0.70 over ten years.
+1:07 · 1:06
+5
+The Power BI report
+One page per question; customer-weighted measures; a year slicer;
+Import (D13).
+1:05 · 1:02
+6
+How it's built
+RAW → STG → MART, tests, a dictionary, a decisions log; reconciled
+to 130 and 133.
+1:16 · 0:56
+7
+First 90 days
+The questions I'd bring, ending on a Power BI program-tracking
+report.
+1:00 · 1:00
+8
+Close
+Three takeaways, then: “I've built a tested Snowflake → Power BI pipeline on
+public reliability data.”
+0:59 · 0:57
+Speaker notes at about 130 words a minute: 7:56 in all (adopted), 7:23 (public-only).
+A 5-minute slot: A4.
+Dominion on a page
+Dominion Energy at a glance (November 1, 2026)
+Richmond-based regulated utility (NYSE: D): electricity for 3.6M in VA, NC, SC; gas for 500k in SC.
+Customers: 2.68M = Virginia in EIA-861, the project's base (EIA files by state) · 2.8M = Dominion Energy Virginia incl. NC · 3.6M = all three states.
+If a panelist says 2.8M: "That includes North Carolina; my Virginia-only base is 2.68M."
+Leaders: Robert Blue, chair, president and CEO · Ed Baine, executive vice president of utility operations and president, Dominion Energy Virginia.
+Q3 2026 (Oct 30): operating EPS $1.28 vs $1.06; 2026 seen in the top half of $3.45–$3.69.
+Merger: all-stock with NextEra; shareholders approved Sep 3; close expected in the second half of 2027. Pending: Virginia State Corporation Commission (SCC) case PUR-2026-00112 (rebuttal due Nov 2, hearings Nov 17, order by Jan 11), FERC EC26-131, NRC, NC, SC.
+FPL , NextEra's Florida utility, is one of the 11 peers and has the lowest ex-MED SAIFI; after the merger, a sister company (Q2 in A2).
+CVOW (Coastal Virginia Offshore Wind, 2.6 GW): about 85% built; budget $11.65B; done by end-2027.
+Data centers: 28% of Virginia Power's 2025 sales; 54+ GW in contracting stages, 12+ GW contracted.
+Rates: base rates +$566M (2026) and +$210M (2027); typical bill +$11.24 a month (2026); allowed return on equity 9.8%, which the SCC can move by up to 50 basis points on factors including reliability.
+Grid Resiliency programs (Grid Transformation Plan): MFH, Mainfeeder Hardening: rebuilds the three-phase main line from a substation; picks circuits with above-average outages (5 years) and 500+ customers at SAIDI 2+ min worse than the rest.
+VIM, Voltage Island Mitigation: adds a second transformer (or reroutes) at single-transformer substations, so every customer can be restored. 19 sites.
+VO, Voltage Optimization: tunes voltage with smart-meter readings. The goal is 1% energy savings.
+FLISR, fault location, isolation, and service restoration: isolates a fault and restores the rest.
+SUP, Strategic Underground Program (separate): about 2,900 miles of outage-prone lines buried by June 2026, of about 4,000. Due 2029.
+Glossary
+MED / ex-MED: a day above the 2.5β threshold. Ex-MED drops those days, to show everyday performance.
+IEEE 1366: standard for SAIFI, SAIDI, CAIDI and MEDs. If adopted 10 of the 12 utilities use it; Dominion files "Other".
+2.5β: T_MED = e^(α+2.5β); α, β = mean and standard deviation of ln(daily SAIDI), prior five years.
+Storm county-day: a day with a NOAA wind, winter or tropical storm report in one of the 103 Virginia counties Dominion serves.
+EAGLE-I: DOE's 15-minute county outage record, built at Oak Ridge National Laboratory (ORNL).
+PUDL: Public Utility Data Liberation, Catalyst Cooperative's cleaned EIA data (2013–24 history).
+NCEI: NOAA's National Centers for Environmental Information. It holds the Storm Events Database.
+HURDAT2: the National Hurricane Center's (NHC) Atlantic storm tracks, used to tag tropical events.
+CPC: NOAA's Climate Prediction Center: daily heating/cooling degree days vs 65°F, population-weighted.
+PJM: the regional transmission organization for VA, 12 other states and DC (grid and power market).
+DOM zone: Dominion's PJM zone = its transmission and distribution area (NC, co-ops too): wider than retail.
+CEMIn: Customers Experiencing Multiple Interruptions: % of customers with n+ sustained interruptions.
+MAIFI: Momentary Average Interruption Frequency Index: SAIFI for interruptions of 5 min or less.
+OMS: outage management system, which detects customer outages. Dominion is installing a new one.
+AMI: smart meters (hourly reads, sent daily). Last gasp: a meter's alert as it loses power.
+FLISR: fault location, isolation, and service restoration. It isolates a fault and restores the rest.
+SCC: Virginia State Corporation Commission: rates, reliability reports, the merger case.
+FERC: Federal Energy Regulatory Commission; must approve the merger (docket EC26-131).
+NRC: Nuclear Regulatory Commission; must approve the license transfers for four nuclear plants.
+DOE-417: DOE's Electric Emergency Incident and Disturbance Report, by area, with no utility column.
+CI vs PI: a confidence interval brackets the average (2025: 133.9–156.6); a prediction interval brackets one new year, so it is wider (122.3–168.2).
+DuckDB: in-process SQL database; the local mirror reruns everything without Snowflake, feeds Power BI.
+Finding 1
+Outage minutes rose from 130 to 133; 2025 had more storms and more interruptions
+SAIDI, the average outage minutes per customer, is SAIFI (how often a customer loses power) times CAIDI (how long
+each interruption lasts). Dominion's 2025 Annual Report gives a 3-year SAIDI, excluding major events, of 133 minutes
+for 2023–25, up from 130 for 2022–24, and explains it (p. 10): “This increase is primarily due to increased storm
+activity.” The public Virginia data reproduces both: 130.2 and 133.0.
+A 3-year average moves when a year leaves the window: 2025 (144.4 minutes) replaced 2022 (136.0), a rise of 2.8
+minutes in the average. The weather fit (Finding 3) puts 2025 on the storm line, so the public data agrees with
+Dominion's reading: once storms are counted there is no clear underlying trend.
+Storm county-days
+NOAA, Dominion's counties: 718 → 791
++10%
+SAIFI
+interruptions per customer: 1.199 → 1.320
++10%
+CAIDI
+minutes per interruption: 113.5 → 109.4
+−4%
+SAIDI
+outage minutes per customer: 136.0 → 144.4
++6%
+2022 → 2025, the two years that move the 3-year average
+Source: EIA-861 2025 final and PUDL 2013–2024, Dominion Energy Virginia, excluding major event days;
+NOAA Storm Events. Storm county-days 718 → 791 count Bedford city once (D22, If adopted ); the public repo has 723 → 796,
+also +10%. Reported figures: Dominion Energy 2025 Annual Report, p. 10.
+Three base years, three answers: say which one you mean
+Base year → 2025
+SAIDI
+SAIFI
+CAIDI
+Share from frequency
+2019: the report's long view (its chart titles)
+−3.7%
++6.1%
+−9.2%
+SAIDI fell
+2022: the two years that swap (slide 2)
++6.1%
++10.1%
+−3.6%
+more than all of it
+2023: the latest 3-year window
++17.1%
++13.3%
++3.3%
+79%
+From every base, interruptions per customer rose more than minutes per interruption.
+Say it carefully: the two-sided lines
+If asked “so reliability got worse?”: “2025 had more storms and more interruptions, and Dominion attributes the
+rise primarily to storms. With outage records, I'd check whether non-storm interruptions are rising underneath.”
+2025's SAIFI (1.320) only edges 2018's (1.303), and 2025's outage minutes (144.4) are below 2018 (149.6) and
+2019 (149.9). One year is not a trend.
+No 2015–2025 trend is statistically clear, with or without adjusting for storm days. If adopted SAIFI p = 0.54,
+CAIDI p = 0.74, SAIDI p = 0.58 (scripts/trend_tests.py); storm-adjusted, about +0.34 minutes a year (95% CI −1.41 to
++2.08, p = 0.67). Public-only: say “no clear trend” without p-values.
+Finding 2
+Among 12 large utilities (Dominion and 11 peers), interruption length is mid-pack; frequency is the gap
+Twelve large investor-owned utilities in PJM and the Southeast, selected by EIA ID before results were computed
+(decision D10); means of 2021–2025, excluding major event days. Dominion's SAIFI of 1.21 is the 4th highest of the 12;
+its CAIDI of 110 minutes is 6th, mid-pack; its 3-year SAIDI, 133.0, is 4th. If adopted The chart's lines are the medians of
+the 11 peers, 0.93 and 99.5; the public repo prints 0.96 and 105, the medians of all 12 including Dominion.
+0.6
+0.8
+1.0
+1.2
+1.4
+Interruptions per customer per year (SAIFI), 2021–25 average
+60
+80
+100
+120
+140
+Minutes per interruption (CAIDI)
+median of the 11 peers: 0.93
+peer median 99.5 min
+Duke Progress (NC),
+Georgia Power
+Duke Carolinas
+Dominion
+Energy Virginia
+Dominion SC
+Duke Florida
+Alabama Power
+PECO
+BGE
+PPL
+Pepco
+FPL
+Utility
+Major-event method
+SAIFI 2021–25
+CAIDI 2021–25
+SAIDI 2023–25
+Duke Carolinas (NC)
+IEEE 1366
+1.25
+139.2
+179.0
+Georgia Power
+IEEE 1366
+1.24
+114.2
+140.8
+Duke Progress (NC)
+IEEE 1366
+1.23
+113.9
+143.8
+Dominion Energy Virginia
+Own method
+1.21
+110.4
+133.0
+Dominion Energy SC
+IEEE 1366
+1.14
+72.0
+83.9
+Duke Energy Florida
+IEEE 1366
+0.99
+87.2
+83.1
+Alabama Power
+Own method
+0.93
+125.3
+110.0
+PECO
+IEEE 1366
+0.74
+98.6
+66.1
+BGE
+IEEE 1366
+0.71
+99.5
+64.2
+PPL Electric
+IEEE 1366
+0.69
+136.7
+99.1
+Pepco (MD)
+IEEE 1366
+0.57
+90.1
+48.3
+FPL
+IEEE 1366
+0.49
+96.0
+46.6
+Source: EIA-861 / PUDL, excluding major event days, means of annual values; the chart and the table's
+method labels are the adopted deck's. Georgia Power and Duke Energy Florida filed “Other” in 2013 only (public
+workbook: “Mixed”). Public-only, the deck prints the medians as the public repo does (docs/05).
+The caveat to raise yourself: methods differ. Dominion reports under its own
+major-event rule, so ranks are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give
+no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+SAIDI 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+Finding 3
+Weather: years with more storm days had more outage minutes, and 2025 sits on the storm line
+A storm county-day is a day with a NOAA wind, winter or tropical storm report in one of the 103 Virginia counties
+Dominion serves. Over 2015–2024, storm county-days and SAIDI excluding major events move together: r = 0.70 (n = 10).
+A fit made without 2025 gives 145.3 minutes for 2025's storm count, against 144.4 actual. Ten points is thin, so this
+is a check, not a forecast. If adopted p = 0.025; 95% CI for r 0.12 to 0.92; the 95% prediction interval for 2025 was 122.3
+to 168.2 (the confidence interval of the line itself, 133.9 to 156.6). Storm county-days 2024 → 2025: 464 → 791
+If adopted ; 465 → 796 on the public repo.
+If adopted County-days with a storm report had about 12 times the outage hours of calm
+days. EAGLE-I, the Department of Energy's county outage record, counts the customers out every 15 minutes.
+On 6,108 storm county-days with complete outage readings (99 counties on the map), outage customer-hours per 1,000
+customers averaged 332.8 (95% interval 225.6–453.4), against 27.9 (23.1–33.2) on calm county-days: 11.9 times (95%
+CI 7.9–16.9, resampling whole days). It holds on non-major days (9.9×), in the counties Dominion serves alone
+(19.9×) and in every year (5.9× to 27.4×, every interval above 1). It is an association: EAGLE-I counts every
+utility's customers, and storm reports partly follow damage. 6,108 is the NOAA count of 6,530 less 114 storm
+county-days in four counties off the map and 308 with a failed reading (96 of them in 2025, when only 74% of
+county-days are complete).
+All utilities in each county (EAGLE-I)
+Outage minutes per customer a year,
+non-major days, 2015–2024 average
+under 150
+150–250
+250–350
+350–500
+500 or more
+Pittsylvania County 633
+Prince William County 55
+If adopted Source: EAGLE-I (ORNL for DOE), customers of all utilities in 99 of Dominion's 103 Virginia
+counties (four cities left off: unusable data). Counties with 20,000 or more customers range from 55 minutes a year
+(Prince William County) to 633 (Pittsylvania County). Not Dominion's SAIDI.
+If adopted The 31 mapped counties Dominion serves alone have a customer-weighted average of 159 minutes a year,
+against 211 in the 68 shared counties. That compares places (mostly cities and inner suburbs against rural
+counties), not utilities.
+If adopted Isaias, August 2020: 33.5 hours from the peak to clear 90% of the outage (351,738 customers out at the
+peak; a net count, all utilities, not a utility's “% of affected customers restored”). Across 47 events with 50,000
+or more customers out, there is no evidence that clearing got faster (+4.6% a year after allowing for size,
+p = 0.07).
+What none of this can say: which circuits, which causes, or whether hardened lines held up. That needs outage
+records by circuit and cause.
+Finding 4
+Overnight demand grew faster than afternoon demand, and winter rivals summer for the yearly peak
+EIA-930 hourly demand for the PJM Dominion (DOM) zone, which is wider than Dominion's retail territory. From 2019
+to 2025, average load in the hour ending 4 a.m. rose 41%, against 27% in the hour ending 4 p.m.; across the hours
+ending 1–5 a.m. the rise was 39–41%. The highest hour of the year rose 26% (19,803 → 24,957 MW) and the lowest 52% (7,167 → 10,903 MW). Winter set
+the yearly peak in 2019, 2022 and 2025.
+1 a.m.
+6 a.m.
+noon
+6 p.m.
+midnight
+Hour ending, local time
+0
+10
+20
+30
+40%
+4 a.m.: +41%
+4 p.m.: +27%
+Growth in average load by hour ending, 2019 → 2025
+Source: EIA-930 hourly demand, PJM DOM zone; 2019 and 2025 full years. Winter = December–February,
+summer = June–August.
+Of the 50 highest hours in the EIA-930 record from July 2018 to December 2025, 47 fell in 2025.
+Commercial electricity sales in Dominion's Virginia territory rose 65% from 2013 to 2025 (39.08 → 64.62 TWh) on
+8% more commercial customers (EIA-861).
+If adopted Holding Virginia's daily heating and cooling degree days and the weekday fixed, average load rose 33% (32%
+unadjusted), so weather does not explain it. 2026 to October 29: winter 25,413 MW against summer 25,384 MW, a tie.
+Don't say “data centers caused it”. Growth around the clock is consistent with large
+constant loads, but these data cannot identify customers. Say: “less overnight slack, and winter readiness matters as
+much as summer.” In reports, I'd add winter and overnight views.
+The report and the build
+The Power BI report, and how the analysis is built
+If adopted The Summary page, 2025: customers served 2.68M, SAIDI 144.4, minutes per interruption 109.4,
+SAIFI 1.320, major-event share 53%. Public-only: slide 5 shows your report's What moved page; the .pbix is not on
+GitHub by design.
+The model ( If adopted the template): The core is a small star: one fact table at utility × state × year, many-to-one to a utility dimension, with customer-weighted measures. The other tables are pre-built summaries for particular pages, so most stand alone; only the ten largest outage events join their restoration curves. A year table drives the slicer. In production I'd conform them to shared date and county dimensions. SAIDI is customer-minutes over customers within a
+year, and the 3-year figure is the mean of the three annual values, as Dominion reports it. Public-only, your own
+report: the same core; its other tables are keyed by year or hour and stand alone; DirectQuery against Snowflake
+during development, Import for presentation (decision D13).
+The build. Public files land as raw text exactly as published (RAW), are typed and cleaned (STG),
+and become facts, dimensions and views (MART). The October build runs this SQL in Snowflake, and
+scripts/run_local_duckdb.py rebuilds the core mart locally. Tests run after each load; all pass: T1–T6 the
+reliability mart, T7–T9 NOAA storms, T10–T12 EIA-930 demand. If adopted The same SQL also runs in DuckDB, a local mirror that builds everything, the November tables included, and runs all 31 tests in about 22 seconds. The template imports 18 CSV files exported from that mirror (16) and the workbook (2), with a manifest of row counts and checksums, so it opens offline. The new tables reach Snowflake only through one optional step (README step 7). A data dictionary covers every table
+and column; measures are defined in docs/05. Decisions are logged (D1–D14; If adopted D1–D22); the peer set was chosen by
+EIA ID before results. Reconciled: 130.2 and 133.0 against 130 and 133, and test T4 matches 2025 to EIA's published
+306.7, 144.4 and 2,675,735 customers ( If adopted 12 of 12 values: a check of definitions).
+Source
+Publisher
+Years
+Rows
+EIA-861 Reliability, 2025 final · PUDL EIA-861
+EIA · Catalyst Cooperative
+2025 · 2013–2024
+977 · 24,358
+NOAA Storm Events
+NOAA NCEI
+2013–2025
+831,288
+EIA-930 hourly demand
+EIA
+Jul 2018–Oct 2026
+6,077,232 · If adopted 6,094,320
+If adopted EAGLE-I county outages · DOE-417 · HURDAT2 · CPC degree days
+ORNL for DOE · DOE · NOAA · NOAA
+2014–2025 · 2014–2025 · 1851–2025 · 2018–2026
+11,608,442 · 3,702 · 55,524 · 309,504
+The role
+The role, and what I would do in the first 90 days
+The posting that most likely matches this interview is Associate Business Intelligence Analyst / Business
+Intelligence Analyst (Richmond, hybrid: three days in the office, two remote). It supports Grid
+Resiliency programs with Power BI dashboards and reports, and asks for Power BI, SQL, Excel, Snowflake, Power
+Apps and SharePoint, with reliability metrics as preferred knowledge.
+[you: confirm the exact title and team with the recruiter]
+Four programs: mainfeeder hardening, voltage island mitigation, voltage optimization, and intelligent grid devices
+(FLISR: fault location, isolation, and service restoration). The Strategic Underground Program is separate.
+Mainfeeder hardening selects feeders with at least 500 customers whose average SAIDI is more than 2 minutes worse
+than the rest, with above-average outages over the last five years. Dominion reports a 32% reduction in outage
+minutes on feeders hardened for at least 12 months (as of November 30, 2023).
+First 90 days: the questions I'd bring, and what I'd build
+Days
+What I'd do
+Deliverable
+1–30 · Learn, reconcile
+Learn how outages, meter events and circuits are recorded and
+reported. Rebuild one year's SAIDI, SAIFI and CAIDI and reconcile them to the filed figures.
+A reconciled
+baseline with written definitions
+31–60 · Ask about frequency
+Interruptions by circuit and cause code, storm days apart from
+calm; repeat interruptions (CEMIn). Outage times from meter last-gasp and restore messages (99.8% of meters are
+smart), checked against OMS.
+Tested views and a data dictionary
+61–90 · Track
+Track mainfeeder hardening against matched untreated
+feeders (same pre-period performance), weather-normalized, in support of the program's selection rule.
+A Power BI program-tracking report on a scheduled refresh
+Check each of these first with the people who own the definitions: they are questions, not
+conclusions.
+What public data cannot show, and what would answer it
+Public data limit
+What would answer it (Dominion data, by type)
+One number per utility per year (EIA-861)
+Outage records by event, circuit and cause
+Storms counted by county, not by line
+Outage records with cause codes and circuit location
+Methods differ between utilities
+Dominion's daily SAIDI and its filing method
+The DOM zone is wider than the retail territory
+Meter interval data by circuit
+No customer identities: load growth cannot be attributed
+Customer class and large-load records
+Logistics
+Time, place and format: [you: …] · Panel names and roles:
+[you: …]
+Hybrid 3-2 in Richmond: [you: commute or relocation plan for a hybrid 3-2 schedule in
+Richmond] · Work authorization, if asked: [you: …]
+Salary, if asked: ask about the full scope first; give a researched range only if pressed.
+[you: your range]
+Appendix A1
+Know every number
+Number
+Plain meaning · how computed · source
+Caveat →
+likely follow-up
+130 → 133 · 130.2 → 133.0
+Reported 3-year SAIDI ex-MED, 2022–24 → 2023–25 (Annual Report p. 10); rebuilt as the mean of three annual values. 2022 left the window (136.0), 2025 joined (144.4)
+(144.4 − 136.0) ÷ 3 = 2.8. “Primarily due to increased storm activity” → is it real? (Q4)
+1.199 → 1.320 · 113.5 → 109.4
+SAIFI +10% and CAIDI (SAIDI ÷ SAIFI) −4%, 2022 → 2025 · EIA-861
+SAIFI only edges 2018 (1.303); CAIDI is a ratio, not restoration speed
+718 → 791 · 723 → 796
+Storm county-days 2022 → 2025, +10% ( If adopted · public) · NOAA
+D22 counts Bedford city once: 38 fewer county-days over 2013–25
+145.3 vs 144.4 · r = 0.70
+2025 from the storm-day fit (2015–2024, n = 10) vs actual. Fit: If adopted 104.3 + 0.0518 × storm county-days, R² 0.49; public-only 104.4 + 0.0514 ×, R² 0.48
+If adopted 95% prediction interval 122.3–168.2; p = 0.025; CI for r 0.12–0.92 (Q1)
+1.21 · 4th highest · 110 · 6th
+SAIFI and CAIDI 2021–25 ex-MED, of the 12; medians If adopted 0.93 and 99.5 (11 peers), public-only 0.96 and 105 (all 12); 3-year SAIDI 133.0, also 4th
+All events: SAIFI 1.531, 6th (median 1.408); SAIDI 223.0, 9th
+Windows
+Slide 3: 2021–25 means (1.21, 110) and a 2023–25 SAIDI; slide 5: 2025 (1.320, 109.4)
+Don't cross-quote. Peer SAIDI ≠ SAIFI × CAIDI: different windows; year by year T2 holds within 2%
+Dominion + 11 peers
+Large investor-owned utilities in PJM and the Southeast, fixed by EIA ID before results (D10); no size cut-off; a national set was turned down. Appalachian Power (SAIDI over 300) is apart
+If adopted 10 of 12 file IEEE 1366 every year 2014–25; Dominion and Alabama Power file “Other” → ranks indicative (Q2)
+11.9× (7.9–16.9) · 9.9× · 19.9×
+If adopted outage customer-hours per 1,000 customers, storm vs calm county-days (332.8 vs 27.9); non-major days (proxy MEDs removed) · Dominion-only counties
+An association; EAGLE-I counts all utilities. Every year 5.9–27.4×, each interval above 1 (Q3, Q5)
+6,108 vs 6,530
+If adopted storm county-days with complete readings (99 counties) vs all (103)
+422 = 114 off the map + 308 failed (96 in 2025)
+Nov 2014 → 2025
+If adopted EAGLE-I starts Nov 1, 2014: county-days use 2015–25; the map 2015–24
+2025 not averaged: 46% of August and 45% of October readings failed
+351,738 vs 508,000
+If adopted Isaias: most customers out at one moment (EAGLE-I, all utilities) vs customers affected over the event (DOE-417)
+A peak vs a total: both true
+3,702 · 55,524
+If adopted DOE-417 incident reports 2014–25, a second size for named events · HURDAT2 track points since 1851
+Tropical if a track passes within 400 km of Richmond; Isaias 59 km
+306.7 vs 144.4
+2025 SAIDI with and without major event days; MEDs 53% (162.3)
+Dominion vs FPL: compare like with like (Q2)
+2.68M · 2.8M · 3.6M
+Customers: EIA-861 Virginia 2025, 2,675,735; Dominion Energy Virginia with North Carolina; Dominion Energy, three states
+EIA's count is the SAIDI base (P17); one SAIDI minute ≈ 2.7M customer-minutes
+T1–T12 · D1–D14
+Tests, all pass (T1–T6 reliability, T7–T9 storms, T10–T12 demand); decisions logged. If adopted T13–T31 (31 in all), D1–D22, 12 of 12 reconciled
+Reconciliation is a definitions check (Q13)
+99.8%
+Smart meters as a share of all meters, 2025 · EIA-861
+A last gasp marks the start (Q6)
+500 · 2 min · 5 yr · −32% · −44%
+Mainfeeder selection rule. Reported: −32% outage minutes, feeders hardened 12+ months (Nov 2023); −44% average annual outage time, hardened areas (June 2026)
+Two measures, not a trend; −44% has no stated baseline. Before/after overstates it (Q8)
++41% · +27% · +26% · +52%
+Load 2019 → 2025: hours ending 4 a.m. and 4 p.m., top hour, lowest hour · EIA-930
+Not attributable to data centers (Q10)
+1.849 → 1.887
+Co-op SAIFI 2025 before and after matching denominators (P18)
+A co-op filed SAIDI but no SAIFI (Q17)
+20M+ · 71% → 90% · 17% · +9%
+Mercury: rows; grounded-answer accuracy; settlement time; renewals
+Causal only for the A/B test (Q17)
+$690M · 440
+The Life Initiative: investments in the board's Tableau view
+Who used it? [you: …]
+25% · 3-2
+Travel up to 25%; three office days, two remote · the posting
+[you: your answers]
+Appendix A2–A3
+The 25 hardest questions, by panelist
+C claim, P proof, L honest limit; ● drill first; Adopted / Public-only
+the variant's line; [you: …] only you can fill it; D, P and T are the repo's decisions,
+data-quality notes and tests. Q numbers match A1.
+Engineer
+Q1 ● Weather fit. "Ten points: what's the interval on r, the 2025 band, and why start in 2015?"
+C: Thin, so it's an appendix check, not the headline. P: r = 0.70, p = 0.025, 95% CI for r 0.12–0.92. · 2025: fit 145.3 vs actual 144.4, inside its 95% prediction interval, about 122–168. · The fit starts in 2015, when outage recording in the filings became automated (D6, P7). From 2020 they count lines up to 46 kV (not adjusted; it can only push SAIFI and SAIDI up): 2020 sits 14.5 above the line, and the trend test across it still finds no rise (p 0.58). L: Say "can't tell", not "no trend". Adopted: the weather-adjusted slope range is −1.4 to +2.1 min/yr; storm county-days 2024 → 2025: 464 → 791. · Public-only: r 0.70 on ten years; 465 → 796; no p, CI or prediction interval.
+Q2 ● Major event days. "What's an MED, and why exclude it? What's Dominion's rule? Dominion vs FPL?"
+C: An MED is a day so far above normal that it would swamp the year. Excluding MEDs shows everyday performance; storms are judged as storm response. P: 2.5β: the logs of five years of daily SAIDI; a day is major above T = e^(α+2.5β), α and β the mean and standard deviation of those logs. Adopted: EAGLE-I's proxy MEDs (D18) apply the same rule to daily customer-hours in the 103 counties: 103 days in 2015–25, 2 to 18 a year; stand-ins, not Dominion's. · 2025: MEDs were 53% of all-event minutes (306.7 vs 144.4). · Dominion's method: it files under its own rule ("Other"), so methods differ. Adopted: 10 of the 12 use IEEE. · All events: Dominion's SAIFI ranks 6th of 12, against 4th ex-MED. L: "I don't know the written rule; I'd ask the reliability team." Ranks are indicative. FPL: compare like with like (all events) and make no comment on the merger.
+Q3 ● County data ( Adopted ). "It counts every utility in a county. Whose minutes? Would you send crews by it? 90% of what?"
+C: Right. It isn't Dominion's SAIDI, and I wouldn't target work with it. P: The county rule: EIA-861 lists 103 Dominion counties, 33 of them Dominion-only (D15), 31 on the map. The result holds in those 31 (19.9×). · Blank readings: failed collection runs, never counted as zero (P20). · Isaias: 33.5 hours from the peak to clear 90% of the outage (a net count, all utilities). L: Targeting needs your outage records by feeder. Public-only: there's no county outage data; NOAA's county reports carry the same caveat.
+Q4 Anything to explain? "130 → 133 is 2.8 minutes. Is it real? More frequent, or longer?"
+C: 2025 was a stormier year with more interruptions. There's no clear underlying trend. P: The 2.8 minutes: (144.4 − 136.0) ÷ 3, because 2025 replaced 2022 in the window. Single years have ranged from 117 to 150. · 2022 → 2025: SAIFI +10%, CAIDI −4%; storm county-days 718 → 791. · Dominion's own reading: "primarily due to increased storm activity". L: CAIDI is a ratio, not a measure of restoration speed. Adopted: trend p-values 0.54 / 0.74 / 0.58. · Public-only: storm county-days 723 → 796; "no clear trend".
+Q5 The 12× ( Adopted ). "Isn't 12× circular, when storm reports come from damage? What's the unit of the CI?"
+C: Partly, yes. It's an association, inflated by how storm reports are made. P: The levels: 333 vs 27.9 customer-hours per 1,000 customers = 11.9× (7.9–16.9). · The interval: 2,000 resamples of whole days: one storm hits many counties on the same day, so single county-days would make it too narrow. · It holds: on non-major days (9.9×), in Dominion-only counties (19.9×) and in every year. · 6,108 vs 6,530: complete EAGLE-I days in 99 counties vs all NOAA days in 103. · CI vs PI: a CI is for an average or the line (133.9–156.6 at 791); a PI is for one new year, so wider (122.3–168.2). · Trend test: 11 yearly points, t-test on 9 df: SAIDI p 0.58, slope −1.87 to +3.15 min/yr. Eleven points catch only a large, steady change: "can't tell", not "nothing changed". L: The next test is weather measured independently of damage, such as wind gusts. Public-only: the annual version, r 0.70.
+Q6 Meters. "What does a last gasp tell you? Could 2025's SAIFI be a measurement change?"
+C: A last gasp marks when the outage starts, not when it ends. I can't rule out a measurement effect from public data. P: 99.8% of meters are AMI. · The end time needs a restore message or a ping, and the outage system stays the record. · Last gasps drop out when collectors lose power. · Recording became automated in 2015 (D6). L: Check first: roll-out timing against SAIFI, and circuits before and after their meter cut-over.
+Q7 Cause codes. "What will our cause codes show, vegetation especially? What goes wrong?"
+C: It needs your outage records: a 30–60-day deliverable. P: Expected causes: vegetation, equipment, weather, animals, vehicles, unknown. · Split blue-sky days from storm days, and use CEMIn for repeat outages. · Dominion trims on 4–5-year cycles. L: The data traps: the cause is coded when the job closes · one device can hit many customers · the "unknown" share is itself a KPI · Agree the definitions with engineering first.
+Q8 Hardening. "The worst feeders improve anyway. How would you know it's the program?"
+C: A plain before-and-after overstates the effect (regression to the mean). P: Selection rule: at least 500 customers, more than 2 minutes worse, over 5 years. · Reported, two measures: −32% outage minutes, feeders hardened 12+ months (Nov 30, 2023); −44% average annual outage time for customers in hardened areas (Dominion, June 2026). · Design: matched feeders with a pre-period, difference-in-differences, storm-normalized, reported with intervals. · My experience: the A/B test at Mercury. L: Frame it as making a good result harder to challenge, not as doubting it.
+Q9 ● Why EIA. "Why public EIA data and not the SCC filings?"
+C: It's public, consistent across utilities, and it reproduces Dominion's own numbers. P: Every utility files the same federal form, by state. · Virginia data gives 130.22 / 133.01 against the reported 130 / 133. · The SCC's report to the Assembly shows the indices only as charts. L: Methods differ (Dominion files as "Other"), so ranks are indicative. The filed SCC report is the first thing I'd reconcile to.
+Q10 ● Data centers. "Did data centers cause the demand growth?"
+C: Public data can't show that, and I don't claim it. P: The load shape, 2019 → 2025: overnight +39–41% vs afternoon +27%; winter peaks. · Sales: commercial sales +65% on 8% more customers. · Dominion's account: 744 MW of data centers connected in 2025, and over 54 GW in contracting stages. L: The zone is wider than the territory and EIA has no customer IDs. Attribution needs meter data (D14).
+BI manager
+Q11 ● The model. "Walk me through the model and the year slicer, 3-year SAIDI and the roll-up."
+C: The core is a small star: one fact table at utility × state × year, many-to-one to a utility dimension, with customer-weighted measures. The other tables are pre-built summaries for particular pages, so most stand alone; only the ten largest outage events join their restoration curves. A year table drives the slicer. In production I'd conform them to shared date and county dimensions. Public-only: the same core; the other tables, keyed by year or hour, all stand alone. P: Counts ( adopted ): 18 imported tables, 2 calculated (Dashboard Year, _Measures), 2 relationships. · Year slicer: a disconnected 'Dashboard Year' table read with SELECTEDVALUE (default 2025) plus CALCULATE. · 3-year SAIDI: the mean of the annual values (AVERAGEX), Dominion's convention. · Roll-up: Σ customer-minutes ÷ Σ customers. L: DirectQuery while developing, Import to present (D13). Adopted, after the guide: folder-parameter Import, so it opens offline.
+Q12 Power BI at work. "Where have you used Power BI at work? And Power Apps?"
+C: [you: the exact truth] . If it's only this project, say so. P: At work: Tableau; Snowflake SQL. · Power BI depth: this model (Q11). L: Power Apps: "not in production" [you: …] , plus a 30-day plan: a small form for logging exceptions or field updates that feeds the report. · SharePoint: skills line only [you: …] .
+Q13 Reconciliation. "133.0 vs 133: what did that prove? Which values?"
+C: It shows I use the same definitions and filters as Dominion. It doesn't show the data is true. P: 12 values: two 3-year averages vs the annual report · nine 2024–25 values vs EIA's files · 2025 commercial sales · It confirms the row, the MED flag, the averaging, the vintage and the customer base. Tests run after every load. L: It's a definitions check. A real reconciliation runs from outage events to daily SAIDI to the filed figure, with a written bridge. Public-only: 130.2 / 133.0 vs 130 / 133; tests T1–T12.
+Q14 Governance and regulators. "What does 'governed' mean? Any regulatory reporting? Why doesn't your dashboard SAIDI match the filed number?"
+C: Experience: [you: the truth; no job bullet shows a filing] . · Governance: owned definitions, change control, and checks that block bad data. P: What it takes: a versioned glossary, sign-off, lineage, access rules, alerts. · What I've done: definitions written up for reuse; the board's dashboard. · Filed vs dashboard: the filed number anchors. Write the bridge (population, MED rule, customers, vintage) and keep as-filed and revised versions side by side. L: The project has a decisions log, a dictionary and tests, but no owner or monitoring. Say so.
+Q15 EAGLE-I in SQL ( Adopted ). "How do 15-minute snapshots become events and customer-hours? What about missing data?"
+C: It's sql/09, the same SQL as the rest, run in the local DuckDB mirror with all 31 tests; it reaches Snowflake only through one optional step. P: Customer-hours: Σ customers out × 0.25. · Events: gaps-and-islands (LAG, then a running SUM). · "Held 1 hour": the minimum of four readings. · Time: Eastern Standard Time all year. · Bad data: blanks are NULL, not zero (P20); impossible readings are NULL (P24). · Size: 11.6M rows. L: Coverage grows over time, so compare a county with itself. There's no stuck-count rule yet. Public-only: describe it as how you would do it.
+Q16 Mercury pipeline. "The 20M-row Snowflake pipeline: grain, loads, and which part was yours?"
+C: [you: what it fed and what you owned] . P: Policy, claims and billing data (20M+ rows) for the pilot. · [you: the grain, incremental logic, scheduling, tests, one failure] L: Claim only your part. Bridge: outage events → daily → annual indices.
+Q17 Real reconciliation. "That's model evaluation. Give me a real reconciliation. Were the sales lift and the settlement cut yours?"
+C: Evaluation and reconciliation are different, and I keep them apart. P: Evaluation: a 150-question test set, 71% → 90%. · At work: [you: one true break → cause → control] . · In the project (P18): for 2025, Prince George Electric filed SAIDI but no SAIFI; its 13,341 customers would have diluted the co-op SAIFI (1.849, not 1.887). I changed V_GROUP_INDEX to count only customers of utilities that reported the measure (Oct 27). L: Causal only where there was a control: the A/B test, +9%. Elsewhere, "contributed to".
+Q18 ● Do differently. "What would you do differently?"
+C: Set rules before seeing results, as I did for the peer set (D10). P: Test aggregates for missing values first (P18). · Show the all-events view beside ex-MED: the rank moves from 4th to 6th. · Set one stated rule for windows and base years. L: [you: one personal lesson] . The November changes were made in the extension, not found by you. Say 'the extension counts Bedford city once; the October build counted it twice', never 'I noticed…'. Who built the November additions? Use the authorship sentence in START_HERE §8; it also ends slide 6's speaker notes. Say only the parts that are true.
+HR
+Q19 Why move. "Why leave Mercury after seven months? Why a utility?"
+C: [you: the real reason, as a pull] . One neutral line on Mercury. P: The Grid Resiliency programs : Mainfeeder Hardening rebuilds main lines to stronger standards; Voltage Island Mitigation adds a second transformer at single-transformer substations (19 sites); Voltage Optimization tunes voltage with smart-meter readings (goal: 1% energy savings); Intelligent Grid Devices (FLISR) isolate a fault and restore the rest. · [you: which one, and why] · My project: rebuilt Dominion's numbers. L: Never criticize Mercury.
+Q20 Three years. "'Three years of BI', but your data titles add up to under a year. And the Associate level?"
+C: Here's how it adds up: Data titles: about 10 months (Mercury 7, Life Initiative 3). · Analytics inside other roles: about 28 (Cofoods BD 19, with the forecasting model and Tableau dashboards; finance internships about 9). · Total: about 38 months since April 2022, plus the MS. L: "Three years" counts all work, internships included; don't stretch it. Open to either level; earn the step up.
+Q21 Pushback. "Someone senior said your numbers were wrong. And our engineer's pushback?"
+C: Listen, check, fix the source, document it, thank them. P: [you: a true STAR story; the resume has none] · Live: "You're right, it counts every utility. I'd relabel it or cut it to Dominion-only counties." (Q3) L: Experts own the definitions; the analyst owns reproducibility.
+Q22 Least sure. "Which number are you least sure of? And what do you say when you don't know?"
+C: Name one, and say why. P: Candidates: the weather fit (ten points); Dominion's MED rule (Q2); adopted: the county minutes (Q3). · "I don't know": "Here's where I'd find out, and I'll come back by [time]." [you: a time you did this] L: Doubt builds credibility only when the fix comes in the same breath.
+Q23 Merger. "How do you feel about joining during the NextEra merger?"
+C: Calm. Reliability work carries on, and integrations need exactly this definition work. P: Timeline: Virginia's order is due by mid-January 2027; SC, NC, FERC and NRC approvals follow; close is expected in H2 2027. · The company says Dominion Energy Virginia stays separately regulated. L: No view on the deal or on jobs, and no comment on FPL (Florida Power & Light, NextEra's utility). Ask how priorities may shift.
+Q24 Thirty seconds. "No acronyms: what did you find?"
+Say: "In 2025 the average Dominion customer in Virginia lost power about 1.3 times, for about an hour and fifty minutes each time: almost two and a half hours in the year, leaving out a few extreme storm days. The three-year average rose about three minutes, in a stormier year. Once storms are counted, there's no clear trend. This job is about showing clearly whether the programs that prevent outages are working." L: Stop at thirty seconds.
+Q25 Unglamorous work. "How do you recommend things without overstepping? Are you happy doing routine reports?"
+C: Yes. Accurate recurring reports are the job. P: Habits: write-ups for reuse; handover notes; the project's dictionary and decisions log. · Raising ideas: as questions, with the data, checked with the owners, and credit to them. L: Learn the planning context before recommending.
+Appendix A4
+Delivery and rehearsal
+30-second opener (sheet 2, “Tell me about yourself”): “I'm a business intelligence analyst with three years building dashboards, reporting and data pipelines. At Mercury Insurance I built a Snowflake pipeline across policy, claims and billing data, over 20 million rows, and owned the evaluation methodology for a pilot. Before that: Tableau board reporting at The Life Initiative, forecasting and dashboards at Cofoods, and an MS in Business Analytics at Boston University.” [you: one line on why this role]
+60-second project story: “To prepare, I rebuilt Dominion Energy Virginia's reported reliability numbers from public EIA filings: 130.2 and 133.0 against the reported 130 and 133. The SQL runs in three layers, raw, staged and mart, with tests after each load, and a Power BI report sits on customer-weighted measures. Three findings: 2025 had more storms and more interruptions, and once storms are counted there's no clear trend; against eleven peers, Dominion's gap is how often customers lose power, not how long; and overnight demand grew faster than afternoon demand. Public data stops at the county: with your outage records I'd start with interruptions by circuit and cause, then build the report that tracks mainfeeder hardening.”
+5-minute route (cut words, not slides): S1 in full. S2: the reported 130 → 133 and Dominion's reason, the rebuilt 130.2 and 133.0, 2025 replacing 2022, SAIFI +10% and CAIDI −4%. S3: frequency 4th highest of the 12, length mid-pack, methods differ. S4: the result and its caution. S5: the first two sentences of the model line. S6: the first two sentences and, adopted, the closing ones. S7: the three months, one line each, without the program lines. S8 in full. Leave the appendix for questions.
+Strength: strong = meta-analysis or large review; single = one study; mixed =
+replications disagree; practice = common advice with no study verified (kept and labeled, never cited).
+Tip
+Rests on
+Strength
+Do this
+The first minutes count
+Barrick, Swider & Stewart 2010
+single
+Open with the
+30-second opener; early impressions tracked final ratings (r = .42).
+Sell with facts; never stretch
+Swider et al. 2011; Barrick et al. 2009
+single +
+strong
+Real results helped (r = .20); “image creation” hurt (r = −.11 to −.19). Use the resume's numbers
+exactly.
+Expect past-behavior questions
+Sackett et al. 2022; Taylor & Small 2002
+strong
+Have 5–6 true STAR stories: situation, task, action, result, with the action yours.
+State the limit, then answer it
+O'Keefe 1999
+strong
+A limit builds credibility
+only with its answer: “ten points is thin, so the headline uses county-days”.
+Ask a follow-up question
+Huang et al. 2017
+single (conversations, not
+interviews)
+At “Any questions?”, first follow up on something a panelist said.
+Rehearse aloud
+Powell, Stanley & Brown 2018
+strong
+Anxiety and scores
+correlate at r = −.19. Rehearse to a mock panel.
+Call the nerves “excitement”
+Brooks 2014; Bosshard & Gomez 2024; Ganley et al. 2021
+mixed, small
+Say “I'm excited”, not “calm down”: a small pooled effect (d ≈ 0.2); a math replication
+found nothing.
+Answer first · “I don't know” → how I'd find out · Pace, close, thank
+none
+verified
+practice
+Claim, one proof, then the limit. Never guess a number; say where you'd look.
+Pause after each answer; send a thank-you note within a day.
+Three interviewers
+The panel research is mixed (Dixon et al. 2002), so these are inference: make each answer complete on its own,
+answer the asker, then turn to the others; take a challenge with thanks, concede what's right, then answer.
+Panelist
+Listens for
+Lead with
+Questions
+BI manager
+How it's built; checked numbers; Power BI
+The model, the measures, the
+reconciliation
+Q11–Q18
+Engineer
+Exact definitions; honest limits
+Precise terms, a fast concession, the data
+that would settle it
+Q1–Q10
+HR
+Plain words, fit, how you take pushback
+No acronyms (Q24), true STAR stories, calm
+on the merger
+Q19–Q25
+Rehearsal outline for Monday
+Decide the variant first (adopted or public-only); everything after depends on it.
+Adopted: apply the Power BI guide. Public-only: skip the template and print nothing from Power BI. Either way,
+know your report's model for Q11.
+Read this brief once, for understanding; mark anything you couldn't explain.
+Say the deck aloud against an 8-minute timer, three times; record one run. Then the 5-minute route once.
+Drill the sheet and the 25 hardest by recall: cover, say it aloud, check (Roediger & Karpicke 2006; Rowland
+2014: strong). Spread it: an afternoon round, then an evening round of the misses (Cepeda et al. 2006: strong).
+Stop at 20:00 and sleep (Lim & Dinges 2010: strong). Tuesday: say the 30-second opener twice and leave
+early.

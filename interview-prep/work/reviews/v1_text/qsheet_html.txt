@@ -1,0 +1,81 @@
+Dominion question sheet Interview questions and answer cues
+Dominion Energy · panel interview · Tuesday, November 3, 2026 Each answer: claim → proof from your resume → tie to Dominion. STAR = situation, task, action, result. [you: …] = only you can fill this in; do it before Tuesday.
+Opening
+1 Tell me about yourself.
+Business intelligence analyst: three years building dashboards, reporting and data pipelines. Today I'm a Data Analyst at Mercury Insurance: I built a Snowflake pipeline across policy, claims and billing (20M+ rows) and owned the evaluation methodology for an AI pilot: validation, reconciliation and QA of its answers. Before that: Tableau board reporting at The Life Initiative, forecasting and dashboards at Cofoods, and an MS in Business Analytics at Boston University.
+2 Why do you want to work at Dominion Energy?
+Reliability reporting here matters, and I've already started on it. The SCC can move Dominion's allowed return by up to 50 basis points on factors that include reliability, so the numbers have to be right. I rebuilt your reported 3-year SAIDI from your public reliability filings (130.2 and 133.0 against the reported 130 and 133) and want to do that work with your data. [you: one personal reason]
+3 Why this role?
+It is the work I do: governed reporting, here pointed at grid programs. The posting asks for Power BI, SQL, Excel and Snowflake, plus business definitions, metadata, validation and reconciliation. At Mercury I built the Snowflake pipeline, owned the evaluation methodology for an AI pilot, and documented metadata and business definitions so other teams could reuse the method. Grid Resiliency programs are selected and measured on outage history.
+Behavioral (STAR)
+4 How do you manage multiple priorities and deadlines? Give an example.
+S At Mercury this year: a root-cause analysis, a pilot's evaluation and an A/B test.
+T Deliver each to its deadline without cutting the checks. [you: the deadlines, and that they overlapped]
+A [you: how you ordered the work] ; agreed sample size and significance thresholds with the analytics manager.
+R Helped cut average settlement time by 17% over two months; grounded-answer accuracy 71% → 90%; on-time renewals +9%.
+5 Tell me about your most complex or challenging data project.
+S Mercury's AI pilot needed a way to tell whether its answers were accurate and correctly cited.
+T I owned the evaluation methodology.
+A Scored answer accuracy and citation correctness against a 150-question test set; iterated on chunking and prompt structure.
+R Grounded-answer accuracy rose from 71% to 90%; the framework is documented for reuse.
+6 Tell me about a disagreement with a colleague or team, and how you resolved it.
+S [you: a real disagreement, ideally about a number or a definition]
+T [you: what you were responsible for]
+A Cue: take it to the data and the definition; agree the test first, then let the result decide. [you: what you did]
+R [you: the outcome, and what you would do again]
+7 Tell me about a time something went wrong at work, or you made a mistake.
+S [you: a number you produced that was wrong, or nearly went out wrong]
+T Correct it before anyone relied on it, and say so early.
+A [you: the check that caught it, and the fix] . Project option (yours, P18): the co-op SAIFI index divided by customers of a co-op that filed no SAIFI; a look-first query caught it and I matched the denominators (1.849 → 1.887).
+R [you: the outcome, and the control you have used since]
+8 Tell me about a problem you solved, in a team or on your own.
+S Mercury had recurring claims-cycle delays.
+T Find what was driving them.
+A Joined claims, policy and vendor data; surfaced the appraisal bottlenecks behind the delays. [you: who you worked with]
+R Helped cut average settlement time by 17% over two months.
+Technical BI
+9 Walk me through a dashboard or report you built.
+Two: Tableau at work, Power BI on Dominion's public data. At The Life Initiative I turned a flat website table into the board's standing executive reporting view in Tableau: $690M across 440 investments, with demographic and socioeconomic filters. In Power BI, this review: SAIDI, SAIFI and CAIDI measures on a Snowflake-built mart, peer, weather and demand pages, KPI cards set by a year slicer. [you: who used each]
+10 What is a star schema (vs a snowflake schema)? Fact vs dimension tables?
+Facts hold measurements at one grain; dimensions describe them. Here the fact is one row per utility, state and year, with customers, customer-minutes and interruptions; dimensions hold descriptions such as utility name and peer group. A star joins each dimension directly to the fact, many-to-one; a snowflake normalizes dimensions into more tables. Power BI works best with a star: FCT_RELIABILITY → DIM_UTILITY in the review.
+11 How strong is your SQL? Walk me through a query you wrote.
+Strong: CTEs, window functions and multi-table joins in a working pipeline. At Mercury I wrote the SQL for a Snowflake warehouse pipeline across policy, claims and billing schemas, 20M+ rows, that kept a pilot's data current. In the review, within a year SAIDI = customer-minutes ÷ customers; the 3-year figure is the mean of the three annual values, as the reported 130 and 133 are. ROW_NUMBER ranks the 50 highest demand hours. [you: one query you can sketch]
+12 What does CALCULATE do? Explain filter context.
+CALCULATE evaluates an expression under modified filters. Filter context is every filter reaching a value: slicers, rows and columns, page and visual filters. CALCULATE adds, overrides or removes filters, and turns row context into filter context. In the review the KPI cards use Selected SAIDI = VAR SelectedYear = SELECTEDVALUE('Dashboard Year'[Year], 2025) RETURN CALCULATE([SAIDI ex MED], FCT_RELIABILITY[YEAR] = SelectedYear), on a disconnected year table: the slicer sets the cards' year without filtering the page.
+13 How do refreshes work in the Power BI Service, and how do you keep a report fast?
+A lean star-schema model first, then a refresh that runs on its own. Performance: star schema, Import where the data allows, measures instead of summed columns, Performance Analyzer to find the slow visual. Refresh: scheduled refresh in the Service, incremental refresh for large tables, a gateway for on-premises sources. In the review: DirectQuery against Snowflake during development, Import for presentation (decision D13). [you: mention the CSV / DataFolder route only if you have built and tested it yourself] [you: any Service use; don't stretch]
+14 What is a Snowflake virtual warehouse, and how do you control compute cost?
+Compute you size and pay for while it runs, separate from storage. Size it to the job, set auto-suspend and auto-resume, keep loading and reporting on separate warehouses, and cap credits with resource monitors. At Mercury I built a Snowflake warehouse pipeline (20M+ rows); in the review, RAW, STG and MART layers. [you: cost controls you have used]
+Utility domain
+15 What are SAIDI, SAIFI and CAIDI, and how are they related?
+SAIDI = SAIFI × CAIDI: how often, times how long. SAIFI = customer interruptions ÷ customers served. SAIDI = customer-minutes of interruption ÷ customers served. CAIDI = SAIDI ÷ SAIFI, minutes per interruption. Dominion 2025, excluding major events: 1.320 × 109.4 = 144.4 minutes. Sum minutes and customers before dividing.
+16 What is a major event day, and why exclude it?
+A day extreme enough to swamp the trend, set aside by rule. IEEE 1366's 2.5-beta method: from five years of daily SAIDI, a day is a major event day when its SAIDI exceeds exp(α + 2.5β), α and β being the mean and standard deviation of ln(daily SAIDI). Excluding them shows day-to-day performance. What it hides: in 2025 they were 53% of Dominion's all-event minutes (162.3 of 306.7). Dominion reports under its own rule.
+17 SAIFI is rising. How would you investigate it?
+Rule out measurement first, then follow interruptions to causes. Check definitions, the major-event rule and whether detection changed (smart meters). Then split by cause code, feeder and device, weather exposure and repeat customers (CEMI). From 2022 to 2025, SAIFI rose 10% while CAIDI fell 4%, and storm county-days rose about 10%: consistent with Dominion's “primarily due to increased storm activity”. Confirming a cause needs outage records.
+Role and Dominion
+18 Are you willing to travel or work outside normal hours (for example, storms)?
+The posting lists travel up to 25%. [you: travel and storm-season hours you can commit to]
+19 How do you feel about joining while the NextEra merger is pending?
+Calm and factual: this team's work continues either way. Announced May 2026, approved by shareholders in September; the Virginia SCC's final order is due by mid-January 2027, and South Carolina, North Carolina, FERC and the NRC must also approve; closing is expected in the second half of 2027. The company says Dominion Energy Virginia stays separately regulated and accountable to the SCC. Integration makes reconciled, documented numbers more valuable. No predictions, no politics.
+Logistics: fill in before Tuesday
+20 Are you comfortable with a hybrid schedule in Richmond?
+The posting says three days in the office, two remote. [you: your answer] [you: commute or relocation plan for a hybrid 3-2 schedule in Richmond]
+21 Will you now or in the future require sponsorship for employment authorization?
+The posting says Dominion cannot sponsor or transfer a work visa for this position. [you: your answer; know it before the panel]
+22 What are your salary expectations?
+Approach: ask about the full scope and total compensation first; if pressed, give a researched range for this role and level in Richmond. [you: your range]
+23 When could you start?
+[you: notice period and earliest start date]
+Closing
+24 Is there anything else you'd like us to know?
+Three lines: fit, proof, interest. I build governed Snowflake pipelines and BI reporting. I've already rebuilt your reliability numbers from public data: 130.2 and 133.0 against the reported 130 and 133. And I'd like to do this work on Grid Resiliency programs, with your data.
+Five questions to ask the panel (ask two or three; the last one always last) What would success look like in this role after six to twelve months?
+Which reliability and program metrics does the team report most often, and where do analysts spend most of their time today?
+How does the team evaluate programs like mainfeeder hardening today, and what would you like to measure better?
+How do analysts here work with engineering and field teams day to day?
+What are the next steps in the process?
+Closing line: Thank you for your time. I'd like to bring the same discipline to your reliability reporting: reconcile first, test every number, and make it easy to act on.
+
+
+===== ATTRIBUTES (alt/title/aria-label) =====

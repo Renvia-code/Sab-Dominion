@@ -1,0 +1,225 @@
+v3 tokens: 2382 | uncovered: 30 | distinct uncovered: 17
+          2.5 | deck_adopted_pdf,deck_adopted_slides,deck_pub | Major event days (MED): IEEE 1366's 2.5 beta method takes five years o
+           24 | deck_adopted_slides,deck_public_slides        | [ALT] Columns for the 24 hours of the day: growth in average load from
+          2.5 | deck_adopted_pdf,deck_public_pdf              | the mean and standard deviation of ln(daily SAIDI); a day above exp(α 
+           24 | brief_pdf                                     | events, of 133 minutes for 2023–25, up from 130 for 2022–24, and expla
+        19876 | brief_html,brief_pdf                          | Source: EIA-861 2025 final and PUDL (EIA-861) 2013–2024, Dominion Ener
+          0.8 | brief_html,brief_pdf                          | 0.8
+           80 | brief_html,brief_pdf                          | 80
+NEW       40% | brief_html,brief_pdf                          | 40%
+           24 | brief_pdf                                     | Reported 3-year SAIDI ex-MED, 2022–24 → 2023–25 ·
+          2.5 | brief_pdf                                     | judged as storm response. P: 2.5β: the logs of five years of daily
+          2.5 | brief_pdf                                     | SAIDI; the threshold is T = e^(α+2.5β). · 2025: MEDs were 53% of
+           24 | brief_html                                    | for 2023–25, up from 130 for 2022–24, and explains it (p. 10): “This i
+           24 | brief_html                                    | Reported 3-year SAIDI ex-MED, 2022–24 → 2023–25 · Annual Report p. 10
+          2.5 | brief_html                                    | C: An MED is a day so far above normal that it would swamp the year. E
+          2.5 | qsheet_pdf                                    | IEEE 1366's 2.5-beta method: from five years of daily SAIDI, a day
+          2.5 | qsheet_pdf                                    | is a major event day when its SAIDI exceeds exp(α + 2.5β), α and
+          2.5 | qsheet_html                                   | A day extreme enough to swamp the trend, set aside by rule. IEEE 1366'
+
+Tokens whose (token, context) is new in v3 (any coverage), deduplicated:
+         12 | deck_adopted_slides  | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Original build: 12 (6 reliability, 3 storm, 3 demand). New tables: 19.
+          6 | deck_adopted_slides  | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | Original build: 12 (6 reliability, 3 storm, 3 demand). New tables: 19.
+          3 | deck_adopted_slides  | via C-A6-01;C-B-06;C-Q-01;C-Q-14;C | Original build: 12 (6 reliability, 3 storm, 3 demand). New tables: 19.
+         19 | deck_adopted_slides  | via C-A6-01;C-Q-16;C-S7-05A        | Original build: 12 (6 reliability, 3 storm, 3 demand). New tables: 19.
+         2% | deck_adopted_slides  | via C-A6-01;C-Q-02;C-Q-13;C-Q-14;C | Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025
+      306.7 | deck_adopted_slides  | via C-A3-01                        | Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025
+      144.4 | deck_adopted_slides  | via C-A1-01;C-A3-01;C-B-06;C-S2-03 | Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025
+  2,675,735 | deck_adopted_slides  | via C-S7-07                        | Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025
+         12 | deck_adopted_slides  | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Tests T1–T31, all pass: T1–T6 on the reliability mart (no duplicate keys; SAIDI = SAIFI × CAIDI within 2%; Dominion 2025
+         12 | deck_adopted_pdf     | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Original build: 12 (6
+          6 | deck_adopted_pdf     | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | Original build: 12 (6
+          3 | deck_adopted_pdf     | via C-A6-01;C-B-06;C-Q-01;C-Q-14;C | reliability, 3 storm, 3
+         19 | deck_adopted_pdf     | via C-A6-01;C-Q-16;C-S7-05A        | demand). New tables: 19.
+      306.7 | deck_adopted_pdf     | via C-A3-01                        | published 306.7, 144.4 and 2,675,735 customers); T7–T9 on NOAA storms; T10–T12 on EIA-930 demand; T13–T31 on the new tab
+      144.4 | deck_adopted_pdf     | via C-A1-01;C-A3-01;C-B-06;C-S2-03 | published 306.7, 144.4 and 2,675,735 customers); T7–T9 on NOAA storms; T10–T12 on EIA-930 demand; T13–T31 on the new tab
+  2,675,735 | deck_adopted_pdf     | via C-S7-07                        | published 306.7, 144.4 and 2,675,735 customers); T7–T9 on NOAA storms; T10–T12 on EIA-930 demand; T13–T31 on the new tab
+         12 | deck_adopted_pdf     | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Reconciled 12 of 12 against the annual report and the EIA-861 files.
+         12 | deck_public_slides   | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | [ALT] Scatter of Dominion Energy Virginia and 11 peers: SAIFI 2021-25 average across, CAIDI down. Dominion at 1.21 inter
+       0.96 | deck_public_slides   | via C-S3-11P                       | [ALT] Scatter of Dominion Energy Virginia and 11 peers: SAIFI 2021-25 average across, CAIDI down. Dominion at 1.21 inter
+        105 | deck_public_slides   | via C-S3-02P                       | [ALT] Scatter of Dominion Energy Virginia and 11 peers: SAIFI 2021-25 average across, CAIDI down. Dominion at 1.21 inter
+          4 | deck_public_slides   | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | interruptions per customer a year: 4th highest of the 12 (median 0.96)
+         12 | deck_public_slides   | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | interruptions per customer a year: 4th highest of the 12 (median 0.96)
+       0.96 | deck_public_slides   | via C-S3-11P                       | interruptions per customer a year: 4th highest of the 12 (median 0.96)
+          6 | deck_public_slides   | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | per interruption: mid-pack, 6th of the 12 (median 105)
+         12 | deck_public_slides   | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | per interruption: mid-pack, 6th of the 12 (median 105)
+        105 | deck_public_slides   | via C-S3-02P                       | per interruption: mid-pack, 6th of the 12 (median 105)
+       1.24 | deck_public_slides   | via C-S3-04;C-S3-04P;C-S5-14       | [TBL] Georgia Power | Mixed | 1.24 | 114 | 141
+        114 | deck_public_slides   | via C-S2-06;C-S3-04;C-S3-04P;C-S4- | [TBL] Georgia Power | Mixed | 1.24 | 114 | 141
+        141 | deck_public_slides   | via C-S3-04;C-S3-04P;C-S4-05;C-S4- | [TBL] Georgia Power | Mixed | 1.24 | 114 | 141
+       0.99 | deck_public_slides   | via C-S3-04;C-S3-04P               | [TBL] Duke Energy Florida | Mixed | 0.99 | 87 | 83
+         87 | deck_public_slides   | via C-S3-04;C-S3-04P               | [TBL] Duke Energy Florida | Mixed | 0.99 | 87 | 83
+         83 | deck_public_slides   | via C-S3-04;C-S3-04P               | [TBL] Duke Energy Florida | Mixed | 0.99 | 87 | 83
+       0.96 | deck_public_notes    | via C-S3-11P                       | Is that unusual? These are twelve large investor-owned utilities in PJM and the Southeast, Dominion and eleven peers, pi
+         12 | deck_public_pdf      | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | highest of the 12 (median 0.96)
+       0.96 | deck_public_pdf      | via C-S3-11P                       | highest of the 12 (median 0.96)
+         12 | deck_public_pdf      | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | 12 (median 105)
+        105 | deck_public_pdf      | via C-S3-02P                       | 12 (median 105)
+       1366 | deck_public_pdf      | via C-S3-07                        | Methods as labeled in the project's Power BI data; Mixed: “Other” in 2013 only, IEEE 1366 for 2014–25.
+         25 | deck_public_pdf      | via C-Q-08;C-S3-07                 | Methods as labeled in the project's Power BI data; Mixed: “Other” in 2013 only, IEEE 1366 for 2014–25.
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | of 12 on frequency (SAIFI 2021–25:
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | of 12 on frequency (SAIFI 2021–25:
+       1.21 | brief_pdf            | via C-S3-01;C-S3-04;C-S3-04P;C-S3- | 1.21); 6th of 12 on minutes per
+          6 | brief_pdf            | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | 1.21); 6th of 12 on minutes per
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | 1.21); 6th of 12 on minutes per
+          4 | brief_pdf            | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | deck: page 4
+       0:35 | brief_pdf            | via 0:35                           | 0:35 · 0:32
+       0:32 | brief_pdf            | via 0:32                           | 0:35 · 0:32
+       +10% | brief_pdf            | via C-Q-16;C-S2-05;C-S3-07;C-S4-02 | +10%. Dominion attributes the rise “primarily” to storms; 2025 sits on the storm line.
+       1:11 | brief_pdf            | via 1:11                           | 1:11 · 1:11
+          6 | brief_pdf            | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | Interruption length mid-pack (6th of 12); frequency 4th highest. Methods differ, so
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Interruption length mid-pack (6th of 12); frequency 4th highest. Methods differ, so
+          4 | brief_pdf            | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | Interruption length mid-pack (6th of 12); frequency 4th highest. Methods differ, so
+       0:57 | brief_pdf            | via 0:57                           | 0:57 · 0:54
+       0:54 | brief_pdf            | via 0:54                           | 0:57 · 0:54
+      11.9× | brief_pdf            | via C-S4-08                        | calm days (11.9×, 95% CI 7.9–16.9): an association. Public-only: years with more
+        95% | brief_pdf            | via C-S4-06;C-S4-06A;C-S4-08;C-S4- | calm days (11.9×, 95% CI 7.9–16.9): an association. Public-only: years with more
+        7.9 | brief_pdf            | via C-S4-08;C-S5-07                | calm days (11.9×, 95% CI 7.9–16.9): an association. Public-only: years with more
+       16.9 | brief_pdf            | via C-S4-08                        | calm days (11.9×, 95% CI 7.9–16.9): an association. Public-only: years with more
+       0.70 | brief_pdf            | via C-S4-02;C-S4-15;C-S4-23;C-S5-1 | storm days had more outage minutes (r = 0.70, ten years).
+       1:04 | brief_pdf            | via 1:04                           | 1:04 · 0:57
+       0:57 | brief_pdf            | via 0:57                           | 1:04 · 0:57
+       0:54 | brief_pdf            | via 0:54                           | 0:54 · 0:57
+       0:57 | brief_pdf            | via 0:57                           | 0:54 · 0:57
+        130 | brief_pdf            | via C-B-01;C-S2-01;C-S2-02;C-S2-17 | reported 130 and 133.
+        133 | brief_pdf            | via C-S2-01;C-S2-02;C-S2-17;C-S3-0 | reported 130 and 133.
+       1:17 | brief_pdf            | via 1:17                           | 1:17 · 1:12
+       1:12 | brief_pdf            | via 1:12                           | 1:17 · 1:12
+       0:56 | brief_pdf            | via 0:56                           | 0:56 · 0:56
+       1:00 | brief_pdf            | via 1:00                           | 1:00 · 0:59
+       0:59 | brief_pdf            | via 0:59                           | 1:00 · 0:59
+       7:54 | brief_pdf            | via 7:54                           | Times are each deck's speaker notes at about 130 words a minute: 7:54 in all (adopted), 7:38 (public-only).
+       7:38 | brief_pdf            | via 7:38                           | Times are each deck's speaker notes at about 130 words a minute: 7:54 in all (adopted), 7:38 (public-only).
+        130 | brief_pdf            | via C-B-01;C-S2-01;C-S2-02;C-S2-17 | Times are each deck's speaker notes at about 130 words a minute: 7:54 in all (adopted), 7:38 (public-only).
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | “Other” in 2013 only (public workbook: “Mixed”). Public-only deck: the 12-utility medians the public repo prints (docs/0
+       0.96 | brief_pdf            | via C-S3-11P                       | “Other” in 2013 only (public workbook: “Mixed”). Public-only deck: the 12-utility medians the public repo prints (docs/0
+        105 | brief_pdf            | via C-S3-02P                       | and 105.
+         10 | brief_pdf            | via C-Q-16;C-S2-05;C-S3-07;C-S4-02 | are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give no count). If
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give no count). If
+       1366 | brief_pdf            | via C-S3-07                        | are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give no count). If
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give no count). If
+      1.531 | brief_pdf            | via C-S3-08                        | asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its SAIDI
+          6 | brief_pdf            | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its SAIDI
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its SAIDI
+         11 | brief_pdf            | via C-S3-10;C-S5-10                | asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its SAIDI
+      1.408 | brief_pdf            | via C-S3-08                        | asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its SAIDI
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+      223.0 | brief_pdf            | via C-S3-08                        | 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+          9 | brief_pdf            | via C-A6-01;C-Q-05;C-Q-16;C-S3-08; | 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+         31 | brief_pdf            | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | If adopted The 31 mapped counties Dominion serves alone have a customer-weighted average of 159
+        159 | brief_pdf            | via C-S4-20                        | If adopted The 31 mapped counties Dominion serves alone have a customer-weighted average of 159
+        211 | brief_pdf            | via C-S4-20                        | minutes a year, against 211 in the 68 shared counties. That compares places (mostly cities and inner
+         68 | brief_pdf            | via C-S4-20                        | minutes a year, against 211 in the 68 shared counties. That compares places (mostly cities and inner
+      109.4 | brief_pdf            | via C-A1-01;C-B-06;C-S2-06;C-S5-11 | interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency chart on your curr
+      1.320 | brief_pdf            | via C-A1-01;C-S2-04;C-S2-09;C-S5-1 | interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency chart on your curr
+        53% | brief_pdf            | via C-A3-02;C-A6-01;C-S5-11        | interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency chart on your curr
+          5 | brief_pdf            | via C-B-07;C-S4-05;C-S4-13;C-S6-03 | interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency chart on your curr
+      130.2 | brief_pdf            | via C-S2-02;C-S2-17                | the peer set was chosen by EIA ID before results. Reconciled: 130.2 and 133.0 against 130 and 133, and test T4
+      133.0 | brief_pdf            | via C-S2-01;C-S2-02;C-S2-17;C-S3-0 | the peer set was chosen by EIA ID before results. Reconciled: 130.2 and 133.0 against 130 and 133, and test T4
+        130 | brief_pdf            | via C-B-01;C-S2-01;C-S2-02;C-S2-17 | the peer set was chosen by EIA ID before results. Reconciled: 130.2 and 133.0 against 130 and 133, and test T4
+        133 | brief_pdf            | via C-S2-01;C-S2-02;C-S2-17;C-S3-0 | the peer set was chosen by EIA ID before results. Reconciled: 130.2 and 133.0 against 130 and 133, and test T4
+      306.7 | brief_pdf            | via C-A3-01                        | matches 2025 to EIA's published 306.7, 144.4 and 2,675,735 customers ( If adopted 12 of 12 values: a check of
+      144.4 | brief_pdf            | via C-A1-01;C-A3-01;C-B-06;C-S2-03 | matches 2025 to EIA's published 306.7, 144.4 and 2,675,735 customers ( If adopted 12 of 12 values: a check of
+  2,675,735 | brief_pdf            | via C-S7-07                        | matches 2025 to EIA's published 306.7, 144.4 and 2,675,735 customers ( If adopted 12 of 12 values: a check of
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | matches 2025 to EIA's published 306.7, 144.4 and 2,675,735 customers ( If adopted 12 of 12 values: a check of
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11
+       0.93 | brief_pdf            | via C-S3-01;C-S3-04;C-S3-04P       | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11
+         11 | brief_pdf            | via C-S3-10;C-S5-10                | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11
+       0.96 | brief_pdf            | via C-S3-11P                       | peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+          4 | brief_pdf            | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11
+       99.5 | brief_pdf            | via C-S3-02;C-S3-04                | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11
+         11 | brief_pdf            | via C-S3-10;C-S5-10                | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11
+        105 | brief_pdf            | via C-S3-02P                       | peers), public-only 105 (all 12)
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | peers), public-only 105 (all 12)
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | The public repo prints the 12-utility medians
+       1366 | brief_pdf            | via C-S3-07                        | If adopted : file IEEE 1366 every year 2014–25. Public-
+         25 | brief_pdf            | via C-Q-08;C-S3-07                 | If adopted : file IEEE 1366 every year 2014–25. Public-
+         31 | brief_pdf            | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | new tables (31 in all), D1–D22, 12 of 12 reconciled
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | new tables (31 in all), D1–D22, 12 of 12 reconciled
+        500 | brief_pdf            | via C-S4-22;C-S6-03                | 500 · 2 min · 5 yr · −32% ·
+          2 | brief_pdf            | via C-A6-01;C-Q-02;C-Q-13;C-Q-14;C | 500 · 2 min · 5 yr · −32% ·
+          5 | brief_pdf            | via C-B-07;C-S4-05;C-S4-13;C-S6-03 | 500 · 2 min · 5 yr · −32% ·
+       −32% | brief_pdf            | via C-S5-08;C-S6-02                | 500 · 2 min · 5 yr · −32% ·
+       −44% | brief_pdf            | via C-S6-06                        | −44%
+       −32% | brief_pdf            | via C-S5-08;C-S6-02                | Mainfeeder selection rule. Reported: −32% outage
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | minutes, feeders hardened 12+ months (Nov 2023);
+       −44% | brief_pdf            | via C-S6-06                        | −44% average annual outage time, hardened areas
+       −44% | brief_pdf            | via C-S6-06                        | Two measures, not a trend; −44% has no
+         10 | brief_pdf            | via C-Q-16;C-S2-05;C-S3-07;C-S4-02 | under its own rule ("Other"), so methods differ. Adopted: 10 of the
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | 12 use IEEE. · All events: Dominion's SAIFI ranks 6th of 12, against
+          6 | brief_pdf            | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | 12 use IEEE. · All events: Dominion's SAIFI ranks 6th of 12, against
+          4 | brief_pdf            | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | 4th ex-MED. L: "I don't know the written rule; I'd ask the reliability
+         31 | brief_pdf            | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | them Dominion-only (D15), 31 on the map. The result holds in
+         31 | brief_pdf            | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | those 31 (19.9×). · Blank readings: failed collection runs, never
+      19.9× | brief_pdf            | via C-S4-09                        | those 31 (19.9×). · Blank readings: failed collection runs, never
+          5 | brief_pdf            | via C-B-07;C-S4-05;C-S4-13;C-S6-03 | minutes worse, over 5 years. · Reported, two measures: −32%
+       −32% | brief_pdf            | via C-S5-08;C-S6-02                | minutes worse, over 5 years. · Reported, two measures: −32%
+         12 | brief_pdf            | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | outage minutes, feeders hardened 12+ months (Nov 30, 2023);
+         30 | brief_pdf            | via C-S6-02                        | outage minutes, feeders hardened 12+ months (Nov 30, 2023);
+       −44% | brief_pdf            | via C-S6-06                        | −44% average annual outage time for customers in hardened
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | of 12 on frequency (SAIFI 2021–25: 1.21);
+         25 | brief_html           | via C-Q-08;C-S3-07                 | of 12 on frequency (SAIFI 2021–25: 1.21);
+       1.21 | brief_html           | via C-S3-01;C-S3-04;C-S3-04P;C-S3- | of 12 on frequency (SAIFI 2021–25: 1.21);
+          6 | brief_html           | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | 6th of 12 on minutes per interruption. Peer medians differ by deck: page 4
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | 6th of 12 on minutes per interruption. Peer medians differ by deck: page 4
+          4 | brief_html           | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | 6th of 12 on minutes per interruption. Peer medians differ by deck: page 4
+       7:54 | brief_html           | via 7:54                           | Times are each deck's speaker notes at about 130 words a minute: 7:54 in all (adopted),
+        130 | brief_html           | via C-B-01;C-S2-01;C-S2-02;C-S2-17 | Times are each deck's speaker notes at about 130 words a minute: 7:54 in all (adopted),
+       7:38 | brief_html           | via 7:38                           | 7:38 (public-only).
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Energy Florida filed “Other” in 2013 only (public workbook: “Mixed”). Public-only deck: the 12-utility medians the
+       0.96 | brief_html           | via C-S3-11P                       | public repo prints (docs/05), 0.96 and 105.
+        105 | brief_html           | via C-S3-02P                       | public repo prints (docs/05), 0.96 and 105.
+         10 | brief_html           | via C-Q-16;C-S2-05;C-S3-07;C-S4-02 | major-event rule, so ranks are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | major-event rule, so ranks are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give
+       1366 | brief_html           | via C-S3-07                        | major-event rule, so ranks are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give
+         25 | brief_html           | via C-Q-08;C-S3-07                 | major-event rule, so ranks are indicative ( If adopted 10 of the 12 file IEEE 1366 every year 2014–25; public-only, give
+      1.531 | brief_html           | via C-S3-08                        | no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+          6 | brief_html           | via C-S2-08;C-S3-02;C-S3-02P;C-S3- | no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+         11 | brief_html           | via C-S3-10;C-S5-10                | no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+      1.408 | brief_html           | via C-S3-08                        | no count). If asked: with all events, Dominion's SAIFI (1.531) ranks 6th of 12 (median of the other 11, 1.408), its
+         25 | brief_html           | via C-Q-08;C-S3-07                 | SAIDI 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+      223.0 | brief_html           | via C-S3-08                        | SAIDI 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+          9 | brief_html           | via C-A6-01;C-Q-05;C-Q-16;C-S3-08; | SAIDI 2023–25 (223.0) 9th. Either way, the gap is frequency, not interruption length.
+        211 | brief_html           | via C-S4-20                        | against 211 in the 68 shared counties. That compares places (mostly cities and inner suburbs against rural
+         68 | brief_html           | via C-S4-20                        | against 211 in the 68 shared counties. That compares places (mostly cities and inner suburbs against rural
+      109.4 | brief_html           | via C-A1-01;C-B-06;C-S2-06;C-S5-11 | minutes per interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency
+      1.320 | brief_html           | via C-A1-01;C-S2-04;C-S2-09;C-S5-1 | minutes per interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency
+        53% | brief_html           | via C-A3-02;C-A6-01;C-S5-11        | minutes per interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency
+          5 | brief_html           | via C-B-07;C-S4-05;C-S4-13;C-S6-03 | minutes per interruption 109.4, SAIFI 1.320, major-event share 53%. Public-only: deck slide 5 shows the frequency
+         25 | brief_html           | via C-Q-08;C-S3-07                 | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+       0.93 | brief_html           | via C-S3-01;C-S3-04;C-S3-04P       | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         11 | brief_html           | via C-S3-10;C-S5-10                | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+       0.96 | brief_html           | via C-S3-11P                       | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+          4 | brief_html           | via C-A6-01;C-B-07;C-S2-07;C-S3-01 | SAIFI 2021–25 ex-MED; median If adopted 0.93 (11 peers), public-only 0.96 (all 12); SAIDI 2023–25, also 4th
+         25 | brief_html           | via C-Q-08;C-S3-07                 | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11 peers), public-only 105 (all 12)
+       99.5 | brief_html           | via C-S3-02;C-S3-04                | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11 peers), public-only 105 (all 12)
+         11 | brief_html           | via C-S3-10;C-S5-10                | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11 peers), public-only 105 (all 12)
+        105 | brief_html           | via C-S3-02P                       | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11 peers), public-only 105 (all 12)
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | CAIDI 2021–25, mid-pack; median If adopted 99.5 (11 peers), public-only 105 (all 12)
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | The public repo prints the 12-utility medians (docs/05)
+       1366 | brief_html           | via C-S3-07                        | If adopted : file IEEE 1366 every year 2014–25. Public-only: “methods differ” (workbook: “Mixed”)
+         25 | brief_html           | via C-Q-08;C-S3-07                 | If adopted : file IEEE 1366 every year 2014–25. Public-only: “methods differ” (workbook: “Mixed”)
+         31 | brief_html           | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | Tests, all pass (T1–T6 reliability, T7–T9 storms, T10–T12 demand); decisions logged. If adopted : T13–T31 on the new tab
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Tests, all pass (T1–T6 reliability, T7–T9 storms, T10–T12 demand); decisions logged. If adopted : T13–T31 on the new tab
+        500 | brief_html           | via C-S4-22;C-S6-03                | 500 · 2 min · 5 yr · −32% · −44%
+          2 | brief_html           | via C-A6-01;C-Q-02;C-Q-13;C-Q-14;C | 500 · 2 min · 5 yr · −32% · −44%
+          5 | brief_html           | via C-B-07;C-S4-05;C-S4-13;C-S6-03 | 500 · 2 min · 5 yr · −32% · −44%
+       −32% | brief_html           | via C-S5-08;C-S6-02                | 500 · 2 min · 5 yr · −32% · −44%
+       −44% | brief_html           | via C-S6-06                        | 500 · 2 min · 5 yr · −32% · −44%
+       −32% | brief_html           | via C-S5-08;C-S6-02                | Mainfeeder selection rule. Reported: −32% outage minutes, feeders hardened 12+ months (Nov 2023); −44% average annual ou
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | Mainfeeder selection rule. Reported: −32% outage minutes, feeders hardened 12+ months (Nov 2023); −44% average annual ou
+       −44% | brief_html           | via C-S6-06                        | Mainfeeder selection rule. Reported: −32% outage minutes, feeders hardened 12+ months (Nov 2023); −44% average annual ou
+       −44% | brief_html           | via C-S6-06                        | Two measures, not a trend; −44% has no stated baseline. Before/after overstates it (Q8)
+         31 | brief_html           | via C-B-05;C-S4-20;C-S5-10;C-S7-05 | C: Right. It isn't Dominion's SAIDI, and I wouldn't target work with it. P: The county rule: EIA-861 lists 103 Dominion 
+         12 | brief_html           | via C-A6-01;C-S3-01;C-S3-02;C-S3-0 | C: A plain before-and-after overstates the effect (regression to the mean). P: Selection rule: at least 500 customers, m
+         30 | brief_html           | via C-S6-02                        | C: A plain before-and-after overstates the effect (regression to the mean). P: Selection rule: at least 500 customers, m
+      306.7 | qsheet_pdf           | via C-A3-01                        | 306.7). Dominion uses its own method (“Other”), so peer ranks
+          3 | qsheet_pdf           | via C-A6-01;C-B-06;C-Q-01;C-Q-14;C | September 3; the Virginia SCC's final order is due by mid-January
+          3 | qsheet_html          | via C-A6-01;C-B-06;C-Q-01;C-Q-14;C | Calm and factual: this team's work continues either way. Announced May 2026, approved by shareholders on September 3; th
+
+public v3 deck markers: {'0.93': 2}

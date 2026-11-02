@@ -1,0 +1,6 @@
+{
+  "R-028": {
+    "quote_or_locator": "PDF p.20 = printed p.10 (Form 10-K Item 1, Dominion Energy Virginia segment): \"SAIDI performance results, excluding major events, were 133 minutes for the three-year average ending 2025, up from the previous three-year average of 130 minutes. This increase is primarily due to increased storm activity.\" Scope: the paragraph covers Virginia Power's electric operations (rates set by the Virginia and North Carolina Commissions) and does not say which territory the SAIDI covers. D's quick check (work/data/findings.md): Virginia alone 130.22 / 133.01 (print 130 / 133); Virginia + North Carolina 129.49 / 132.50 (print 129 / 133), so the reported figures are consistent with Virginia only (updated 2026-11-01 08:47; replaces the earlier 'probably system-wide' inference).",
+    "confidence": "high (wording, page); scope: consistent with Virginia only per D's check, not stated by Dominion"
+  }
+}

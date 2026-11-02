@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="532.8pt" height="280.8pt" viewBox="0 0 532.8 280.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-01T09:57:13.119897</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 280.8 
+L 532.8 280.8 
+L 532.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 15.984 237.812073 
+L 15.984 80.666182 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #b8bcc2; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 16.017641 122.847447 
+L 324.606628 122.847447 
+Q 324.640269 122.847447 324.640269 119.847447 
+L 324.640269 91.109935 
+Q 324.640269 88.109935 324.606628 88.109935 
+L 16.017641 88.109935 
+Q 15.984 88.109935 15.984 91.109935 
+L 15.984 119.847447 
+Q 15.984 122.847447 16.017641 122.847447 
+z
+" clip-path="url(#pd029d157c7)" style="fill: #0a66c2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 15.984 122.847447 
+L 321.640269 122.847447 
+L 321.640269 88.109935 
+L 15.984 88.109935 
+z
+" clip-path="url(#pd029d157c7)" style="fill: #0a66c2"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="15.984" y="77.489463" transform="rotate(-0 15.984 77.489463)">County-days with a NOAA storm report</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="270.064" y="77.489463" transform="rotate(-0 270.064 77.489463)">6,108 county-days</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="15.984" y="140.285419" transform="rotate(-0 15.984 140.285419)">95% interval 225.6 to 453.4</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 15px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="444.527993" y="109.360527" transform="rotate(-0 444.527993 109.360527)">332.8</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 16.017641 230.36832 
+L 41.792363 230.36832 
+Q 41.826004 230.36832 41.826004 227.36832 
+L 41.826004 198.630807 
+Q 41.826004 195.630807 41.792363 195.630807 
+L 16.017641 195.630807 
+Q 15.984 195.630807 15.984 198.630807 
+L 15.984 227.36832 
+Q 15.984 230.36832 16.017641 230.36832 
+z
+" clip-path="url(#pd029d157c7)" style="fill: #b8bcc2"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 15.984 230.36832 
+L 38.826004 230.36832 
+L 38.826004 195.630807 
+L 15.984 195.630807 
+z
+" clip-path="url(#pd029d157c7)" style="fill: #b8bcc2"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="15.984" y="185.010336" transform="rotate(-0 15.984 185.010336)">Calm county-days</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="137.584" y="185.010336" transform="rotate(-0 137.584 185.010336)">373,851 county-days</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="15.984" y="247.806291" transform="rotate(-0 15.984 247.806291)">95% interval 23.1 to 33.2</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 600; font-size: 15px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="54.796298" y="216.8814" transform="rotate(-0 54.796298 216.8814)">27.9</text>
+   </g>
+   <g id="line2d_2">
+    <path d="M 225.222335 105.478691 
+L 436.527993 105.478691 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 225.222335 113.749527 
+L 225.222335 97.207855 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 436.527993 113.749527 
+L 436.527993 97.207855 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 37.401988 212.999564 
+L 46.796298 212.999564 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 37.401988 221.2704 
+L 37.401988 204.728727 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 46.796298 221.2704 
+L 46.796298 204.728727 
+" clip-path="url(#pd029d157c7)" style="fill: none; stroke: #1f2a44; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+  </g>
+  <g id="text_9">
+   <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="15.984" y="16.04475" transform="rotate(-0 15.984 16.04475)">Outage customer-hours per 1,000 customers, mean per county-day, 2015–2025</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd029d157c7">
+   <rect x="15.984" y="39.312" width="500.832" height="227.448"/>
+  </clipPath>
+ </defs>
+</svg>

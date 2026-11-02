@@ -1,0 +1,4268 @@
+{
+ "name": "215b7431-6b87-4301-b825-efbe323fef04",
+ "compatibilityLevel": 1606,
+ "model": {
+  "culture": "en-US",
+  "dataAccessOptions": {
+   "legacyRedirects": true,
+   "returnErrorValuesAsNull": true
+  },
+  "defaultPowerBIDataSourceVersion": "powerBI_V3",
+  "sourceQueryCulture": "en-US",
+  "valueFilterBehavior": "independent",
+  "tables": [
+   {
+    "name": "V_TREND",
+    "lineageTag": "73dfc3ae-a9c4-4ead-8ea0-9b67bc8b4f2f",
+    "columns": [
+     {
+      "name": "UTILITY_KEY",
+      "dataType": "string",
+      "sourceColumn": "UTILITY_KEY",
+      "lineageTag": "0c6d8fe9-630e-4baa-a4d8-a95292f22332",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "UTILITY_NAME",
+      "dataType": "string",
+      "sourceColumn": "UTILITY_NAME",
+      "lineageTag": "44dcaaf1-d6eb-4236-9b63-6e5447050912",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "PEER_GROUP",
+      "dataType": "string",
+      "sourceColumn": "PEER_GROUP",
+      "lineageTag": "d3a17e7b-72d2-4de6-a8f3-ef72d03308d1",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "lineageTag": "a61df518-15a2-4a1d-ad14-132b9029e912",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STANDARD",
+      "dataType": "string",
+      "sourceColumn": "STANDARD",
+      "lineageTag": "f4f3585f-ac40-4f7b-8954-ac7f48bedfa8",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "lineageTag": "e6b44522-aa97-4d94-9b57-3c4af4f8b493",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED",
+      "lineageTag": "c607e374-a514-4508-a205-45fff1ee3952",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "CAIDI_EX_MED",
+      "lineageTag": "624dd8ab-d15f-4912-a39d-161464c08383",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_ALL",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_ALL",
+      "lineageTag": "19f36a62-2013-449c-afe6-9904cb418111",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_ALL",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_ALL",
+      "lineageTag": "c12a9a88-8205-4d7c-85cb-75dd0586de87",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIDI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIDI",
+      "lineageTag": "2e7a7867-d155-419c-9ea1-885c126be773",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIFI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIFI",
+      "lineageTag": "ae4850ff-65fb-4785-b743-6bf725756177",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SHARE",
+      "dataType": "double",
+      "sourceColumn": "STORM_SHARE",
+      "lineageTag": "20e41540-c1fd-4f6a-a282-a43b143a6c9b",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED_PY",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED_PY",
+      "lineageTag": "fad1cc3c-5fc9-47ab-a318-65f2d3a21e49",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED_PY",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED_PY",
+      "lineageTag": "c4c5bc73-fe54-41d7-ab30-a9c9dcc6428d",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI_EX_MED_PY",
+      "dataType": "double",
+      "sourceColumn": "CAIDI_EX_MED_PY",
+      "lineageTag": "cac8a07f-d904-4884-8bf7-e34556f26a6c",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_YOY",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_YOY",
+      "lineageTag": "d3eb7993-a187-447a-ae01-8ded51bf3242",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "FREQUENCY_SHARE_OF_CHANGE",
+      "dataType": "double",
+      "sourceColumn": "FREQUENCY_SHARE_OF_CHANGE",
+      "lineageTag": "d0b7dbe3-47c3-41ac-8008-7630fd6f047e",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED_5YR",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED_5YR",
+      "lineageTag": "35eca854-47b7-40b8-af9e-b8563a738568",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED_5YR",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED_5YR",
+      "lineageTag": "e8e575ef-75bc-41b0-80ec-f3d7c6f06f16",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "V_TREND",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    V_TREND_View = MART_Schema{[Name=\"V_TREND\",Kind=\"View\"]}[Data]",
+        "in",
+        "    V_TREND_View"
+       ]
+      }
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "DIM_UTILITY",
+    "lineageTag": "9ed0d84f-08cd-466d-bdde-ece40544acf7",
+    "columns": [
+     {
+      "name": "UTILITY_ID",
+      "dataType": "double",
+      "sourceColumn": "UTILITY_ID",
+      "lineageTag": "7ca69257-3fe7-4655-a7a5-3b95d626c815",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STATE",
+      "dataType": "string",
+      "sourceColumn": "STATE",
+      "lineageTag": "a832bfd0-1ff2-49e3-a5c9-d98ea10ce2d2",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "UTILITY_KEY",
+      "dataType": "string",
+      "sourceColumn": "UTILITY_KEY",
+      "lineageTag": "0faea485-bcfe-4827-8a61-7db02dae3a5e",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "UTILITY_NAME",
+      "dataType": "string",
+      "sourceColumn": "UTILITY_NAME",
+      "lineageTag": "e80a6708-5e4a-48db-ae88-8b86eccd0590",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "ENTITY_TYPE",
+      "dataType": "string",
+      "sourceColumn": "ENTITY_TYPE",
+      "lineageTag": "64cfbc0b-3d49-4638-8b1a-b18d8d000bb9",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "PEER_GROUP",
+      "dataType": "string",
+      "sourceColumn": "PEER_GROUP",
+      "lineageTag": "dd591ae6-e9f6-49a0-83c0-35bc867c3b29",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "type": "calculated",
+      "name": "Display name",
+      "dataType": "string",
+      "isDataTypeInferred": true,
+      "expression": "SWITCH(DIM_UTILITY[UTILITY_KEY], \"19876|VA\", \"Dominion Energy Virginia\", \"17539|SC\", \"Dominion Energy SC\", \"5416|NC\", \"Duke Carolinas (NC)\", \"3046|NC\", \"Duke Progress (NC)\", \"7140|GA\", \"Georgia Power\", \"195|AL\", \"Alabama Power\", \"6455|FL\", \"Duke Energy Florida\", \"6452|FL\", \"FPL\", \"1167|MD\", \"BGE\", \"15270|MD\", \"Pepco (MD)\", \"14940|PA\", \"PECO\", \"14715|PA\", \"PPL Electric\", DIM_UTILITY[UTILITY_NAME])",
+      "lineageTag": "b2a9528b-7394-45d5-bc28-d726cdba2c3a",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "type": "calculated",
+      "name": "Short name",
+      "dataType": "string",
+      "isDataTypeInferred": true,
+      "expression": [
+       "",
+       "SWITCH(DIM_UTILITY[Display name],",
+       "    \"Dominion Energy Virginia\", \"Dominion VA\",",
+       "    \"Dominion Energy SC\", \"Dominion SC\",",
+       "    \"Duke Carolinas (NC)\", \"Duke Carolinas\",",
+       "    \"Duke Progress (NC)\", \"Duke Progress\",",
+       "    \"Duke Energy Florida\", \"Duke FL\",",
+       "    \"Georgia Power\", \"Georgia\",",
+       "    \"Alabama Power\", \"Alabama\",",
+       "    \"PPL Electric\", \"PPL\",",
+       "    \"Pepco (MD)\", \"Pepco\",",
+       "    DIM_UTILITY[Display name])"
+      ],
+      "lineageTag": "c8fe2442-448d-4deb-982a-b3ed85b0a3cd",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "type": "calculated",
+      "name": "Quadrant name",
+      "dataType": "string",
+      "isDataTypeInferred": true,
+      "expression": [
+       "",
+       "SWITCH(DIM_UTILITY[Display name],",
+       "    \"Dominion Energy Virginia\", \"Dominion VA\",",
+       "    \"Duke Progress (NC)\", \"Duke Progress\",",
+       "    \"Georgia Power\", \"Georgia\",",
+       "    \"Duke Carolinas (NC)\", \"Duke Carolinas\",",
+       "    \"\")"
+      ],
+      "lineageTag": "30338944-6c40-4b0b-9812-e4c293a07021",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "type": "calculated",
+      "name": "Region",
+      "dataType": "string",
+      "isDataTypeInferred": true,
+      "expression": "SWITCH(DIM_UTILITY[PEER_GROUP], \"Southeast IOU peer\", \"Southeast\", \"Mid-Atlantic IOU peer\", \"Mid-Atlantic\", \"Florida IOU peer\", \"Florida\", \"Dominion Energy Virginia\", \"Virginia\", DIM_UTILITY[PEER_GROUP])",
+      "lineageTag": "d4b1032b-8780-4bd2-8e26-2c3ab14cf2b6",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "DIM_UTILITY",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    DIM_UTILITY_Table = MART_Schema{[Name=\"DIM_UTILITY\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    DIM_UTILITY_Table"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Bar colour",
+      "expression": "IF(SELECTEDVALUE(DIM_UTILITY[Display name]) = \"Dominion Energy Virginia\", \"#0A66C2\", \"#B8BCC2\")",
+      "lineageTag": "2b6d3c5b-9130-4e63-87a0-e5581911c45d"
+     },
+     {
+      "name": "Row colour",
+      "expression": "IF(SELECTEDVALUE(DIM_UTILITY[Display name]) = \"Dominion Energy Virginia\", \"#118DFF\", \"#FFFFFF\")",
+      "lineageTag": "3cabd7f3-97cf-48ff-817f-50eb622c834f"
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "FCT_RELIABILITY",
+    "lineageTag": "d3ee423f-43e1-4d83-82fe-e6eaf2473fb2",
+    "columns": [
+     {
+      "name": "UTILITY_KEY",
+      "dataType": "string",
+      "sourceColumn": "UTILITY_KEY",
+      "lineageTag": "e71e2ee9-56d9-42fa-a41d-7ab9d87d8810",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "UTILITY_ID",
+      "dataType": "double",
+      "sourceColumn": "UTILITY_ID",
+      "lineageTag": "6155ed2b-42f7-43c6-a45d-58c3b4116118",
+      "summarizeBy": "count",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STATE",
+      "dataType": "string",
+      "sourceColumn": "STATE",
+      "lineageTag": "f6b487bf-1b0b-4377-bca2-7734283b45f3",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "lineageTag": "f28aa3fd-d6da-4641-9cb9-8ba1e8f69519",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STANDARD",
+      "dataType": "string",
+      "sourceColumn": "STANDARD",
+      "lineageTag": "19b89014-36e0-419a-997a-3c67b400ae89",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "SOURCE",
+      "dataType": "string",
+      "sourceColumn": "SOURCE",
+      "lineageTag": "17d20409-769a-49be-9830-59f2bfc97830",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "Customers Served",
+      "dataType": "double",
+      "sourceColumn": "Customers Served",
+      "lineageTag": "317a9c4b-2421-41c3-b2d0-9bdf415add2d",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_ALL",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_ALL",
+      "lineageTag": "360055c0-9322-4fe0-beee-0565923654d2",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_ALL",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_ALL",
+      "lineageTag": "a53e5258-2f6a-4652-92f8-45c8f121564b",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI_ALL",
+      "dataType": "double",
+      "sourceColumn": "CAIDI_ALL",
+      "lineageTag": "b7e265dd-37a4-466e-8563-2c08cc6fd288",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "lineageTag": "d7b69c7f-8225-4ac2-b770-93e27331af0a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED",
+      "lineageTag": "9e86d251-bf7b-46ce-ad9d-b6fd7acec9e6",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "User"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "CAIDI_EX_MED",
+      "lineageTag": "58ebe6ee-6a88-482c-a851-f7b6fa4f9874",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIDI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIDI",
+      "lineageTag": "e77b0e86-32e3-4770-b84b-fb227f851a92",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIFI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIFI",
+      "lineageTag": "9c3aa842-149f-4a39-a7ed-0ead37058890",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CUST_MINUTES_ALL",
+      "dataType": "double",
+      "sourceColumn": "CUST_MINUTES_ALL",
+      "lineageTag": "7aee7f31-ed01-4841-8101-ce9d7675b9c1",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CUST_MINUTES_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "CUST_MINUTES_EX_MED",
+      "lineageTag": "bb653df8-cd6c-48fa-b984-89b0cae65ac4",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CUST_INTERRUPTIONS_ALL",
+      "dataType": "double",
+      "sourceColumn": "CUST_INTERRUPTIONS_ALL",
+      "lineageTag": "fcf7e3e1-408f-47e1-8c46-ce9131a611ee",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CUST_INTERRUPTIONS_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "CUST_INTERRUPTIONS_EX_MED",
+      "lineageTag": "c8810048-b23c-448b-b50e-6b976f5de1ca",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "MAX_KV",
+      "dataType": "double",
+      "sourceColumn": "MAX_KV",
+      "lineageTag": "ca740ad0-6fea-48ec-bbb6-33e809b86d23",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "AUTO_RECORDED",
+      "dataType": "boolean",
+      "sourceColumn": "AUTO_RECORDED",
+      "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+      "lineageTag": "aa662adf-e5f3-4db2-9d0c-bae88010d50f",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "MOMENTARY_DEF",
+      "dataType": "string",
+      "sourceColumn": "MOMENTARY_DEF",
+      "lineageTag": "be1ff88d-f67e-49eb-a887-78b96f5c0483",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "INACTIVE_INCLUDED",
+      "dataType": "boolean",
+      "sourceColumn": "INACTIVE_INCLUDED",
+      "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+      "lineageTag": "483bcb27-ed50-4b7e-bd92-0376a2e87e0b",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "FCT_RELIABILITY",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    FCT_RELIABILITY_Table = MART_Schema{[Name=\"FCT_RELIABILITY\",Kind=\"Table\"]}[Data],",
+        "    #\"Renamed Columns\" = Table.RenameColumns(FCT_RELIABILITY_Table,{{\"CUSTOMERS\", \"Customers Served\"}, {\"SAIFI_EX_MED\", \"SAIFI_EX_MED\"}, {\"CAIDI_EX_MED\", \"CAIDI_EX_MED\"}, {\"SAIDI_ALL\", \"SAIDI_ALL\"}})",
+        "in",
+        "    #\"Renamed Columns\""
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "SAIDI ex MED",
+      "expression": "DIVIDE(SUM(FCT_RELIABILITY[CUST_MINUTES_EX_MED]), SUM(FCT_RELIABILITY[Customers Served]))",
+      "lineageTag": "1c93963a-ff29-4128-b167-0d2f7ada73a3",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Outage Mins/Customer",
+      "expression": "CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025})",
+      "formatString": "0",
+      "lineageTag": "cad334cc-8570-4f15-8833-a3df545df876",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Total Customers",
+      "expression": "SUM(FCT_RELIABILITY[Customers Served])",
+      "lineageTag": "1fd8dc58-a136-4cfd-960c-f16c0ff5e730",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Share of outage mins caused by major storms",
+      "expression": "DIVIDE(SUM(FCT_RELIABILITY[SAIDI_ALL]) - SUM(FCT_RELIABILITY[SAIDI_EX_MED]), SUM(FCT_RELIABILITY[SAIDI_ALL]))",
+      "formatString": "0.0%;-0.0%;0.0%",
+      "lineageTag": "711c5a9e-d697-4d5e-9033-3c1eb756988d"
+     },
+     {
+      "name": "SAIDI all events",
+      "expression": "DIVIDE(SUM(FCT_RELIABILITY[CUST_MINUTES_ALL]), [Total Customers])",
+      "formatString": "0.0",
+      "lineageTag": "e49ef512-d9b1-4183-b473-797406c909ef"
+     },
+     {
+      "name": "Storm SAIDI",
+      "expression": "[SAIDI all events] - [SAIDI ex MED]",
+      "lineageTag": "6970fb99-4f73-45f1-a998-d83dde630630",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI 2015 to 2017",
+      "expression": "CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2015, 2016, 2017})",
+      "formatString": "0.0",
+      "lineageTag": "b95c4f9d-6cd7-442c-8ade-986c88024ac5"
+     },
+     {
+      "name": "SAIDI 2023 to 2025",
+      "expression": "CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025})",
+      "formatString": "0.0",
+      "lineageTag": "32a3a093-7c27-4095-8ad1-fde40c3ebb44"
+     },
+     {
+      "name": "SAIFI ex MED",
+      "expression": "DIVIDE(SUM(FCT_RELIABILITY[CUST_INTERRUPTIONS_EX_MED]), [Total Customers])",
+      "lineageTag": "bc8ca0a9-003e-4037-9915-33b6bdd1866a",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI ex MED",
+      "expression": "DIVIDE([SAIDI ex MED], [SAIFI ex MED])",
+      "formatString": "0.0",
+      "lineageTag": "02a1197a-13a0-453d-9ec3-61bad34ce222"
+     },
+     {
+      "name": "SAIFI 5yr",
+      "expression": "CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIFI ex MED]), FCT_RELIABILITY[YEAR] IN {2021, 2022, 2023, 2024, 2025})",
+      "lineageTag": "ea39f905-6c6b-4aea-9b34-b3ae4c57f618",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI 5yr",
+      "expression": "CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [CAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2021, 2022, 2023, 2024, 2025})",
+      "formatString": "0.0",
+      "lineageTag": "abd1f46b-f4d0-4e08-9b20-54d66fa662ab"
+     },
+     {
+      "name": "SAIDI change %",
+      "expression": "(DIVIDE([SAIDI 2023 to 2025], [SAIDI 2015 to 2017]) - 1)",
+      "formatString": "0.00%;-0.00%;0.00%",
+      "lineageTag": "fdc931d8-60e0-45ae-a33d-8fe478d9c6f8"
+     },
+     {
+      "name": "Method",
+      "expression": "IF(DISTINCTCOUNT(FCT_RELIABILITY[STANDARD]) > 1, \"Mixed\", MAX(FCT_RELIABILITY[STANDARD]))",
+      "lineageTag": "021c09a7-1afd-4e13-802b-2095bdbc8f5c"
+     },
+     {
+      "name": "SAIFI label",
+      "expression": "IF(SELECTEDVALUE(FCT_RELIABILITY[YEAR]) IN {2019, 2023, 2025}, [SAIFI ex MED])",
+      "lineageTag": "b03b8cd1-9984-465d-9c8f-c0d19a4d9224",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI label",
+      "expression": "IF(SELECTEDVALUE(FCT_RELIABILITY[YEAR]) IN {2019, 2023, 2025}, [CAIDI ex MED])",
+      "lineageTag": "211e7814-fb25-4010-93e7-b3b84a74e61b",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "STORM_INDEX",
+    "lineageTag": "33b6592f-42bf-407a-afb6-486df576f8c1",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "lineageTag": "2a68b6cf-5839-4b44-b6dd-fcccfc90ecfc",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_COUNTY_DAYS",
+      "dataType": "double",
+      "sourceColumn": "STORM_COUNTY_DAYS",
+      "lineageTag": "955f733b-0ed1-407e-a0d3-126ce051ae5d",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WIND_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WIND_DAYS",
+      "lineageTag": "fed4905f-b222-46b0-a9d0-3b7988150ec7",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WINTER_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WINTER_DAYS",
+      "lineageTag": "01851bac-3756-43c9-af53-61d2eb26ea4f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "TROPICAL_DAYS",
+      "dataType": "double",
+      "sourceColumn": "TROPICAL_DAYS",
+      "lineageTag": "9f29ee40-d619-42bf-a92e-3b6684eb2843",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SEVERE_GUST_DAYS",
+      "dataType": "double",
+      "sourceColumn": "SEVERE_GUST_DAYS",
+      "lineageTag": "e07f8e41-d07d-4722-9171-857381e8bb34",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "STORM_INDEX",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    STORM_INDEX_Table = MART_Schema{[Name=\"STORM_INDEX\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    STORM_INDEX_Table"
+       ]
+      }
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "V_GROUP_INDEX",
+    "lineageTag": "a18c6fde-e751-420f-8f50-0f7aee3c42d8",
+    "columns": [
+     {
+      "name": "PEER_GROUP",
+      "dataType": "string",
+      "sourceColumn": "PEER_GROUP",
+      "lineageTag": "a59dec5e-6477-4b66-aa57-7a954ecd7159",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "lineageTag": "b79bf299-71c7-4621-a3c4-1c81c6fa5d57",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "UTILITIES",
+      "dataType": "double",
+      "sourceColumn": "UTILITIES",
+      "lineageTag": "af965914-6e37-4ce9-9f4f-a78235acaf9c",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CUSTOMERS",
+      "dataType": "double",
+      "sourceColumn": "CUSTOMERS",
+      "lineageTag": "9481a25d-d752-4086-8f4f-389beb6f6ef5",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED",
+      "lineageTag": "46407b81-66e1-4bbb-ae91-be683de91a47",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "lineageTag": "7712eaa7-d8ce-4148-adc3-1e741ec6465a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "CAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "CAIDI_EX_MED",
+      "lineageTag": "8f68aaa4-2590-4ca1-aef3-d1f0f6d28c96",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "V_GROUP_INDEX",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    V_GROUP_INDEX_View = MART_Schema{[Name=\"V_GROUP_INDEX\",Kind=\"View\"]}[Data]",
+        "in",
+        "    V_GROUP_INDEX_View"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "SAIFI index 2015",
+      "expression": "DIVIDE(SUM(V_GROUP_INDEX[SAIFI_EX_MED]), CALCULATE(SUM(V_GROUP_INDEX[SAIFI_EX_MED]), V_GROUP_INDEX[YEAR] = 2015)) * 100",
+      "lineageTag": "73ee17d3-f985-4104-aa32-cac1e46a9784",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Index label",
+      "expression": "IF(SELECTEDVALUE(V_GROUP_INDEX[YEAR]) = 2025, [SAIFI index 2015])",
+      "lineageTag": "900ec129-6a65-4917-919d-8796d129e628",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "V_STORM_VS_SAIDI",
+    "lineageTag": "0d0a66dc-7c5c-4c8c-8742-3b91bea4adbe",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "ea288eba-b999-4aa0-93eb-3fbabe4ded8f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_COUNTY_DAYS",
+      "dataType": "double",
+      "sourceColumn": "STORM_COUNTY_DAYS",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "f1190980-722f-4197-9c2e-86bfe4a6f341",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WIND_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WIND_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "4b15f4c6-fcb8-487b-a835-7d49c000183f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WINTER_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WINTER_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "57d04699-947c-4c55-9479-24ada2fe126a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "TROPICAL_DAYS",
+      "dataType": "double",
+      "sourceColumn": "TROPICAL_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "c09fdf15-fd62-4986-855d-6940cc21a8d8",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "sourceProviderType": "decimal(12, 3)",
+      "lineageTag": "f8847b0c-be62-4561-991f-e5130e1b4c5d",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED",
+      "sourceProviderType": "decimal(12, 3)",
+      "lineageTag": "ba387ac1-c59c-42e3-b29e-c8db2221aaab",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIDI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIDI",
+      "sourceProviderType": "decimal(13, 3)",
+      "lineageTag": "cd0e0017-cd6f-46a9-8e88-14b31fd9d5a7",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "V_STORM_VS_SAIDI",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    V_STORM_VS_SAIDI_View = MART_Schema{[Name=\"V_STORM_VS_SAIDI\",Kind=\"View\"]}[Data]",
+        "in",
+        "    V_STORM_VS_SAIDI_View"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "name": "LoadGrowth",
+    "lineageTag": "2f127c5e-18a5-4fcf-b4e3-51ec2889cc31",
+    "columns": [
+     {
+      "name": "year",
+      "dataType": "int64",
+      "sourceColumn": "year",
+      "formatString": "0",
+      "lineageTag": "eaac7a64-3d11-4ee6-b811-03bfea59de0a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "commercial_twh",
+      "dataType": "double",
+      "sourceColumn": "commercial_twh",
+      "lineageTag": "08aa04ba-ff92-42c6-b97b-bfad5e00e67e",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "residential_twh",
+      "dataType": "double",
+      "sourceColumn": "residential_twh",
+      "lineageTag": "68ab0634-b64a-4108-97cb-82e52d509ed3",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "commercial_customers",
+      "dataType": "int64",
+      "sourceColumn": "commercial_customers",
+      "formatString": "0",
+      "lineageTag": "054057d6-4139-49cc-b09d-fc36aef5e50f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "residential_customers",
+      "dataType": "int64",
+      "sourceColumn": "residential_customers",
+      "formatString": "0",
+      "lineageTag": "77e02e44-acff-4ab3-baa7-5373f62c5794",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "commercial_sales_index",
+      "dataType": "double",
+      "sourceColumn": "commercial_sales_index",
+      "lineageTag": "0cbd9a51-487c-4a54-89d7-bd2fb34f2dd0",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "commercial_customers_index",
+      "dataType": "double",
+      "sourceColumn": "commercial_customers_index",
+      "lineageTag": "211cffc4-038c-4b6f-9fd3-6c068be29df9",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "residential_sales_index",
+      "dataType": "double",
+      "sourceColumn": "residential_sales_index",
+      "lineageTag": "bed60bfe-5ffb-47f4-87ae-e716831e6008",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Column9",
+      "dataType": "string",
+      "sourceColumn": "Column9",
+      "lineageTag": "a56940e4-67f3-4322-a21a-d1a2c6724edd",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "Source",
+      "dataType": "string",
+      "sourceColumn": "Source",
+      "lineageTag": "e84f26bc-a19d-4746-bc44-e3ee0853b939",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "LoadGrowth",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\SakethBollina\\Downloads\\Dominion_Reliability_PowerBI_Data.xlsx\"), null, true),",
+        "    LoadGrowth_Sheet = Source{[Item=\"LoadGrowth\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(LoadGrowth_Sheet, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"year\", Int64.Type}, {\"commercial_twh\", type number}, {\"residential_twh\", type number}, {\"commercial_customers\", Int64.Type}, {\"residential_customers\", Int64.Type}, {\"commercial_sales_index\", type number}, {\"commercial_customers_index\", type number}, {\"residential_sales_index\", type number}, {\"Column9\", type any}, {\"Source\", type text}})",
+        "in",
+        "    #\"Changed Type\""
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Sales label",
+      "expression": "IF(SELECTEDVALUE(LoadGrowth[year]) = 2025, SUM(LoadGrowth[commercial_sales_index]))",
+      "lineageTag": "04e704cc-8158-441d-968f-b435f436ea8e",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Exception"
+     }
+    ]
+   },
+   {
+    "name": "Programmes2025",
+    "lineageTag": "87a400ae-938e-44de-845f-e0e62712dfb4",
+    "columns": [
+     {
+      "name": "utility",
+      "dataType": "string",
+      "sourceColumn": "utility",
+      "lineageTag": "6962ea67-f803-4922-8087-66e42f36318a",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "winter_peak_mw",
+      "dataType": "int64",
+      "sourceColumn": "winter_peak_mw",
+      "formatString": "0",
+      "lineageTag": "76f5d4b5-4255-49d1-a0be-53ae976bd56e",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "summer_peak_mw",
+      "dataType": "int64",
+      "sourceColumn": "summer_peak_mw",
+      "formatString": "0",
+      "lineageTag": "2e697a02-6850-46f0-9422-4ddb1ba52cdb",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "smart_meter_share",
+      "dataType": "double",
+      "sourceColumn": "smart_meter_share",
+      "lineageTag": "92782439-c5e6-4444-a873-e727f7081593",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "time_varying_rate_share_pct",
+      "dataType": "double",
+      "sourceColumn": "time_varying_rate_share_pct",
+      "lineageTag": "9e63761f-0279-452f-820e-989707d6b163",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "demand_response_potential_mw",
+      "dataType": "double",
+      "sourceColumn": "demand_response_potential_mw",
+      "lineageTag": "b3d5e48a-fe79-4b0d-904e-b44eddcba7f8",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "losses_pct",
+      "dataType": "double",
+      "sourceColumn": "losses_pct",
+      "lineageTag": "6da719f0-6c6d-4059-b4f8-2053cc023adb",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "Programmes2025",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\SakethBollina\\Downloads\\Dominion_Reliability_PowerBI_Data.xlsx\"), null, true),",
+        "    Programmes2025_Sheet = Source{[Item=\"Programmes2025\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Programmes2025_Sheet, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"utility\", type text}, {\"winter_peak_mw\", Int64.Type}, {\"summer_peak_mw\", Int64.Type}, {\"smart_meter_share\", type number}, {\"time_varying_rate_share_pct\", type number}, {\"demand_response_potential_mw\", type number}, {\"losses_pct\", type number}})",
+        "in",
+        "    #\"Changed Type\""
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Smart meter share %",
+      "expression": "SUM(Programmes2025[smart_meter_share]) * 100",
+      "lineageTag": "6092691f-3ca5-4a62-bec7-9f602d33eb97",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Time-varying rate %",
+      "expression": "SUM(Programmes2025[time_varying_rate_share_pct])",
+      "lineageTag": "8bdd7117-589e-4448-a63c-c1f2ac8c754b",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Exception"
+     }
+    ]
+   },
+   {
+    "name": "Headline",
+    "lineageTag": "5aff78a1-9fc9-405c-9a92-f5e99a0e0ba3",
+    "columns": [
+     {
+      "name": "three_year_saidi_ending_2025",
+      "dataType": "string",
+      "sourceColumn": "three_year_saidi_ending_2025",
+      "lineageTag": "7cfab9c5-ce4c-42bd-a5fd-a07e982ce23f",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "three_year_saidi_ending_2024",
+      "dataType": "string",
+      "sourceColumn": "three_year_saidi_ending_2024",
+      "lineageTag": "a52e5421-b554-426a-98b6-43d72fa21e8f",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "report_three_year_2025",
+      "dataType": "string",
+      "sourceColumn": "report_three_year_2025",
+      "lineageTag": "d9026b6b-4ad2-4e06-a118-ebea1a3fc6d4",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "report_three_year_2024",
+      "dataType": "string",
+      "sourceColumn": "report_three_year_2024",
+      "lineageTag": "4ed38335-5d95-4878-b6b8-f0df43b44d43",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "saifi_2025",
+      "dataType": "string",
+      "sourceColumn": "saifi_2025",
+      "lineageTag": "4bf8c39f-83c0-43c5-86e7-6fc84c70a6c1",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "saifi_2024",
+      "dataType": "double",
+      "sourceColumn": "saifi_2024",
+      "lineageTag": "95e8c6dd-6a0f-4c6e-aa15-8eb7ba82a436",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "saifi_change_pct",
+      "dataType": "double",
+      "sourceColumn": "saifi_change_pct",
+      "lineageTag": "895ae2db-c4de-4f49-84ec-2dfa4219a4c1",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "caidi_2025",
+      "dataType": "string",
+      "sourceColumn": "caidi_2025",
+      "lineageTag": "edd317d4-018d-47ba-9098-aa157898c5cd",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "caidi_2024",
+      "dataType": "double",
+      "sourceColumn": "caidi_2024",
+      "lineageTag": "129869cc-24f0-4146-a3ea-b4b715fe83e7",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "caidi_change_pct",
+      "dataType": "double",
+      "sourceColumn": "caidi_change_pct",
+      "lineageTag": "bb1b9832-403b-45fb-bbc7-81471d203db9",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "saidi_2025",
+      "dataType": "string",
+      "sourceColumn": "saidi_2025",
+      "lineageTag": "e60752fc-ec5c-4e86-84b3-027680d43b71",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "storm_share_2025",
+      "dataType": "string",
+      "sourceColumn": "storm_share_2025",
+      "lineageTag": "aaa5184a-529a-4974-b6bd-1d8764b8a8b0",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "storm_share_2024",
+      "dataType": "double",
+      "sourceColumn": "storm_share_2024",
+      "lineageTag": "19ed2b12-d242-42ed-b2bb-e7610ced2d06",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "customers_va_nc_thousand",
+      "dataType": "string",
+      "sourceColumn": "customers_va_nc_thousand",
+      "lineageTag": "cd95cdc1-f0ef-4734-a8b7-bb6d319c7699",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "coop_corr_yoy",
+      "dataType": "string",
+      "sourceColumn": "coop_corr_yoy",
+      "lineageTag": "492e11a6-c448-4879-84e6-74511cd864ec",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "dominion_saifi_change_2015_2025",
+      "dataType": "double",
+      "sourceColumn": "dominion_saifi_change_2015_2025",
+      "lineageTag": "8489440c-7865-4b83-bca6-d9351612986f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "coop_saifi_change_2015_2025",
+      "dataType": "double",
+      "sourceColumn": "coop_saifi_change_2015_2025",
+      "lineageTag": "bd05340c-740f-4450-8a93-555421303f2a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "dominion_relative_to_coops_pct",
+      "dataType": "string",
+      "sourceColumn": "dominion_relative_to_coops_pct",
+      "lineageTag": "40f533bd-cc36-4465-9888-21b06499dd72",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "commercial_sales_index_2025",
+      "dataType": "string",
+      "sourceColumn": "commercial_sales_index_2025",
+      "lineageTag": "8befaeff-f3db-4a3e-bbd7-a9904bdd0924",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "commercial_customers_index_2025",
+      "dataType": "string",
+      "sourceColumn": "commercial_customers_index_2025",
+      "lineageTag": "22e0fbf5-979b-4eb1-b50b-c9a09ec27f31",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "residential_sales_index_2025",
+      "dataType": "string",
+      "sourceColumn": "residential_sales_index_2025",
+      "lineageTag": "81ae7e4c-ceba-443b-bd9f-819898dfd633",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "heating_degree_days_2025",
+      "dataType": "string",
+      "sourceColumn": "heating_degree_days_2025",
+      "lineageTag": "46efc57c-9066-44f9-b53a-31c7662eebe8",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "heating_degree_days_2024",
+      "dataType": "int64",
+      "sourceColumn": "heating_degree_days_2024",
+      "formatString": "0",
+      "lineageTag": "139954de-1202-4d33-8134-a06e84ca3ea9",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "cooling_degree_days_2025",
+      "dataType": "int64",
+      "sourceColumn": "cooling_degree_days_2025",
+      "formatString": "0",
+      "lineageTag": "71f676cb-99c6-411f-9d7e-e815ff61eed0",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "cooling_degree_days_2024",
+      "dataType": "int64",
+      "sourceColumn": "cooling_degree_days_2024",
+      "formatString": "0",
+      "lineageTag": "da445295-6e95-486e-a21e-f5ec5e637765",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "data_centers_connected_2025",
+      "dataType": "string",
+      "sourceColumn": "data_centers_connected_2025",
+      "lineageTag": "a7d06305-7d66-49de-b6cf-c084cbb7fb94",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "data_center_mw_connected_2025",
+      "dataType": "int64",
+      "sourceColumn": "data_center_mw_connected_2025",
+      "formatString": "0",
+      "lineageTag": "9e7a2ba7-aaeb-4803-b298-168d145b5376",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "data_center_gw_contracting",
+      "dataType": "int64",
+      "sourceColumn": "data_center_gw_contracting",
+      "formatString": "0",
+      "lineageTag": "9c854369-be61-4114-a9b8-9363d35a9f90",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "top50_peaks_since_2025",
+      "dataType": "int64",
+      "sourceColumn": "top50_peaks_since_2025",
+      "formatString": "0",
+      "lineageTag": "aa2171e9-a1fa-4171-862c-d40d5e498c47",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "expected_peak_growth_pct",
+      "dataType": "double",
+      "sourceColumn": "expected_peak_growth_pct",
+      "lineageTag": "70c3b716-8f7a-4627-b2a4-53ea309e5cfc",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "mainfeeder_miles_hardened",
+      "dataType": "int64",
+      "sourceColumn": "mainfeeder_miles_hardened",
+      "formatString": "0",
+      "lineageTag": "71bb30f6-dd7c-41fc-bc49-5ab5f2c99255",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "winter_peak_mw",
+      "dataType": "string",
+      "sourceColumn": "winter_peak_mw",
+      "lineageTag": "5d2e5124-12bb-4de2-af41-adf97fcf5e8d",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "summer_peak_mw",
+      "dataType": "int64",
+      "sourceColumn": "summer_peak_mw",
+      "formatString": "0",
+      "lineageTag": "f951184c-c4a2-49b1-9d0e-820897b3725b",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "smart_meter_share",
+      "dataType": "string",
+      "sourceColumn": "smart_meter_share",
+      "lineageTag": "bb30eb91-f53d-4ac3-aed5-a6cb986f3281",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "time_varying_rate_share_pct",
+      "dataType": "string",
+      "sourceColumn": "time_varying_rate_share_pct",
+      "lineageTag": "41a3f55a-4c30-40ce-af15-f61f3780985a",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "demand_response_mw",
+      "dataType": "string",
+      "sourceColumn": "demand_response_mw",
+      "lineageTag": "cab940f7-5399-4605-80c5-2a16cae898c0",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "losses_pct",
+      "dataType": "double",
+      "sourceColumn": "losses_pct",
+      "lineageTag": "ffc122e2-d9c9-4fba-84c3-3deb27240e33",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "tests_total",
+      "dataType": "int64",
+      "sourceColumn": "tests_total",
+      "formatString": "0",
+      "lineageTag": "8ecc4214-0af4-477b-a5c8-c5cf1eb317ee",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "tests_passed",
+      "dataType": "int64",
+      "sourceColumn": "tests_passed",
+      "formatString": "0",
+      "lineageTag": "16b5074b-9f4b-4ab9-a7fb-8e54cf4b33e3",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "flagged_rows",
+      "dataType": "int64",
+      "sourceColumn": "flagged_rows",
+      "formatString": "0",
+      "lineageTag": "619de61b-5eeb-4ebd-96ef-f6453c3c71f5",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "storm_county_days_2025",
+      "dataType": "string",
+      "sourceColumn": "storm_county_days_2025",
+      "lineageTag": "f3eacc82-c212-4cf5-a87e-71e400c18626",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "predicted_2025_saidi_from_weather",
+      "dataType": "string",
+      "sourceColumn": "predicted_2025_saidi_from_weather",
+      "lineageTag": "c0e54f7c-2023-4585-97c2-f5b7e8e2e702",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "corr_storm_days_vs_daytoday_saidi",
+      "dataType": "string",
+      "sourceColumn": "corr_storm_days_vs_daytoday_saidi",
+      "lineageTag": "f711f65a-aae1-431f-87f6-277a4b1452c3",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "Headline",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\SakethBollina\\Downloads\\Dominion_Reliability_PowerBI_Data.xlsx\"), null, true),",
+        "    Headline_Sheet = Source{[Item=\"Headline\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Headline_Sheet, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"three_year_saidi_ending_2025\", type any}, {\"three_year_saidi_ending_2024\", type any}, {\"report_three_year_2025\", type any}, {\"report_three_year_2024\", type any}, {\"saifi_2025\", type any}, {\"saifi_2024\", type number}, {\"saifi_change_pct\", type number}, {\"caidi_2025\", type any}, {\"caidi_2024\", type number}, {\"caidi_change_pct\", type number}, {\"saidi_2025\", type any}, {\"storm_share_2025\", type any}, {\"storm_share_2024\", type number}, {\"customers_va_nc_thousand\", type any}, {\"coop_corr_yoy\", type any}, {\"dominion_saifi_change_2015_2025\", type number}, {\"coop_saifi_change_2015_2025\", type number}, {\"dominion_relative_to_coops_pct\", type any}, {\"commercial_sales_index_2025\", type any}, {\"commercial_customers_index_2025\", type any}, {\"residential_sales_index_2025\", type any}, {\"heating_degree_days_2025\", type any}, {\"heating_degree_days_2024\", Int64.Type}, {\"cooling_degree_days_2025\", Int64.Type}, {\"cooling_degree_days_2024\", Int64.Type}, {\"data_centers_connected_2025\", type any}, {\"data_center_mw_connected_2025\", Int64.Type}, {\"data_center_gw_contracting\", Int64.Type}, {\"top50_peaks_since_2025\", Int64.Type}, {\"expected_peak_growth_pct\", type number}, {\"mainfeeder_miles_hardened\", Int64.Type}, {\"winter_peak_mw\", type any}, {\"summer_peak_mw\", Int64.Type}, {\"smart_meter_share\", type any}, {\"time_varying_rate_share_pct\", type any}, {\"demand_response_mw\", type any}, {\"losses_pct\", type number}, {\"tests_total\", Int64.Type}, {\"tests_passed\", Int64.Type}, {\"flagged_rows\", Int64.Type}, {\"storm_county_days_2025\", type any}, {\"predicted_2025_saidi_from_weather\", type any}, {\"corr_storm_days_vs_daytoday_saidi\", type any}})",
+        "in",
+        "    #\"Changed Type\""
+       ]
+      }
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Exception"
+     }
+    ]
+   },
+   {
+    "name": "AmiEventStudy",
+    "lineageTag": "78b30ecf-09ac-48f8-99be-d82d42c265f1",
+    "columns": [
+     {
+      "name": "Column1",
+      "dataType": "string",
+      "sourceColumn": "Column1",
+      "lineageTag": "107a66ab-fc67-429e-a52f-a14e1b29673a",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "Column2",
+      "dataType": "string",
+      "sourceColumn": "Column2",
+      "lineageTag": "6616bdcb-c129-456d-a528-887f6b42cc84",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "Column3",
+      "dataType": "string",
+      "sourceColumn": "Column3",
+      "lineageTag": "424e1e05-156f-4280-a9b7-98a357ace0a1",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "Column4",
+      "dataType": "string",
+      "sourceColumn": "Column4",
+      "lineageTag": "3317d218-aab5-417d-893e-3748467345cb",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "AmiEventStudy",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\SakethBollina\\Downloads\\Dominion_Reliability_PowerBI_Data.xlsx\"), null, true),",
+        "    AmiEventStudy_Sheet = Source{[Item=\"AmiEventStudy\",Kind=\"Sheet\"]}[Data]",
+        "in",
+        "    AmiEventStudy_Sheet"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Selected SAIDI",
+      "expression": [
+       "",
+       "VAR SelectedYear =",
+       "    SELECTEDVALUE('Dashboard Year'[Year], 2025)",
+       "RETURN",
+       "    CALCULATE(",
+       "        [SAIDI ex MED],",
+       "        FCT_RELIABILITY[YEAR] = SelectedYear",
+       "    )",
+       ""
+      ],
+      "lineageTag": "185bdd7f-e9cc-455d-be6c-391d8cedac4b",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Selected SAIFI",
+      "expression": [
+       "",
+       "VAR SelectedYear =",
+       "    SELECTEDVALUE('Dashboard Year'[Year], 2025)",
+       "RETURN",
+       "    CALCULATE(",
+       "        [SAIFI ex MED],",
+       "        FCT_RELIABILITY[YEAR] = SelectedYear",
+       "    )",
+       ""
+      ],
+      "lineageTag": "09951f37-6b8d-45a1-87fe-590f3beee13b",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Selected CAIDI",
+      "expression": [
+       "",
+       "VAR SelectedYear =",
+       "    SELECTEDVALUE('Dashboard Year'[Year], 2025)",
+       "RETURN",
+       "    CALCULATE(",
+       "        [CAIDI ex MED],",
+       "        FCT_RELIABILITY[YEAR] = SelectedYear",
+       "    )",
+       ""
+      ],
+      "lineageTag": "c1b302c3-fd1a-4d14-aa89-df362cca6e41",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Measure",
+      "lineageTag": "7e11719d-30ad-46d4-95f4-ca4be28d41a6",
+      "annotations": [
+       {
+        "name": "43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c",
+        "value": "True"
+       }
+      ]
+     },
+     {
+      "name": "Selected Customers",
+      "expression": [
+       "",
+       "VAR SelectedYear =",
+       "    SELECTEDVALUE('Dashboard Year'[Year], 2025)",
+       "RETURN",
+       "    CALCULATE(",
+       "        [Total Customers],",
+       "        FCT_RELIABILITY[YEAR] = SelectedYear",
+       "    )",
+       ""
+      ],
+      "lineageTag": "57499b6e-3261-4910-b1e6-e104f6de16ce",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Selected Major Event Share",
+      "expression": [
+       "",
+       "VAR SelectedYear =",
+       "    SELECTEDVALUE('Dashboard Year'[Year], 2025)",
+       "RETURN",
+       "    CALCULATE(",
+       "        DIVIDE(",
+       "            [SAIDI all events] - [SAIDI ex MED],",
+       "            [SAIDI all events]",
+       "        ),",
+       "        FCT_RELIABILITY[YEAR] = SelectedYear",
+       "    )",
+       ""
+      ],
+      "formatString": "0%;-0%;0%",
+      "lineageTag": "72255ca6-1bd0-421e-b461-817cbc28870e"
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Exception"
+     }
+    ]
+   },
+   {
+    "name": "Tests",
+    "lineageTag": "46aa6f96-3ed9-4eea-8e8c-9229f4dd9c6d",
+    "columns": [
+     {
+      "name": "test",
+      "dataType": "string",
+      "sourceColumn": "test",
+      "lineageTag": "ad8bc4a0-97fb-49ae-819f-5fa2ba14e34e",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "rows_returned",
+      "dataType": "int64",
+      "sourceColumn": "rows_returned",
+      "formatString": "0",
+      "lineageTag": "eb6a92d2-25cd-40d7-9ac1-fe84c8662693",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "status",
+      "dataType": "string",
+      "sourceColumn": "status",
+      "lineageTag": "39b1909d-2d99-447a-b4a0-9a5277aa5e4d",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "note",
+      "dataType": "string",
+      "sourceColumn": "note",
+      "lineageTag": "a6ba5c5e-358c-4c89-a204-dc2aa875971c",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "Tests",
+      "mode": "import",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\SakethBollina\\Downloads\\Dominion_Reliability_PowerBI_Data.xlsx\"), null, true),",
+        "    Tests_Sheet = Source{[Item=\"Tests\",Kind=\"Sheet\"]}[Data],",
+        "    #\"Promoted Headers\" = Table.PromoteHeaders(Tests_Sheet, [PromoteAllScalars=true]),",
+        "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"test\", type text}, {\"rows_returned\", Int64.Type}, {\"status\", type text}, {\"note\", type text}})",
+        "in",
+        "    #\"Changed Type\""
+       ]
+      }
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_ResultType",
+      "value": "Table"
+     }
+    ]
+   },
+   {
+    "name": "DOM_LOAD_ANNUAL",
+    "lineageTag": "94d01c2d-70a2-4381-b72e-80a5d460b018",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "sourceProviderType": "decimal(4, 0)",
+      "lineageTag": "c12602ba-b8a3-48c7-ad5e-7fb985c8cd37",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WINTER_PEAK_MW",
+      "dataType": "double",
+      "sourceColumn": "WINTER_PEAK_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "e197322e-3410-4e78-b1ab-1db1bd984d89",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SUMMER_PEAK_MW",
+      "dataType": "double",
+      "sourceColumn": "SUMMER_PEAK_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "b55b44af-07e9-48ba-9f19-5b4afa7c8f82",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "PEAK_MW",
+      "dataType": "double",
+      "sourceColumn": "PEAK_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "58f7d6a5-9f69-4c1c-851e-60891f9c89b6",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "FLOOR_MW",
+      "dataType": "double",
+      "sourceColumn": "FLOOR_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "48984b80-c230-4139-8dc0-c611354464b8",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "MEDIAN_MW",
+      "dataType": "double",
+      "sourceColumn": "MEDIAN_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "50c74c62-79ec-4788-b810-a87073c5bb1a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "AVG_MW",
+      "dataType": "double",
+      "sourceColumn": "AVG_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "6a77c4b0-82b5-4db0-a46e-3988b0110f02",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "ENERGY_TWH",
+      "dataType": "double",
+      "sourceColumn": "ENERGY_TWH",
+      "sourceProviderType": "decimal(38, 2)",
+      "lineageTag": "cc81e3e6-6bde-499f-ba66-0551d542ab3d",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "HOURS_REPORTED",
+      "dataType": "double",
+      "sourceColumn": "HOURS_REPORTED",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "bcbf1364-5884-4a63-b361-929f0c80c478",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "HOURS_MISSING",
+      "dataType": "double",
+      "sourceColumn": "HOURS_MISSING",
+      "sourceProviderType": "decimal(19, 0)",
+      "lineageTag": "93173f6d-70bb-4d93-b515-563c4e499374",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "DOM_LOAD_ANNUAL",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    DOM_LOAD_ANNUAL_Table = MART_Schema{[Name=\"DOM_LOAD_ANNUAL\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    DOM_LOAD_ANNUAL_Table"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Floor MW",
+      "expression": "SUM(DOM_LOAD_ANNUAL[FLOOR_MW])",
+      "lineageTag": "b4bc4731-1ed1-4501-8f37-3bb80713541a",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Peak MW",
+      "expression": "SUM(DOM_LOAD_ANNUAL[PEAK_MW])",
+      "lineageTag": "6d7eda28-5ff2-4ee9-a936-76edd11fcbfc",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Winter peak MW",
+      "expression": "SUM(DOM_LOAD_ANNUAL[WINTER_PEAK_MW])",
+      "lineageTag": "922fdeb9-cc90-474f-87e2-f403a485d94b",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Summer peak MW",
+      "expression": "SUM(DOM_LOAD_ANNUAL[SUMMER_PEAK_MW])",
+      "lineageTag": "2735f08a-ca01-477b-ab0c-8cdbd7b79121",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "Floor growth 2019 to 2025",
+      "expression": "DIVIDE(CALCULATE([Floor MW], DOM_LOAD_ANNUAL[YEAR] = 2025), CALCULATE([Floor MW], DOM_LOAD_ANNUAL[YEAR] = 2019)) - 1",
+      "formatString": "0%;-0%;0%",
+      "lineageTag": "de8b5295-6d59-47ed-8a2d-ccc3cd494299"
+     },
+     {
+      "name": "Peak growth 2019 to 2025",
+      "expression": "DIVIDE(CALCULATE([Peak MW], DOM_LOAD_ANNUAL[YEAR] = 2025), CALCULATE([Peak MW], DOM_LOAD_ANNUAL[YEAR] = 2019)) - 1",
+      "formatString": "0%;-0%;0%",
+      "lineageTag": "9ee5c9c2-e6aa-4da2-857f-5ab6f7178a5b"
+     }
+    ]
+   },
+   {
+    "name": "DOM_TOP50_HOURS",
+    "lineageTag": "9f5758a4-86c2-420d-a38c-804484a6f04b",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "sourceProviderType": "decimal(4, 0)",
+      "lineageTag": "c026652d-f655-44fe-a438-0e47ae8891f1",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "DATA_DATE",
+      "dataType": "dateTime",
+      "sourceColumn": "DATA_DATE",
+      "formatString": "Long Date",
+      "sourceProviderType": "date",
+      "lineageTag": "7ffc3416-8173-40d2-9663-745c04c2ae05",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "UnderlyingDateTimeDataType",
+        "value": "Date"
+       }
+      ]
+     },
+     {
+      "name": "HOUR_NO",
+      "dataType": "double",
+      "sourceColumn": "HOUR_NO",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "406dcfb1-0ba1-4a87-b35f-ffdfbb8e7ff6",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "UTC_TS",
+      "dataType": "dateTime",
+      "sourceColumn": "UTC_TS",
+      "formatString": "General Date",
+      "sourceProviderType": "datetime2",
+      "lineageTag": "c17cfb51-eb0c-43e8-ba07-fcc4a398d4ed",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     },
+     {
+      "name": "DEMAND_MW",
+      "dataType": "double",
+      "sourceColumn": "DEMAND_MW",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "5b69abe1-8c80-42f4-941e-63fb2d739acc",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "RANK_TODAY",
+      "dataType": "double",
+      "sourceColumn": "RANK_TODAY",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "1669bad8-9c1f-46fd-822b-49a2d7b74e3f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "RANK_END_2025",
+      "dataType": "double",
+      "sourceColumn": "RANK_END_2025",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "65db727d-f831-4d19-a92f-e77dc0629930",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "DOM_TOP50_HOURS",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    DOM_TOP50_HOURS_Table = MART_Schema{[Name=\"DOM_TOP50_HOURS\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    DOM_TOP50_HOURS_Table"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Top 50 hours in 2025",
+      "expression": "CALCULATE(COUNTROWS(DOM_TOP50_HOURS), DOM_TOP50_HOURS[RANK_END_2025] <= 50, DOM_TOP50_HOURS[YEAR] = 2025)",
+      "formatString": "0",
+      "lineageTag": "5290b673-8779-4303-ad08-be4582194c56"
+     }
+    ]
+   },
+   {
+    "name": "SAIDI_WEATHER_ADJUSTED",
+    "lineageTag": "9ea8bb5b-1a0f-439c-a982-ae672b176b81",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "formatString": "0",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "41d11f86-494d-41b8-a505-95068710425e",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isDecimal\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_COUNTY_DAYS",
+      "dataType": "double",
+      "sourceColumn": "STORM_COUNTY_DAYS",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "2bd78eb8-a49e-4730-8a44-27b1f90a1267",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "sourceProviderType": "decimal(12, 3)",
+      "lineageTag": "e6de9969-4b02-4464-8b73-4e266606da15",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "PREDICTED_FROM_WEATHER",
+      "dataType": "double",
+      "sourceColumn": "PREDICTED_FROM_WEATHER",
+      "sourceProviderType": "double",
+      "lineageTag": "47f8a490-f286-4051-9d5e-980a273b85ee",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WEATHER_ADJUSTED_SAIDI",
+      "dataType": "double",
+      "sourceColumn": "WEATHER_ADJUSTED_SAIDI",
+      "sourceProviderType": "double",
+      "lineageTag": "9c6cdb5c-aff3-4546-946e-2d78e955b681",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "SAIDI_WEATHER_ADJUSTED",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    SAIDI_WEATHER_ADJUSTED_Table = MART_Schema{[Name=\"SAIDI_WEATHER_ADJUSTED\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    SAIDI_WEATHER_ADJUSTED_Table"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Adjusted label",
+      "expression": "IF(SELECTEDVALUE(SAIDI_WEATHER_ADJUSTED[YEAR]) IN {2015, 2019, 2025}, SUM(SAIDI_WEATHER_ADJUSTED[WEATHER_ADJUSTED_SAIDI]))",
+      "lineageTag": "5e334218-a0c1-4e4a-bade-99e0e2a0620f",
+      "annotations": [
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name": "V_STORM_VS_SAIDI (2)",
+    "lineageTag": "afa72846-ec00-4c06-9c3d-9ddea00a8f71",
+    "columns": [
+     {
+      "name": "YEAR",
+      "dataType": "double",
+      "sourceColumn": "YEAR",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "fac1b3eb-a65e-4533-befc-2a66edb8e61b",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_COUNTY_DAYS",
+      "dataType": "double",
+      "sourceColumn": "STORM_COUNTY_DAYS",
+      "sourceProviderType": "decimal(18, 0)",
+      "lineageTag": "419b2c39-16f4-4fdb-b4c5-a166efee53f2",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WIND_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WIND_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "7b455b49-39f9-4e3f-874c-e73da56d2181",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "WINTER_DAYS",
+      "dataType": "double",
+      "sourceColumn": "WINTER_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "369fe317-b572-4d09-adf0-a090db50a22a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "TROPICAL_DAYS",
+      "dataType": "double",
+      "sourceColumn": "TROPICAL_DAYS",
+      "sourceProviderType": "decimal(13, 0)",
+      "lineageTag": "48879491-424f-484e-a0cc-d28c710327b6",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIDI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIDI_EX_MED",
+      "sourceProviderType": "decimal(12, 3)",
+      "lineageTag": "c0f952c4-2347-4ac2-813c-9dd649971332",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "SAIFI_EX_MED",
+      "dataType": "double",
+      "sourceColumn": "SAIFI_EX_MED",
+      "sourceProviderType": "decimal(12, 3)",
+      "lineageTag": "f13b093d-25fa-4562-acf5-fe2c96fc5a8a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "STORM_SAIDI",
+      "dataType": "double",
+      "sourceColumn": "STORM_SAIDI",
+      "sourceProviderType": "decimal(13, 3)",
+      "lineageTag": "4503a458-5d8f-48d4-8404-19e4c9cd6b50",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "V_STORM_VS_SAIDI (2)",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    V_STORM_VS_SAIDI_View = MART_Schema{[Name=\"V_STORM_VS_SAIDI\",Kind=\"View\"]}[Data]",
+        "in",
+        "    V_STORM_VS_SAIDI_View"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "name": "DOM_LOAD_PROFILE",
+    "lineageTag": "deb978d5-7912-4d60-bae2-4c666637b2d4",
+    "columns": [
+     {
+      "name": "HOUR_NO",
+      "dataType": "double",
+      "sourceColumn": "HOUR_NO",
+      "formatString": "0",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "e5b56108-ded1-4bfb-9bac-15e2e2d3a777",
+      "summarizeBy": "none",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "User"
+       }
+      ]
+     },
+     {
+      "name": "AVG_MW_2019",
+      "dataType": "double",
+      "sourceColumn": "AVG_MW_2019",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "ed3f44cf-4b43-43f2-8a94-f96e54a8785e",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "AVG_MW_2025",
+      "dataType": "double",
+      "sourceColumn": "AVG_MW_2025",
+      "sourceProviderType": "decimal(38, 0)",
+      "lineageTag": "4349e51a-e43b-4b29-9c9e-df818470be6a",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     },
+     {
+      "name": "GROWTH_PCT",
+      "dataType": "double",
+      "sourceColumn": "GROWTH_PCT",
+      "sourceProviderType": "decimal(38, 1)",
+      "lineageTag": "ff7cfbbd-f26b-4456-99d9-9e6eff8a7487",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       },
+       {
+        "name": "PBI_FormatHint",
+        "value": "{\"isGeneralNumber\":true}"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "DOM_LOAD_PROFILE",
+      "mode": "directQuery",
+      "source": {
+       "type": "m",
+       "expression": [
+        "let",
+        "    Source = Snowflake.Databases(\"vosrmgo-af46531.snowflakecomputing.com\",\"SNOWFLAKE_LEARNING_WH\",[Implementation=\"2.0\"]),",
+        "    RELIABILITY_Database = Source{[Name=\"RELIABILITY\",Kind=\"Database\"]}[Data],",
+        "    MART_Schema = RELIABILITY_Database{[Name=\"MART\",Kind=\"Schema\"]}[Data],",
+        "    DOM_LOAD_PROFILE_Table = MART_Schema{[Name=\"DOM_LOAD_PROFILE\",Kind=\"Table\"]}[Data]",
+        "in",
+        "    DOM_LOAD_PROFILE_Table"
+       ]
+      }
+     }
+    ],
+    "measures": [
+     {
+      "name": "Hour colour",
+      "expression": [
+       "",
+       "VAR h = SELECTEDVALUE(DOM_LOAD_PROFILE[HOUR_NO])",
+       "RETURN",
+       "SWITCH(TRUE(),",
+       "    h <= 6 || h >= 22, \"#118DFF\",",
+       "    h >= 18,           \"#B8BCC2\",",
+       "                       \"#E8D166\")"
+      ],
+      "lineageTag": "80d02d88-16ef-4600-80ff-f1f582946b56"
+     }
+    ]
+   },
+   {
+    "name": "Dashboard Year",
+    "lineageTag": "b7a3c0b5-2a8c-48f4-99b5-8bf616f0c2cd",
+    "columns": [
+     {
+      "type": "calculatedTableColumn",
+      "name": "Year",
+      "dataType": "int64",
+      "isNameInferred": true,
+      "isDataTypeInferred": true,
+      "sourceColumn": "[Year]",
+      "formatString": "0",
+      "lineageTag": "2cc7d4f2-d4c2-4cb7-9ea2-50b151680e3f",
+      "summarizeBy": "sum",
+      "annotations": [
+       {
+        "name": "SummarizationSetBy",
+        "value": "Automatic"
+       }
+      ]
+     }
+    ],
+    "partitions": [
+     {
+      "name": "Dashboard Year",
+      "mode": "import",
+      "source": {
+       "type": "calculated",
+       "expression": [
+        "",
+        "SELECTCOLUMNS(",
+        "    GENERATESERIES(2013, 2025, 1),",
+        "    \"Year\", [Value]",
+        ")",
+        ""
+       ]
+      }
+     }
+    ],
+    "annotations": [
+     {
+      "name": "PBI_Id",
+      "value": "4f95280560f24c3db6d6b535e14a0529"
+     }
+    ]
+   }
+  ],
+  "relationships": [
+   {
+    "name": "AutoDetected_fec1106f-be3e-4203-8e3a-ab9a905f3efa",
+    "fromTable": "FCT_RELIABILITY",
+    "fromColumn": "UTILITY_KEY",
+    "toTable": "DIM_UTILITY",
+    "toColumn": "UTILITY_KEY"
+   },
+   {
+    "name": "AutoDetected_2f6e9c31-1754-436f-90ff-24dd3d0f584b",
+    "fromTable": "Headline",
+    "fromColumn": "losses_pct",
+    "toTable": "Programmes2025",
+    "toColumn": "losses_pct"
+   }
+  ],
+  "cultures": [
+   {
+    "name": "en-US",
+    "linguisticMetadata": {
+     "content": {
+      "Version": "2.0.0",
+      "Language": "en-US",
+      "Entities": {
+       "fct_reliability.saifi_ex_med": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "SAIFI ex MED"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Outages per Customer 2025 (SAIFI)": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.caidi_ex_med": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "CAIDI ex MED"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Mins to Restore each Outage 2025 (CAIDI)": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.saidi_all_events": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "SAIDI all events"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Outage Mins per Customer including all Major Events 2025": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.share_of_outage_mins_caused_by_major_storms": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "Share of outage mins caused by major storms"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Storm Share": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dom_load_annual.floor_growth_2019_to_2025": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DOM_LOAD_ANNUAL",
+          "ConceptualProperty": "Floor growth 2019 to 2025"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Base Load Growth (2019-2025)": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dom_load_annual.peak_growth_2019_to_2025": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DOM_LOAD_ANNUAL",
+          "ConceptualProperty": "Peak growth 2019 to 2025"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Peak Load Growth (2019-2025)": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dom_top50_hours.top_50_hours_in_2025": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DOM_TOP50_HOURS",
+          "ConceptualProperty": "Top 50 hours in 2025"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "No.of Top 50 Load Hrs in 2025": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.saidi_ex_med": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "SAIDI ex MED"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Ordinary Days": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.storm_saidi": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "Storm SAIDI"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Major Event Days": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dim_utility.display_name": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DIM_UTILITY",
+          "ConceptualProperty": "Display name"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Utility": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dim_utility.peer_group": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DIM_UTILITY",
+          "ConceptualProperty": "PEER_GROUP"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Utility Name": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.method": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "Method"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Major Storm Rule": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.saidi_2015_to_2017": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "SAIDI 2015 to 2017"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Minutes 2015 to 2017": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.saidi_2023_to_2025": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "SAIDI 2023 to 2025"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Minutes 2023 to 2025": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "fct_reliability.caidi_5yr": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "FCT_RELIABILITY",
+          "ConceptualProperty": "CAIDI 5yr"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Minutes per Outage 2021 to 2025": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "programmes2025.smart_meter_share_": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "Programmes2025",
+          "ConceptualProperty": "Smart meter share %"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Smart Meter Installed": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "programmes2025.timevarying_rate_": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "Programmes2025",
+          "ConceptualProperty": "Time-varying rate %"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "On a Time-Varying Rate": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dom_load_annual.winter_peak_mw": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DOM_LOAD_ANNUAL",
+          "ConceptualProperty": "Winter peak MW"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Winter": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "dom_load_annual.summer_peak_mw": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "DOM_LOAD_ANNUAL",
+          "ConceptualProperty": "Summer peak MW"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Summer": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "amieventstudy.selected_saidi": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "AmiEventStudy",
+          "ConceptualProperty": "Selected SAIDI"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Outage Duration": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "amieventstudy.selected_customers": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "AmiEventStudy",
+          "ConceptualProperty": "Selected Customers"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Customers Served": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "amieventstudy.selected_caidi": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "AmiEventStudy",
+          "ConceptualProperty": "Selected CAIDI"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Mins to Restore an Outage": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "amieventstudy.selected_saifi": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "AmiEventStudy",
+          "ConceptualProperty": "Selected SAIFI"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Outage Frequency": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       },
+       "amieventstudy.selected_major_event_share": {
+        "Definition": {
+         "Binding": {
+          "ConceptualEntity": "AmiEventStudy",
+          "ConceptualProperty": "Selected Major Event Share"
+         }
+        },
+        "State": "Generated",
+        "Terms": [
+         {
+          "Major Event Share": {
+           "State": "Suggested",
+           "Source": {
+            "Type": "External",
+            "Agent": "PowerBI.VisualColumnRename"
+           },
+           "Weight": 0.9
+          }
+         }
+        ]
+       }
+      }
+     },
+     "contentType": "json"
+    }
+   }
+  ],
+  "annotations": [
+   {
+    "name": "__PBI_TimeIntelligenceEnabled",
+    "value": "1"
+   },
+   {
+    "name": "PBI_QueryOrder",
+    "value": "[\"V_TREND\",\"DIM_UTILITY\",\"FCT_RELIABILITY\",\"STORM_INDEX\",\"V_GROUP_INDEX\",\"V_STORM_VS_SAIDI\",\"LoadGrowth\",\"Programmes2025\",\"Headline\",\"AmiEventStudy\",\"Tests\",\"DOM_LOAD_ANNUAL\",\"DOM_TOP50_HOURS\",\"SAIDI_WEATHER_ADJUSTED\",\"V_STORM_VS_SAIDI (2)\",\"DOM_LOAD_PROFILE\"]"
+   }
+  ]
+ }
+}

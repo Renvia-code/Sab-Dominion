@@ -1,0 +1,249 @@
+v2 rows 122 | v3 rows 127
+added: ['C-S3-11P', 'C-B-05', 'C-S5-14', 'C-B-06', 'C-B-07']
+removed: []
+changed rows: 26
+changed in key fields but NOT announced: []
+announced but no key-field change: []
+====================================================================================================
+C-S3-11P | ADDED
+  + exact_text: 4th highest of the 12 (median 0.96)
+  + value: 1.21;0.96;0.9640;0.964
+  + unit: SAIFI 2021-25; median of the 12 utilities, Dominion included
+  + used_in: deck S3 (public): right column, chart label 'median of the 12 (including Dominion): 0.96', alt text, notes ('a median of 0.96 for all twelve, Dominion included'); brief p4 source note, A1 ('public-only 0.96 (all 12)')
+  + source: origin/main docs/05_metrics_and_measures.md:87 ('Quadrant lines | medians of the twelve peers: SAIFI 0.96, CAIDI 105'); origin/main workbook Peers sheet: (0.934 + 0.994) / 2 = 0.9640
+  + producer: B
+  + checked_by: B
+  + result: match; v3 (O-33): the median origin/main prints (tier A)
+  + variant: public
+====================================================================================================
+C-B-05 | ADDED
+  + exact_text: 33 of them Dominion-only (D15), 31 on the map
+  + value: 103;33;31
+  + unit: counties: Dominion's EIA-861 counties; Dominion-only in all; Dominion-only on the EAGLE-I map
+  + used_in: brief hard 25 Q3; brief p5 ('The 31 mapped counties Dominion serves alone')
+  + source: data/output/county_outage_map_dominion_only.csv (commit 4fc9939): 33 rows, all dominion_only_county True; 31 with map_flag ok; off the map 51600 Fairfax city (implausible readings 2018-2020) and 51660 Harrisonburg city (almost no EAGLE-I readings, municipal utility); docs/04 D15
+  + producer: D
+  + checked_by: B
+  + result: match; the 31 are the 33 less the two cities off the map (V1 U1, I4)
+  + variant: both
+====================================================================================================
+C-S5-14 | ADDED
+  + exact_text: [image] Summary page chart titles and point labels (adopted S5 screenshot; brief p7)
+  + value: 6;9;1.24;1.17;1.32;1.244;1.320;120.5;105.9;109.4;120.48;109.39;122;136;133;122.4;135.7;133.1;0.70;10;46
+  + unit: % change since 2019 (SAIFI +6%, CAIDI −9%); SAIFI and CAIDI point labels; weather-adjusted SAIDI (minutes); scatter r and n; the 46 kV marker
+  + used_in: deck S5 screenshot (adopted); brief p7 image: 'Outages per customer up 6% since 2019, most of it after 2023' (1.24, 1.17, 1.32), 'Minutes per interruption down 9% since 2019' (120.5, 105.9, 109.4), weather-adjusted 122, 136, 133, 'r = 0.70: association, not cause', markers '2015: Automated Outage Recording' and '2020: 46 kV lines added'
+  + source: work/powerbi/b6/s5_summary_v3.png; EIA-861 Dominion Energy Virginia ex-MED: SAIFI 2019 1.244 → 2025 1.320 (+6.1%), CAIDI 2019 120.48 → 2025 109.39 (−9.2%); weather-adjusted SAIDI from the storm-day fit: 2015 122.4, 2019 135.7, 2025 133.1 (V1 U3); markers: docs/03 P7, docs/05:65
+  + producer: B
+  + checked_by: B
+  + result: match (V1 recomputed each; image only, no extractable text)
+  + variant: adopted
+====================================================================================================
+C-B-06 | ADDED
+  + exact_text: about an hour and fifty minutes each time
+  + value: 109.4;144.4;2.8;1.3
+  + unit: minutes, spelled out: CAIDI 2025 (1 h 49 min); SAIDI 2025 (2 h 24 min); the 3-year rise; SAIFI 2025
+  + used_in: brief hard 25 Q24 ('about 1.3 times', 'about an hour and fifty minutes each time', 'almost two and a half hours in the year', 'rose about three minutes')
+  + source: C-S5-11 (EIA-861 2025 ex-MED: CAIDI 109.4, SAIDI 144.4), C-S2-04 (SAIFI 1.320), C-S2-18 (2.8)
+  + producer: B
+  + checked_by: B
+  + result: match: 109.4 min = 1 h 49 min; 144.4 min = 2 h 24 min; 2.8 is about three (V1 U6)
+  + variant: both
+====================================================================================================
+C-B-07 | ADDED
+  + exact_text: Dominion trims on 4–5-year cycles
+  + value: 4;5
+  + unit: years (maintenance trim cycle)
+  + used_in: brief hard 25 Q7
+  + source: R-076, re-opened Nov 1, 2026: Dominion Energy, 'Virginia/North Carolina Tree Trimming and Powerlines FAQ' (dominionenergy.com): 'Our maintenance trimming is done on cycles typically ranging from four to five years'; 'Nearly all of our neighborhood power lines are cleared on a four year cycle.' (research/V1_followups.md §3)
+  + producer: R
+  + checked_by: B
+  + result: match (V1 U2)
+  + variant: both
+====================================================================================================
+C-B-01 | changed: exact_text,value,unit,used_in,source,result
+  - exact_text (v2): about 7:40
+  + exact_text: 7:54 in all (adopted)
+  - value (v2): 0:35;1:10;0:55;1:05;1:00;7:40;35;10;55;05;40;130
+  + value: 0:35;1:11;0:57;1:04;0:54;1:17;0:56;1:00;0:32;1:11;0:54;0:57;0:57;1:12;0:56;0:59;7:54;7:38;130
+  - unit (v2): minutes:seconds (speaker notes at about 130 words a minute)
+  + unit: minutes:seconds per slide and in all, adopted · public-only (speaker notes at about 130 words a minute)
+  - used_in (v2): brief p2 talk table
+  + used_in: brief p2 talk table (one time cell per slide: adopted · public) and its source line
+  - source (v2): build_deck_v2.py notes word counts (adopted: 76, 154, 124, 138, 117, 143, 122, 131 = 1,005 words)
+  + source: the v3 decks' speaker notes on S1-S8, whitespace word counts as build_deck_v3.py prints them: adopted 76, 154, 124, 138, 117, 166, 122, 131 = 1,028 words; public 69, 154, 116, 124, 124, 157, 122, 128 = 994 words; each slide's seconds rounded, totals are their sums
+  - result (v2): match: 1,005 / 130 = 7.7 minutes
+  + result: match; V1 I3 and U8: times per variant, recounted after the v3 note edits; no slot length is printed
+====================================================================================================
+C-B-03 | changed: value,unit,source,result
+  - value (v2): 1999;2002;2006;2009;2010;2011;2014;2021;2022;2024;0.2;20:00
+  + value: 1999;2002;2006;2009;2010;2011;2014;2015;2017;2018;2021;2022;2024;0.2;20:00;.42;.20;-.11;-.19
+  - unit (v2): citation years; effect size
+  + unit: citation years; effect sizes (r, d)
+  - source (v2): research/delivery_and_rehearsal.md (each with its DOI); claims_register R-081, R-082, R-088, R-091
+  + source: research/delivery_and_rehearsal.md (each with its DOI); claims_register R-081, R-082, R-088, R-091; Barrick 2010 r = .42 and Swider 2011 r = .20, −.11 to −.19 (Crossref/OpenAlex, V1); Powell 2018 r = −.19 (register quote; no abstract retrievable); Ranehill 2015, Huang 2017
+  - result (v2): match (R's Page A, compressed)
+  + result: match (R's Page A, compressed); V1 U4: the r-values and the three citation years added
+====================================================================================================
+C-Q-03 | changed: used_in
+  - used_in (v2): qsheet B6 ('71% to 90%'), B8 ('71% → 90%')
+  + used_in: qsheet item 4 (B8: '71% → 90%'), item 5 (B6: '71% to 90%'); brief A1, hard 25 Q17
+====================================================================================================
+C-Q-06 | changed: used_in
+  - used_in (v2): qsheet T1
+  + used_in: qsheet item 9 (T1); brief A1 ('$690M · 440')
+====================================================================================================
+C-Q-08 | changed: used_in
+  - used_in (v2): qsheet R4
+  + used_in: qsheet item 18 (R4); brief A1 ('25% · 3-2')
+====================================================================================================
+C-Q-10 | changed: value,used_in,source,result
+  - value (v2): 2027;2026-05;2026-09
+  + value: 2027;2026-05;2026-09;2026-09-03
+  - used_in (v2): qsheet R2 (also: announced May 2026; shareholders approved September; SC, NC, FERC and NRC must also approve; closing expected in the second half of 2027)
+  + used_in: qsheet item 19 (R2; also: announced May 2026, approved by shareholders on September 3, SC, NC, FERC and NRC must also approve, closing expected in the second half of 2027); brief hard 25 Q23 (timeline), A1 ('May 2026 → H2 2027')
+  - source (v2): R-049 (CEO, Q3 call: VA final order by 11 Jan 2027; close H2 2027), R-053 (mid-January 2027), R-048 (approvals required); dossier §3 (D3 release 18 May 2026; D5/D8 shareholders approved September 2026)
+  + source: R-104, R-105: SEC Form 8-K Item 5.07, both filed September 3, 2026 (Dominion Energy special meeting: merger agreement approved, 671,317,253 for and 8,566,156 against; NextEra Energy special meeting: share issuance approved, 99.47% of votes cast; research/V1_followups.md §1); R-049 (CEO, Q3 call: Virginia final order by January 11, 2027; close H2 2027), R-053 (mid-January 2027), R-048 (approvals required); Dominion release of May 18, 2026 (announcement)
+  - result (v2): match; calendar as reported, no prediction
+  + result: match; calendar as reported, no prediction; shareholder approval verified on both 8-Ks
+====================================================================================================
+C-S3-01 | changed: used_in,source,result,variant
+  - used_in (v2): deck S3 (both), alt text, notes; brief p2, p4, A1
+  + used_in: deck S3 (adopted): right column, chart label, alt text, notes; brief p4 text, A1 ('median If adopted 0.93 (11 peers)')
+  - source (v2): D findings.md C5-1 (adopted: peer_reliability_5yr.csv median_saifi_2021_25_excl_dominion 0.934, commit 7133aba); public: origin/main workbook Peers sheet, 6th of the 11 peers' values (Alabama Power 0.934)
+  + source: D findings.md C5-1 (peer_reliability_5yr.csv median_saifi_2021_25_excl_dominion 0.934, commit 7133aba)
+  - result (v2): match in both variants
+  + result: match; v3 (O-33): adopted only; the public deck prints the 12-utility median (C-S3-11P)
+  - variant (v2): both
+  + variant: adopted
+====================================================================================================
+C-S3-02 | changed: used_in,result
+  - used_in (v2): deck S3 (adopted); brief p4, A1
+  + used_in: deck S3 (adopted): right column, chart label, alt text; brief p4 text, A1 ('median If adopted 99.5 (11 peers)')
+  - result (v2): match: chart script median 104.85 rounds to 105
+  + result: match: 99.5 is the median of the 11 peers' CAIDI 2021-25 means (BGE); v3 drops the stale '104.85 rounds to 105' note, which is the 12-utility median (C-S3-02P)
+====================================================================================================
+C-S3-02P | changed: exact_text,value,unit,used_in,source,result
+  - exact_text (v2): mid-pack, 6th of the 12 (peer median 99.3)
+  + exact_text: mid-pack, 6th of the 12 (median 105)
+  - value (v2): 110;99.3
+  + value: 110;105;104.85
+  - unit (v2): CAIDI 2021-25; median of the 11 peers (workbook)
+  + unit: CAIDI 2021-25; median of the 12 utilities, Dominion included
+  - used_in (v2): deck S3 (public); brief p4 source note, A1
+  + used_in: deck S3 (public): right column, chart label 'median of the 12 (including Dominion): 105 min', alt text; brief p4 source note, A1 ('public-only 105 (all 12)')
+  - source (v2): origin/main workbook Peers sheet: CAIDI from the 5-year means; 6th of the 11 peers' values (BGE and PECO 99.3)
+  + source: origin/main docs/05_metrics_and_measures.md:87 ('Quadrant lines | medians of the twelve peers: SAIFI 0.96, CAIDI 105'); origin/main workbook Peers sheet: (99.3 + 110.4) / 2 = 104.85
+  - result (v2): match; derived from origin/main values
+  + result: match; v3 (O-33): the median origin/main prints (tier A), replacing the 11-peer 99.3
+====================================================================================================
+C-S3-04P | changed: source,result
+  - source (v2): origin/main powerbi/Dominion_Reliability_PowerBI_Data.xlsx sheet Peers; method labels fixed per D batch 6 (N-5)
+  + source: origin/main powerbi/Dominion_Reliability_PowerBI_Data.xlsx sheet Peers: values and method labels as printed there ('Mixed' for Georgia Power and Duke Energy Florida, 'Own method' for Dominion and Alabama Power; O-33); charts/v3/s3_peer_quadrant_v3_public
+  - result (v2): match
+  + result: match; A6 source explains Mixed: 'Other' in 2013 only, IEEE 1366 for 2014-25
+====================================================================================================
+C-S3-07 | changed: used_in,result,variant
+  - used_in (v2): deck A6 source (public); brief p4, A1
+  + used_in: brief p4 caveat box (tagged If adopted), A1 ('10 of 12', If adopted), hard 25 Q2 ('Adopted: 10 of the 12 use IEEE')
+  - result (v2): match
+  + result: match; v3 (O-33): adopted only and never in the public deck (origin/main's workbook labels Georgia Power and Duke Energy Florida 'Mixed', and docs/06 says half the peers use a different reporting method); the adopted deck says 'most peers IEEE 1366'
+  - variant (v2): both
+  + variant: adopted
+====================================================================================================
+C-S3-09 | changed: used_in,result
+  - used_in (v2): deck A6 source (public); brief p4
+  + used_in: deck A6 source (public: 'Mixed: “Other” in 2013 only, IEEE 1366 for 2014–25'); brief p4 source note
+  - result (v2): match
+  + result: match; v3: the public A6 keeps origin/main's 'Mixed' label and says what it means
+====================================================================================================
+C-S4-05P | changed: source,result
+  - source (v2): origin/main data/output/storm_vs_saidi.csv; fit 2015-2024 as printed
+  + source: origin/main powerbi/Dominion_Reliability_PowerBI_Data.xlsx sheet StormIndex, predicted_saidi_from_weather (2017 125.94, 2023 124.44, 2024 128.25: a fit on SAIDI rounded to 1 dp); storm county-days and SAIDI ex-MED from origin/main data/output/storm_vs_saidi.csv
+  - result (v2): match
+  + result: match; 'From the fit' is the workbook's column, as printed on origin/main (a refit on the CSV gives 126.0, 124.5 and 128.3: V1 P3)
+====================================================================================================
+C-S4-08 | changed: value,used_in,result
+  - value (v2): 11.9;7.9;16.9;2,000
+  + value: 11.9;7.9;16.9;2,000;12;11.944
+  - used_in (v2): deck S4 (adopted), notes; brief p2, p5, A1
+  + used_in: deck S4 title ('about 12 times'), right column, notes (adopted); brief p2, p5, A1, hard 25 Q5 ('The 12×')
+  - result (v2): match
+  + result: match; 12 is 11.944 rounded (V1 U5)
+====================================================================================================
+C-S4-09 | changed: used_in,source
+  - used_in (v2): deck S4 (adopted), notes; brief p5, A1
+  + used_in: deck S4 (adopted), notes; brief p5, A1, hard 25 Q3 ('in those 31 (19.9×)'), Q5
+  - source (v2): D findings.md C5-2 (storm_vs_calm.csv rows 2-3)
+  + source: D findings.md C5-2 (storm_vs_calm.csv rows 2-3; the Dominion-only subset is the 31 mapped Dominion-only counties, 1,065 storm county-days)
+====================================================================================================
+C-S4-20 | changed: exact_text,unit,used_in,result
+  - exact_text (v2): average 159 minutes a year, against 211 in the 68
+  + exact_text: customer-weighted average of 159 minutes a year, against 211 in the 68
+  - unit (v2): counties; minutes a year (non-major days, 2015-2024)
+  + unit: counties; customer-weighted average minutes a year (non-major days, 2015-2024)
+  - used_in (v2): brief p5 (tagged If adopted)
+  + used_in: brief p5 (tagged If adopted: 'The 31 mapped counties Dominion serves alone have a customer-weighted average of 159 minutes a year')
+  - result (v2): match
+  + result: match; customer-weighted means (simple means would be 225 and 361: V1); the 31 are the mapped Dominion-only counties (C-B-05)
+====================================================================================================
+C-S5-04 | changed: used_in
+  - used_in (v2): deck A3 (both: 'Highest hour of the year +26%, lowest hour +52%'); brief p6, A1
+  + used_in: deck A3 (both: 'Highest hour of the year +26%, lowest hour +52%'); brief p6 text ('19,803 → 24,957 MW', '7,167 → 10,903 MW') and chart, A1
+====================================================================================================
+C-S5-07 | changed: value,result
+  - value (v2): 65.4;39.08;64.62;7.9
+  + value: 65.4;39.08;64.62;7.9;8.0;8
+  - result (v2): match
+  + result: match; the printed '8%' holds: +8.0% counting all service types, consistent with the sales figure (bundled plus delivery-only); +7.9% counting bundled customers only (V1)
+====================================================================================================
+C-S5-11 | changed: unit,used_in,source
+  - unit (v2): Power BI Summary cards, 2025
+  + unit: Power BI Summary cards, 2025: customers served; SAIDI; minutes per interruption (CAIDI); SAIFI; major-event share
+  - used_in (v2): deck S5 screenshot and alt text (adopted); brief p7, A1
+  + used_in: deck S5 screenshot and alt text (adopted); brief p7 image and caption, A1
+  - source (v2): work/powerbi/b5/shots_v4/crop_p01.png (real Desktop render, 09:33); 2,675,735 customers (EIA-861)
+  + source: work/powerbi/b6/s5_summary_v3.png (the CAIDI card reads 'Minutes per interruption', O-33); 2,675,735 customers (EIA-861)
+====================================================================================================
+C-S5-12 | changed: source
+  - source (v2): deliverables/04_powerbi/measures.dax Selected SAIDI (VAR form, as in the candidate's .pbix; V2 F22)
+  + source: powerbi/measures.dax:400-402, Selected SAIDI in VAR form (branch interview-upgrade-2026-11, commit 859b52d); the same measure as the candidate's .pbix (V2 F22)
+====================================================================================================
+C-S6-02 | changed: used_in
+  - used_in (v2): brief p8, A1 ('−32%'), hard 25 Q8
+  + used_in: brief p8, A1 ('−32% outage minutes, feeders hardened 12+ months (Nov 2023)'), hard 25 Q8 ('(Nov 30, 2023)', beside −44%)
+====================================================================================================
+C-S6-06 | changed: exact_text,unit,used_in,source,result
+  - exact_text (v2): −44% (2026)
+  + exact_text: −44% average annual outage time for customers in hardened areas
+  - unit (v2): % (average annual outage time, hardened areas)
+  + unit: % (average annual outage time, customers in the hardened mainfeeder areas, Virginia)
+  - used_in (v2): brief hard 25 Q8
+  + used_in: brief hard 25 Q8 ('Reported, two measures', beside −32% with its date), A1 ('−44% average annual outage time, hardened areas (June 2026)')
+  - source (v2): R-013 (Dominion release, June 2026: 'reduced average annual outage time by 44% for customers in these areas')
+  + source: R-013, re-sourced to the primary: Dominion Energy release of June 8, 2026 on investors.dominionenergy.com ('Dominion Energy prepares year-round for hurricane season ...'): 'Through its Mainfeeder Hardening Program, the company has replaced more than 8,000 older utility poles and hardened over 350 miles of power lines in Virginia. The program has reduced average annual outage time by 44% for customers in these areas.' (research/V1_followups.md §2)
+  - result (v2): match; dated, beside the 2023 figure (C-S6-02)
+  + result: match (R, Nov 1, 2026); company-reported: no baseline years, major-event treatment or comparison group stated; a different measure from −32% (C-S6-02), printed beside it with dates, never as a trend
+====================================================================================================
+C-S7-05A | changed: value,unit,used_in,source,result
+  - value (v2): 31;12;19
+  + value: 31;12;19;6;3
+  - unit (v2): tests (12 on the reliability mart)
+  + unit: tests: 12 on the original build (T1-T6 reliability mart, T7-T9 NOAA storms, T10-T12 EIA-930 demand) and 19 on the new tables (T13-T31)
+  - used_in (v2): deck S6 badge, notes (adopted); brief p7
+  + used_in: deck S6 badge ('Original build: 12 (6 reliability, 3 storm, 3 demand). New tables: 19.'), source, notes, A4 ranges (adopted); brief p7, A1
+  - source (v2): data/output/test_results.csv (T1-T31 PASS)
+  + source: data/output/test_results.csv (T1-T31 PASS); docs/03: T1-T6 sql/04 reliability mart, T7-T9 sql/05 NOAA storms, T10-T12 sql/06 EIA-930 demand
+  - result (v2): match
+  + result: match; v3 fixes V1 I1 ('12 on the reliability mart': only T1-T6 are)
+====================================================================================================
+C-S7-10 | changed: exact_text,used_in,result
+  - exact_text (v2): T13–T31 on the county outage, storm and load tables
+  + exact_text: T13–T31 on the new tables
+  - used_in (v2): deck S6 source, A4 (adopted); brief p7, A1, hard 25 Q15
+  + used_in: deck S6 source ('T13–T31 the new tables'), A4 (adopted); brief p7 ('T13–T31 the new tables'), A1
+  - result (v2): match
+  + result: match; v3: the ranges as docs/03 groups them (T1-T6, T7-T9, T10-T12, T13-T31)
+====================================================================================================
+C-S8-01 | changed: used_in
+  - used_in (v2): deck S8 strip (both)
+  + used_in: deck S8 strip (both); brief A1 ('20M+'), hard 25 Q16; qsheet items 2 (O1), 11 (T36), 14 (T17)

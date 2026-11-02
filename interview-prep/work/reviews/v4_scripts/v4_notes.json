@@ -1,0 +1,68 @@
+{
+ "deck_adopted": {
+  "title": "Deck, adopted (print)",
+  "summary": "14 pages, Letter landscape. The talk's slides are imposed at the print scale, centered with wide top and bottom margins. Smallest text is 10.12 pt (the source lines). The nearest text is 0.95 in from an edge, and every chart image is 400 ppi. No defects.",
+  "pages": {
+   "1": ["Title page: name and date only, data line. Clean", "Clean"],
+   "2": ["130 → 133 with four labeled change bars (storm days gold, SAIFI blue, CAIDI and SAIDI gray). Nothing clipped", "The gold storm bar prints as light as the gray bars. Each bar has its own labeled row, so the rule holds"],
+   "3": ["Peer quadrant, 11-peer medians 0.93 and 99.5 labeled, Dominion in blue. Labels clear of the points", "Dominion's dot is the darkest; median lines visible"],
+   "4": ["Storm vs calm bars, 332.8 vs 27.9 with intervals; the 11.9× panel", "Storm bar dark, calm bar light"],
+   "5": ["Summary-page screenshot of the final template, 400 ppi (cards 2.68M, 144.4, 109.4, 1.320, 53%; 'Minutes per interruption'), with the model and DAX. Screenshot text is small but sharp", "Screenshot lines and cards readable"],
+   "6": ["Pipeline diagram; '31 tests pass: Original build 12 (6 reliability, 3 storm, 3 demand). New tables: 19'", "Clean"],
+   "7": ["Three 30/60/90 columns, equal heights, text inside the boxes", "Clean; column tints print light"],
+   "8": ["Three takeaways, experience map, thank-you line", "Clean"],
+   "9": ["A1: definition boxes and MED text", "Clean"],
+   "10": ["A2: table 2015–2025 with fit notes; 2025 row highlighted", "The highlight prints light gray; table clean"],
+   "11": ["A3: hour chart, hours ending 1–5 a.m. blue, brackets for 1–5 a.m. and 1–5 p.m.", "Blue bars dark, the rest light"],
+   "12": ["A4: sources table; test line T1–T6 / T7–T9 / T10–T12 / T13–T31", "Clean"],
+   "13": ["A5: limits table", "Clean"],
+   "14": ["A6: ten largest events with the Isaias curve inset (400 ppi)", "Curve and table clean"]
+  }
+ },
+ "deck_public": {
+  "title": "Deck, public (print)",
+  "summary": "14 pages, Letter landscape, the same layout as the adopted deck. Smallest text is 10.12 pt and the nearest text 0.95 in from an edge. Chart images are 400 ppi; the report screenshot on slide 5 is 305 ppi. No defects. The slide 3 chart was also checked at 200 dpi: the two 'median of the 12 (including Dominion)' labels sit clear of every point and label.",
+  "pages": {
+   "1": ["Title page; data line without EAGLE-I", "Clean"],
+   "2": ["As adopted, with 723 → 796", "As adopted: the labeled rows carry the gold bar"],
+   "3": ["Quadrant with the medians of the 12, including Dominion (0.96 and 105). 'Methods differ…; ranks are indicative'", "Dominion's dot is the darkest; median lines visible"],
+   "4": ["Storm scatter with the 2015–2024 fit and 2025 labeled; 465 → 796; r = 0.70", "The 2025 point is dark, the rest light"],
+   "5": ["Frequency chart from the current report's What moved page (305 ppi), with the model and DAX", "Line and labels readable"],
+   "6": ["Pipeline; 12 tests; D1–D14; 'DirectQuery in development (D13)'", "Clean"],
+   "7": ["As adopted", "Clean"],
+   "8": ["As adopted; the storms-by-county line reworded", "Clean"],
+   "9": ["A1, with 'methods differ between utilities'", "Clean"],
+   "10": ["A2: public fit table (125.9, 124.4, 128.2), R² 0.48", "Clean"],
+   "11": ["A3: hour chart, '4 a.m.: +41%', '4 p.m.: +27%'", "Blue bars dark"],
+   "12": ["A4: public sources, T1–T12", "Clean"],
+   "13": ["A5: limits table", "Clean"],
+   "14": ["A6: 12-utility table with 'Mixed' and its footnote", "The Dominion row prints light gray; clean"]
+  }
+ },
+ "sheet": {
+  "title": "Question sheet",
+  "summary": "2 pages, US Letter portrait, printed double-sided as one sheet. 9.0 pt throughout. The nearest text is 0.323 in from an edge (v2: 0.135 in, the 'Side n of 2' footer, which some printers would clip; fixed in v3). No defects.",
+  "pages": {
+   "1": ["Side 1: Q1–Q12 in two columns; [you: …] items highlighted; footer well inside the margin", "Highlights print as light gray bands; all text black"],
+   "2": ["Side 2: Q13–Q24, the five questions to ask and the closing line; some space left under Q18", "Clean"]
+  }
+ },
+ "brief": {
+  "title": "Brief",
+  "summary": "12 pages, US Letter portrait (limit 12). Smallest text is 9.0 pt (tags and appendix tables). The nearest text is 0.385 in from an edge (v2: 0.208 in, the running header and footer; fixed in v3). The screenshot on page 7 is 560 ppi. No defects.",
+  "pages": {
+   "1": ["Cover and contents", "Clean"],
+   "2": ["Talk table with adopted · public times (7:54 / 7:38) and the two-sided lines", "Clean"],
+   "3": ["Finding 1: change bars and the split table; If-asked box", "The gold storm bar is labeled in its own row"],
+   "4": ["Finding 2: quadrant (11-peer medians) and the peer table; caveat box", "Clean"],
+   "5": ["Finding 3: EAGLE-I map with legend; the 31 mapped counties are labeled as such", "The map ramp reads light to dark"],
+   "6": ["Finding 4: hour chart; white space at the foot", "Blue bars dark"],
+   "7": ["Summary screenshot 5.0 in wide (560 ppi), caption, model and sources table", "Readable"],
+   "8": ["Role, the 90-day table, limits, logistics with [you: …]", "Clean"],
+   "9": ["A1 number table fills the page; nothing cut off", "Clean"],
+   "10": ["A2–A3 hard questions in two columns at 9 pt", "Clean"],
+   "11": ["A2–A3 continued; HR column", "Clean"],
+   "12": ["A4: delivery tables and the rehearsal outline", "Clean"]
+  }
+ }
+}

@@ -1,0 +1,683 @@
+{
+ "deck_adopted": {
+  "pdf": "deliverables/01_deck/Dominion_reliability_deck_v3_print_letter.pdf",
+  "sha256": "2e945b8c0077501f",
+  "modified": "01 Nov 11:13:23",
+  "bytes": 924055,
+  "pages": 14,
+  "min_pt_doc": 10.12,
+  "edge_in": 0.95,
+  "fonts": {
+   "BAAAAA+SegoeUI-Semibold": "ttf",
+   "CAAAAA+SegoeUI-Semilight": "ttf",
+   "DAAAAA+SegoeUI": "ttf",
+   "EAAAAA+SegoeUI-Light": "ttf"
+  },
+  "not_embedded": [],
+  "page_detail": [
+   {
+    "page": 1,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Data: EIA-861 \u00b7 PUDL \u00b7 NOAA Storm Events",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 2,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     1980,
+     1215,
+     4.95,
+     3.04
+    ]
+   },
+   {
+    "page": 3,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2370,
+     1245,
+     5.92,
+     3.11
+    ]
+   },
+   {
+    "page": 4,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2220,
+     1170,
+     5.55,
+     2.92
+    ]
+   },
+   {
+    "page": 5,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2085,
+     1177,
+     5.21,
+     2.94
+    ]
+   },
+   {
+    "page": 6,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 7,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 8,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "How my experience maps",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 9,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 10,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 11,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2370,
+     1245,
+     5.92,
+     3.11
+    ]
+   },
+   {
+    "page": 12,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 13,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 14,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     1020,
+     1020,
+     2.55,
+     2.55
+    ]
+   }
+  ],
+  "contact_sheets": [
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_colour_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_colour_2.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_colour_3.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_colour_4.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_grey_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_grey_2.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_adopted\\sheet_grey_3.png"
+  ]
+ },
+ "deck_public": {
+  "pdf": "deliverables/01_deck/Dominion_reliability_deck_v3_public_print_letter.pdf",
+  "sha256": "78b1ccb595ff4779",
+  "modified": "01 Nov 11:13:30",
+  "bytes": 719148,
+  "pages": 14,
+  "min_pt_doc": 10.12,
+  "edge_in": 0.95,
+  "fonts": {
+   "BAAAAA+SegoeUI-Semibold": "ttf",
+   "CAAAAA+SegoeUI-Semilight": "ttf",
+   "DAAAAA+SegoeUI": "ttf",
+   "EAAAAA+SegoeUI-Light": "ttf"
+  },
+  "not_embedded": [],
+  "page_detail": [
+   {
+    "page": 1,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Data: EIA-861 \u00b7 PUDL \u00b7 NOAA Storm Events",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 2,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     1980,
+     1215,
+     4.95,
+     3.04
+    ]
+   },
+   {
+    "page": 3,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2370,
+     1245,
+     5.92,
+     3.11
+    ]
+   },
+   {
+    "page": 4,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2370,
+     1245,
+     5.92,
+     3.11
+    ]
+   },
+   {
+    "page": 5,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     305,
+     1590,
+     716,
+     5.21,
+     2.35
+    ]
+   },
+   {
+    "page": 6,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 7,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 8,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "How my experience maps",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 9,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 10,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 11,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": [
+     400,
+     2370,
+     1245,
+     5.92,
+     3.11
+    ]
+   },
+   {
+    "page": 12,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 13,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   },
+   {
+    "page": 14,
+    "size_in": [
+     11.0,
+     8.5
+    ],
+    "min_pt": 10.12,
+    "min_sample": "Source:",
+    "edge_words": [],
+    "edge_in": 0.95,
+    "min_image": null
+   }
+  ],
+  "contact_sheets": [
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_colour_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_colour_2.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_colour_3.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_colour_4.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_grey_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_grey_2.png",
+   "interview-prep\\work\\reviews\\v4_pages\\deck_public\\sheet_grey_3.png"
+  ]
+ },
+ "sheet": {
+  "pdf": "deliverables/02_question_sheet/Dominion_question_sheet_v3.pdf",
+  "sha256": "0dfb992d037e5463",
+  "modified": "01 Nov 11:34:28",
+  "bytes": 91416,
+  "pages": 2,
+  "min_pt_doc": 9.0,
+  "edge_in": 0.323,
+  "fonts": {
+   "AAAAAA+SegoeUI": "ttf",
+   "BAAAAA+SegoeUI-Semibold": "ttf"
+  },
+  "not_embedded": [],
+  "page_detail": [
+   {
+    "page": 1,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Side 1 of 2",
+    "edge_words": [],
+    "edge_in": 0.323,
+    "min_image": null
+   },
+   {
+    "page": 2,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Side 2 of 2",
+    "edge_words": [],
+    "edge_in": 0.323,
+    "min_image": null
+   }
+  ],
+  "contact_sheets": [
+   "interview-prep\\work\\reviews\\v4_pages\\sheet\\sheet_colour_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\sheet\\sheet_grey_1.png"
+  ]
+ },
+ "brief": {
+  "pdf": "deliverables/03_interview_brief/Dominion_interview_brief_v3.pdf",
+  "sha256": "750df25aee398bef",
+  "modified": "01 Nov 11:34:47",
+  "bytes": 883552,
+  "pages": 12,
+  "min_pt_doc": 9.0,
+  "edge_in": 0.385,
+  "fonts": {
+   "AAAAAA+SegoeUI": "ttf",
+   "BAAAAA+SegoeUI-Semibold": "ttf",
+   "CAAAAA+SegoeUI-Semilight": "ttf",
+   "DAAAAA+SegoeUI-Light": "ttf",
+   "EAAAAA+SegoeUI-Semibold": "ttf",
+   "FAAAAA+SegoeUI": "ttf",
+   "GAAAAA+Consolas": "ttf",
+   "HAAAAA+SegoeUI-Bold": "ttf",
+   "IAAAAA+SegoeUI-Italic": "ttf"
+  },
+  "not_embedded": [],
+  "page_detail": [
+   {
+    "page": 1,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "If adopted",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 2,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "The answer first",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 3,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Finding 1",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 4,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Finding 2",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 5,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Finding 3",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 6,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Finding 4",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 7,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "The report and the build",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": [
+     560,
+     2790,
+     1575,
+     4.98,
+     2.8
+    ]
+   },
+   {
+    "page": 8,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "The role",
+    "edge_words": [],
+    "edge_in": 0.437,
+    "min_image": null
+   },
+   {
+    "page": 9,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Appendix A1",
+    "edge_words": [],
+    "edge_in": 0.385,
+    "min_image": null
+   },
+   {
+    "page": 10,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Appendix A2\u2013A3",
+    "edge_words": [],
+    "edge_in": 0.385,
+    "min_image": null
+   },
+   {
+    "page": 11,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Q12 Power BI at work.",
+    "edge_words": [],
+    "edge_in": 0.385,
+    "min_image": null
+   },
+   {
+    "page": 12,
+    "size_in": [
+     8.5,
+     11.0
+    ],
+    "min_pt": 9.0,
+    "min_sample": "Appendix A4",
+    "edge_words": [],
+    "edge_in": 0.385,
+    "min_image": null
+   }
+  ],
+  "contact_sheets": [
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_colour_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_colour_2.png",
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_colour_3.png",
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_colour_4.png",
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_grey_1.png",
+   "interview-prep\\work\\reviews\\v4_pages\\brief\\sheet_grey_2.png"
+  ]
+ }
+}

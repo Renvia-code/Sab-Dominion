@@ -1,0 +1,81 @@
+PASS: 2013-2025 complete and matching
+PASS: 2013 storm_county_days matches the annual index
+PASS: 2013 wind_days matches the annual index
+PASS: 2013 winter_days matches the annual index
+PASS: 2013 tropical_days matches the annual index
+PASS: 2013 severe_gust_days matches the annual index
+PASS: 2014 storm_county_days matches the annual index
+PASS: 2014 wind_days matches the annual index
+PASS: 2014 winter_days matches the annual index
+PASS: 2014 tropical_days matches the annual index
+PASS: 2014 severe_gust_days matches the annual index
+PASS: 2015 storm_county_days matches the annual index
+PASS: 2015 wind_days matches the annual index
+PASS: 2015 winter_days matches the annual index
+PASS: 2015 tropical_days matches the annual index
+PASS: 2015 severe_gust_days matches the annual index
+PASS: 2016 storm_county_days matches the annual index
+PASS: 2016 wind_days matches the annual index
+PASS: 2016 winter_days matches the annual index
+PASS: 2016 tropical_days matches the annual index
+PASS: 2016 severe_gust_days matches the annual index
+PASS: 2017 storm_county_days matches the annual index
+PASS: 2017 wind_days matches the annual index
+PASS: 2017 winter_days matches the annual index
+PASS: 2017 tropical_days matches the annual index
+PASS: 2017 severe_gust_days matches the annual index
+PASS: 2018 storm_county_days matches the annual index
+PASS: 2018 wind_days matches the annual index
+PASS: 2018 winter_days matches the annual index
+PASS: 2018 tropical_days matches the annual index
+PASS: 2018 severe_gust_days matches the annual index
+PASS: 2019 storm_county_days matches the annual index
+PASS: 2019 wind_days matches the annual index
+PASS: 2019 winter_days matches the annual index
+PASS: 2019 tropical_days matches the annual index
+PASS: 2019 severe_gust_days matches the annual index
+PASS: 2020 storm_county_days matches the annual index
+PASS: 2020 wind_days matches the annual index
+PASS: 2020 winter_days matches the annual index
+PASS: 2020 tropical_days matches the annual index
+PASS: 2020 severe_gust_days matches the annual index
+PASS: 2021 storm_county_days matches the annual index
+PASS: 2021 wind_days matches the annual index
+PASS: 2021 winter_days matches the annual index
+PASS: 2021 tropical_days matches the annual index
+PASS: 2021 severe_gust_days matches the annual index
+PASS: 2022 storm_county_days matches the annual index
+PASS: 2022 wind_days matches the annual index
+PASS: 2022 winter_days matches the annual index
+PASS: 2022 tropical_days matches the annual index
+PASS: 2022 severe_gust_days matches the annual index
+PASS: 2023 storm_county_days matches the annual index
+PASS: 2023 wind_days matches the annual index
+PASS: 2023 winter_days matches the annual index
+PASS: 2023 tropical_days matches the annual index
+PASS: 2023 severe_gust_days matches the annual index
+PASS: 2024 storm_county_days matches the annual index
+PASS: 2024 wind_days matches the annual index
+PASS: 2024 winter_days matches the annual index
+PASS: 2024 tropical_days matches the annual index
+PASS: 2024 severe_gust_days matches the annual index
+PASS: 2025 storm_county_days matches the annual index
+PASS: 2025 wind_days matches the annual index
+PASS: 2025 winter_days matches the annual index
+PASS: 2025 tropical_days matches the annual index
+PASS: 2025 severe_gust_days matches the annual index
+PASS: 2024 storm county-days = 465
+PASS: 2025 storm county-days = 796
+PASS: 2015-2024 Pearson correlation = 0.696
+PASS: 2015-2024 regression slope = 0.0514
+PASS: 2025 holdout prediction = 145.27 minutes
+PASS: 2025 actual SAIDI ex-MED = 144.4
+PASS: exploratory adjusted SAIDI = 133.13
+NOTE: regression checks confirm calculations, not weather causality.
+PASS: DOM annual demand has 2019 and 2025
+PASS: 2019 minimum hourly demand = 7167 MW
+PASS: 2025 minimum hourly demand = 10903 MW
+PASS: DOM annual peaks match source output
+PASS: peak-hour demand growth rounds to 26%
+PASS: minimum-hour demand growth rounds to 52%
+All committed-output checks passed.

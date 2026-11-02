@@ -1,0 +1,16 @@
+F01 MATCH | 130.2 -> 133.0
+F02 MATCH | SAIDI 123.322 -> 144.4 (+17.1%); SAIFI 1.165 -> 1.32 (+13.3%); CAIDI 105.856 -> 109.394 (+3.3%)
+F03 MATCH | 79% from frequency, 21% from duration (log decomposition, 2023->2025)
+F04 MATCH | 464 -> 791
+F05 MATCH | r = 0.697 (R2 = 0.486, n = 10); predicted 145.25 (145.2516) vs actual 144.4
+F06 MATCH | 306.7 vs 144.4; major-event-day share 53%; customers 2,675,735
+F07 MATCH | Dominion rank 4 of 12 (133.0 min); top three: Duke Energy Carolinas, LLC 179.0; Duke Energy Progress - (NC) 143.8; Georgia Power Co 140.8
+F08 MATCH | Dominion SAIFI 5yr 1.211 (rank 4 highest of 12, median 0.964); CAIDI 5yr 110.4 (rank 6 of 12, median 105.0)
+F09 MATCH | Dominion Energy Virginia: 1.155 -> 1.32, index 114.3; Virginia co-op: 1.373 -> 1.887, index 137.4
+F10 MATCH | peak 19,803 -> 24,957 MW (+26.0%); floor 7,167 -> 10,903 MW (+52.1%)
+F11 MATCH (wording) | HE01 +39.0%; HE02 +40.2%; HE03 +40.8%; HE04 +41.0%; HE05 +40.0%; HE13 +27.3%; HE14 +27.0%; HE15 +26.9%; HE16 +27.1%; HE17 +27.4%
+F12 MISMATCH (incomplete) | 2019 winter (19,803/19,478), 2020 summer (17,468/20,073), 2021 summer (17,985/20,493), 2022 winter (22,415/21,274), 2023 summer (19,635/22,050), 2024 summer (22,152/23,220), 2025 winter (24,957/23,905), 2026 winter (25,413/25,384)
+F13 MISMATCH (wording) | ranked to 31 Dec 2025: 2024 = 3; ranked to 31 Dec 2025: 2025 = 47; ranked to load date (30 Oct 2026): 2025 = 4; ranked to load date (30 Oct 2026): 2026 = 46
+F14 MATCH | sales 39.08 -> 64.62 TWh (index 165.4); customers 251,209 -> 271,163 (index 107.9; all service types 108.0)
+F15 MATCH | 2019 AMI 19.1% of 2,525,177 meters; 2020 AMI 27.6% of 2,557,904 meters; 2021 AMI 47.9% of 2,588,613 meters; 2022 AMI 73.7% of 2,611,114 meters; 2023 AMI 93.1% of 2,630,114 meters; 2024 AMI 99.3% of 2,659,320 meters; 2025 AMI 99.8% of 2,682,315 meters
+F15b MATCH | 2024: 26,560 of 2,655,130 customers enrolled (1.0%), residential 19,735 of 2,383,548 (0.83%); 2025: 27,039 of 2,681,231 customers enrolled (1.01%), residential 20,285 of 2,408,901 (0.84%)

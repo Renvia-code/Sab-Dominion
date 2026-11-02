@@ -1,0 +1,71 @@
+NOAA detail files rows (excl headers): 831288 | files: 13
+PUDL reliability rows: 24358
+EIA-861 2025 rows: 977 | with a utility number: 976
+Service territory reference rows: 11803
+raw.HURDAT2_POINTS -> (55524, '18510625', '20251101')
+raw.DOE417_EVENTS -> (3702, '2014', '2025')
+raw.CPC_DEGREE_DAYS -> (309504, '2018-01-01', '2026-10-29', 48)
+raw.EAGLEI_OUTAGES_VA -> (11608442,)
+raw.EIA930_SUBREGION -> (6094320,)
+raw.EIA861_SERVICE_TERRITORY_2025 -> (11803,)
+raw.PUDL_RELIABILITY -> (24358,)
+raw.EIA861_RELIABILITY_2025 -> (977,)
+raw.NOAA_STORM_EVENTS -> (831288,)
+
+tests: 31 {'PASS': 31} | T13-T31 n = 19 | T1-T12 files: {'04_tests.sql': 6, '05_noaa_storms.sql': 3, '06_eia930_demand.sql': 3}
+   test              sql_file                                                              description
+0    T1          04_tests.sql                     No duplicate utility-state-year after de-duplication
+1    T2          04_tests.sql                                    SAIDI = SAIFI x CAIDI within rounding
+2    T3          04_tests.sql                          All-events SAIDI is not lower than ex-MED SAIDI
+3    T4          04_tests.sql  Dominion VA 2025 exists exactly once and matches EIA's published values
+4    T5          04_tests.sql                                   Row counts and customer totals by year
+5    T6          04_tests.sql     Raw numeric values that failed TRY_TO_NUMBER after separator removal
+6    T7    05_noaa_storms.sql                                  Every Dominion county found a FIPS code
+7    T8    05_noaa_storms.sql                                             The 2025 file is a full year
+8    T9    05_noaa_storms.sql                Zone events that found no county even after the name pass
+9   T10  06_eia930_demand.sql                                                 Impossible demand values
+10  T11  06_eia930_demand.sql                                                    No hour appears twice
+11  T12  06_eia930_demand.sql                        Every full year has at least 8,700 reported hours
+reconciliation rows: 12 {'MATCH': 12}
+docs/01_sources.md     831,288: local True | origin/main True
+docs/01_sources.md      24,358: local True | origin/main True
+docs/01_sources.md         977: local True | origin/main True
+docs/01_sources.md      11,803: local True | origin/main True
+docs/01_sources.md  11,608,442: local True | origin/main False
+docs/01_sources.md   6,094,320: local True | origin/main False
+docs/01_sources.md   6,077,232: local True | origin/main True
+docs/01_sources.md      55,524: local True | origin/main False
+docs/01_sources.md       3,702: local True | origin/main False
+docs/01_sources.md     309,504: local True | origin/main False
+  origin/main: | S8 | EIA-930 Hourly Demand by Subregion, six-month CSV files | EIA | July 2018 to 22 Oct 2026 | balancing authority x subregion x hour | 6,077,232 (72,864 for PJM/DOM) | Public domain |
+  origin/main: To verify a figure: open the file at the link, locate the row identified in `docs/08_transformations.md` (line numbers for EIA-930 rows, event IDs for NOAA rows) and compare it with the value quoted there.
+
+docs/03 T2 line: ['| T2 | 04 | SAIDI = SAIFI x CAIDI within 2% for every row | 0 rows | 0 | A column is mis-mapped in staging |']
+docs/03 T1-T12 rows: [[' T1 ', ' 04 '], [' T2 ', ' 04 '], [' T3 ', ' 04 '], [' T4 ', ' 04 '], [' T5 ', ' 04 '], [' T6 ', ' 04 '], [' T7 ', ' 05 '], [' T8 ', ' 05 '], [' T9 ', ' 05 '], [' T10 ', ' 06 '], [' T11 ', ' 06 '], [' T12 ', ' 06 ']]
+
+local D10: ### D10. Peer set  **Decision.** Twelve large investor-owned utilities in PJM and the Southeast, selected by EIA ID before results were computed. Southeast: Duke Carolinas, Duke Progress, Georgia Power, Alabama Power, Dominion SC. Mid-Atlantic (PJM): BGE, Pepco, PECO, PPL. Florida: FPL, Duke Energy Florida. Plus Dominion VA, so the twelve are Dominion and 11 peers. Appalachian Power (VA) is held in a separate group and shown separately because its SAIDI exceeds 300 minutes and would compress the scale of every chart.  **Alternatives.** All investor-owned utilities with over one million customers nationally. Rejected: differences in climate and vegetation across regions would require a weathe
+
+local D6: ### D6. Weather fit window is 2015 to 2024  **Context.** `SAIDI_WEATHER_ADJUSTED` requires a fitted relationship between storm county-days and SAIDI.  **Decision.** Fit on 2015 to 2024 and predict 2025 out of sample.  **Alternatives.** Include 2013 and 2014. Rejected: the 2015 change to automated outage recording shifts the level. Include 2025. Rejected: 2025 is the year under test.  **Consequence.** Ten observations. Intercept 104.3, slope 0.052 minutes per county-day (D22). The fit is a check 
+
+local measures.dax has SELECTEDVALUE('Dashboard Year'[Year], 2025): True
+origin/main measures.dax has FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025}: True
+local measure: SAIDI 3yr ending 2025 = CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025}) |  | // Mean of the 2022-2024 annual SAIDI ex MED values. Annual report: 130. | // Format: 0.0 | SAIDI 3yr ending 2024 = CALCULATE(A
+local measure: Selected SAIDI = | VAR SelectedYear = SELECTEDVALUE('Dashboard Year'[Year], 2025) | RETURN CALCULATE([SAIDI ex MED], FCT_RELIABILITY[YEAR] = SelectedYear) |  | // SAIFI ex MED for the year chosen in the Year slicer. | // Format: 0.000 | Selected SAIFI = | VAR SelectedYear =
+origin measure: SAIDI 3yr ending 2025 = | CALCULATE( |     AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), |     FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025} | ) |  | SAIDI 3yr ending 2024 = | CALCULATE( |     AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), |     FCT_RELIABILI
+
+pbit members: ['[Content_Types].xml', 'DataModelSchema', 'DiagramLayout', 'Metadata', 'Report/definition/pages/2414a423c3820b09c17c/page.json', 'Report/definition/pages/2414a423c3820b09c17c/visuals/a56e85d260bd5432b881/visual.json', 'Report/definition/pages/2414a423c3820b09c17c/visuals/eb9e34101c7ddbafa3ba/visual.json', 'Report/definition/pages/241c63d8c7e81067e9cc/page.json', 'Report/definition/pages/241c63d8c7e81067e9cc/visuals/0cdbc9919c3afef37960/visual.json', 'Report/definition/pages/241c63d8c7e81067e9cc/visuals/cd3dca34756db97f5ed6/visual.json', 'Report/definition/pages/241c63d8c7e81067e9cc/visuals/d2efd4d136e889ee2b0e/visual.json', 'Report/definition/pages/241c63d8c7e81067e9cc/visuals/dcda2b950535cd9fed73/visual.json', 'Report/definition/pages/2dfe88d44a599c0efa17/page.json', 'Report/definition/pages/2dfe88d44a599c0efa17/visuals/c270752a1d6174d0d9b4/visual.json', 'Report/definition/pages/2dfe88d44a599c0efa17/visuals/ca64acab4613784c9e0a/visual.json', 'Report/definition/pages/2dfe88d44a599c0efa17/visuals/e4c89ab207c546d97c87/visual.json', 'Report/definition/pages/2dfe88d44a599c0efa17/visuals/f50bf666b5fe97418beb/visual.json', 'Report/definition/pages/39dca24cb135da967227/page.json', 'Report/definition/pages/39dca24cb135da967227/visuals/572942895d9e7db615ca/visual.json', 'Report/definition/pages/39dca24cb135da967227/visuals/99301c6283764dcfd28f/visual.json', 'Report/definition/pages/39dca24cb135da967227/visuals/abfe0d2588105da0a784/visual.json', 'Report/definition/pages/4348e5cd66c9b48126f0/page.json', 'Report/definition/pages/4348e5cd66c9b48126f0/visuals/1b2743b4ff761d5db85f/visual.json', 'Report/definition/pages/4348e5cd66c9b48126f0/visuals/3e0ddca78b79485a3fea/visual.json', 'Report/definition/pages/4348e5cd66c9b48126f0/visuals/7b0e71f981e225998e87/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/page.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/1b4422116d6104d407dd/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/268053916982bec30f81/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/2bddd35670236987c7c1/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/3bc57cca3f71ef9d7cc3/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/47061a0f263b5da769fd/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/4815afead0c6a4a7ca4b/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/588c5e9877c5c13562f4/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/7a8692e79a615d758900/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/ca269581fd1be8142455/visual.json', 'Report/definition/pages/61745dccdb7948ee4977/visuals/ea221bd41bd7ea9c1c49/visual.json', 'Report/definition/pages/adfa56ffe589df5bde81/page.json', 'Report/definition/pages/adfa56ffe589df5bde81/visuals/3673ea1b7f5e7e0a995f/visual.json', 'Report/definition/pages/adfa56ffe589df5bde81/visuals/7faf6483a0d826be05ba/visual.json', 'Report/definition/pages/adfa56ffe589df5bde81/visuals/ddba766b396d08c5d560/visual.json', 'Report/definition/pages/adfa56ffe589df5bde81/visuals/ee5d97966b7f2c9e32bc/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/page.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/0fb6bdf75ea43a197450/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/10a79b0633cd9c8e9009/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/158ceaf7ed6928cac954/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/18d3b980d88222e2273d/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/19360d26904890819773/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/1d92052046d0a3c7b466/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/71ceb4a586c3d3d3acb9/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/e12a05449550ed1cb6e0/visual.json', 'Report/definition/pages/ca36f3cced18c2313453/visuals/f3f57290918057748a49/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/page.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/1bc8e4107099744b0737/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/5aedb895e782649461c9/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/60c7e3f0b4bead9c30cb/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/7f06e22e345306270702/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/826577f03738cae22210/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/85c7fe070bb08b249a19/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/8cf55a203d9c93e66b58/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/d841e406606cb6877656/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/ed03849209beb1288bb0/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/f34f7fc4d6b95e25b282/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/f37647b5550328452389/visual.json', 'Report/definition/pages/e6f27ff89680632d5471/visuals/f98b3d720c82504c0056/visual.json', 'Report/definition/pages/e8d8451399dc68c3ece6/page.json', 'Report/definition/pages/e8d8451399dc68c3ece6/visuals/0d1671e6a6b25a28a2c3/visual.json', 'Report/definition/pages/e8d8451399dc68c3ece6/visuals/0eee636fd36711de47e6/visual.json', 'Report/definition/pages/e8d8451399dc68c3ece6/visuals/130afd4d042a550c8be5/visual.json', 'Report/definition/pages/e8d8451399dc68c3ece6/visuals/9a34b2d8a2e3f5f9e151/visual.json', 'Report/definition/pages/e8d8451399dc68c3ece6/visuals/e1c9d78e2ce3b1f88809/visual.json', 'Report/definition/pages/eba280f31195cabbc0fb/page.json', 'Report/definition/pages/eba280f31195cabbc0fb/visuals/3afa5ef77031bf1966a1/visual.json', 'Report/definition/pages/eba280f31195cabbc0fb/visuals/3c6be25bfbbcc7bfb287/visual.json', 'Report/definition/pages/eba280f31195cabbc0fb/visuals/468c8a45f87c7320178e/visual.json', 'Report/definition/pages/eba280f31195cabbc0fb/visuals/d55f7c054a3698319adf/visual.json', 'Report/definition/pages/pages.json', 'Report/definition/report.json', 'Report/definition/version.json', 'Report/LinguisticSchema', 'Report/StaticResources/RegisteredResources/DominionReview_theme.json', 'Report/StaticResources/SharedResources/BaseThemes/Fluent2-CY26SU10.json', 'Settings', 'Version']
+tables in model: 20 ['FCT_RELIABILITY', 'DIM_UTILITY', 'V_GROUP_INDEX', 'V_STORM_VS_SAIDI', 'SAIDI_WEATHER_ADJUSTED', 'COUNTY_OUTAGE_MAP', 'OUTAGE_EVENTS_TOP10', 'RESTORATION_CURVE', 'LoadGrowth', 'Programmes2025', 'DOM_LOAD_ANNUAL', 'DOM_TOP50_HOURS', 'DOM_LOAD_PROFILE', 'DOM_LOAD_HOUR_MONTH', 'DOM_SEASONAL_PEAK', 'FCT_SALES_SECTOR', 'Tests', 'Reconciliation', 'Dashboard Year', '_Measures']
+expressions/parameters: ['DataFolder']
+Traceback (most recent call last):
+  File "C:\Users\oni\Desktop\PROJECTS\renvia-technologies\client-apps\dominion-reliability-review\interview-prep\work\reviews\v1_scripts\a17_counts_docs.py", line 63, in <module>
+    lay = json.loads(z.read("Report/Layout").decode("utf-16-le").lstrip("\ufeff"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oni\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py", line 1571, in read
+    with self.open(name, "r", pwd) as fp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oni\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py", line 1608, in open
+    zinfo = self.getinfo(name)
+            ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oni\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py", line 1536, in getinfo
+    raise KeyError(
+KeyError: "There is no item named 'Report/Layout' in the archive"

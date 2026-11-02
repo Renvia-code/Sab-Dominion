@@ -1,0 +1,103 @@
+Sun, Nov  1, 2026  8:34:37 AM
+USE WAREHOUSE SNOWFLAKE_LEARNING_WH;
++----------------------------------+
+| status                           |
+|----------------------------------|
+| Statement executed successfully. |
++----------------------------------+
+CREATE FILE FORMAT IF NOT EXISTS RELIABILITY.RAW.FF_EAGLEI_CSV
+  TYPE = CSV
+  SKIP_HEADER = 1
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  NULL_IF = ('')
+  EMPTY_FIELD_AS_NULL = TRUE
+  ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE;
++-------------------------------------------------+
+| status                                          |
+|-------------------------------------------------|
+| File format FF_EAGLEI_CSV successfully created. |
++-------------------------------------------------+
+CREATE STAGE IF NOT EXISTS RELIABILITY.RAW.EAGLEI_STAGE FILE_FORMAT = RELIABILITY.RAW.FF_EAGLEI_CSV;
++-----------------------------------------------+
+| status                                        |
+|-----------------------------------------------|
+| Stage area EAGLEI_STAGE successfully created. |
++-----------------------------------------------+
+CREATE FILE FORMAT IF NOT EXISTS RELIABILITY.RAW.FF_CONTEXT_CSV
+  TYPE = CSV
+  SKIP_HEADER = 1
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  NULL_IF = ('')
+  EMPTY_FIELD_AS_NULL = TRUE;
++--------------------------------------------------+
+| status                                           |
+|--------------------------------------------------|
+| File format FF_CONTEXT_CSV successfully created. |
++--------------------------------------------------+
+CREATE STAGE IF NOT EXISTS RELIABILITY.RAW.CONTEXT_STAGE FILE_FORMAT = RELIABILITY.RAW.FF_CONTEXT_CSV;
++------------------------------------------------+
+| status                                         |
+|------------------------------------------------|
+| Stage area CONTEXT_STAGE successfully created. |
++------------------------------------------------+
+Sun, Nov  1, 2026  8:34:46 AM
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/eaglei/MCC.csv' @RELIABILITY.RAW.EAGLEI_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++--------------------------------------------------------------------------------------------------------------+
+| source  | target  | source_size | target_size | source_compression | target_compression | status   | message |
+|---------+---------+-------------+-------------+--------------------+--------------------+----------+---------|
+| MCC.csv | MCC.csv | 40584       | 40592       | NONE               | NONE               | UPLOADED |         |
++--------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/eaglei/coverage_history.csv' @RELIABILITY.RAW.EAGLEI_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++----------------------------------------------------------------------------------------------------------------------------------------+
+| source               | target               | source_size | target_size | source_compression | target_compression | status   | message |
+|----------------------+----------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| coverage_history.csv | coverage_history.csv | 11965       | 11968       | NONE               | NONE               | UPLOADED |         |
++----------------------------------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/census/va_county_census.csv' @RELIABILITY.RAW.EAGLEI_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++----------------------------------------------------------------------------------------------------------------------------------------+
+| source               | target               | source_size | target_size | source_compression | target_compression | status   | message |
+|----------------------+----------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| va_county_census.csv | va_county_census.csv | 8473        | 8480        | NONE               | NONE               | UPLOADED |         |
++----------------------------------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/degree_days/cpc_degree_days_long.csv' @RELIABILITY.RAW.CONTEXT_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++------------------------------------------------------------------------------------------------------------------------------------------------+
+| source                   | target                   | source_size | target_size | source_compression | target_compression | status   | message |
+|--------------------------+--------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| cpc_degree_days_long.csv | cpc_degree_days_long.csv | 6288973     | 6288976     | NONE               | NONE               | UPLOADED |         |
++------------------------------------------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/hurdat2/hurdat2_points.csv' @RELIABILITY.RAW.CONTEXT_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++------------------------------------------------------------------------------------------------------------------------------------+
+| source             | target             | source_size | target_size | source_compression | target_compression | status   | message |
+|--------------------+--------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| hurdat2_points.csv | hurdat2_points.csv | 2823358     | 2823360     | NONE               | NONE               | UPLOADED |         |
++------------------------------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/doe417/doe417_events_2014_2025.csv' @RELIABILITY.RAW.CONTEXT_STAGE AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+| source                      | target                      | source_size | target_size | source_compression | target_compression | status   | message |
+|-----------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| doe417_events_2014_2025.csv | doe417_events_2014_2025.csv | 1157726     | 1157728     | NONE               | NONE               | UPLOADED |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/eaglei/va/eaglei_outages_va_2014.csv' @RELIABILITY.RAW.EAGLEI_STAGE/va/ AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| source                     | target                     | source_size | target_size | source_compression | target_compression | status   | message |
+|----------------------------+----------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| eaglei_outages_va_2014.csv | eaglei_outages_va_2014.csv | 1947576     | 1947584     | NONE               | NONE               | UPLOADED |         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+Sun, Nov  1, 2026  8:35:13 AM
+PUT 'file://C:/Users/oni/Desktop/PROJECTS/renvia-technologies/client-apps/dominion-reliability-review/data/raw/eaglei/va/eaglei_outages_va_20*.csv' @RELIABILITY.RAW.EAGLEI_STAGE/va/ AUTO_COMPRESS = FALSE OVERWRITE = TRUE PARALLEL = 8
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+| source                     | target                     | source_size | target_size | source_compression | target_compression | status   | message |
+|----------------------------+----------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
+| eaglei_outages_va_2014.csv | eaglei_outages_va_2014.csv | 1947576     | 1947584     | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2015.csv | eaglei_outages_va_2015.csv | 29767381    | 29767392    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2016.csv | eaglei_outages_va_2016.csv | 39661882    | 39661888    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2017.csv | eaglei_outages_va_2017.csv | 37304369    | 37304384    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2018.csv | eaglei_outages_va_2018.csv | 51284522    | 51284528    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2019.csv | eaglei_outages_va_2019.csv | 47966501    | 47966512    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2020.csv | eaglei_outages_va_2020.csv | 47091261    | 47091264    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2021.csv | eaglei_outages_va_2021.csv | 48542277    | 48542288    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2022.csv | eaglei_outages_va_2022.csv | 52915382    | 52915392    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2023.csv | eaglei_outages_va_2023.csv | 47490692    | 47490704    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2024.csv | eaglei_outages_va_2024.csv | 57330602    | 57330608    | NONE               | NONE               | UPLOADED |         |
+| eaglei_outages_va_2025.csv | eaglei_outages_va_2025.csv | 89927352    | 89927360    | NONE               | NONE               | UPLOADED |         |
++----------------------------------------------------------------------------------------------------------------------------------------------------+

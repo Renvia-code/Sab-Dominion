@@ -1,0 +1,2 @@
+caption: Growth in average load by hour ending, 2019 to 2025, PJM DOM zone (EIA-930)
+source: EIA-930 via D: data/output/dom_load_profile.csv (mart.DOM_LOAD_PROFILE); findings.md A4.1

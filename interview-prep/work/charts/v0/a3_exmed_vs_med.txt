@@ -1,0 +1,2 @@
+caption: SAIDI ex-MED and major-event-day minutes, Dominion Energy Virginia, 2013-2025
+source: EIA-861 / PUDL; data/output/storm_vs_saidi.csv (storm_saidi = all events minus ex-MED); D reverify F06

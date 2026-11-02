@@ -1,0 +1,2 @@
+caption: Highest hour in winter (Dec-Feb) vs summer (Jun-Aug), PJM DOM zone, 2019-2026; *2026 to the hour ending midnight 29 Oct 2026 (winter = Jan-Feb only)
+source: EIA-930 via D: data/output/dom_seasonal_peak.csv (mart.DOM_SEASONAL_PEAK); findings.md A4.2, E1

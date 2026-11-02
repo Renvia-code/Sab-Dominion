@@ -1,0 +1,15 @@
+12 yearly files, 2 supplementary; Virginia rows in Parquet: 11,608,442
+  MCC.csv: 3,234 rows, md5 match = True
+  coverage_history.csv: 280 rows, md5 match = True
+  eaglei_outages_2014.csv: 1,689,460 rows, md5 match = True
+  eaglei_outages_2015.csv: 12,939,157 rows, md5 match = True
+  eaglei_outages_2016.csv: 13,306,024 rows, md5 match = True
+  eaglei_outages_2017.csv: 15,078,364 rows, md5 match = True
+  eaglei_outages_2018.csv: 21,776,806 rows, md5 match = True
+  eaglei_outages_2019.csv: 24,074,122 rows, md5 match = True
+  eaglei_outages_2020.csv: 25,545,517 rows, md5 match = True
+  eaglei_outages_2021.csv: 24,826,102 rows, md5 match = True
+  eaglei_outages_2022.csv: 25,796,465 rows, md5 match = True
+  eaglei_outages_2023.csv: 26,101,051 rows, md5 match = True
+  eaglei_outages_2024.csv: 27,701,334 rows, md5 match = True
+  eaglei_outages_2025.csv: 30,482,141 rows, md5 match = True

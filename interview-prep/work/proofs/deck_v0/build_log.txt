@@ -1,0 +1,4 @@
+saved C:\Users\oni\Desktop\PROJECTS\renvia-technologies\client-apps\dominion-reliability-review\interview-prep\deliverables\01_deck\Dominion_reliability_deck_v0.pptx
+print pdf C:\Users\oni\Desktop\PROJECTS\renvia-technologies\client-apps\dominion-reliability-review\interview-prep\deliverables\01_deck\Dominion_reliability_deck_v0_print_letter.pdf
+min printed sizes: [(1, 10.12, 'Data: EIA-861 · PUDL · NOAA Storm Events'), (2, 10.12, 'Source:'), (3, 10.12, 'Source:'), (4, 10.12, 'Source:'), (5, 10.12, 'Source:'), (6, 10.12, 'Source:'), (7, 10.12, 'Source:'), (8, 10.12, 'How my experience maps'), (9, 10.12, 'Source:'), (10, 10.12, 'Source:'), (11, 10.12, 'Source:'), (12, 10.12, 'Source:'), (13, 10.12, 'Source:'), (14, 10.12, 'Source:')]
+fonts: ['BAAAAA+SegoeUI-Semibold', 'CAAAAA+SegoeUI-Semilight', 'DAAAAA+SegoeUI', 'EAAAAA+SegoeUI-Light']

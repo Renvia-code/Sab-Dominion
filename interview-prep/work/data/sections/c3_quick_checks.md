@@ -1,0 +1,93 @@
+## Quick checks for the orchestrator (batch 3, after D22)
+
+### Q-1 Reconciliation scope: Virginia only vs Virginia + North Carolina
+
+**Answer.** Virginia only gives **130.22 and 133.01**, which print as 130 and 133: both of the annual report's figures. Virginia + North Carolina, customer-weighted each year and then averaged over the three years (the scorecard's method), gives **129.492 and 132.502**, which print as **129** and 133 (132.502 is just above the half); pooling the three years instead gives 129.48 and 132.58 (129 and 133). So only the Virginia-only rebuild reproduces both printed numbers: with North Carolina the 2022-24 average prints as 129, not 130. North Carolina is 4.8% of the customers and had lower SAIDI in 2022 and 2024. The rise is about three minutes either way (+2.78 Virginia, +3.01 with North Carolina).
+
+**Defensible line:** "Rebuilt from EIA-861, Virginia's rows reproduce both of Dominion's figures, 130 and 133. Adding North Carolina gives 129.5 and 132.5, so the printed figures fit Virginia; either way the rise is about three minutes. The report doesn't state its scope, so I'd confirm it with the reliability team."
+
+**Caveat.** Dominion computes these from its own outage records, not from its EIA-861 filing, so a half-minute gap could also come from different customer counts or data vintages: this is consistency with a Virginia-only scope, not proof. R's note in `research/for_B.md` ("inference: probably system-wide") is not supported by this arithmetic.
+
+| Year | Customers VA | Customers NC | SAIDI VA | SAIDI NC | SAIDI VA + NC | Standard |
+|---:|---:|---:|---:|---:|---:|---|
+| 2022 | 2,589,282 | 131,263 | 136.047 | 114.675 | 135.016 | Other |
+| 2023 | 2,612,104 | 132,021 | 123.322 | 130.149 | 123.650 | Other |
+| 2024 | 2,635,267 | 132,502 | 131.300 | 100.200 | 129.811 | Other |
+| 2025 | 2,675,735 | 133,095 | 144.400 | 136.900 | 144.045 | Other |
+
+| Three-year average | Virginia only | VA + NC (mean of annual values) | VA + NC (pooled) | Annual report |
+|---|---:|---:|---:|---:|
+| 2022-24 | 130.22 | 129.49 | 129.48 | 130 |
+| 2023-25 | 133.01 | 132.50 | 132.58 | 133 |
+
+```sql
+WITH y AS (
+  SELECT year,
+         SUM(CASE WHEN state = 'VA' THEN customers END)                                   AS customers_va,
+         SUM(CASE WHEN state = 'NC' THEN customers END)                                   AS customers_nc,
+         SUM(CASE WHEN state = 'VA' THEN cust_minutes_ex_med END)
+           / SUM(CASE WHEN state = 'VA' THEN customers END)                               AS saidi_va,
+         SUM(CASE WHEN state = 'NC' THEN cust_minutes_ex_med END)
+           / SUM(CASE WHEN state = 'NC' THEN customers END)                               AS saidi_nc,
+         SUM(cust_minutes_ex_med) / SUM(customers)                                        AS saidi_va_nc,
+         SUM(cust_minutes_ex_med) AS cust_minutes, SUM(customers) AS customers,
+         STRING_AGG(DISTINCT standard, ', ')                                              AS standards
+  FROM mart.FCT_RELIABILITY
+  WHERE utility_id = 19876 AND state IN ('VA', 'NC') AND year BETWEEN 2022 AND 2025
+  GROUP BY year ORDER BY year
+)
+SELECT p.period,
+       AVG(y.saidi_va)    AS saidi_va_3yr,      -- mean of the annual customer-weighted values (the scorecard's method)
+       AVG(y.saidi_va_nc) AS saidi_va_nc_3yr,
+       SUM(y.cust_minutes) / SUM(y.customers) AS saidi_va_nc_pooled  -- sensitivity: three years pooled
+FROM y JOIN (SELECT '2022-24' AS period, 2022 AS y0 UNION ALL SELECT '2023-25', 2023) p
+  ON y.year BETWEEN p.y0 AND p.y0 + 2
+GROUP BY p.period ORDER BY p.period
+```
+
+Both states file under EIA's "Other" standard (Dominion's own major-event rule) in every year shown, so the two states' ex-MED values are on the same basis. `cust_minutes_ex_med` = SAIDI x customers per state (`02_mart.sql`), so the VA + NC value is the customer-weighted SAIDI of the two states together.
+
+### Q-2 Weather-fit arithmetic from the unrounded r (after D22)
+
+**Answer.** r = **0.6973** (n = 10, 2015-2024). t = r x sqrt((n - 2) / (1 - r^2)) = **2.752** on 8 df, two-sided p = **0.0250**. 95% interval for r by Fisher z (z = atanh r, SE = 1 / sqrt(n - 3), z +/- 1.96 SE, back with tanh): **0.121 to 0.922**, i.e. 0.12 to 0.92. R's t = 2.77 and 0.13 to 0.92 are right for r = 0.70 exactly (t 2.772, interval 0.126 to 0.923); from the unrounded r they become t = 2.75 and 0.12 to 0.92.
+
+Cross-check: `scipy.stats.linregress` on the same ten rows gives slope t = 2.752 and p = 0.0250, the same test as t for r.
+
+```sql
+SELECT CORR(saidi_ex_med, storm_county_days) AS r, COUNT(*) AS n
+FROM mart.V_STORM_VS_SAIDI WHERE year BETWEEN 2015 AND 2024
+```
+
+Defensible wording: "r = 0.70 on ten years (t = 2.75, p = 0.025); the 95% interval runs from about 0.12 to 0.92, so the data are consistent with anything from a weak to a very strong association. That is why the slide leads with the county-day comparison."
+
+### Q-3 The peer-set rule (docs/04 D10), quoted exactly
+
+> Twelve large investor-owned utilities in PJM and the Southeast, selected by EIA ID before results were computed.
+
+The rest of the decision, also verbatim:
+
+> Southeast: Duke Carolinas, Duke Progress, Georgia Power, Alabama Power, Dominion SC. Mid-Atlantic (PJM): BGE, Pepco, PECO, PPL. Florida: FPL, Duke Energy Florida. Plus Dominion VA. Appalachian Power (VA) is held in a separate group and shown separately because its SAIDI exceeds 300 minutes and would compress the scale of every chart.
+
+`DIM_UTILITY` assigns exactly these by EIA ID: 12 utility-states including Dominion VA, plus Appalachian Power (VA) in its own group.
+
+| Peer group | Utility key | Utility |
+|---|---|---|
+| Appalachian Power (VA) | 733|VA | Appalachian Power Co |
+| Dominion Energy Virginia | 19876|VA | Virginia Electric & Power Co |
+| Florida IOU peer | 6455|FL | Duke Energy Florida, LLC |
+| Florida IOU peer | 6452|FL | Florida Power & Light Co |
+| Mid-Atlantic IOU peer | 1167|MD | Baltimore Gas & Electric Co |
+| Mid-Atlantic IOU peer | 14940|PA | PECO Energy Co |
+| Mid-Atlantic IOU peer | 14715|PA | PPL Electric Utilities Corp |
+| Mid-Atlantic IOU peer | 15270|MD | Potomac Electric Power Co |
+| Southeast IOU peer | 195|AL | Alabama Power Co |
+| Southeast IOU peer | 17539|SC | Dominion Energy South Carolina, Inc |
+| Southeast IOU peer | 5416|NC | Duke Energy Carolinas, LLC |
+| Southeast IOU peer | 3046|NC | Duke Energy Progress - (NC) |
+| Southeast IOU peer | 7140|GA | Georgia Power Co |
+
+```sql
+SELECT peer_group, utility_key, utility_name FROM mart.DIM_UTILITY
+WHERE peer_group IN ('Dominion Energy Virginia', 'Southeast IOU peer', 'Mid-Atlantic IOU peer', 'Florida IOU peer', 'Appalachian Power (VA)')
+ORDER BY peer_group, utility_name
+```

@@ -1,0 +1,2 @@
+caption: Handout p1: storm county-days and SAIDI ex-MED by year, 2015-2025, 2025 highlighted
+source: NOAA Storm Events + EIA-861; origin/main data/output/storm_vs_saidi.csv; claims C-S4-05P

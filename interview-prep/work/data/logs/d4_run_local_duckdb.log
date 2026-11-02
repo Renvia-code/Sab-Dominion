@@ -1,0 +1,115 @@
+raw rows: {'EIA861_RELIABILITY_2025': 977, 'PUDL_RELIABILITY': 24358, 'PUDL_AMI': 127720, 'PUDL_SALES': 198770}
+fact rows: (13095, 2013, 2025)
+
+==== ANALYSIS (Q1-Q5) ====
+
+ Q1
+ year standard  saidi_ex_med  saifi_ex_med  caidi_ex_med  saidi_yoy_pct  pct_of_change_from_frequency
+ 2013    Other       106.000         1.052       100.760            NaN                           NaN
+ 2014    Other       112.000         1.154        97.054            5.7                         168.0
+ 2015    Other       119.642         1.155       103.586            6.8                           1.0
+ 2016    Other       138.225         1.275       108.412           15.5                          68.0
+ 2017    Other       117.410         1.100       106.736          -15.1                          90.0
+ 2018    Other       149.604         1.303       114.815           27.4                          70.0
+ 2019    Other       149.874         1.244       120.477            0.2                           NaN
+ 2020    Other       140.989         1.260       111.896           -5.9                         -21.0
+ 2021    Other       133.601         1.162       114.975           -5.2                         150.0
+ 2022    Other       136.047         1.199       113.467            1.8                           NaN
+ 2023    Other       123.322         1.165       105.856           -9.4                          29.0
+ 2024    Other       131.300         1.210       108.512            6.5                          60.0
+ 2025    Other       144.400         1.320       109.394           10.0                          91.0
+
+ Q1b
+ from_year  to_year  saidi_change_pct  pct_from_frequency  pct_from_duration
+      2015     2025              20.7                71.0               29.0
+      2019     2023             -17.7                34.0               66.0
+      2023     2025              17.1                79.0               21.0
+
+ Q2
+ year  saidi_all  saidi_ex_med  storm_saidi  storm_share_pct  storm_caidi_minutes
+ 2013    294.000       106.000      188.000             64.0                501.0
+ 2014    152.000       112.000       40.000             26.0                242.0
+ 2015    183.103       119.642       63.461             35.0                281.0
+ 2016    199.918       138.225       61.693             31.0                299.0
+ 2017    166.670       117.410       49.260             30.0                223.0
+ 2018    266.763       149.604      117.159             44.0                476.0
+ 2019    260.113       149.874      110.239             42.0                271.0
+ 2020    316.999       140.989      176.010             56.0                461.0
+ 2021    318.788       133.601      185.187             58.0                586.0
+ 2022    421.475       136.047      285.428             68.0                613.0
+ 2023    190.198       123.322       66.876             35.0                325.0
+ 2024    172.100       131.300       40.800             24.0                272.0
+ 2025    306.700       144.400      162.300             53.0                353.0
+
+ Q2b
+ corr_storm_vs_daytoday
+                   0.25
+
+ Q3b
+ year  n_coops  dom_saifi  coop_saifi  dom_relative_to_coops  dom_yoy  coop_yoy
+ 2015        7      1.155       1.307                  0.884      NaN       NaN
+ 2016        7      1.275       1.468                  0.868    0.104     0.124
+ 2017        7      1.100       1.330                  0.827   -0.137    -0.094
+ 2018        7      1.303       1.492                  0.874    0.185     0.122
+ 2019        7      1.244       1.464                  0.850   -0.045    -0.018
+ 2020        7      1.260       1.515                  0.832    0.013     0.035
+ 2021        7      1.162       1.514                  0.767   -0.078    -0.001
+ 2022        7      1.199       1.640                  0.731    0.032     0.083
+ 2023        7      1.165       1.477                  0.789   -0.028    -0.100
+ 2024        7      1.210       1.705                  0.710    0.039     0.155
+ 2025        7      1.320       1.778                  0.742    0.091     0.043
+
+ Q3c
+ corr_of_yoy_changes  relative_2015_17  relative_2023_25  dominion_relative_improvement_pct
+                0.79              0.86             0.747                              -13.1
+
+ Q3d
+                    dropped_coop  rel_2015_17  rel_2023_25  dominion_relative_improvement_pct
+     Northern Virginia Elec Coop        0.719        0.595                              -17.2
+Mecklenburg Electric Cooperative        0.877        0.758                              -13.6
+  Central Virginia Electric Coop        0.915        0.791                              -13.6
+     Prince George Electric Coop        0.841        0.731                              -13.1
+     Shenandoah Valley Elec Coop        0.905        0.791                              -12.6
+      Rappahannock Electric Coop        0.874        0.777                              -11.1
+    Southside Electric Coop, Inc        0.892        0.803                              -10.0
+
+ Q4
+ years_from_rollout  utilities  avg_change_pct  median_change_pct
+                 -3         35             5.5                1.9
+                 -2         38             0.0                0.0
+                 -1         38            -2.0               -2.6
+                  0         38            -0.3                0.8
+                  1         36             2.4                3.6
+                  2         27             1.3                5.0
+                  3         24            -2.6               -0.7
+
+ Q5
+ year  commercial_twh  residential_twh  commercial_customers
+ 2013       39.078780        28.802062              251209.0
+ 2014       39.038242        29.406355              252419.0
+ 2015       39.663954        29.293300              254445.0
+ 2016       40.504445        28.651864              255811.0
+ 2017       41.729000        28.049838              257078.0
+ 2018       43.309185        30.437245              258697.0
+ 2019       45.129976        29.829089              260232.0
+ 2020       45.499209        29.714756              261660.0
+ 2021       50.506546        29.569151              264340.0
+ 2022       55.597972        29.595057              266167.0
+ 2023       58.861848        27.195517              267781.0
+ 2024       60.198182        28.742267              270530.0
+ 2025       64.620793        30.005834              271163.0
+
+==== TESTS ====
+T1: PASS (0 rows; expected 0)
+T2: PASS (0 rows; expected 0)
+T3: PASS (4 rows; expected 4)
+utility_key  year  saidi_all  saidi_ex_med
+    8210|GA  2014     68.352        68.532
+   13482|NC  2013      7.010         7.070
+   13216|TN  2024      0.000        86.580
+   13216|TN  2025      0.000        83.050
+T4: PASS (0 rows; expected 0)
+T5: PASS (13 rows; expected 13)
+T6: PASS (0 rows; expected 0)
+Business check: rolling SAIDI averages = 130.2 and 133.0 minutes.
+Core reliability checks passed. NOAA/EIA-930 checks require the full Snowflake pipeline.

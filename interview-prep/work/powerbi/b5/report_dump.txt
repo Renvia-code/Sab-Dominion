@@ -1,0 +1,175 @@
+report.json: {"$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json", "themeCollection": {"baseTheme": {"name": "Fluent2-CY26SU10", "reportVersionAtImport": {"visual": "2.14.0", "report": "3.4.0", "page": "2.3.1"}, "type": "SharedResources"}}, "objects": {"section": [{"properties": {"verticalAlignment": {"expr": {"Literal": {"Value": "'Top'"}}}}}], "outspacePane": [{"properties": {"expanded": {"expr": {"Literal": {"Value": "true"}}}}}]}, "resourcePackages": [{"name": "SharedResources", "type": "SharedResources", "items": [{"name": "Fluent2-CY26SU10", "path": "BaseThemes/Fluent2-CY26SU10.json", "type": "BaseTheme"}]}], "settings": {"useStylableVisualContainerHeader": true, "exportDataMode": "AllowSummarized", "defaultDrillFilterOtherVisuals": true, "allowChangeFilterTypes": true, "useEnhancedTooltips": true, "useDefaultAggregateDisplayName": tr
+pages.json: {"$schema":"https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json","pageOrder":["61745dccdb7948ee4977","2414a423c3820b09c17c","241c63d8c7e81067e9cc","39dca24cb135da967227","4348e5cd66c9b48126f0","e8d8451399dc68c3ece6","e6f27ff89680632d5471","ca36f3cced18c2313453"],"activePageName":"e6f27ff89680632d5471","landingPageName":"e6f27ff89680632d5471"}
+
+=== PAGE 2414a423c3820b09c17c 'What Moved' 1920x1080 filters=['Column:DIM_UTILITY.PEER_GROUP', 'Column:None.PEER_GROUP']
+    page filter literals: ["'Dominion Energy Virginia'"]
+  [a56e85d260bd5432b881] lineChart pos=(676,518,1042,489) z=1000
+      fields: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.CAIDI ex MED', 'Column:FCT_RELIABILITY.YEAR']
+      container literals: ["'Minutes to restore each outage down 9% since 2019'", "'CAIDI, excluding major event days. Dominion Energy Virginia, EIA-861'", 'false']
+      object literals: ['true', '11D', '0D', 'true', "'Minutes Per Outage'", 'true', '4D', "'linear'", 'true', "'Automated Outage per Year'", '2015D', 'true', '0D', 'true', "'2020: 46 kV lines added'", '2020D', 'true', '0D', "'Name'", "'right'", 'true', "'2019 level'", '120.4D', 'true', "'Name'", "'right'", "'under'", "'Scalar'", 'true', '2013D']
+  [eb9e34101c7ddbafa3ba] lineChart pos=(11,0,1089,489) z=0
+      fields: ['Column:FCT_RELIABILITY.YEAR', 'Agg0:FCT_RELIABILITY.SAIFI_EX_MED', 'Column:FCT_RELIABILITY.YEAR']
+      container literals: ["'Outages per customer up 6% since 2019, most of it after 2023'", "'SAIFI, excluding major event days. Dominion Energy Virginia, EIA-861'"]
+      object literals: ['true', "'2015: Automated Outage Recording'", '2015D', 'true', '0D', "'Name'", "'above'", "'right'", 'true', "'2020: 46 kV lines added'", '2020D', 'true', '0D', "'Name'", '2013D', '2025D', "'Categorical'", 'true', "'2019 Level'", '1.24D', '3D', 'true', "'right'", "'Name'", "'under'", 'true', '46D', '13D', 'true', "'Outages per Customer per Year'"]
+
+=== PAGE 241c63d8c7e81067e9cc 'Weather' 1920x1080 filters=['Column:DIM_UTILITY.PEER_GROUP', 'Column:None.PEER_GROUP']
+    page filter literals: ["'Dominion Energy Virginia'"]
+  [0cdbc9919c3afef37960] lineChart pos=(935,532,984,549) z=3000
+      fields: ['Column:SAIDI_WEATHER_ADJUSTED.YEAR', 'Agg0:SAIDI_WEATHER_ADJUSTED.SAIDI_EX_MED', 'Agg0:SAIDI_WEATHER_ADJUSTED.WEATHER_ADJUSTED_SAIDI', 'Column:SAIDI_WEATHER_ADJUSTED.YEAR']
+      container literals: ["'Remove the weather and the underlying number has not moved since 2015'", "'SAIDI ex MED, actual vs weather-adjusted using the NOAA storm-day fit. Dominion Energy Virginia'"]
+      object literals: ['2015D', '2025D', "'Categorical'", "'linear'", 'true', '1D', "'#B8BCC2'", 'true', '0L', '11D', 'true', 'true', 'false', 'true', "'Above'", 'false', 'true', "'10 yr Avg'", '134D', 'true', "'Name'", 'true', "'Outage Mins per Customer'"]
+  [cd3dca34756db97f5ed6] scatterChart pos=(1145,0,775,521) z=2000
+      fields: ['Column:V_STORM_VS_SAIDI.YEAR', 'Agg0:V_STORM_VS_SAIDI.STORM_COUNTY_DAYS', 'Agg0:V_STORM_VS_SAIDI.SAIDI_EX_MED']
+      container literals: ["'More storm days, more outage minutes. 2025 sits where its weather predicts'", "'NOAA storm county-days in Dominion’s Virginia counties vs SAIDI ex MED, 2013 to 2025'"]
+      object literals: ['true', '9D', "'Storm county-days (NOAA)'", "'Outage mins per customer'", '1L', 'true', "'Trend line 1'"]
+      visual filters: ['Column:V_STORM_VS_SAIDI.YEAR', 'Agg0:V_STORM_VS_SAIDI.STORM_COUNTY_DAYS', 'Agg0:V_STORM_VS_SAIDI.SAIDI_EX_MED']
+  [d2efd4d136e889ee2b0e] columnChart pos=(10,0,1135,520) z=0
+      fields: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.SAIDI ex MED', 'Measure:FCT_RELIABILITY.Storm SAIDI', 'Column:FCT_RELIABILITY.YEAR']
+      container literals: ["'Major storms are half of all outage minutes in 2025, and the whole of the bad years'", "'Minutes per customer, with and without major storm days. Dominion Energy Virginia, EIA-861'"]
+      object literals: ["'Categorical'", 'true', '2013D', '2025D', '10D', 'true', "'Outage Mins per Customer'", '26D', "'#B8BCC2'", 'true', '0L']
+      visual filters: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.SAIDI ex MED', 'Measure:FCT_RELIABILITY.Storm SAIDI']
+  [dcda2b950535cd9fed73] lineChart pos=(11,532,925,521) z=1000
+      fields: ['Column:V_GROUP_INDEX.YEAR', 'Column:V_GROUP_INDEX.PEER_GROUP', 'Measure:V_GROUP_INDEX.SAIFI index 2015', 'Column:V_GROUP_INDEX.YEAR']
+      container literals: ["'Same storms, different outcome: co-op outage frequency up 37% since 2015, Dominion up 14%'", "'SAIFI ex MED, 2015 = 100. Dominion vs all Virginia co-ops. EIA-861'"]
+      object literals: ["'Categorical'", '2015D', '2025D', "'linear'", 'true', 'true', 'true', "'#B8BCC2'", "'Virginia co-op'", 'true', "'Above'", '0L', 'true', "'2015 Level'", '100D', 'true', "'Name'", "'right'"]
+      visual filters: ['Column:V_GROUP_INDEX.PEER_GROUP', 'Column:None.PEER_GROUP', 'Column:V_GROUP_INDEX.YEAR', 'Column:None.YEAR', 'Column:None.YEAR']
+
+=== PAGE 39dca24cb135da967227 'Peer Comparision' 1920x1080 filters=['Column:DIM_UTILITY.PEER_GROUP', 'Column:None.PEER_GROUP']
+    page filter literals: ["'Dominion Energy Virginia'", "'Florida IOU peer'", "'Mid-Atlantic IOU peer'", "'Southeast IOU peer'"]
+  [572942895d9e7db615ca] clusteredBarChart pos=(0,0,1005,554) z=0
+      fields: ['Column:DIM_UTILITY.Display name', 'Measure:FCT_RELIABILITY.SAIDI 2023 to 2025', 'Measure:FCT_RELIABILITY.SAIDI 2023 to 2025']
+      container literals: ["'Fourth-highest outage minutes of twelve large utilities, 2023 to 2025'", "'SAIDI ex MED, 3-year average. Dominion excludes storms by its own rule, most peers by IEEE 1366, so gaps are indicative'"]
+      object literals: ["'#118DFF'", "'Dominion Energy Virginia'", 'true', '0L', 'true', "'Yearly Outage mins per Customer'"]
+  [99301c6283764dcfd28f] scatterChart pos=(1037,0,871,554) z=2000
+      fields: ['Column:DIM_UTILITY.Quadrant name', 'Column:DIM_UTILITY.Short name', 'Measure:FCT_RELIABILITY.SAIFI 5yr', 'Measure:FCT_RELIABILITY.CAIDI 5yr']
+      container literals: ["'Restoration time is mid-pack. Outage frequency is the gap'", "'5-year averages 2021 to 2025, excluding major event days'"]
+      object literals: ["'Dominion VA'", "'#B8BCC2'", "'Alabama'", "'#B8BCC2'", "'BGE'", "'#B8BCC2'", "'Dominion SC'", "'#B8BCC2'", "'Duke Carolinas'", "'#B8BCC2'", "'Duke FL'", "'#B8BCC2'", "'Duke Progress'", "'#B8BCC2'", "'FPL'", "'#B8BCC2'", "'Georgia'", "'#B8BCC2'", "'PECO'", "'#B8BCC2'", "'Pepco'", "'#B8BCC2'", "'PPL'", '-5L', 'true', '8D', "'Yearly Outages per Customer (SAIFI)'", '1.35D', "'Minutes to restore each outage (CAIDI)'", 'true']
+  [abfe0d2588105da0a784] tableEx pos=(453,585,1038,434) z=1000
+      fields: ['Column:DIM_UTILITY.Display name', 'Column:DIM_UTILITY.Region', 'Measure:FCT_RELIABILITY.Method', 'Measure:FCT_RELIABILITY.SAIDI 2015 to 2017', 'Measure:FCT_RELIABILITY.SAIDI 2023 to 2025', 'Measure:FCT_RELIABILITY.SAIDI change %', 'Measure:FCT_RELIABILITY.CAIDI 5yr', 'Measure:FCT_RELIABILITY.SAIDI 2023 to 2025']
+      object literals: ['false', "'Center'", '0L', "'Center'", '0L', "'Center'", '0L', "'Center'", '0L', '-10D', '0D', "'#2E7D32'", '0D', '10D', "'#B23B3B'"]
+
+=== PAGE 4348e5cd66c9b48126f0 'Growth' 1920x1080 filters=[]
+  [1b2743b4ff761d5db85f] clusteredBarChart pos=(9,525,951,518) z=1000
+      fields: ['Column:Programmes2025.utility', 'Measure:Programmes2025.Smart meter share %', 'Measure:Programmes2025.Time-varying rate %', 'Measure:Programmes2025.Time-varying rate %']
+      container literals: ["'The meters are installed. Almost nobody is on a rate that uses them'", "'Share of customers with a smart meter vs share on a time-varying rate, 2025. EIA-861'"]
+      object literals: ["'#B8BCC2'", "'#118DFF'", 'true', '0L', '0D', 'true', "'Share %'"]
+      visual filters: ['Column:Programmes2025.utility', 'Column:None.utility']
+  [3e0ddca78b79485a3fea] lineChart pos=(9,0,951,516) z=0
+      fields: ['Column:LoadGrowth.year', 'Agg0:LoadGrowth.commercial_sales_index', 'Agg0:LoadGrowth.commercial_customers_index', 'Agg0:LoadGrowth.residential_sales_index', 'Agg0:LoadGrowth.commercial_sales_index']
+      container literals: ["'Commercial sales up 65% since 2013 on 8% more customers. That gap is data centres'", "'Retail sales and customer counts, 2013 = 100. Dominion Energy Virginia, EIA-861'"]
+      object literals: ['true', "'linear'", 'false', '2013D', '2025D', 'true', "'Index, 2023 = 100'", '50D', 'true', 'true', "'Under'", '7D', 'false', 'false', "'Under'"]
+  [7b0e71f981e225998e87] clusteredColumnChart pos=(960,9,950,516) z=2000
+      fields: ['Column:DOM_LOAD_PROFILE.HOUR_NO', 'Agg0:DOM_LOAD_PROFILE.GROWTH_PCT', 'Column:DOM_LOAD_PROFILE.HOUR_NO']
+      container literals: ["'Load growth 2019 to 2025 by hour of day: night +41%, afternoon +27%'", "'Change in average demand for each hour of the day, PJM DOM zone, EIA-930'"]
+      object literals: ["'Categorical'", 'true', '1D', 'true', "'Hour of Day'", 'true', 'true', "'Growth %'", 'true', "'Average line 1'", '2D']
+
+=== PAGE 61745dccdb7948ee4977 'Scorecards' 1920x1080 filters=['Column:DIM_UTILITY.PEER_GROUP', 'Column:None.PEER_GROUP', 'Column:FCT_RELIABILITY.YEAR', 'Column:None.YEAR']
+    page filter literals: ["'Dominion Energy Virginia'", '2025L']
+  [1b4422116d6104d407dd] cardVisual pos=(11,632,265,149) z=8000
+      fields: ['Measure:DOM_TOP50_HOURS.Top 50 hours in 2025', 'Measure:DOM_TOP50_HOURS.Top 50 hours in 2025']
+  [268053916982bec30f81] cardVisual pos=(1333,0,367,122) z=5000
+      fields: ['Measure:FCT_RELIABILITY.Share of outage mins caused by major storms', 'Measure:FCT_RELIABILITY.Share of outage mins caused by major storms']
+  [2bddd35670236987c7c1] cardVisual pos=(10,0,201,121) z=0
+      fields: ['Measure:FCT_RELIABILITY.SAIDI ex MED', 'Measure:FCT_RELIABILITY.SAIDI ex MED']
+      visual filters: ['Measure:FCT_RELIABILITY.SAIDI ex MED']
+  [3bc57cca3f71ef9d7cc3] cardVisual pos=(438,0,221,122) z=2000
+      fields: ['Measure:FCT_RELIABILITY.SAIFI ex MED', 'Measure:FCT_RELIABILITY.SAIFI ex MED']
+      visual filters: ['Measure:FCT_RELIABILITY.SAIFI ex MED']
+  [4815afead0c6a4a7ca4b] cardVisual pos=(211,0,226,122) z=1000
+      fields: ['Agg0:FCT_RELIABILITY.Customers Served', 'Agg0:FCT_RELIABILITY.Customers Served']
+  [588c5e9877c5c13562f4] cardVisual pos=(945,0,388,122) z=4000
+      fields: ['Measure:FCT_RELIABILITY.SAIDI all events', 'Measure:FCT_RELIABILITY.SAIDI all events']
+      visual filters: ['Measure:FCT_RELIABILITY.SAIDI all events']
+  [7a8692e79a615d758900] cardVisual pos=(659,0,287,122) z=3000
+      fields: ['Measure:FCT_RELIABILITY.CAIDI ex MED', 'Measure:FCT_RELIABILITY.CAIDI ex MED']
+      visual filters: ['Measure:FCT_RELIABILITY.CAIDI ex MED']
+  [ca269581fd1be8142455] cardVisual pos=(10,201,230,150) z=6000
+      fields: ['Measure:DOM_LOAD_ANNUAL.Floor growth 2019 to 2025', 'Measure:DOM_LOAD_ANNUAL.Floor growth 2019 to 2025']
+  [ea221bd41bd7ea9c1c49] cardVisual pos=(10,416,230,150) z=7000
+      fields: ['Measure:DOM_LOAD_ANNUAL.Peak growth 2019 to 2025', 'Measure:DOM_LOAD_ANNUAL.Peak growth 2019 to 2025']
+
+=== PAGE ca36f3cced18c2313453 'Executive Dashboard-2' 1920x1080 filters=[]
+  [0fb6bdf75ea43a197450] textbox pos=(15,10,643,66) z=7
+      text: Reliability Performance & Drivers
+  [10a79b0633cd9c8e9009] clusteredColumnChart pos=(0,539,951,541) z=6
+      fields: ['Column:DOM_LOAD_ANNUAL.YEAR', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW', 'Measure:DOM_LOAD_ANNUAL.Summer peak MW', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW']
+      container literals: ["'Winter peak now matches summer: higher in 2022, 2025 and 2026'", "'Highest hour in Dec to Feb vs Jun to Aug each year, PJM DOM zone, EIA-930. 2026 summer is complete, winter is Jan to Feb only'"]
+      object literals: ['true', "'Scalar'", 'true', '0L', '0L', 'true', "'Peak Demand, MW'"]
+      visual filters: ['Measure:DOM_LOAD_ANNUAL.Summer peak MW', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW', 'Column:DOM_LOAD_ANNUAL.YEAR', 'Column:DOM_LOAD_ANNUAL.YEAR', 'Column:None.YEAR', 'Column:None.YEAR']
+  [158ceaf7ed6928cac954] textbox pos=(15,62,907,51) z=8
+      text: Load growth, changing demand patterns and smart-meter adoption | EIA-861 & EIA-930
+  [18d3b980d88222e2273d] cardVisual pos=(1279,541,333,100) z=1
+      fields: ['Measure:DOM_TOP50_HOURS.Top 50 hours in 2025', 'Measure:DOM_TOP50_HOURS.Top 50 hours in 2025']
+  [19360d26904890819773] cardVisual pos=(1611,541,308,100) z=2
+      fields: ['Measure:DOM_LOAD_ANNUAL.Peak growth 2019 to 2025', 'Measure:DOM_LOAD_ANNUAL.Peak growth 2019 to 2025']
+  [1d92052046d0a3c7b466] clusteredBarChart pos=(0,113,951,426) z=5
+      fields: ['Column:Programmes2025.utility', 'Measure:Programmes2025.Smart meter share %', 'Measure:Programmes2025.Time-varying rate %', 'Measure:Programmes2025.Time-varying rate %']
+      container literals: ["'The meters are installed. Almost nobody is on a rate that uses them'", "'Share of customers with a smart meter vs share on a time-varying rate, 2025. EIA-861'"]
+      object literals: ["'#B8BCC2'", "'#118DFF'", 'true', '0L', '0D', 'true', "'Share %'"]
+      visual filters: ['Column:Programmes2025.utility', 'Column:None.utility', 'Measure:Programmes2025.Smart meter share %', 'Measure:Programmes2025.Time-varying rate %']
+  [71ceb4a586c3d3d3acb9] clusteredColumnChart pos=(952,641,968,439) z=3
+      fields: ['Column:DOM_LOAD_PROFILE.HOUR_NO', 'Agg0:DOM_LOAD_PROFILE.GROWTH_PCT', 'Column:DOM_LOAD_PROFILE.HOUR_NO']
+      container literals: ["'Load growth 2019 to 2025 by hour of day: night +41%, afternoon +27%'", "'Change in average demand for each hour of the day, PJM DOM zone, EIA-930'"]
+      object literals: ["'Categorical'", 'true', '1D', 'true', "'Hour of Day'", 'true', 'true', "'Growth %'", 'true', "'Average line 1'", '2D', 'false', "'Name'", "'left'", "'above'"]
+  [e12a05449550ed1cb6e0] cardVisual pos=(951,541,328,100) z=0
+      fields: ['Measure:DOM_LOAD_ANNUAL.Floor growth 2019 to 2025', 'Measure:DOM_LOAD_ANNUAL.Floor growth 2019 to 2025']
+  [f3f57290918057748a49] lineChart pos=(951,0,969,541) z=4
+      fields: ['Column:LoadGrowth.year', 'Agg0:LoadGrowth.commercial_sales_index', 'Agg0:LoadGrowth.commercial_customers_index', 'Agg0:LoadGrowth.residential_sales_index', 'Agg0:LoadGrowth.commercial_sales_index']
+      container literals: ["'Commercial sales up 65% since 2013 on 8% more customers. That gap is data centres'", "'Retail sales and customer counts, 2013 = 100. Dominion Energy Virginia, EIA-861'"]
+      object literals: ['true', "'linear'", 'false', '2013D', '2025D', 'true', "'Index, 2023 = 100'", '50D', 'true', 'true', "'Under'", '7D', 'false', 'false', "'Under'"]
+      visual filters: ['Column:LoadGrowth.year', 'Agg0:LoadGrowth.commercial_sales_index', 'Agg0:LoadGrowth.commercial_customers_index', 'Agg0:LoadGrowth.residential_sales_index']
+
+=== PAGE e6f27ff89680632d5471 'Executive Dashboard-1' 1920x1080 filters=[]
+  [1bc8e4107099744b0737] lineChart pos=(0,603,980,477) z=2000
+      fields: ['Column:SAIDI_WEATHER_ADJUSTED.YEAR', 'Agg0:SAIDI_WEATHER_ADJUSTED.SAIDI_EX_MED', 'Agg0:SAIDI_WEATHER_ADJUSTED.WEATHER_ADJUSTED_SAIDI', 'Column:SAIDI_WEATHER_ADJUSTED.YEAR']
+      container literals: ["'Remove the weather and the underlying number has not moved since 2015'", "'SAIDI ex MED, actual vs weather-adjusted using the NOAA storm-day fit. Dominion Energy Virginia'"]
+      object literals: ['2015D', '2025D', "'Categorical'", "'linear'", 'true', '1D', "'#B8BCC2'", 'true', '0L', '11D', 'true', 'true', 'false', 'true', "'Above'", 'false', 'true', "'10 yr Avg'", '134D', 'true', "'Name'", 'true', "'Outage Mins per Customer'"]
+  [56198e8c521b4d60a663] slicer pos=(680,10,300,69) z=7008
+      fields: ['Column:DIM_UTILITY.PEER_GROUP']
+      object literals: ["'Dropdown'", "'Dominion Energy Virginia'"]
+      visual filters: ['Column:DIM_UTILITY.PEER_GROUP']
+  [5aedb895e782649461c9] lineChart pos=(980,149,939,454) z=1000
+      fields: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.CAIDI ex MED', 'Column:FCT_RELIABILITY.YEAR']
+      container literals: ["'Minutes to restore each outage down 9% since 2019'", "'CAIDI, excluding major event days. Dominion Energy Virginia, EIA-861'", 'false']
+      object literals: ['true', '11D', '0D', 'true', "'Minutes Per Outage'", 'true', '4D', "'linear'", 'true', "'Automated Outage per Year'", '2015D', 'true', '0D', 'true', "'2020: 46 kV lines added'", '2020D', 'true', '0D', "'Name'", "'right'", 'true', "'2019 level'", '120.4D', 'true', "'Name'", "'right'", "'under'", "'Scalar'", 'true', '2013D']
+      visual filters: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.CAIDI ex MED']
+  [60c7e3f0b4bead9c30cb] cardVisual pos=(1728,0,192,149) z=7003
+      fields: ['Measure:AmiEventStudy.Selected Major Event Share', 'Measure:AmiEventStudy.Selected Major Event Share']
+      visual filters: ['Measure:AmiEventStudy.Selected Major Event Share']
+  [7f06e22e345306270702] cardVisual pos=(980,0,177,149) z=6000
+      fields: ['Measure:AmiEventStudy.Selected Customers', 'Measure:AmiEventStudy.Selected Customers']
+      visual filters: ['Measure:AmiEventStudy.Selected Customers']
+  [826577f03738cae22210] scatterChart pos=(980,603,939,477) z=7006
+      fields: ['Column:V_STORM_VS_SAIDI.YEAR', 'Agg0:V_STORM_VS_SAIDI.STORM_COUNTY_DAYS', 'Agg0:V_STORM_VS_SAIDI.SAIDI_EX_MED']
+      container literals: ["'More storm days, more outage minutes. 2025 sits where its weather predicts'", "'NOAA storm county-days in Dominion’s Virginia counties vs SAIDI ex MED, 2013 to 2025'"]
+      object literals: ['true', '9D', "'Storm county-days (NOAA)'", "'Outage mins per customer'", '1L', 'true', "'Trend line 1'"]
+      visual filters: ['Column:V_STORM_VS_SAIDI.YEAR', 'Agg0:V_STORM_VS_SAIDI.STORM_COUNTY_DAYS', 'Agg0:V_STORM_VS_SAIDI.SAIDI_EX_MED']
+  [85c7fe070bb08b249a19] cardVisual pos=(1157,0,159,149) z=7001
+      fields: ['Measure:AmiEventStudy.Selected SAIDI', 'Measure:AmiEventStudy.Selected SAIDI']
+      visual filters: ['Measure:AmiEventStudy.Selected SAIDI']
+  [8cf55a203d9c93e66b58] lineChart pos=(0,149,980,454) z=0
+      fields: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.SAIFI ex MED', 'Column:FCT_RELIABILITY.YEAR']
+      container literals: ["'Outages per customer up 6% since 2019, most of it after 2023'", "'SAIFI, excluding major event days. Dominion Energy Virginia, EIA-861'"]
+      object literals: ['true', "'2015: Automated Outage Recording'", '2015D', 'true', '0D', "'Name'", "'above'", "'right'", 'true', "'2020: 46 kV lines added'", '2020D', 'true', '0D', "'Name'", '2013D', '2025D', "'Categorical'", 'true', "'2019 Level'", '1.24D', '3D', 'true', "'right'", "'Name'", "'under'", 'true', '46D', '13D', 'true', "'Outages per Customer per Year'"]
+      visual filters: ['Column:FCT_RELIABILITY.YEAR', 'Measure:FCT_RELIABILITY.SAIFI ex MED']
+  [d841e406606cb6877656] slicer pos=(680,87,300,62) z=7007
+      fields: ['Column:Dashboard Year.Year']
+      object literals: ["'Dropdown'", '2025L']
+      visual filters: ['Column:Dashboard Year.Year']
+  [ed03849209beb1288bb0] textbox pos=(15,10,643,66) z=7009
+      text: Electricity Demand & Grid Planning
+  [f34f7fc4d6b95e25b282] cardVisual pos=(1546,0,182,149) z=7004
+      fields: ['Measure:AmiEventStudy.Selected SAIFI', 'Measure:AmiEventStudy.Selected SAIFI']
+      visual filters: ['Measure:AmiEventStudy.Selected SAIFI']
+  [f37647b5550328452389] cardVisual pos=(1316,0,230,149) z=7005
+      fields: ['Measure:AmiEventStudy.Selected CAIDI', 'Measure:AmiEventStudy.Selected CAIDI']
+      visual filters: ['Measure:AmiEventStudy.Selected CAIDI']
+  [f98b3d720c82504c0056] textbox pos=(15,75,643,66) z=7010
+      text: Customer outage trends, interruption drivers and weather exposure / (EIA-861 & NOAA Storm Data)
+
+=== PAGE e8d8451399dc68c3ece6 'Seasonal' 1920x1080 filters=[]
+  [e1c9d78e2ce3b1f88809] clusteredColumnChart pos=(81,135,992,500) z=1000
+      fields: ['Column:DOM_LOAD_ANNUAL.YEAR', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW', 'Measure:DOM_LOAD_ANNUAL.Summer peak MW', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW']
+      container literals: ["'Winter peak now matches summer: higher in 2022, 2025 and 2026'", "'Highest hour in Dec to Feb vs Jun to Aug each year, PJM DOM zone, EIA-930. 2026 summer is complete, winter is Jan to Feb only'"]
+      object literals: ['true', "'Scalar'", 'true', '0L', '0L', 'true', "'Peak Demand, MW'"]
+      visual filters: ['Measure:DOM_LOAD_ANNUAL.Summer peak MW', 'Measure:DOM_LOAD_ANNUAL.Winter peak MW', 'Column:DOM_LOAD_ANNUAL.YEAR', 'Column:DOM_LOAD_ANNUAL.YEAR', 'Column:None.YEAR', 'Column:None.YEAR']

@@ -1,0 +1,2 @@
+caption: Highest hour in winter (Dec-Feb) vs summer (Jun-Aug), PJM DOM zone; 2026 year to date (EIA-930 files to 22 Oct 2026 per docs/01; D's F12 says 'to 30 Oct', the load date)
+source: EIA-930; data/output/dom_annual.csv (mart.DOM_LOAD_ANNUAL); D reverify F12

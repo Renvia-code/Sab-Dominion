@@ -1,0 +1,228 @@
+=== TABLE V_TREND {'name': 'V_TREND'}
+   col UTILITY_KEY | string |src UTILITY_KEY |type None |fmt None |sum none |hid None |expr None
+   col UTILITY_NAME | string |src UTILITY_NAME |type None |fmt None |sum none |hid None |expr None
+   col PEER_GROUP | string |src PEER_GROUP |type None |fmt None |sum none |hid None |expr None
+   col YEAR | double |src YEAR |type None |fmt None |sum sum |hid None |expr None
+   col STANDARD | string |src STANDARD |type None |fmt None |sum none |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED | double |src SAIFI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col CAIDI_EX_MED | double |src CAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_ALL | double |src SAIDI_ALL |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_ALL | double |src SAIFI_ALL |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIDI | double |src STORM_SAIDI |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIFI | double |src STORM_SAIFI |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SHARE | double |src STORM_SHARE |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED_PY | double |src SAIDI_EX_MED_PY |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED_PY | double |src SAIFI_EX_MED_PY |type None |fmt None |sum sum |hid None |expr None
+   col CAIDI_EX_MED_PY | double |src CAIDI_EX_MED_PY |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_YOY | double |src SAIDI_YOY |type None |fmt None |sum sum |hid None |expr None
+   col FREQUENCY_SHARE_OF_CHANGE | double |src FREQUENCY_SHARE_OF_CHANGE |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED_5YR | double |src SAIDI_EX_MED_5YR |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED_5YR | double |src SAIFI_EX_MED_5YR |type None |fmt None |sum sum |hid None |expr None
+   PART V_TREND import m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     V_TREND_View = MART_Schema{[Name="V_TREND",Kind="View"]}[Data] in     V_TREND_View
+=== TABLE DIM_UTILITY {'name': 'DIM_UTILITY'}
+   col UTILITY_ID | double |src UTILITY_ID |type None |fmt None |sum none |hid None |expr None
+   col STATE | string |src STATE |type None |fmt None |sum none |hid None |expr None
+   col UTILITY_KEY | string |src UTILITY_KEY |type None |fmt None |sum none |hid None |expr None
+   col UTILITY_NAME | string |src UTILITY_NAME |type None |fmt None |sum none |hid None |expr None
+   col ENTITY_TYPE | string |src ENTITY_TYPE |type None |fmt None |sum none |hid None |expr None
+   col PEER_GROUP | string |src PEER_GROUP |type None |fmt None |sum none |hid None |expr None
+   col Display name | string |src None |type calculated |fmt None |sum none |hid None |expr SWITCH(DIM_UTILITY[UTILITY_KEY], "19876|VA", "Dominion Energy Virginia", "17539|SC", "Dominion Energy SC", "5416|NC", "Duke Carolinas (NC)", "3046|NC", "Duke Progress (NC)", "7140|GA", "Georgia Power", "195|AL", "Alabama Power", "6455|FL", "Duke Energy Florida", "6452|FL", "FPL", "1167|MD", "BGE", "15270|MD", "Pepco (MD)", "14940|PA", "PECO", "14715|PA", "PPL Electric", DIM_UTILITY[UTILITY_NAME])
+   col Short name | string |src None |type calculated |fmt None |sum none |hid None |expr ['', 'SWITCH(DIM_UTILITY[Display name],', '    "Dominion Energy Virginia", "Dominion VA",', '    "Dominion Energy SC", "Dominion SC",', '    "Duke Carolinas (NC)", "Duke Carolinas",', '    "Duke Progress (NC)", "Duke Progress",', '    "Duke Energy Florida", "Duke FL",', '    "Georgia Power", "Georgia",', '    "Alabama Power", "Alabama",', '    "PPL Electric", "PPL",', '    "Pepco (MD)", "Pepco",', '    DIM_UTILITY[Display name])']
+   col Quadrant name | string |src None |type calculated |fmt None |sum none |hid None |expr ['', 'SWITCH(DIM_UTILITY[Display name],', '    "Dominion Energy Virginia", "Dominion VA",', '    "Duke Progress (NC)", "Duke Progress",', '    "Georgia Power", "Georgia",', '    "Duke Carolinas (NC)", "Duke Carolinas",', '    "")']
+   col Region | string |src None |type calculated |fmt None |sum none |hid None |expr SWITCH(DIM_UTILITY[PEER_GROUP], "Southeast IOU peer", "Southeast", "Mid-Atlantic IOU peer", "Mid-Atlantic", "Florida IOU peer", "Florida", "Dominion Energy Virginia", "Virginia", DIM_UTILITY[PEER_GROUP])
+   PART DIM_UTILITY import m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     DIM_UTILITY_Table = MART_Schema{[Name="DIM_UTILITY",Kind="Table"]}[Data] in     DIM_UTILITY_Table
+=== TABLE FCT_RELIABILITY {'name': 'FCT_RELIABILITY'}
+   col UTILITY_KEY | string |src UTILITY_KEY |type None |fmt None |sum none |hid None |expr None
+   col UTILITY_ID | double |src UTILITY_ID |type None |fmt None |sum count |hid None |expr None
+   col STATE | string |src STATE |type None |fmt None |sum none |hid None |expr None
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col STANDARD | string |src STANDARD |type None |fmt None |sum none |hid None |expr None
+   col SOURCE | string |src SOURCE |type None |fmt None |sum none |hid None |expr None
+   col Customers Served | double |src Customers Served |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_ALL | double |src SAIDI_ALL |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_ALL | double |src SAIFI_ALL |type None |fmt None |sum sum |hid None |expr None
+   col CAIDI_ALL | double |src CAIDI_ALL |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED | double |src SAIFI_EX_MED |type None |fmt None |sum none |hid None |expr None
+   col CAIDI_EX_MED | double |src CAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIDI | double |src STORM_SAIDI |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIFI | double |src STORM_SAIFI |type None |fmt None |sum sum |hid None |expr None
+   col CUST_MINUTES_ALL | double |src CUST_MINUTES_ALL |type None |fmt None |sum sum |hid None |expr None
+   col CUST_MINUTES_EX_MED | double |src CUST_MINUTES_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col CUST_INTERRUPTIONS_ALL | double |src CUST_INTERRUPTIONS_ALL |type None |fmt None |sum sum |hid None |expr None
+   col CUST_INTERRUPTIONS_EX_MED | double |src CUST_INTERRUPTIONS_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col MAX_KV | double |src MAX_KV |type None |fmt None |sum sum |hid None |expr None
+   col AUTO_RECORDED | boolean |src AUTO_RECORDED |type None |fmt "TRUE";"TRUE";"FALSE" |sum none |hid None |expr None
+   col MOMENTARY_DEF | string |src MOMENTARY_DEF |type None |fmt None |sum none |hid None |expr None
+   col INACTIVE_INCLUDED | boolean |src INACTIVE_INCLUDED |type None |fmt "TRUE";"TRUE";"FALSE" |sum none |hid None |expr None
+   PART FCT_RELIABILITY import m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     FCT_RELIABILITY_Table = MART_Schema{[Name="FCT_RELIABILITY",Kind="Table"]}[Data],     #"Renamed Columns" = Table.RenameColumns(FCT_RELIABILITY_Table,{{"CUSTOMERS", "Customers Served"}, {"SAIFI_EX_MED", "SAIFI_EX_MED"}, {"CAIDI_EX_MED", "CAIDI_EX_MED"}, {"SAIDI_ALL", "SAIDI_ALL"}}) in     #"Renamed Columns"
+=== TABLE STORM_INDEX {'name': 'STORM_INDEX'}
+   col YEAR | double |src YEAR |type None |fmt None |sum sum |hid None |expr None
+   col STORM_COUNTY_DAYS | double |src STORM_COUNTY_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WIND_DAYS | double |src WIND_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WINTER_DAYS | double |src WINTER_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col TROPICAL_DAYS | double |src TROPICAL_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col SEVERE_GUST_DAYS | double |src SEVERE_GUST_DAYS |type None |fmt None |sum sum |hid None |expr None
+   PART STORM_INDEX import m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     STORM_INDEX_Table = MART_Schema{[Name="STORM_INDEX",Kind="Table"]}[Data] in     STORM_INDEX_Table
+=== TABLE V_GROUP_INDEX {'name': 'V_GROUP_INDEX'}
+   col PEER_GROUP | string |src PEER_GROUP |type None |fmt None |sum none |hid None |expr None
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col UTILITIES | double |src UTILITIES |type None |fmt None |sum sum |hid None |expr None
+   col CUSTOMERS | double |src CUSTOMERS |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED | double |src SAIFI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col CAIDI_EX_MED | double |src CAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   PART V_GROUP_INDEX import m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     V_GROUP_INDEX_View = MART_Schema{[Name="V_GROUP_INDEX",Kind="View"]}[Data] in     V_GROUP_INDEX_View
+=== TABLE V_STORM_VS_SAIDI {'name': 'V_STORM_VS_SAIDI'}
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col STORM_COUNTY_DAYS | double |src STORM_COUNTY_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WIND_DAYS | double |src WIND_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WINTER_DAYS | double |src WINTER_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col TROPICAL_DAYS | double |src TROPICAL_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED | double |src SAIFI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIDI | double |src STORM_SAIDI |type None |fmt None |sum sum |hid None |expr None
+   PART V_STORM_VS_SAIDI directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     V_STORM_VS_SAIDI_View = MART_Schema{[Name="V_STORM_VS_SAIDI",Kind="View"]}[Data] in     V_STORM_VS_SAIDI_View
+=== TABLE LoadGrowth {'name': 'LoadGrowth'}
+   col year | int64 |src year |type None |fmt 0 |sum sum |hid None |expr None
+   col commercial_twh | double |src commercial_twh |type None |fmt None |sum sum |hid None |expr None
+   col residential_twh | double |src residential_twh |type None |fmt None |sum sum |hid None |expr None
+   col commercial_customers | int64 |src commercial_customers |type None |fmt 0 |sum sum |hid None |expr None
+   col residential_customers | int64 |src residential_customers |type None |fmt 0 |sum sum |hid None |expr None
+   col commercial_sales_index | double |src commercial_sales_index |type None |fmt None |sum sum |hid None |expr None
+   col commercial_customers_index | double |src commercial_customers_index |type None |fmt None |sum sum |hid None |expr None
+   col residential_sales_index | double |src residential_sales_index |type None |fmt None |sum sum |hid None |expr None
+   col Column9 | string |src Column9 |type None |fmt None |sum none |hid None |expr None
+   col Source | string |src Source |type None |fmt None |sum none |hid None |expr None
+   PART LoadGrowth import m
+      let     Source = Excel.Workbook(File.Contents("C:\Users\SakethBollina\Downloads\Dominion_Reliability_PowerBI_Data.xlsx"), null, true),     LoadGrowth_Sheet = Source{[Item="LoadGrowth",Kind="Sheet"]}[Data],     #"Promoted Headers" = Table.PromoteHeaders(LoadGrowth_Sheet, [PromoteAllScalars=true]),     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"year", Int64.Type}, {"commercial_twh", type number}, {"residential_twh", type number}, {"commercial_customers", Int64.Type}, {"residential_customers", Int64.Type}, {"commercial_sales_index", type number}, {"commercial_customers_in
+=== TABLE Programmes2025 {'name': 'Programmes2025'}
+   col utility | string |src utility |type None |fmt None |sum none |hid None |expr None
+   col winter_peak_mw | int64 |src winter_peak_mw |type None |fmt 0 |sum none |hid None |expr None
+   col summer_peak_mw | int64 |src summer_peak_mw |type None |fmt 0 |sum none |hid None |expr None
+   col smart_meter_share | double |src smart_meter_share |type None |fmt None |sum none |hid None |expr None
+   col time_varying_rate_share_pct | double |src time_varying_rate_share_pct |type None |fmt None |sum none |hid None |expr None
+   col demand_response_potential_mw | double |src demand_response_potential_mw |type None |fmt None |sum none |hid None |expr None
+   col losses_pct | double |src losses_pct |type None |fmt None |sum none |hid None |expr None
+   PART Programmes2025 import m
+      let     Source = Excel.Workbook(File.Contents("C:\Users\SakethBollina\Downloads\Dominion_Reliability_PowerBI_Data.xlsx"), null, true),     Programmes2025_Sheet = Source{[Item="Programmes2025",Kind="Sheet"]}[Data],     #"Promoted Headers" = Table.PromoteHeaders(Programmes2025_Sheet, [PromoteAllScalars=true]),     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"utility", type text}, {"winter_peak_mw", Int64.Type}, {"summer_peak_mw", Int64.Type}, {"smart_meter_share", type number}, {"time_varying_rate_share_pct", type number}, {"demand_response_potential_mw", type number}, {"l
+=== TABLE Headline {'name': 'Headline'}
+   col three_year_saidi_ending_2025 | string |src three_year_saidi_ending_2025 |type None |fmt None |sum none |hid None |expr None
+   col three_year_saidi_ending_2024 | string |src three_year_saidi_ending_2024 |type None |fmt None |sum none |hid None |expr None
+   col report_three_year_2025 | string |src report_three_year_2025 |type None |fmt None |sum none |hid None |expr None
+   col report_three_year_2024 | string |src report_three_year_2024 |type None |fmt None |sum none |hid None |expr None
+   col saifi_2025 | string |src saifi_2025 |type None |fmt None |sum none |hid None |expr None
+   col saifi_2024 | double |src saifi_2024 |type None |fmt None |sum sum |hid None |expr None
+   col saifi_change_pct | double |src saifi_change_pct |type None |fmt None |sum sum |hid None |expr None
+   col caidi_2025 | string |src caidi_2025 |type None |fmt None |sum none |hid None |expr None
+   col caidi_2024 | double |src caidi_2024 |type None |fmt None |sum sum |hid None |expr None
+   col caidi_change_pct | double |src caidi_change_pct |type None |fmt None |sum sum |hid None |expr None
+   col saidi_2025 | string |src saidi_2025 |type None |fmt None |sum none |hid None |expr None
+   col storm_share_2025 | string |src storm_share_2025 |type None |fmt None |sum none |hid None |expr None
+   col storm_share_2024 | double |src storm_share_2024 |type None |fmt None |sum sum |hid None |expr None
+   col customers_va_nc_thousand | string |src customers_va_nc_thousand |type None |fmt None |sum none |hid None |expr None
+   col coop_corr_yoy | string |src coop_corr_yoy |type None |fmt None |sum none |hid None |expr None
+   col dominion_saifi_change_2015_2025 | double |src dominion_saifi_change_2015_2025 |type None |fmt None |sum sum |hid None |expr None
+   col coop_saifi_change_2015_2025 | double |src coop_saifi_change_2015_2025 |type None |fmt None |sum sum |hid None |expr None
+   col dominion_relative_to_coops_pct | string |src dominion_relative_to_coops_pct |type None |fmt None |sum none |hid None |expr None
+   col commercial_sales_index_2025 | string |src commercial_sales_index_2025 |type None |fmt None |sum none |hid None |expr None
+   col commercial_customers_index_2025 | string |src commercial_customers_index_2025 |type None |fmt None |sum none |hid None |expr None
+   col residential_sales_index_2025 | string |src residential_sales_index_2025 |type None |fmt None |sum none |hid None |expr None
+   col heating_degree_days_2025 | string |src heating_degree_days_2025 |type None |fmt None |sum none |hid None |expr None
+   col heating_degree_days_2024 | int64 |src heating_degree_days_2024 |type None |fmt 0 |sum sum |hid None |expr None
+   col cooling_degree_days_2025 | int64 |src cooling_degree_days_2025 |type None |fmt 0 |sum sum |hid None |expr None
+   col cooling_degree_days_2024 | int64 |src cooling_degree_days_2024 |type None |fmt 0 |sum sum |hid None |expr None
+   col data_centers_connected_2025 | string |src data_centers_connected_2025 |type None |fmt None |sum none |hid None |expr None
+   col data_center_mw_connected_2025 | int64 |src data_center_mw_connected_2025 |type None |fmt 0 |sum sum |hid None |expr None
+   col data_center_gw_contracting | int64 |src data_center_gw_contracting |type None |fmt 0 |sum sum |hid None |expr None
+   col top50_peaks_since_2025 | int64 |src top50_peaks_since_2025 |type None |fmt 0 |sum sum |hid None |expr None
+   col expected_peak_growth_pct | double |src expected_peak_growth_pct |type None |fmt None |sum sum |hid None |expr None
+   col mainfeeder_miles_hardened | int64 |src mainfeeder_miles_hardened |type None |fmt 0 |sum sum |hid None |expr None
+   col winter_peak_mw | string |src winter_peak_mw |type None |fmt None |sum none |hid None |expr None
+   col summer_peak_mw | int64 |src summer_peak_mw |type None |fmt 0 |sum sum |hid None |expr None
+   col smart_meter_share | string |src smart_meter_share |type None |fmt None |sum none |hid None |expr None
+   col time_varying_rate_share_pct | string |src time_varying_rate_share_pct |type None |fmt None |sum none |hid None |expr None
+   col demand_response_mw | string |src demand_response_mw |type None |fmt None |sum none |hid None |expr None
+   col losses_pct | double |src losses_pct |type None |fmt None |sum none |hid None |expr None
+   col tests_total | int64 |src tests_total |type None |fmt 0 |sum sum |hid None |expr None
+   col tests_passed | int64 |src tests_passed |type None |fmt 0 |sum sum |hid None |expr None
+   col flagged_rows | int64 |src flagged_rows |type None |fmt 0 |sum sum |hid None |expr None
+   col storm_county_days_2025 | string |src storm_county_days_2025 |type None |fmt None |sum none |hid None |expr None
+   col predicted_2025_saidi_from_weather | string |src predicted_2025_saidi_from_weather |type None |fmt None |sum none |hid None |expr None
+   col corr_storm_days_vs_daytoday_saidi | string |src corr_storm_days_vs_daytoday_saidi |type None |fmt None |sum none |hid None |expr None
+   PART Headline import m
+      let     Source = Excel.Workbook(File.Contents("C:\Users\SakethBollina\Downloads\Dominion_Reliability_PowerBI_Data.xlsx"), null, true),     Headline_Sheet = Source{[Item="Headline",Kind="Sheet"]}[Data],     #"Promoted Headers" = Table.PromoteHeaders(Headline_Sheet, [PromoteAllScalars=true]),     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"three_year_saidi_ending_2025", type any}, {"three_year_saidi_ending_2024", type any}, {"report_three_year_2025", type any}, {"report_three_year_2024", type any}, {"saifi_2025", type any}, {"saifi_2024", type number}, {"saifi_change_pct"
+=== TABLE AmiEventStudy {'name': 'AmiEventStudy'}
+   col Column1 | string |src Column1 |type None |fmt None |sum none |hid None |expr None
+   col Column2 | string |src Column2 |type None |fmt None |sum none |hid None |expr None
+   col Column3 | string |src Column3 |type None |fmt None |sum none |hid None |expr None
+   col Column4 | string |src Column4 |type None |fmt None |sum none |hid None |expr None
+   PART AmiEventStudy import m
+      let     Source = Excel.Workbook(File.Contents("C:\Users\SakethBollina\Downloads\Dominion_Reliability_PowerBI_Data.xlsx"), null, true),     AmiEventStudy_Sheet = Source{[Item="AmiEventStudy",Kind="Sheet"]}[Data] in     AmiEventStudy_Sheet
+=== TABLE Tests {'name': 'Tests'}
+   col test | string |src test |type None |fmt None |sum none |hid None |expr None
+   col rows_returned | int64 |src rows_returned |type None |fmt 0 |sum sum |hid None |expr None
+   col status | string |src status |type None |fmt None |sum none |hid None |expr None
+   col note | string |src note |type None |fmt None |sum none |hid None |expr None
+   PART Tests import m
+      let     Source = Excel.Workbook(File.Contents("C:\Users\SakethBollina\Downloads\Dominion_Reliability_PowerBI_Data.xlsx"), null, true),     Tests_Sheet = Source{[Item="Tests",Kind="Sheet"]}[Data],     #"Promoted Headers" = Table.PromoteHeaders(Tests_Sheet, [PromoteAllScalars=true]),     #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"test", type text}, {"rows_returned", Int64.Type}, {"status", type text}, {"note", type text}}) in     #"Changed Type"
+=== TABLE DOM_LOAD_ANNUAL {'name': 'DOM_LOAD_ANNUAL'}
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col WINTER_PEAK_MW | double |src WINTER_PEAK_MW |type None |fmt None |sum sum |hid None |expr None
+   col SUMMER_PEAK_MW | double |src SUMMER_PEAK_MW |type None |fmt None |sum sum |hid None |expr None
+   col PEAK_MW | double |src PEAK_MW |type None |fmt None |sum sum |hid None |expr None
+   col FLOOR_MW | double |src FLOOR_MW |type None |fmt None |sum sum |hid None |expr None
+   col MEDIAN_MW | double |src MEDIAN_MW |type None |fmt None |sum sum |hid None |expr None
+   col AVG_MW | double |src AVG_MW |type None |fmt None |sum sum |hid None |expr None
+   col ENERGY_TWH | double |src ENERGY_TWH |type None |fmt None |sum sum |hid None |expr None
+   col HOURS_REPORTED | double |src HOURS_REPORTED |type None |fmt None |sum sum |hid None |expr None
+   col HOURS_MISSING | double |src HOURS_MISSING |type None |fmt None |sum sum |hid None |expr None
+   PART DOM_LOAD_ANNUAL directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     DOM_LOAD_ANNUAL_Table = MART_Schema{[Name="DOM_LOAD_ANNUAL",Kind="Table"]}[Data] in     DOM_LOAD_ANNUAL_Table
+=== TABLE DOM_TOP50_HOURS {'name': 'DOM_TOP50_HOURS'}
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col DATA_DATE | dateTime |src DATA_DATE |type None |fmt Long Date |sum none |hid None |expr None
+   col HOUR_NO | double |src HOUR_NO |type None |fmt None |sum sum |hid None |expr None
+   col UTC_TS | dateTime |src UTC_TS |type None |fmt General Date |sum none |hid None |expr None
+   col DEMAND_MW | double |src DEMAND_MW |type None |fmt None |sum sum |hid None |expr None
+   col RANK_TODAY | double |src RANK_TODAY |type None |fmt None |sum sum |hid None |expr None
+   col RANK_END_2025 | double |src RANK_END_2025 |type None |fmt None |sum sum |hid None |expr None
+   PART DOM_TOP50_HOURS directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     DOM_TOP50_HOURS_Table = MART_Schema{[Name="DOM_TOP50_HOURS",Kind="Table"]}[Data] in     DOM_TOP50_HOURS_Table
+=== TABLE SAIDI_WEATHER_ADJUSTED {'name': 'SAIDI_WEATHER_ADJUSTED'}
+   col YEAR | double |src YEAR |type None |fmt 0 |sum sum |hid None |expr None
+   col STORM_COUNTY_DAYS | double |src STORM_COUNTY_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col PREDICTED_FROM_WEATHER | double |src PREDICTED_FROM_WEATHER |type None |fmt None |sum sum |hid None |expr None
+   col WEATHER_ADJUSTED_SAIDI | double |src WEATHER_ADJUSTED_SAIDI |type None |fmt None |sum sum |hid None |expr None
+   PART SAIDI_WEATHER_ADJUSTED directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     SAIDI_WEATHER_ADJUSTED_Table = MART_Schema{[Name="SAIDI_WEATHER_ADJUSTED",Kind="Table"]}[Data] in     SAIDI_WEATHER_ADJUSTED_Table
+=== TABLE V_STORM_VS_SAIDI (2) {'name': 'V_STORM_VS_SAIDI (2)'}
+   col YEAR | double |src YEAR |type None |fmt None |sum sum |hid None |expr None
+   col STORM_COUNTY_DAYS | double |src STORM_COUNTY_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WIND_DAYS | double |src WIND_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col WINTER_DAYS | double |src WINTER_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col TROPICAL_DAYS | double |src TROPICAL_DAYS |type None |fmt None |sum sum |hid None |expr None
+   col SAIDI_EX_MED | double |src SAIDI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col SAIFI_EX_MED | double |src SAIFI_EX_MED |type None |fmt None |sum sum |hid None |expr None
+   col STORM_SAIDI | double |src STORM_SAIDI |type None |fmt None |sum sum |hid None |expr None
+   PART V_STORM_VS_SAIDI (2) directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     V_STORM_VS_SAIDI_View = MART_Schema{[Name="V_STORM_VS_SAIDI",Kind="View"]}[Data] in     V_STORM_VS_SAIDI_View
+=== TABLE DOM_LOAD_PROFILE {'name': 'DOM_LOAD_PROFILE'}
+   col HOUR_NO | double |src HOUR_NO |type None |fmt 0 |sum none |hid None |expr None
+   col AVG_MW_2019 | double |src AVG_MW_2019 |type None |fmt None |sum sum |hid None |expr None
+   col AVG_MW_2025 | double |src AVG_MW_2025 |type None |fmt None |sum sum |hid None |expr None
+   col GROWTH_PCT | double |src GROWTH_PCT |type None |fmt None |sum sum |hid None |expr None
+   PART DOM_LOAD_PROFILE directQuery m
+      let     Source = Snowflake.Databases("vosrmgo-af46531.snowflakecomputing.com","SNOWFLAKE_LEARNING_WH",[Implementation="2.0"]),     RELIABILITY_Database = Source{[Name="RELIABILITY",Kind="Database"]}[Data],     MART_Schema = RELIABILITY_Database{[Name="MART",Kind="Schema"]}[Data],     DOM_LOAD_PROFILE_Table = MART_Schema{[Name="DOM_LOAD_PROFILE",Kind="Table"]}[Data] in     DOM_LOAD_PROFILE_Table
+=== TABLE Dashboard Year {'name': 'Dashboard Year'}
+   col Year | int64 |src [Year] |type calculatedTableColumn |fmt 0 |sum sum |hid None |expr None
+   PART Dashboard Year import calculated
+       SELECTCOLUMNS(     GENERATESERIES(2013, 2025, 1),     "Year", [Value] ) 

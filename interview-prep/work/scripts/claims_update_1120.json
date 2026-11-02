@@ -1,0 +1,13 @@
+{
+  "R-013": {
+    "claim": "Mainfeeder Hardening progress and result (company-reported; Dominion release, 8 June 2026): average annual outage time down 44% for customers in the hardened areas; no baseline period, comparison group or major-event treatment stated",
+    "url_or_doi": "https://investors.dominionenergy.com/news/press-release-details/2026/Dominion-Energy-prepares-year-round-for-hurricane-season-and-encourages-customers-to-prepare-as-well/default.aspx",
+    "quote_or_locator": "Primary source re-opened 1 Nov 2026 for V1 (the earlier StockTitan repost returned 403 to V1; it is no longer the source). Release dated 06/08/2026, 'RICHMOND, Va.--(BUSINESS WIRE)--': 'Through its Mainfeeder Hardening Program, the company has replaced more than 8,000 older utility poles and hardened over 350 miles of power lines in Virginia. The program has reduced average annual outage time by 44% for customers in these areas.' Saved: work/research_raw/v1_followups/dom_hurricane_2026.html",
+    "confidence": "high (company release on its IR site; company-reported metric, method not stated)",
+    "used_in": "role_brief.md §2; hard25 Q8 (C-S6-06); research/V1_followups.md"
+  },
+  "R-076": {
+    "quote_or_locator": "'Our maintenance trimming is done on cycles typically ranging from four to five years'; 'Nearly all of our neighborhood power lines are cleared on a four year cycle.'; 'As part of a mitigation plan approved by the Virginia State Corporation Commission, Dominion Energy personnel and our contractors are safely cutting down ash trees capable of impacting distribution lines'. Re-opened 1 Nov 2026 for V1: both cycle quotes unchanged, in the 'Virginia/North Carolina Tree Trimming and Powerlines FAQ' under 'How do Dominion Energy and its contractors decide how much to trim?' and 'How often do you trim?'",
+    "used_in": "domain_primer.md §4; hard25 Q7 (brief and print); research/V1_followups.md"
+  }
+}

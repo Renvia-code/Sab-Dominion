@@ -1,0 +1,61 @@
+page,visual_id,visual_type,alt_text
+What moved,a56e85d260bd5432b881,lineChart,"Line chart: Minutes per interruption down 9% since 2019. CAIDI, excluding major event days. Dominion Energy Virginia, EIA-861."
+What moved,eb9e34101c7ddbafa3ba,lineChart,"Line chart: Outages per customer up 6% since 2019, most of it after 2023. SAIFI, excluding major event days. Dominion Energy Virginia, EIA-861."
+Weather,0cdbc9919c3afef37960,lineChart,"Line chart: Adjusted for storm days (a model estimate), SAIDI shows no clear trend since 2015. SAIDI ex MED, actual vs weather-adjusted using the NOAA storm-day fit. Dominion Energy Virginia."
+Weather,cd3dca34756db97f5ed6,scatterChart,"Scatter chart: Years with more storm days had more outage minutes. 2015 to 2024 (n = 10). r = 0.70: association, not cause. The line is the fit used for the weather adjustment."
+Weather,d2efd4d136e889ee2b0e,columnChart,"Column chart: Major event days are about half of all-event outage minutes in 2025. Minutes per customer: excluding major event days, and on major event days. Dominion Energy Virginia, EIA-861."
+Weather,dcda2b950535cd9fed73,lineChart,"Line chart: Since 2015, Virginia co-op outage frequency rose 37% and Dominion's 14%. SAIFI ex MED, 2015 = 100. Dominion vs all Virginia co-ops. EIA-861."
+Outages by county,c270752a1d6174d0d9b4,textbox,Text: Outages by county
+Outages by county,ca64acab4613784c9e0a,textbox,"Text: EAGLE-I county outage records (ORNL), Dominion's 103 Virginia counties. EAGLE-I counts every utility's customers in a county; 4 counties are left off for unreliable data."
+Outages by county,e4c89ab207c546d97c87,clusteredBarChart,"Bar chart: All utilities: non-major outage minutes ranged from 55 (Prince William County) to 633 (Pittsylvania County) a year. EAGLE-I, all utilities (not Dominion's SAIDI). Top 15 of the 35 counties with 20,000+ customers; non-major-event days, 2015 to 2024 average."
+Outages by county,f50bf666b5fe97418beb,tableEx,"Table: The ten largest outage events: three tropical storms, two winter storms and five wind events. Territory events in Dominion's 103 counties, 2015 to 2025, by peak day; ranked by customers out held for an hour. EAGLE-I (all utilities)."
+Fair comparison,572942895d9e7db615ca,clusteredBarChart,"Bar chart: Fourth-highest outage minutes of twelve large utilities, 2023 to 2025. SAIDI ex MED, 3-year average. Dominion excludes storms by its own rule, most peers by IEEE 1366, so gaps are indicative."
+Fair comparison,99301c6283764dcfd28f,scatterChart,"Scatter chart: Mid-pack on minutes per interruption; outage frequency is the gap. 5-year averages 2021 to 2025, excluding major event days. Dashed lines: medians of the 11 peers (SAIFI 0.93, CAIDI 99.5)."
+Fair comparison,abfe0d2588105da0a784,tableEx,Table.
+Growth,1b2743b4ff761d5db85f,clusteredBarChart,"Bar chart: Dominion: smart meters are 99.8% of meters; about 1% of customers are on a time-varying rate. Smart meters as a share of all meters, and the share of customers on a time-varying rate, 2025. EIA-861."
+Growth,3e0ddca78b79485a3fea,lineChart,"Line chart: Commercial sales up 65% since 2013 on 8% more customers, consistent with large round-the-clock loads. Retail sales and customer counts, 2013 = 100. Dominion Energy Virginia, EIA-861."
+Growth,7b0e71f981e225998e87,clusteredColumnChart,"Column chart: Load growth 2019 to 2025: +39% to +41% in the hours ending 1 to 5 a.m., about +27% in the hours ending 1 to 5 p.m.. Change in average demand for each hour of the day (hour ending, local time), PJM DOM zone, EIA-930."
+Scorecard,1b4422116d6104d407dd,cardVisual,Card: Top-50 hours in 2025 for 2025.
+Scorecard,268053916982bec30f81,cardVisual,Card: Major-event-day share for 2025.
+Scorecard,2bddd35670236987c7c1,cardVisual,Card: SAIDI (minutes) for 2025.
+Scorecard,3bc57cca3f71ef9d7cc3,cardVisual,Card: SAIFI (outages) for 2025.
+Scorecard,47061a0f263b5da769fd,tableEx,Table: Rebuilt values match the published ones (12 of 12). Rebuilt from public files vs the published source (data/output/reconciliation.csv).
+Scorecard,4815afead0c6a4a7ca4b,cardVisual,Card: Customers served for 2025.
+Scorecard,588c5e9877c5c13562f4,cardVisual,Card: SAIDI incl. major event days for 2025.
+Scorecard,7a8692e79a615d758900,cardVisual,Card: Minutes per interruption (CAIDI) for 2025.
+Scorecard,ca269581fd1be8142455,cardVisual,"Card: Lowest hour, 2019 to 2025 for 2025."
+Scorecard,ea221bd41bd7ea9c1c49,cardVisual,"Card: Peak hour, 2019 to 2025 for 2025."
+Data notes,3673ea1b7f5e7e0a995f,textbox,Text: Data notes
+Data notes,7faf6483a0d826be05ba,textbox,"Text: Sources: EIA-861 (reliability, sales, customers; 2013-2024 via PUDL, 2025 final release of Oct 7, 2026); NOAA Storm Events (storm county-days); EIA-930 (PJM DOM zone hourly demand; 2026 runs through the hour ending midnight, Oct 29); EAGLE-I county outages 2015-2025 (ORNL, CC BY 4.0). Method: SAIDI, SAIFI and CAIDI exclude major event days unless stated; indices are customer-weighted (sum numerators, sum denominators, divide once). Correlations show association, not cause. The weather-adjusted series is a model estimate from a 2015-2024 fit. Data snapshot: Nov 1, 2026, Import mode from the CSV files in the DataFolder parameter (no live connection)."
+Data notes,ddba766b396d08c5d560,tableEx,Table: All 31 data tests pass. Tests run on each build of the data (data/output/test_results.csv; definitions in docs/03_data_quality.md).
+Data notes,ee5d97966b7f2c9e32bc,tableEx,Table: Rebuilt values match the published ones (12 of 12). Rebuilt from public files vs the published source (data/output/reconciliation.csv).
+Demand summary,0fb6bdf75ea43a197450,textbox,Text: Electricity demand and grid planning
+Demand summary,10a79b0633cd9c8e9009,clusteredColumnChart,"Column chart: Winter set the year's peak in 2019, 2022 and 2025; 2026 is a near-tie so far. Highest hour in Dec to Feb vs Jun to Aug of each calendar year, PJM DOM zone, EIA-930. 2026 runs to Oct 29: summer complete, winter Jan to Feb only."
+Demand summary,158ceaf7ed6928cac954,textbox,"Text: Load growth, changing demand patterns and smart-meter adoption | EIA-861 & EIA-930"
+Demand summary,18d3b980d88222e2273d,cardVisual,Card: Top-50 hours in 2025.
+Demand summary,19360d26904890819773,cardVisual,"Card: Peak hour, 2019 to 2025."
+Demand summary,1d92052046d0a3c7b466,clusteredBarChart,"Bar chart: Dominion: smart meters are 99.8% of meters; about 1% of customers are on a time-varying rate. Smart meters as a share of all meters, and the share of customers on a time-varying rate, 2025. EIA-861."
+Demand summary,71ceb4a586c3d3d3acb9,clusteredColumnChart,"Column chart: Load growth 2019 to 2025: +39% to +41% in the hours ending 1 to 5 a.m., about +27% in the hours ending 1 to 5 p.m.. Change in average demand for each hour of the day (hour ending, local time), PJM DOM zone, EIA-930."
+Demand summary,e12a05449550ed1cb6e0,cardVisual,"Card: Lowest hour, 2019 to 2025."
+Demand summary,f3f57290918057748a49,lineChart,"Line chart: Commercial sales up 65% since 2013 on 8% more customers, consistent with large round-the-clock loads. Retail sales and customer counts, 2013 = 100. Dominion Energy Virginia, EIA-861."
+Summary,1bc8e4107099744b0737,lineChart,"Line chart: Adjusted for storm days (a model estimate), SAIDI shows no clear trend since 2015. SAIDI ex MED, actual vs weather-adjusted using the NOAA storm-day fit. Dominion Energy Virginia."
+Summary,5aedb895e782649461c9,lineChart,"Line chart: Minutes per interruption down 9% since 2019. CAIDI, excluding major event days. Dominion Energy Virginia, EIA-861."
+Summary,60c7e3f0b4bead9c30cb,cardVisual,Card: Major-event share for the year chosen in the Year slicer.
+Summary,7f06e22e345306270702,cardVisual,Card: Customers served for the year chosen in the Year slicer.
+Summary,826577f03738cae22210,scatterChart,"Scatter chart: Years with more storm days had more outage minutes. 2015 to 2024 (n = 10). r = 0.70: association, not cause. The line is the fit used for the weather adjustment."
+Summary,85c7fe070bb08b249a19,cardVisual,Card: SAIDI (minutes) for the year chosen in the Year slicer.
+Summary,8cf55a203d9c93e66b58,lineChart,"Line chart: Outages per customer up 6% since 2019, most of it after 2023. SAIFI, excluding major event days. Dominion Energy Virginia, EIA-861."
+Summary,d841e406606cb6877656,slicer,"Year slicer, default 2025. It sets the year shown on the cards on this page."
+Summary,ed03849209beb1288bb0,textbox,Text: Reliability performance and weather
+Summary,f34f7fc4d6b95e25b282,cardVisual,Card: SAIFI (outages) for the year chosen in the Year slicer.
+Summary,f37647b5550328452389,cardVisual,Card: Minutes per interruption for the year chosen in the Year slicer.
+Summary,f98b3d720c82504c0056,textbox,"Text: Customer outage trends, interruptions and weather exposure (EIA-861 and NOAA Storm Events)"
+Demand and seasons,0d1671e6a6b25a28a2c3,textbox,"Text: PJM DOM zone hourly demand (EIA-930; a zone, not Dominion's retail territory) and retail sales (EIA-861). 2026 runs through the hour ending midnight, Oct 29."
+Demand and seasons,0eee636fd36711de47e6,lineChart,"Line chart: Average demand rose in every hour from 2019 to 2025, most in the hours ending 1 to 5 a.m.. Average MW by hour of day (hour ending, local time), PJM DOM zone, EIA-930."
+Demand and seasons,130afd4d042a550c8be5,lineChart,"Line chart: Commercial sales grew 65% from 2013 to 2025; residential grew 4%, industrial fell 14%. Retail sales in TWh by customer class (bundled plus delivery-only), Dominion Energy Virginia, EIA-861."
+Demand and seasons,9a34b2d8a2e3f5f9e151,textbox,Text: Demand and seasons
+Demand and seasons,e1c9d78e2ce3b1f88809,clusteredColumnChart,"Column chart: Winter set the year's peak in 2019, 2022 and 2025; 2026 is a near-tie so far. Highest hour in Dec to Feb vs Jun to Aug of each calendar year, PJM DOM zone, EIA-930. 2026 runs to Oct 29: summer complete, winter Jan to Feb only."
+Storms,3afa5ef77031bf1966a1,textbox,"Text: NOAA Storm Events (storm county-days) and EAGLE-I outage records (all utilities). Associations, not causes."
+Storms,3c6be25bfbbcc7bfb287,textbox,Text: Storms
+Storms,468c8a45f87c7320178e,lineChart,"Line chart: Isaias, August 2020: 33.5 hours from the peak to clear 90% of the outage. Share cleared by hour since the peak: (peak - customers out) / (peak - pre-event level), a net count. EAGLE-I, all utilities in Dominion's 103 counties; not a utility's '% of affected customers restored'."
+Storms,d55f7c054a3698319adf,columnChart,"Column chart: Damaging wind was the largest storm type in 12 of 13 years. NOAA storm county-days in Dominion's Virginia counties by type, 2013 to 2025."

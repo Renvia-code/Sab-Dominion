@@ -1,0 +1,2 @@
+caption: 12 peer utilities: SAIFI vs CAIDI, 2021-2025 averages, excluding major event days
+source: EIA-861 / PUDL; powerbi/Dominion_Reliability_PowerBI_Data.xlsx sheet Peers; D reverify F07-F08

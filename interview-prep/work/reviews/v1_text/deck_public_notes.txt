@@ -1,0 +1,42 @@
+
+===== NOTES 1 =====
+Thank you for having me. I'm Saketh Bollina. To prepare, I rebuilt Dominion Energy Virginia's reported reliability numbers from EIA's public filings, then added NOAA storm records and EIA's hourly demand for context. Everything here is public; I had no Dominion internal data, and I'll say where public data stops. Three findings, then the Power BI report, how it's built, and what I'd do in the first 90 days.
+
+===== NOTES 2 =====
+Dominion's 2025 annual report gives SAIDI, excluding major events, of 133 minutes for the three years ending 2025, up from 130, and says: "This increase is primarily due to increased storm activity." SAIDI is average outage minutes per customer. I rebuilt it from EIA's filings. The public Virginia data reproduces both reported figures to the minute: 130.2 and 133.0, a rise of 2.8 minutes. A three-year average moves when a year leaves the window: 2025, at 144.4 minutes, replaced 2022, at 136.0. Between those two years storm county-days rose 10 percent, 796 against 723, and interruptions per customer, SAIFI, rose 10 percent; minutes per interruption, CAIDI, fell 4 percent. The weather fit in A2 puts 2025 on the storm line, and once storms are counted there's no clear trend. Two cautions: 2025's SAIFI of 1.320 only edges 2018's 1.303, and 2025's SAIDI is still below 2018 and 2019. One year is not a trend.
+
+===== NOTES 3 =====
+Is that unusual? These are twelve large investor-owned utilities in PJM and the Southeast, Dominion and eleven peers, picked by EIA ID before I looked at any results. Across is interruptions per customer per year; up is minutes per interruption; both are 2021 to 2025 averages. Dominion is the blue dot. Its minutes per interruption, 110, are sixth of twelve: mid-pack. Its frequency, 1.21 interruptions a year, is fourth highest, against a median of 0.93 for the eleven peers. One caveat I'd raise myself: utilities set aside major event days in different ways. Most of these peers use the IEEE 1366 method and Dominion reports under its own rule, so the ranking is indicative. The gap to peers is how often customers lose power.
+
+===== NOTES 4 =====
+Weather is the obvious question. I counted storm county-days: each day a line-damaging storm, such as thunderstorm wind, an ice storm or a tropical storm, was recorded in a Virginia county Dominion serves, from NOAA's Storm Events data. 2025 had 796, up from 465 in 2024. Over 2015 to 2024, years with more storm days had more outage minutes: the correlation is 0.70. That's ten points, so I treat it as a check, not a model. The fit, made without 2025, puts 2025 at 145.3 minutes; the actual was 144.4. So 2025 looks like a stormy year more than a break in the trend, which is consistent with the annual report. What this can't say is which circuits or causes; that needs outage records.
+
+===== NOTES 5 =====
+The role's first listed duty is Power BI, so here is the report, page by page: scorecards, what moved, weather, the peer comparison, growth, seasonal demand, and two executive summaries. Each page answers one question. The model is a star: one fact table at utility, state and year, many-to-one to a utility dimension for names and peer groups. Measures are customer-weighted: SAIDI is total customer-minutes over total customers, and the three-year figure averages the three annual values, as Dominion reports it. I built it in DirectQuery against Snowflake during development and switch it to Import for presentation: decision D13.
+
+===== NOTES 6 =====
+Briefly, how it's built. Three public sources: EIA's reliability filings, NOAA Storm Events, and EIA-930 hourly demand. They land in Snowflake as raw text exactly as published, a staging layer types and cleans them, and a mart of facts, dimensions and views feeds Power BI. I built the report in DirectQuery and switch it to Import for presentation, decision D13. Twelve tests run after each load: no duplicate keys, SAIDI equals SAIFI times CAIDI, the 2025 values match what EIA published. All pass. A data dictionary covers every table and column, and the measures are defined in the metrics guide. Decisions are logged, D1–D14; the peer set was chosen by EIA ID before any results. The first check was reconciliation: 130.2 and 133.0 rebuilt against the reported 130 and 133, and test T4 matches Dominion's 2025 values to EIA's published 306.7, 144.4 and 2,675,735 customers. A local script, scripts/run_local_duckdb.py, rebuilds the core mart and runs its checks.
+
+===== NOTES 7 =====
+Public data narrows the question; Dominion's own data answers it. Here are the questions I'd bring in the first 90 days, and what I'd build. First month: learn how outages, meter events and circuits are recorded, then rebuild one year's SAIDI, SAIFI and CAIDI and reconcile them to the filed numbers. Second month: interruptions by circuit and cause code, storm days apart from calm days, and customers interrupted repeatedly. Meters mark when an outage starts and ends, which can be checked against the outage system's times. Third month: a Power BI report that tracks mainfeeder hardening against matched untreated feeders, weather-normalized, in support of the program's own selection rule. I'd check each of these first with the people who own the definitions.
+
+===== NOTES 8 =====
+Three takeaways. One: 2025 was a stormier year, with more storms and more interruptions, and once storms are counted there's no clear underlying trend. Two: frequency is where Dominion differs from its peers, so the useful question is what causes the interruptions, and that needs outage records by cause; the ranks are indicative. Three: I'd report reliability beside county-level storm exposure, so a stormy year isn't read as a trend. On fit: at Mercury Insurance I built a Snowflake pipeline across policy, claims and billing data, over 20 million rows, and led a root-cause analysis on joined data. I've built a tested Snowflake to Power BI pipeline on public reliability data, and I'd like to do this work with your team. Thank you; I'm happy to take questions.
+
+===== NOTES 9 =====
+Definitions for reference. SAIDI equals SAIFI times CAIDI, which is why a change in SAIDI splits exactly into a frequency part and a duration part using logs. The split depends on the base year: from 2022, minutes per interruption fell, so frequency explains more than the whole rise.
+
+===== NOTES 10 =====
+Ten annual points, so the fit is a check, not a forecast. It starts in 2015 because the change to automated outage recording that year shifts the level, decision D6. 2025 was left out of the fit and lands within a minute of it. Once storm days are allowed for, there is no clear trend since 2015.
+
+===== NOTES 11 =====
+EIA's hourly demand for the PJM Dominion zone, which is wider than Dominion's retail territory. From 2019 to 2025 average load at 4 a.m. grew 41 percent, against 27 percent at 4 p.m. Winter set the yearly peak in 2019, 2022 and 2025. The highest hour of the year rose 26 percent and the lowest 52. This data can't identify customers, so I don't attribute the growth to data centers.
+
+===== NOTES 12 =====
+Every source is public and every load is tested. The rows are as loaded; the license and vintage of each file are in the project's sources register.
+
+===== NOTES 13 =====
+These are the limits I'd name before anyone else does. Each one is answered by a kind of internal data, named by type only.
+
+===== NOTES 14 =====
+The full table, sorted by frequency: Dominion is fourth of the twelve. Methods differ, so treat the ranks as indicative.

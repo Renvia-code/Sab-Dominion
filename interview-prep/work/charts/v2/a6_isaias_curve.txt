@@ -1,0 +1,2 @@
+caption: Isaias 2020: share of the outage cleared, (peak - customers out) / (peak - pre-event level), by hours after the peak (EAGLE-I, all utilities in Dominion's 103 counties)
+source: data/output/fct_restoration_curve.csv, outage_events_top10.csv (D findings A2; sql/09)

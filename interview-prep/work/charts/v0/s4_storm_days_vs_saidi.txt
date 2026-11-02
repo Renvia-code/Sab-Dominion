@@ -1,0 +1,2 @@
+caption: Storm county-days vs SAIDI ex-MED, 2015-2024 fit (r=0.696); 2025 out of sample
+source: NOAA Storm Events + EIA-861; data/output/storm_vs_saidi.csv; D reverify F04-F05

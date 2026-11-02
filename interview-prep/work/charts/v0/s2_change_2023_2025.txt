@@ -1,0 +1,2 @@
+caption: Change 2023 to 2025, Dominion Energy Virginia, excluding major event days
+source: EIA-861 2025 final and PUDL; data/output/storm_vs_saidi.csv; D reverify F02

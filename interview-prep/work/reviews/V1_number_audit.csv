@@ -1,0 +1,123 @@
+id,checked_value,method,verdict,note
+C-S2-02,130.223; 133.007,"v1_scripts/a11: mean of annual SAIDI ex-MED, 19876 VA Other std, PUDL 2022-24 + EIA-861 2025",MATCH,
+C-S2-03,136.047; 144.400,"v1_scripts/a11: PUDL 2022 saidi_wo_med; Reliability_2025_States.csv col 20 (Other, VA)",MATCH,
+C-S2-04,1.199; 1.320 (1.3),v1_scripts/a11,MATCH,
+C-S2-05,+10.09%,v1_scripts/a11: 1.320/1.199-1,MATCH,
+C-S2-06,113.47 (reported 113.467); 109.394,v1_scripts/a11: 136.047/1.199; EIA-861 2025 CAIDI,MATCH,
+C-S2-07,-3.59%,v1_scripts/a11,MATCH,
+C-S2-08,+6.14%,v1_scripts/a11,MATCH,
+C-S2-09,2025 1.320 highest of 2013-25; 2018 1.303 second,v1_scripts/a11 rank of SAIFI by year,MATCH,
+C-S2-10,79.2%,v1_scripts/a11: ln(1.320/1.165)/ln(144.4/123.322),MATCH,origin/main docs/05 also prints '79% from frequency'
+C-S2-11,+17.09%; +13.30%; +3.34%,v1_scripts/a11 (2023->2025),MATCH,
+C-S2-12,149.604; 149.874,v1_scripts/a11,MATCH,
+C-S2-13,"p = 0.5445 (SAIFI), 0.7382 (CAIDI), 0.5786 (SAIDI)","v1_scripts/a18: own OLS on year, 2015-2025, n = 11",MATCH,SAIFI p rounds down to 0.54 (0.5445)
+C-S2-16,718; 791,"v1_scripts/a12: own storm county-day count from raw.NOAA_STORM_EVENTS (EIA-861 counties via Census names, NOAA zone lookup, line-risk types, 51515 folded into 51019)",MATCH,own recount reproduces storm_vs_saidi.csv for every year 2013-2025
+C-S2-17,VA only 130.22 / 133.01; VA+NC 129.49 / 132.50,"v1_scripts/a11: customer-weighted VA+NC per year, then 3-yr mean",MATCH,
+C-S2-18,2.784,v1_scripts/a11: 133.007-130.223 = (144.4-136.047)/3,MATCH,
+C-S2-19,117.41 (2017) to 149.87 (2019),v1_scripts/a11: min/max SAIDI ex-MED 2015-2025,MATCH,
+C-S2-16P,723; 796,v1_scripts/a12: own count without the D22 fold; equals git show origin/main:data/output/storm_vs_saidi.csv,MATCH,
+C-S3-01,"1.211, rank 4 of 12; 11-peer median 0.934","v1_scripts/a11 (2021-25 mean of annual SAIFI); a13: origin/main workbook Peers, 11 peers' median 0.934",MATCH,"origin/main docs/05 prints a different median (0.96, 'medians of the twelve peers', i.e. with Dominion): see coverage file"
+C-S3-02,"110.44, rank 6; 11-peer median 99.47",v1_scripts/a11; slide 3 chart viewed (v1_work/s3_adopted.png): median lines at 0.93 and 99.5,MATCH,claims result field's 'chart script median 104.85' is the 12-utility median and is not what the slide shows: stale note
+C-S3-04,all 36 values reproduce (e.g. Duke Carolinas 1.253/139.25/178.99; FPL 0.488/96.04/46.64),"v1_scripts/a11: 2021-25 means of annual SAIFI and CAIDI, 2023-25 mean SAIDI, from raw inputs",MATCH,Duke Energy Florida SAIDI 83.05 printed 83.1 (half-up)
+C-S3-05,"133.007, rank 4",v1_scripts/a11,MATCH,
+C-S3-06,verbatim in docs/04 D10 (local and origin/main),git show origin/main:docs/04_decisions.md; local docs/04,MATCH,
+C-S3-02P,"11-peer median of origin/main caidi_5yr = 99.3 (BGE 99.3, PECO 99.3)","v1_scripts/a13: origin/main powerbi workbook, Peers sheet (excluding Dominion and Appalachian Power)",MATCH,"derived, not printed on origin/main: origin/main docs/05 prints CAIDI median 105 for the twelve incl. Dominion"
+C-S3-04P,all 36 values consistent with origin/main workbook Peers at printed precision,v1_scripts/a13,MATCH,"FPL CAIDI printed 96 = mean of annual values (96.04); workbook caidi_5yr 95.5. Method labels differ: workbook says 'Mixed' for Georgia Power and Duke Energy Florida, deck says 'IEEE 1366'"
+C-S3-07,10 of 12 IEEE every year 2014-25; Dominion and Alabama Power 'Other',v1_scripts/a11: standard per utility-year from raw inputs,MATCH,origin/main docs/06 still says 'Half the peers use a different reporting method' (fixed only in local commit 29b179f)
+C-S3-08,"all-events SAIFI 1.531 rank 6, median of other 11 1.408; SAIDI 2023-25 222.999 rank 9",v1_scripts/a11,MATCH,
+C-S3-09,"Georgia Power and Duke Energy Florida 'Other' in 2013, IEEE 2014-25",v1_scripts/a11,MATCH,
+C-S3-10,12 = 11 named peers + Dominion VA,origin/main docs/04 D10 text; local D10,MATCH,
+C-S4-01,464; 791,v1_scripts/a12,MATCH,
+C-S4-01P,465; 796,v1_scripts/a12 (no D22); origin/main storm_vs_saidi.csv,MATCH,
+C-S4-02,r = 0.6973 (R2 0.4862); public 0.6957,"v1_scripts/a12: own OLS 2015-2024, n = 10",MATCH,
+C-S4-03,145.25 (adopted); 145.27 (public),v1_scripts/a12: 104.2616 + 0.051820 x 791; 104.3732 + 0.051375 x 796,MATCH,
+C-S4-04,104.2616 + 0.051820 x,v1_scripts/a12,MATCH,
+C-S4-05,all 44 cells reproduce exactly,"v1_scripts/a12: fit x storm counts, differences from unrounded values",MATCH,
+C-S4-15,r 0.6973; t 2.752 (8 df); p 0.0250; Fisher-z 95% CI 0.121 to 0.922,v1_scripts/a12,MATCH,
+C-S4-06,"+0.338/yr, 95% CI -1.41 to +2.08, p = 0.672","v1_scripts/a12: OLS on year of weather-adjusted SAIDI (actual - fit + 2015-24 mean), 1-dp series as committed",MATCH,unrounded series gives -1.40 to +2.08
+C-S4-06A,+0.34 (-1.41 to +2.08),v1_scripts/a12,MATCH,
+C-S4-04P,104.3732 + 0.051375 x; R2 0.4840,v1_scripts/a12: OLS on origin/main storm_vs_saidi.csv 2015-2024,MATCH,R2 0.48 is not printed on origin/main (derivable)
+C-S4-05P,"refit on origin/main CSV: 2017 126.0, 2023 124.5, 2024 128.3; other 30 cells equal","v1_scripts/a12 + a13: origin/main workbook StormIndex predicted_saidi_from_weather = 125.94, 124.44, 128.25",ROUNDING,"printed 125.9/124.4/128.2 equal origin/main's workbook (fit on 1-dp SAIDI), not a fit on the cited CSV; 0.1 differences"
+C-S4-23,0.70,"origin/main docs/05 ('Correlation, storm days vs SAIDI ex-MED, 2015 to 2024 | 0.70'); own r 0.6957",MATCH,
+C-S4-19,PI 122.3 to 168.2; CI of line 133.9 to 156.6 (public: 122.2 to 168.3),v1_scripts/a12,MATCH,
+C-S4-08,11.944 (7.9 to 16.9),"v1_scripts/a14: own means of customer-hours/1,000 on complete on-map county-days, own NOAA storm flags (6,530/6,530 agree), own whole-day bootstrap B = 2,000 seed 20261101",MATCH,
+C-S4-09,9.856 (8.6-11.3); 19.867 (11.2-32.5); years 5.888 (2025) to 27.428 (2020),v1_scripts/a14,MATCH,
+C-S4-16,5.9 (2025) to 27.4 (2020); every yearly lower bound > 1,v1_scripts/a14,MATCH,
+C-S4-17,332.795 (225.6-453.4); 27.863 (23.1-33.2),v1_scripts/a14,MATCH,
+C-S4-10,"6,108 complete storm county-days; 99 map counties; 103",v1_scripts/a14,MATCH,
+C-S4-18,"6,530 = 114 off map + 308 failed + 6,108; 96 failed in 2025; 2025 complete share 74.4%",v1_scripts/a14,MATCH,
+C-S4-11,"Prince William 55.39 (225,231 customers); Pittsylvania 632.89 (29,827); 35 counties >= 20,000; 99 of 103","v1_scripts/a14: non-MED customer-hours x 60 / basis per county-year, mean 2015-24 (max diff vs county_outage_map.csv 0.05)",MATCH,
+C-S4-20,31 Dominion-only 159.2 vs 68 shared 211.1,v1_scripts/a14: customer-weighted means of county values,MATCH,"customer-weighted; simple means would be 225.1 vs 361.3; 33 Dominion-only counties in all, 2 off the map"
+C-S4-22,labels 55 / 633; 99 counties; classes are design breaks,v1_scripts/a14,MATCH,
+C-S4-12,33.5 h,"v1_scripts/a15b: own 103-county territory series from raw EAGLE-I with P24 (reading > 2x county customers = NULL), background = median of 24 h before start, D17 3-hour stay rule",MATCH,a naive first crossing gives 33.0 h
+C-S4-21,"351,738",v1_scripts/a15/a15b,MATCH,
+C-A6-01,"all 10 peaks, 1-h held peaks, peak days, types (3/2/5), hours to 90% reproduce; winter 102.8/101.5 vs others 20.0-65.8",v1_scripts/a15b (rules as C-S4-12),MATCH,"Feb 2025 hours to 90% = 20.25 exactly (printed 20.3 half-up). Without the P24 cleaning raw sums give Michael 565,365 and Mar 2018 538,658 (Fairfax city readings)"
+C-S4-13,"+4.56%/yr, p = 0.074, n = 47","v1_scripts/a15: OLS ln(hours_to_90) ~ year + ln(peak held 1 h), territory events >= 50,000",MATCH,"with peak size instead: +4.62%, p = 0.077"
+C-S4-24,"508,000","v1_scripts/a15: raw.DOE417_EVENTS 2020-08-04, 'Virginia:', Severe Weather",MATCH,
+C-A1-01,144.400,1.32 x 109.394,MATCH,
+C-A3-01,306.7; 144.4,"v1_scripts/a11 (EIA-861 2025, Other)",MATCH,
+C-A3-02,52.92%,v1_scripts/a11: 162.3/306.7,MATCH,
+C-A3-03,162.3,v1_scripts/a11,MATCH,
+C-S6-05,2.675735M,"2,675,735 customers x 1 minute",MATCH,
+C-S5-01,HE1-5 +39.0 to +40.9%; HE13-17 +26.9 to +27.4% (HE15 lowest),"v1_scripts/a16: own hourly means by local hour ending, PJM/DOM, raw.EIA930_SUBREGION, >60,000 MW nulled",MATCH,
+C-S5-01P,4 a.m. (HE4) +40.9%; 4 p.m. (HE16) +27.1%,"v1_scripts/a16; origin/main docs/05 '4am +41%, 4pm +27%'",MATCH,
+C-S5-02,"winter > summer peak in 2019, 2022, 2025 (and 2026 to date)",v1_scripts/a16,MATCH,
+C-S5-03,"25,413; 25,384",v1_scripts/a16: to hour ending midnight 29 Oct 2026,MATCH,
+C-S5-04,"max +26.0% (19,803 -> 24,957); min +52.1% (7,167 -> 10,903)",v1_scripts/a16,MATCH,
+C-S5-05,hourly growth within 0.1 pt of the chart snapshot (e.g. HE4 40.9 vs 41.0); seasonal peaks identical,v1_scripts/a16 vs work/charts/v1/s5_*.csv,MATCH,chart itself is an image
+C-S5-06,"47 of the top 50 in 2025 (3 in 2024); rank 50 = 22,953, 51 = 22,941",v1_scripts/a16,MATCH,
+C-S5-07,+65.4% (39.08 -> 64.62 TWh); customers +8.0% all service types (+7.9% bundled only),"v1_scripts/a16: data/input/pudl_sales.csv, 19876 VA commercial",ROUNDING,printed '8%' holds; claims value 7.9 uses bundled-only 2025 customers while sales include delivery-only
+C-S5-08,"11,438 -> 15,235 MW (+33.2%); actual +31.8%","v1_scripts/a16: OLS daily MW ~ year + weekday + HDD + CDD + squares (VA CPC), n = 2,547, R2 0.955",MATCH,spec-sensitive: without squared terms +34.2%
+C-S5-09,last value 2026-10-30 04:00 UTC = hour ending midnight 29 Oct,v1_scripts/a16,MATCH,
+C-S6-01,"99.77% (2,676,116 AMI of 2,682,315 meters)",v1_scripts/a16: data/input/pudl_ami.csv 19876 VA 2025,MATCH,
+C-S7-01,"831,288",v1_scripts/a17: line count of 13 NOAA detail .csv.gz files; raw table count,MATCH,
+C-S7-02,"6,077,232",origin/main docs/01 S8 and docs/02,MATCH,
+C-S7-02A,"6,094,320",v1_scripts/a17: raw.EIA930_SUBREGION count; local docs/01,MATCH,
+C-S7-03,"24,358; 977",v1_scripts/a17: input files and raw tables,MATCH,
+C-S7-04,"11,803",v1_scripts/a17,MATCH,
+C-S7-05,T1-T12 all PASS,v1_scripts/a17: data/output/test_results.csv; origin/main docs/03 T1-T12 observed = expected,MATCH,origin/main docs/06 says T7-T12 must be run separately
+C-S7-05A,31 PASS = T1-T6 reliability mart (04) + T7-T9 NOAA storms (05) + T10-T12 EIA-930 demand (06) + T13-T31,v1_scripts/a17: test_results.csv sql_file column; docs/03,MISMATCH,"counts 31/12/19 right, label wrong: 6 tests are on the reliability mart, not 12; storm and load tests sit in both groups. Correct: '12 on the original build (6 reliability, 3 storm, 3 demand), 19 on the new tables'"
+C-S7-07,"2,675,735",v1_scripts/a11,MATCH,
+C-S7-08,T2 'within 2%',docs/03 T2 (local and origin/main),MATCH,
+C-S7-09,2018-07-01 05:00 UTC to 2026-10-30 04:00 UTC,v1_scripts/a16,MATCH,
+C-S7-10,"19 tests T13-T31, all PASS",v1_scripts/a17,MATCH,
+C-S7-11,"12 rows, all MATCH; own rebuild of rows 1-12 agrees (130.223, 133.007, 2025 and 2024 values, 64,620,793 MWh)","v1_scripts/a11, a16, a17",MATCH,2024 'reported' side (EIA-861 2024 file) is not in the repo; PUDL derives from it
+C-S7-12,"11,608,442 rows; 15-min; customer-hours = sum x 0.25",v1_scripts/a17 count; a14b: raw sum x 0.25 = mart customer-hours on 28/28 sampled county-days,MATCH,
+C-S7-13,"55,524 (from 1851-06-25); 3,702 (2014-2025); 309,504 (2018-01-01 to 2026-10-29)",v1_scripts/a17,MATCH,
+C-S7-06A,D1-D22,local docs/04 headings,MATCH,
+C-S7-06P,D1-D14,git show origin/main:docs/04_decisions.md headings,MATCH,
+C-Q-13,"1.887 matched vs 1.849 diluted; 13,341 customers (Prince George Electric Coop: SAIDI, no SAIFI)",v1_scripts/a18: Virginia co-op group (dim_utility) from the raw 2025 file,MATCH,
+C-Q-15,"D13 'DirectQuery during development, Import for presentation'",origin/main docs/04 D13,MATCH,
+C-S5-10,"18 of 20 model tables via DataFolder (+2 calculated); 11 pages, first Summary, last Data notes; 31 tests; 12 of 12",v1_scripts/a17b + a18: powerbi/Dominion_reliability_review.pbit,MATCH,
+C-S5-11,"cards 2.68M, 144.4, 109.4, 1.320, 53%",viewed work/powerbi/b5/shots_v4/crop_p01.png,MATCH,"same image's chart titles print '+6% since 2019' and '-9% since 2019' (true: 1.244->1.320, 120.48->109.39), no claims row"
+C-S5-12,present verbatim,powerbi/measures.dax (local),MATCH,claims cites deliverables/04_powerbi/measures.dax
+C-S5-13,present verbatim,git show origin/main:powerbi/measures.dax,MATCH,
+C-B-01,"adopted notes 1,005 words = 7.73 min; per slide 35/71/57/64/54/66/56/60 s","v1_scripts/a18: word counts of PPTX notes, slides 1-8, at 130 wpm",MATCH,"public deck notes: 977 words = 7:31; slide 4 0:57, 5 0:46, 6 1:12 vs the brief's 1:05/0:55/1:05"
+C-S1-01,Tuesday 3 November 2026,interview-prep/MASTER_PROMPT.md,MATCH,
+C-S2-01,133 and 130 minutes,v1_sources/annual_report_2025/ar2025.pdf PDF p.20 (printed p.10; folio offset confirmed at PDF p.29 = 19),MATCH,
+C-S2-15,verbatim,ar2025.pdf PDF p.20,MATCH,
+C-S6-02,"verbatim: 'As of November 30, 2023 ... at least 12 months ... 32% reduction in outage minutes'",v1_sources/dominion_grid_resiliency/page.html (R-036),MATCH,
+C-S6-03,verbatim: 'at least 500 customers ... more than 2 minutes ... last 5 years',dominion_grid_resiliency (R-037),MATCH,
+C-S6-04,"4 programs: Mainfeeder Hardening, Voltage Island Mitigation, Voltage Optimization, Intelligent Grid Devices (FLISR); undergrounding out of scope",dominion_grid_resiliency (R-035),MATCH,
+C-R-01,"title '(Richmond, Hybrid)'; 'Hybrid 3-2 ... three days in the office, two days of teleworking'; 'This job has closed'","v1_sources/jobright_posting/posting.html (R-002, R-009, R-008)",MATCH,"aggregator copy, as the register says"
+C-R-02,"'Power BI, SQL, Excel, Snowflake, Power Apps, SharePoint'",jobright posting (R-004),MATCH,
+C-Q-07,'by up to 50 basis points based on factors that may include reliability',ar2025.pdf PDF p.28-29 (printed 18-19),MATCH,
+C-Q-08,'Travel Up to 25%',jobright posting (R-009),MATCH,
+C-Q-09,'cannot transfer or sponsor a work visa ... for this position',jobright posting (R-010),MATCH,
+C-Q-14,"three days in the office, two teleworking",jobright posting (R-009),MATCH,
+C-Q-11,verbatim,v1_sources/wtvr_merger/page.html (R-052),MATCH,
+C-Q-10,"VA final order by 11 Jan 2027, close H2 2027 (Q3 call); SC/NC/FERC/NRC approvals (release); announced 18 May 2026; shareholder approval in September: no source found","v1_sources/fool_q3_2026 (R-049), nextera_release (R-048); virginiabusiness (R-053) HTTP 403",UNVERIFIABLE,one of five parts: 'approved by shareholders in September' (qsheet item 19) rests on dossier D8 'not opened' and is not in the Q3 transcript; every other part matches
+C-S6-06,not checked,stocktitan (R-013) returned HTTP 403,UNVERIFIABLE,UNVERIFIABLE-BLOCKED; not worked around
+C-B-04,"'11 data centers, representing 744 MW capacity, connected at DEV in 2025'; 'over 54 gigawatts ... in various stages of contracting'",ar2025.pdf PDF p.7 (R-040); fool_q3_2026 (R-054),MATCH,
+C-B-03,"17 cited works' authors/years confirmed (Crossref); r = .42, .20, -.11, -.19 in abstracts (OpenAlex); d ~ 0.2 (Bosshard & Gomez abstract)","v1_sources/crossref_*, openalex_*",MATCH,"Powell 2018 r = -.19 register quote only (no abstract retrieved). Value list omits the printed r values and years 2015, 2017, 2018"
+C-S8-01,'(20M+ rows)',"Saketh_Bollina_Resume.pdf, Mercury bullet 1 (local read)",MATCH,
+C-S8-02,"'Led a root cause analysis ... by joining claims, policy, and vendor data'","resume, Mercury bullet 2",MATCH,
+C-S8-04,'establishing metadata and business definitions',"resume, Mercury bullet 6",MATCH,
+C-S8-06,"Data Analyst, Apr 2026 - Present","resume, Professional Experience",MATCH,
+C-Q-01,'3 years of experience',"resume, Summary",MATCH,
+C-Q-02,'cut average settlement time by 17% over two months',"resume, Mercury bullet 2",MATCH,
+C-Q-03,'from 71% to 90%',"resume, Mercury bullet 3",MATCH,
+C-Q-04,'150-question test set',"resume, Mercury bullet 3",MATCH,
+C-Q-05,'9% lift in on-time renewals',"resume, Mercury bullet 4",MATCH,
+C-Q-06,'$690M and 440 investments',"resume, The Life Initiative bullet 1",MATCH,
+C-Q-16,7 + 3 + 19 + 9 = 38 months; earliest role Apr 2022,"resume role dates, inclusive month counts (Apr-Nov 2026 to date; Jul-Sep 2025; Jan 2023-Jul 2024; Apr-Dec 2022)",MATCH,inclusive counting; exclusive gives about 35

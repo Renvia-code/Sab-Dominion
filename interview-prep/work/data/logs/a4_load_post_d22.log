@@ -1,0 +1,30 @@
+## A4 Load shape, seasonal peaks and sales by sector
+
+**Finding.** In the PJM DOM zone, average demand rose 32% from 2019 to 2025, more at night than in the afternoon: the hours ending 1 to 5 a.m. grew 39.0% to 41.0% and the hours ending 1 to 5 p.m. 26.9% to 27.4%. Winter set the year's peak in 2019, 2022 and 2025 (2026 so far: winter 25,413 MW vs summer 25,384 MW). Weather does not explain the growth: holding Virginia's daily heating and cooling degree days and the weekday at their 2019-2025 pattern, average load rose from 11,438 MW (2019) to 15,235 MW (2025), +33%, against +32% unadjusted. Dominion's commercial sales per commercial customer rose from 156 MWh (2013) to 238 MWh (2025); residential use per customer fell slightly. Nothing here identifies which customers drove the growth (decision D14).
+
+    hour_no  avg_mw_2019  avg_mw_2025  growth_pct
+0         1      10273.0      14279.0        39.0
+1         2       9935.0      13932.0        40.2
+2         3       9755.0      13737.0        40.8
+3         4       9708.0      13684.0        41.0
+4         5       9879.0      13833.0        40.0
+5         6      10366.0      14270.0        37.7
+6         7      11089.0      14915.0        34.5
+7         8      11562.0      15362.0        32.9
+8         9      11750.0      15459.0        31.6
+9        10      11860.0      15427.0        30.1
+10       11      12008.0      15462.0        28.8
+11       12      12157.0      15551.0        27.9
+12       13      12300.0      15664.0        27.3
+13       14      12435.0      15795.0        27.0
+14       15      12552.0      15925.0        26.9
+15       16      12697.0      16136.0        27.1
+16       17      12931.0      16478.0        27.4
+17       18      13223.0      16876.0        27.6
+18       19      13260.0      16967.0        28.0
+19       20      13107.0      16875.0        28.7
+20       21      12864.0      16641.0        29.4
+21       22      12354.0      16163.0        30.8
+22       23      11585.0      15469.0        33.5
+23       24      10836.0      14798.0        36.6
+{np.int64(2019): (11687, 11438), np.int64(2020): (11510, 11658), np.int64(2021): (12418, 12397), np.int64(2022): (13118, 13003), np.int64(2023): (13275, 13657), np.int64(2024): (14199, 14225), np.int64(2025): (15404, 15235)} 0.9548409529367623

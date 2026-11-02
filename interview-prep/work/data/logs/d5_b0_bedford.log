@@ -1,0 +1,28 @@
+Python: `scipy.stats.pearsonr` and `linregress` on the 2015-2024 rows; weather-adjusted = actual - predicted + 2015-2024 mean (sql/07).
+
+| Quantity | Committed | 51515 folded into 51019 |
+|---|---:|---:|
+| Storm county-days 2024 -> 2025 (F04) | 465 -> 796 | 464 -> 791 |
+| r, storm county-days vs SAIDI ex-MED (F05) | 0.696 (p = 0.025) | 0.697 (p = 0.025) |
+| Fit slope, min per storm county-day | 0.0514 | 0.0518 |
+| Fit intercept | 104.4 | 104.3 |
+| Predicted 2025 SAIDI ex-MED (actual 144.4) | 145.3 | 145.3 |
+| Weather-adjusted 2025 | 133.1 | 133.1 |
+| Trend of weather-adjusted 2015-2025, min/yr (Q10) | +0.34 (p = 0.67) | +0.34 (p = 0.67) |
+
+Committed outputs that would change with the fix: `mart.STORM_INDEX`, `V_STORM_VS_SAIDI`, `SAIDI_WEATHER_ADJUSTED`, `data/output/storm_index.csv`, `data/output/storm_vs_saidi.csv`, `data/output/saidi_weather_adjusted.csv`, the check comments in sql/05 and sql/07, `scripts/check_output_metrics.py` expectations, and every place that quotes 465, 796, 0.70 or 145.3.
+
+    year  storm_county_days  bedford_city_days  city_days_also_on_county  storm_county_days_folded  difference
+0   2013                376                  2                         2                       374           2
+1   2014                586                  3                         3                       583           3
+2   2015                526                  5                         5                       521           5
+3   2016                597                  3                         3                       594           3
+4   2017                420                  1                         1                       419           1
+5   2018                687                  4                         4                       683           4
+6   2019                851                  3                         3                       848           3
+7   2020                431                  2                         2                       429           2
+8   2021                676                  3                         3                       673           3
+9   2022                723                  5                         5                       718           5
+10  2023                391                  1                         1                       390           1
+11  2024                465                  1                         1                       464           1
+12  2025                796                  5                         5                       791           5

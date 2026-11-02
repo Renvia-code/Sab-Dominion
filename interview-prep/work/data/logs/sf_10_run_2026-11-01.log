@@ -1,0 +1,184 @@
+Sun, Nov  1, 2026  8:36:33 AM
+USE WAREHOUSE SNOWFLAKE_LEARNING_WH;
++----------------------------------+
+| status                           |
+|----------------------------------|
+| Statement executed successfully. |
++----------------------------------+
+CREATE FILE FORMAT IF NOT EXISTS RELIABILITY.RAW.FF_CONTEXT_CSV
+  TYPE = CSV
+  SKIP_HEADER = 1
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  NULL_IF = ('')
+  EMPTY_FIELD_AS_NULL = TRUE;
++-----------------------------------------------------+
+| status                                              |
+|-----------------------------------------------------|
+| FF_CONTEXT_CSV already exists, statement succeeded. |
++-----------------------------------------------------+
+CREATE STAGE IF NOT EXISTS RELIABILITY.RAW.CONTEXT_STAGE FILE_FORMAT = RELIABILITY.RAW.FF_CONTEXT_CSV;
++----------------------------------------------------+
+| status                                             |
+|----------------------------------------------------|
+| CONTEXT_STAGE already exists, statement succeeded. |
++----------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.RAW.CPC_DEGREE_DAYS (
+  region VARCHAR, obs_date VARCHAR, kind VARCHAR, degree_days VARCHAR
+);
++---------------------------------------------+
+| status                                      |
+|---------------------------------------------|
+| Table CPC_DEGREE_DAYS successfully created. |
++---------------------------------------------+
+COPY INTO RELIABILITY.RAW.CPC_DEGREE_DAYS FROM @RELIABILITY.RAW.CONTEXT_STAGE/cpc_degree_days_long.csv;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| file                                   | status | rows_parsed | rows_loaded | error_limit | errors_seen | first_error | first_error_line | first_error_character | first_error_column_name |
+|----------------------------------------+--------+-------------+-------------+-------------+-------------+-------------+------------------+-----------------------+-------------------------|
+| context_stage/cpc_degree_days_long.csv | LOADED | 309504      | 309504      | 1           | 0           | None        | None             | None                  | None                    |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+CREATE OR REPLACE VIEW RELIABILITY.STG.VA_DEGREE_DAYS AS
+SELECT TRY_TO_DATE(obs_date) AS obs_date,
+       MAX(CASE WHEN kind = 'HDD' THEN TRY_TO_NUMBER(degree_days) END) AS hdd,
+       MAX(CASE WHEN kind = 'CDD' THEN TRY_TO_NUMBER(degree_days) END) AS cdd
+FROM RELIABILITY.RAW.CPC_DEGREE_DAYS
+WHERE region = 'VA'
+GROUP BY 1;
++-------------------------------------------+
+| status                                    |
+|-------------------------------------------|
+| View VA_DEGREE_DAYS successfully created. |
++-------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.DOM_LOAD_HOUR_MONTH COPY GRANTS AS
+SELECT YEAR(data_date)            AS year,
+       MONTH(data_date)           AS month,
+       hour_no,
+       ROUND(AVG(demand_mw))      AS avg_mw,
+       MAX(demand_mw)             AS max_mw,
+       COUNT(demand_mw)           AS hours_reported
+FROM RELIABILITY.STG.EIA930_DOM_HOURLY
+WHERE hour_no BETWEEN 1 AND 24
+GROUP BY 1, 2, 3;
++-------------------------------------------------+
+| status                                          |
+|-------------------------------------------------|
+| Table DOM_LOAD_HOUR_MONTH successfully created. |
++-------------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.DOM_SEASONAL_PEAK COPY GRANTS AS
+WITH s AS (
+  SELECT YEAR(data_date) AS year,
+         CASE WHEN MONTH(data_date) IN (12, 1, 2) THEN 'winter'
+              WHEN MONTH(data_date) IN (6, 7, 8)  THEN 'summer' END AS season,
+         data_date, hour_no, demand_mw
+  FROM RELIABILITY.STG.EIA930_DOM_HOURLY
+  WHERE demand_mw IS NOT NULL
+)
+SELECT year, season,
+       MAX(demand_mw)                   AS peak_mw,
+       MAX_BY(data_date, demand_mw)     AS peak_date,
+       MAX_BY(hour_no, demand_mw)       AS peak_hour_no,
+       COUNT(*)                         AS hours_reported
+FROM s
+WHERE season IS NOT NULL
+GROUP BY 1, 2;
++-----------------------------------------------+
+| status                                        |
+|-----------------------------------------------|
+| Table DOM_SEASONAL_PEAK successfully created. |
++-----------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.DOM_LOAD_DAILY COPY GRANTS AS
+SELECT h.data_date,
+       YEAR(h.data_date)                AS year,
+       MONTH(h.data_date)               AS month,
+       DAYOFWEEKISO(h.data_date)        AS iso_weekday,
+       ROUND(AVG(h.demand_mw))          AS avg_mw,
+       MAX(h.demand_mw)                 AS max_mw,
+       MIN(h.demand_mw)                 AS min_mw,
+       COUNT(h.demand_mw)               AS hours_reported,
+       MAX(d.hdd)                       AS hdd,
+       MAX(d.cdd)                       AS cdd
+FROM RELIABILITY.STG.EIA930_DOM_HOURLY h
+LEFT JOIN RELIABILITY.STG.VA_DEGREE_DAYS d ON d.obs_date = h.data_date
+GROUP BY 1, 2, 3, 4;
++--------------------------------------------+
+| status                                     |
+|--------------------------------------------|
+| Table DOM_LOAD_DAILY successfully created. |
++--------------------------------------------+
+CREATE OR REPLACE TABLE RELIABILITY.MART.FCT_SALES_SECTOR COPY GRANTS AS
+SELECT year, customer_class,
+       SUM(sales_mwh)                                  AS sales_mwh,
+       SUM(customers)                                  AS customers,
+       SUM(revenue_usd)                                AS revenue_usd,
+       ROUND(SUM(sales_mwh) / NULLIF(SUM(customers), 0), 1) AS mwh_per_customer,
+       SUM(CASE WHEN service_type = 'delivery' THEN sales_mwh ELSE 0 END) AS delivery_only_mwh
+FROM RELIABILITY.STG.SALES
+WHERE utility_id = 19876 AND state = 'VA'
+GROUP BY 1, 2;
++----------------------------------------------+
+| status                                       |
+|----------------------------------------------|
+| Table FCT_SALES_SECTOR successfully created. |
++----------------------------------------------+
+WITH m AS (SELECT year, month, COUNT(DISTINCT hour_no) AS hours FROM RELIABILITY.MART.DOM_LOAD_HOUR_MONTH GROUP BY 1, 2)
+SELECT * FROM m WHERE hours <> 24
+UNION ALL
+SELECT 0, 0, COUNT(*) FROM m HAVING COUNT(*) <> 100;
+No data
+
+SELECT * FROM RELIABILITY.MART.FCT_SALES_SECTOR
+WHERE year = 2025 AND customer_class = 'commercial' AND sales_mwh <> 60088202 + 4532591;
+No data
+
+SELECT CASE WHEN COUNT(*) = COUNT(hdd) AND COUNT(*) = COUNT(cdd) AND MIN(hdd) >= 0 AND MIN(cdd) >= 0
+             AND MIN(obs_date) = '2018-01-01' AND COUNT(*) = DATEDIFF('day', MIN(obs_date), MAX(obs_date)) + 1
+            THEN 0 ELSE 1 END AS problems
+FROM RELIABILITY.STG.VA_DEGREE_DAYS;
++----------+
+| PROBLEMS |
+|----------|
+| 0        |
++----------+
+SELECT customer_class, year, sales_mwh, customers, mwh_per_customer
+FROM RELIABILITY.MART.FCT_SALES_SECTOR
+WHERE year IN (2013, 2019, 2025) AND customer_class IN ('residential', 'commercial', 'industrial')
+ORDER BY customer_class, year;
++------------------------------------------------------------------+
+| CUSTOMER_CLASS | YEAR | SALES_MWH | CUSTOMERS | MWH_PER_CUSTOMER |
+|----------------+------+-----------+-----------+------------------|
+| commercial     | 2013 | 39078780  | 251209    | 155.6            |
+| commercial     | 2019 | 45129976  | 260250    | 173.4            |
+| commercial     | 2025 | 64620793  | 271320    | 238.2            |
+| industrial     | 2013 | 6393908   | 477       | 13404.4          |
+| industrial     | 2019 | 6559925   | 588       | 11156.3          |
+| industrial     | 2025 | 5501997   | 1009      | 5452.9           |
+| residential    | 2013 | 28802062  | 2105500   | 13.7             |
+| residential    | 2019 | 29829089  | 2245174   | 13.3             |
+| residential    | 2025 | 30005834  | 2408901   | 12.5             |
++------------------------------------------------------------------+
+SELECT year, season, peak_mw, peak_date, peak_hour_no FROM RELIABILITY.MART.DOM_SEASONAL_PEAK ORDER BY year, season;
++-----------------------------------------------------+
+| YEAR | SEASON | PEAK_MW | PEAK_DATE  | PEAK_HOUR_NO |
+|------+--------+---------+------------+--------------|
+| 2018 | summer | 18111   | 2018-07-05 | 14           |
+| 2018 | winter | 16204   | 2018-12-11 | 8            |
+| 2019 | summer | 19478   | 2019-07-20 | 18           |
+| 2019 | winter | 19803   | 2019-01-31 | 8            |
+| 2020 | summer | 20073   | 2020-07-20 | 17           |
+| 2020 | winter | 17468   | 2020-01-22 | 8            |
+| 2021 | summer | 20493   | 2021-08-12 | 18           |
+| 2021 | winter | 17985   | 2021-01-29 | 8            |
+| 2022 | summer | 21274   | 2022-08-09 | 17           |
+| 2022 | winter | 22415   | 2022-12-24 | 8            |
+| 2023 | summer | 22050   | 2023-07-28 | 17           |
+| 2023 | winter | 19635   | 2023-02-04 | 8            |
+| 2024 | summer | 23220   | 2024-07-16 | 18           |
+| 2024 | winter | 22152   | 2024-01-17 | 8            |
+| 2025 | summer | 23905   | 2025-06-24 | 18           |
+| 2025 | winter | 24957   | 2025-01-23 | 8            |
+| 2026 | summer | 25384   | 2026-07-03 | 19           |
+| 2026 | winter | 25413   | 2026-02-09 | 8            |
++-----------------------------------------------------+
+
+real	0m8.485s
+user	0m0.015s
+sys	0m0.000s

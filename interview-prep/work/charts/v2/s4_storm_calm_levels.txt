@@ -1,0 +1,2 @@
+caption: Storm-report vs calm county-days: mean outage customer-hours per 1,000 customers, 2015-2025, with 95% intervals (EAGLE-I, all utilities, 99 counties)
+source: data/output/storm_vs_calm.csv row 1 (D batch 5, commit c0b2ea2; 2,000 resamples of whole days)

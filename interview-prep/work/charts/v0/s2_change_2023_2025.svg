@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="475.2pt" height="255.6pt" viewBox="0 0 475.2 255.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-01T08:08:17.251936</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 255.6 
+L 475.2 255.6 
+L 475.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 24.219871 230.001851 
+L 24.219871 29.184179 
+" clip-path="url(#pc234ec61ff)" style="fill: none; stroke: #b8bcc2; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 24.835421 74.368155 
+L 275.125646 74.368155 
+Q 275.741196 74.368155 275.741196 71.368155 
+L 275.741196 51.54874 
+Q 275.741196 48.54874 275.125646 48.54874 
+L 24.835421 48.54874 
+Q 24.219871 48.54874 24.219871 51.54874 
+L 24.219871 71.368155 
+Q 24.219871 74.368155 24.835421 74.368155 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #1f2a44"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 24.219871 74.368155 
+L 272.741196 74.368155 
+L 272.741196 48.54874 
+L 24.219871 48.54874 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #1f2a44"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="24.219871" y="41.40444" transform="rotate(-0 24.219871 41.40444)">SAIDI</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="72.219871" y="41.068786" transform="rotate(-0 72.219871 41.068786)">outage minutes per customer:  123.3 → 144.4</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 15.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="283.741196" y="65.469678" transform="rotate(-0 283.741196 65.469678)">+17%</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 24.835421 146.088752 
+L 219.394879 146.088752 
+Q 220.010429 146.088752 220.010429 143.088752 
+L 220.010429 123.269337 
+Q 220.010429 120.269337 219.394879 120.269337 
+L 24.835421 120.269337 
+Q 24.219871 120.269337 24.219871 123.269337 
+L 24.219871 143.088752 
+Q 24.219871 146.088752 24.835421 146.088752 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #0a66c2"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 24.219871 146.088752 
+L 217.010429 146.088752 
+L 217.010429 120.269337 
+L 24.219871 120.269337 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #0a66c2"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="24.219871" y="113.125037" transform="rotate(-0 24.219871 113.125037)">SAIFI</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="72.219871" y="112.861101" transform="rotate(-0 72.219871 112.861101)">interruptions per customer (how often):  1.165 → 1.320</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 15.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="228.010429" y="137.190275" transform="rotate(-0 228.010429 137.190275)">+13%</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 24.835421 217.809349 
+L 72.790945 217.809349 
+Q 73.406495 217.809349 73.406495 214.809349 
+L 73.406495 194.989934 
+Q 73.406495 191.989934 72.790945 191.989934 
+L 24.835421 191.989934 
+Q 24.219871 191.989934 24.219871 194.989934 
+L 24.219871 214.809349 
+Q 24.219871 217.809349 24.835421 217.809349 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #b8bcc2"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 24.219871 217.809349 
+L 70.406495 217.809349 
+L 70.406495 191.989934 
+L 24.219871 191.989934 
+z
+" clip-path="url(#pc234ec61ff)" style="fill: #b8bcc2"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="24.219871" y="184.845634" transform="rotate(-0 24.219871 184.845634)">CAIDI</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 13.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #374151" x="72.219871" y="184.50998" transform="rotate(-0 72.219871 184.50998)">minutes per interruption (how long):  105.9 → 109.4</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 15.5px; font-family: 'Segoe UI', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f2a44" x="81.406495" y="208.910872" transform="rotate(-0 81.406495 208.910872)">+3%</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc234ec61ff">
+   <rect x="9.504" y="7.668" width="456.192" height="240.264"/>
+  </clipPath>
+ </defs>
+</svg>

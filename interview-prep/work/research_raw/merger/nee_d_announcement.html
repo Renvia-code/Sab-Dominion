@@ -1,0 +1,555 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- begin spin_special_output(head_start) -->
+<script type="text/javascript" src="js/jquery.js" wd_script_id="jquery.js" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA=="></script>
+<style type="text/css" wd_script_id="search_form_style" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">
+		.wd_search_form .wd_input_datepicker {
+			margin-right: 2px;
+		}
+		.wd_search_type_checkbox {
+			margin-left: 20px;
+		}
+		</style>
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA=="></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA=="></script>
+<script type="text/javascript" wd_script_id="search_form_script" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">
+			function wd_toggle_search_form(link, advanced) {
+				var $ = webDriver.jQuery;
+				var $container = $(link).closest(".wd_search_form_container");
+				var basic_form = $container.find(".wd_search_form_basic");
+				var basic_query = basic_form.find('input[name="query"]');
+				var advanced_form = $container.find(".wd_search_form_advanced");
+				var advanced_query = advanced_form.find('input[name="query"]');
+
+				if (advanced) {
+					advanced_query.val(basic_query.val());
+					advanced_form.show();
+					basic_form.hide();
+				} else {
+					basic_query.val(advanced_query.val());
+					basic_form.show();
+					advanced_form.hide();
+				}
+
+				var target_form = advanced ? advanced_form : basic_form;
+				var focus_target = target_form.find('input[name="query"]').filter(":visible:not(:disabled)").get(0);
+				if (!focus_target)
+					focus_target = target_form.find(":input").filter(":visible:not(:disabled)").get(0);
+				if (focus_target)
+					setTimeout(function() { focus_target.focus(); }, 0);
+			}
+
+			function wd_toggle_search_type_checkboxes(radio) {
+				var $ = webDriver.jQuery;
+				var $radio = $(radio);
+				var all = $radio.val() == "All" ? $radio.is(":checked") : !$radio.is(":checked");
+				var $checkboxes = $radio.closest(".wd_form_field").find(".wd_search_type_checkbox");
+				$checkboxes.find('input[type="checkbox"]').prop("disabled", all);
+				$checkboxes.toggle(!all);
+			}
+
+			webDriver.jQuery(function ($) {
+				$('.wd_search_type_radio input[type="radio"]').each(function() {wd_toggle_search_type_checkboxes(this);});
+			});
+		</script>
+<style type="text/css" wd_script_id="template_list_inline_style" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">
+						ul.wd_layout-inline {
+							display: inline-block;
+							list-style: none;
+							padding: 0;
+							margin: 0;
+						}
+						ul.wd_layout-inline li {
+							display: inline-block;
+							padding: 0;
+							margin: 0 0 0 1em;
+						}
+					</style>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA=="></script>
+<script type="text/javascript" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">webDriver.push_jQuery();</script>
+<script type="text/javascript" wd_script_id="view_printable_script" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">
+	function view_printable() {
+		var loc = window.location;
+		var sep = (loc.search == "") ? "?" : "&";
+		var url = loc.protocol+"//"+loc.host+loc.pathname+loc.search+sep+"printable"+loc.hash;
+		window.open(url, "_blank", "");
+	}
+</script>
+<script type="text/javascript" wd_script_id="format_news_script" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">
+(function($) {
+	webDriver.formatNews = function() {
+		var $news = $(this);
+		var print_url = $news.attr("wd_print_url");
+		$news.find("table").each(function() {
+			var $table = $(this);
+			var $parent = $table.parent();
+			if ($parent.innerWidth() < $table.outerWidth()) {
+				if ($parent.hasClass("wd_news_table")) {
+					$parent.find(".fullscreen-button").show();
+				} else {
+					var $btn = $("<button>View News Release Full Screen</button>")
+						.addClass("fullscreen-button")
+						.on("click", function() {
+							if (print_url)
+								window.open(print_url, "_blank", "");
+							else
+								view_printable();
+						})
+					;
+
+					var $div = $("<div></div>)")
+						.addClass("wd_news_table")
+						.css("overflow-x", "auto")
+						.append($btn)
+					;
+
+					$table.replaceWith($div);
+					$div.append($table);
+				}
+			} else {
+				if ($parent.hasClass("wd_news_table"))
+					$parent.find(".fullscreen-button").hide();
+			}
+		});
+	}
+})(webDriver.jQuery);
+</script>
+<script type="text/javascript" nonce="Y2Q5NWYwM2E3NWU0NzA3MWU4NTQzODQxYzE3YTZlZmU4NGE5MDllZA==">webDriver.pop_jQuery();</script>
+
+<!-- end spin_special_output(head_start) -->
+
+ 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>NextEra Energy and Dominion Energy to Combine, Creating the World's Largest Regulated Electric Utility Business and North America's Premier Energy Infrastructure Platform Benefiting Customers - May 18, 2026</title>
+	
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="twitter:card" content="summary" />
+ <meta name="twitter:title" content="NextEra Energy and Dominion Energy to Combine, Creating the World's Largest Regulated Electric Utility Business and North America's Premier Energy Infrastructure Platform Benefiting Customers" />
+ <meta name="twitter:description" content="Creates the world's largest regulated electric utility business by market capitalization and one of the world's largest energy infrastructure companies with an unmatched operating platform..." />
+ <meta name="twitter:image" content="https://mma.prnewswire.com/media/2804083/NextEra_Energy_Logo.jpg?p=twitter" />
+ <meta property="og:site_name" content="NextEra Energy Newsroom" />
+ <meta property="og:url" content="https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers" />
+ <meta property="og:title" content="NextEra Energy and Dominion Energy to Combine, Creating the World's Largest Regulated Electric Utility Business and North America's Premier Energy Infrastructure Platform Benefiting Customers" />
+ <meta property="og:description" content="Creates the world's largest regulated electric utility business by market capitalization and one of the world's largest energy infrastructure companies with an unmatched operating platform..." />
+ <meta name="image" property="og:image" content="https://mma.prnewswire.com/media/2804083/NextEra_Energy_Logo.jpg?p=facebook" />
+
+	<link rel="icon" type="image/png" sizes="16x16" href="images/faviconV2.png">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+	<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+	<link href="thirdparty/font-awesome/css/all.min.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="thirdparty/font-awesome/v4-shims.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/template.css"> -->
+	<link href="css/client.css" rel="stylesheet">
+
+
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+	<link rel="alternate" href="https://newsroom.nexteraenergy.com/news-releases?pagetemplate=rss" type="application/rss+xml" title="NextEra Energy Newsroom">
+	
+<!-- begin spin_special_output(head_end) -->
+<link rel="canonical" href="https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers" />
+<!-- end spin_special_output(head_end) -->
+</head>
+
+<body class="wd_pageid_20295 wd_item_page wd_item_124116">
+
+<header id="header">
+	<nav class="navbar navbar-expand-md bg-light py-0">
+		<div class="container justify-content-md-end">
+		<a class="navbar-brand" href="https://www.nexteraenergy.com/" tabindex="0"><img class="wd_logo" src="images/nextera_logo.png" alt="NextEra Logo"></a> <a class="wd_home-link" href="https://newsroom.nexteraenergy.com/" tabindex="0"> Newsroom</a>
+		<button class="navbar-toggler align-items-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+<li class="nav-item  active"><a href="https://newsroom.nexteraenergy.com/news-releases" target="_self" class="nav-link " >News Releases</a></li>
+
+
+<li class="nav-item "><a href="https://newsroom.nexteraenergy.com/featured-stories" target="_self" class="nav-link " >Featured Stories</a></li>
+
+
+<li class="nav-item "><a href="https://newsroom.nexteraenergy.com/in-the-news" target="_self" class="nav-link " >In the News</a></li>
+
+
+<li class="nav-item "><a href="https://newsroom.nexteraenergy.com/digital-library" target="_self" class="nav-link " >Digital Library</a></li>
+
+</ul>
+			<div class="wd_search-icon"><a><img src="images/search_dark.svg" alt="Click to open search"></a></div>
+		</div>
+		</div>
+	</nav>
+		<div id="wd_search-container" class="container-fluid wd_gray-background">
+			<div class="container wd_search-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="wd_close"><a><img src="images/close_dark.svg" alt="Click to close search"></a></div>	
+						<div class="wd_search_form_container"><form name="basic_search" method="get" action="https://newsroom.nexteraenergy.com/index.php?s=20322" class="wd_search_form wd_search_form_basic"><input type="hidden" name="s" value="search_results" /><input type="text" name="query" value="" size="32" placeholder="Enter Keyword" title="Enter Keyword" /> <input type="submit" name="submit" value="Search"></form>
+</div>					</div>
+				</div>
+			</div>
+		</div>
+</header>
+
+<main>
+	
+	
+	
+			<section class="container-fluid wd_gray-background wd_detail-header">
+		<div class="container">
+ 			<!-- <div class="row">
+				<div class="col-sm-12 breadcrumb wd_back-to">
+								<a href="https://newsroom.nexteraenergy.com/news-releases" class="nav">< Back to News Releases</a>
+												</div>
+			</div> -->
+			<div class="row">
+				<!-- <div class="col-md-7 wd_detail-wrap"> -->
+				<div class="col-md-12 wd_detail-wrap wd_featured-styling">
+										<h1 id="wd_detail-title" class="page_header"></h1>
+					<div id="wd_sub_heads" class="wd_subheadlines"></div>
+					<div id="wd_detail-date" class="wd_date"></div>
+				</div>
+				<!-- <div class="col-md-5 wd_image-wrap"> -->
+				<div class="col-md-12 wd_image-wrap pb-5 wd_featured-image">
+					<div id="wd_detail-img"></div>
+				</div>
+				<div class="wd_blue-line"></div>
+			</div>
+		</div>
+		<div class="row wd_white-background"></div>
+	</section>
+	<section class="container wd_content-wrapper">
+		<div class="row">
+			<div class="col-md-12 wd_content">
+				<div id="wd_printable_content" class="fr-view">
+<div class="wd_newsfeed_releases-detail">
+<div class="wd_to-move wd_hidden">
+	<div class="wd_title wd_language_left">NextEra Energy and Dominion Energy to Combine, Creating the World's Largest Regulated Electric Utility Business and North America's Premier Energy Infrastructure Platform Benefiting Customers</div>
+	
+	<ul class="wd_layout-inline wd_category_link_list"><li class="wd_category_link"><a href="https://newsroom.nexteraenergy.com/news-releases?category=771">NextEra Energy</a></li></ul>
+	<div class="wd_date">May 18, 2026</div>
+</div>
+<div class="wd_left-column">
+	
+	
+			<div class="wd_captioned_image" style="float: left;  margin: 10px 10px 10px 0px; width: 1440px;">
+				<div class="wd_image"><img src="/image/2026-FPL-Dominion-1440x650-2.png" alt="" border="0"/></div>
+				
+			</div>
+		
+	
+			
+		
+	
+	<style type="text/css">
+
+
+/* Style Definitions */
+span.prnews_span
+{
+font-size:8pt;
+font-family:"Arial";
+color:black;
+}
+a.prnews_a
+{
+color:blue;
+}
+li.prnews_li
+{
+font-size:8pt;
+font-family:"Arial";
+color:black;
+}
+p.prnews_p
+{
+font-size:0.62em;
+font-family:"Arial";
+color:black;
+margin:0in;
+}
+
+
+					span.prnews_span{
+						font-size:inherit;
+						font-family:inherit;
+					}
+					li.prnews_li{
+						font-size: inherit;
+						font-family: inherit;           
+					}
+					p.prnews_p{
+						font-size: inherit;
+						font-family: inherit;           
+					}
+				
+					div.PRN_ImbeddedAssetReference{
+						display: none;
+					}
+					div[id^="prni_dvprne"]{
+						display: none;
+					}
+				</style>
+
+	<div class="wd_body wd_news_body fr-view" wd_resize="formatNews" wd_print_url="https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers?printable=1"><ul type="disc">
+	<li>Creates the world&#39;s&nbsp;largest regulated electric utility&nbsp;business by market capitalization and one of the world&#39;s largest energy infrastructure companies with an unmatched operating platform benefiting customers</li>
+	<li>Combined company&#39;s customers will benefit over time from its enhanced scale in operations, procurement, construction and financing, enabling it to more cost-effectively meet increased electric demand for approximately&nbsp;10 million customer accounts</li>
+	<li>Driving affordability through proposed&nbsp;$2.25 billion in bill credits&nbsp;spread over two years post-close for Dominion Energy&#39;s customers in Virginia, North Carolina and South Carolina and enhanced operating and capital efficiency over the long term</li>
+	<li>Companies to maintain dual headquarters in Florida and Virginia and operational headquarters in South Carolina, while providing robust employee protections and enhanced charitable giving</li>
+	<li>NextEra Energy expected to improve its existing credit rating thresholds, while Dominion Energy and Dominion Energy Virginia expected to benefit from improved ratings and related reductions in financing costs, further helping keep customer bills more affordable</li>
+	<li>All-stock transaction is expected to be tax-free to shareholders and immediately accretive at closing to adjusted earnings per share</li>
+	<li>Combined company operations will be more than 80% regulated with a focus on four of the fastest-growing states in the country, supporting&nbsp;expected 11% annual growth in regulatory capital employed&nbsp;</li>
+	<li>The combined company will benefit from the industry&#39;s most diversified growth platform, driving 9%+ adjusted earnings per share growth expectations through 2032</li>
+</ul>
+
+<p><span class="legendSpanClass">JUNO BEACH, Fla. and RICHMOND, Va.</span>, <span class="legendSpanClass">May 18, 2026</span> /<a href="http://www.prnewswire.com/" target="_blank">PRNewswire</a>/ -- NextEra Energy, Inc. (NYSE: NEE) and Dominion Energy, Inc. (NYSE: D) today announced that they have entered into a definitive agreement to combine in an all-stock transaction.</p>
+
+<div class="PRN_ImbeddedAssetReference" id="DivAssetPlaceHolder1">
+<p><a href="https://mma.prnewswire.com/media/2804083/NextEra_Energy_Logo.html" rel="nofollow" target="_blank"><img alt="NextEra Energy (PRNewsfoto/NextEra Energy)" src="https://mma.prnewswire.com/media/2804083/NextEra_Energy_Logo.jpg" title="NextEra Energy (PRNewsfoto/NextEra Energy)" /> </a></p>
+</div>
+
+<p>Dominion Energy shareholders will receive a fixed exchange ratio of 0.8138 shares of NextEra Energy for each share of Dominion Energy they own at the close of the transaction, resulting in NextEra Energy and Dominion Energy shareholders owning approximately 74.5% and 25.5% of the combined company, respectively.</p>
+
+<p>The combination will create the world&#39;s largest regulated electric utility business, fortified by North America&#39;s premier energy infrastructure platform and developer. The combined company will be more than 80% regulated, serve approximately 10 million utility customer accounts across Florida, Virginia, North Carolina and South Carolina and own 110 gigawatts (GW) of generation across a broad mix of energy sources. The combined company will drive affordability in the long term by leveraging scale and operating and capital efficiencies as the company makes smart investments on behalf of its customers to meet growing power demand. Additionally, the combined company is proposing $2.25 billion in bill credits for Dominion Energy&#39;s customers in Virginia, North Carolina and South Carolina spread over two years post-close.</p>
+
+<p>With growth drivers evenly balanced between regulated and long-term contracted businesses and more than 130 GW of large-load opportunities in its pipeline, the combined company will have a broader opportunity set, more ways to grow and the scale, balance sheet and best-in-class operating, supply chain, construction and technology capabilities to deliver the generation, transmission and grid investments needed to serve customers, support economic growth and cost-effectively meet surging power demand while keeping bills affordable.</p>
+
+<p>The transaction is structured as a 100% stock-for-stock transaction and is expected to be tax-free to shareholders. The combined company will operate under the NextEra Energy name and trade on the New York Stock Exchange under the ticker symbol NEE. It will have a significant local presence, with dual headquarters in Juno Beach, Florida, and Richmond, Virginia, and Dominion Energy South Carolina&#39;s existing operational headquarters in Cayce, South Carolina. Dominion Energy&#39;s utility companies will continue to operate as Dominion Energy Virginia, Dominion Energy North Carolina and Dominion Energy South Carolina. John Ketchum will serve as chairman and chief executive officer (CEO) of the combined company, and Robert Blue will serve as president and CEO of regulated utilities and as a member of the board of directors. Edward Baine will be president and CEO of Dominion Energy Virginia, Keller Kissam will be president and CEO of Dominion Energy South Carolina and Scott Bores will be president and CEO of Florida Power &amp; Light Company.</p>
+
+<p><b>A word from John Ketchum, </b><b>chairman, president</b><b> and CEO of NextEra Energy:</b><br />
+&quot;This is a historic moment for our two companies and for the states we are privileged to serve. Electricity demand is rising faster than it has in decades. Projects are getting larger and more complex. Customers need affordable and reliable power now, not years from now. We are bringing NextEra Energy and Dominion Energy together because scale matters more than ever&mdash; not for the sake of size, but because scale translates into capital and operating efficiencies. It enables us to buy, build, finance and operate more efficiently, which translates into more affordable electricity for our customers in the long run.</p>
+
+<p>&quot;The Dominion Energy name isn&#39;t changing, nor is how we operate locally, serve our customers or engage with the community. The same leaders and the same teams customers know and trust will continue serving Virginia, North Carolina and South Carolina. Both companies put our customers and teams first, as well as the communities we serve.</p>
+
+<p>&quot;By uniting two industry leaders with 238 years of collective experience, this combination creates a stronger company for customers and a stronger long-term value proposition for shareholders. Customers will benefit from $2.25 billion in bill credits and over time from the scale, operating and capital efficiencies this combination unlocks. They will also benefit from the shared expertise and best practices of America&#39;s leading regulated utilities, laser-focused on low customer bills, customer service, storm resiliency and reliability, making the customer experience seamless in the near term and best in class over time. Shareholders will benefit from a broader regulated growth runway, a larger opportunity set and a more diversified platform. This is a unique situation where we believe one plus one equals three. We are confident that our customers, the communities we serve, our shareholders and our industry-leading teams will all benefit from this combination.&quot;</p>
+
+<p><b>A word from Robert Blue, </b><b>chair</b><b>, </b><b>president</b><b> and CEO of Dominion Energy:</b><br />
+&quot;Dominion Energy and NextEra Energy share a deep commitment to delivering reliable and affordable energy and to the customers and communities we are honored to serve. This combination brings together two strong operating platforms and creates an even stronger energy partner for Virginia, North Carolina, South Carolina and Florida, with the scale and balance sheet to deliver the generation, transmission and grid investments our customers and economies need.</p>
+
+<p>&quot;Most importantly, this combination is built around our customers. The bill credits we are committing to, the continued investments in generation, reliability and storm resiliency and our commitments to retain our team and dual headquarters in Juno Beach and Richmond, as well as Dominion Energy South Carolina&#39;s existing operational headquarters in Cayce, reflect the values that have always defined Dominion Energy. We are excited to bring these great companies together and to write the next chapter in every community we serve.&quot;</p>
+
+<p><b>Strategic rationale</b><br />
+The combination brings together two complementary industry-leading companies and four high-quality regulated platforms that have virtually no operational overlap, creating an even stronger customer value proposition, a broader growth platform and a larger, more diversified opportunity set for shareholders.</p>
+
+<ul type="disc">
+	<li><b>America&#39;s leading regulated utility platform.</b>&nbsp;Approximately 10 million utility customer accounts across four high-growth states with constructive regulatory environments and diversified growth coming from every sector</li>
+	<li><b>Combination of best-in-class operations and development capabilities with increased scale creating an unmatched platform to cost-effectively meet the country&#39;s need for power. </b>Scale will enable the combined company to buy, build, finance and operate more efficiently, which translates into real savings for customers over time</li>
+	<li><b>World-class supply chain. </b>Robust and wide-ranging supply chain with unmatched buying power</li>
+	<li><b>Industry leader in data and analytics. </b>Unparalleled data and data analytics capabilities to build the right projects, at the right time, in the right locations using AI to drive efficiencies in development, construction and operations</li>
+	<li><b>Growth anchored by the nation&#39;s largest regulated capital plan.</b>&nbsp;Combined rate base of $138 billion expected to grow at approximately 11% through 2032 by investing smartly and efficiently for the benefit of customers</li>
+	<li><b>Unmatched diversification and leading large-load </b><b>opportunity</b><b>.</b> More than 15 ways to grow, anchored by a more than 130-GW large-load pipeline</li>
+	<li><b>An industry leader in </b><b>nearly every</b><b> category. </b>No. 1 in the world in renewables and battery storage, No. 1 in the U.S. in gas generation, No. 2 in the U.S. in nuclear generation, No. 1 in the U.S. in total generation, generation built, annual CapEx, rate base and market capitalization</li>
+</ul>
+
+<p><b>Commitments to customers, </b><b>communities</b><b> and employees</b></p>
+
+<ul type="disc">
+	<li><b>Offering </b><b>$2.25 billion</b><b> in</b> <b>bill credits</b> for Dominion customers in Virginia, North Carolina and South Carolina spread over two years post-close</li>
+	<li><b>Enhanced charitable giving</b>,&nbsp;including a $10 million increase annually for five years; in addition, continued commitment to low-income customer assistance across Virginia, North Carolina and South Carolina</li>
+	<li><b>Significant local presence and employee continuity</b>,&nbsp;including retaining dual headquarters in Juno Beach and Richmond, as well as Dominion Energy South Carolina&#39;s existing operational headquarters in Cayce, utility names that remain in place and employment commitments to Dominion Energy&#39;s approximately 15,000 current employees, including current compensation and benefits</li>
+	<li><b>Enhanced capability to invest in reliability, </b><b>resiliency</b><b> and storm response</b>&nbsp;by leveraging the combined company&#39;s industry-leading best practices</li>
+	<li><b>Enhanced capability to support local economic growth</b>&nbsp;as the company builds the generation, transmission and grid infrastructure needed to meet demand, power local economies and create jobs by supporting economic development and attracting new investment to the states the combined company will serve</li>
+	<li><b>Large load to pay their fair share</b> for generation through large-load tariffs</li>
+</ul>
+
+<p><b>Shareholder benefits</b></p>
+
+<ul type="disc">
+	<li><b>Expected to be immediately accretive to adjusted earnings per share at closing,</b>&nbsp;with approximately 9%+ adjusted earnings per share growth expected through 2032 and a 9%+ target through 2035, all off NextEra Energy&#39;s 2025 base expectations</li>
+	<li><b>Industry-leading growth expectations supported by highly diversified platform</b> through a broader regulated growth runway, more ways to deploy capital and greater access to large-load and infrastructure opportunities</li>
+	<li><b>Anchored by a more than 80% regulated business mix, with approximately 11% </b><b>regulatory capital employed growth</b> across four fast-growing states with constructive regulatory environments</li>
+	<li><b>Enhanced combined credit profile,</b> resulting in improved credit metric downgrade thresholds at NextEra Energy and upgraded ratings at Dominion Energy and Dominion Energy Virginia, which are expected to lower financing costs over time</li>
+	<li><b>Attractive annual dividend growth policy </b>of 6% through 2028, resulting in an expected dividend payout ratio below 55% by 2030. In addition, Dominion Energy shareholders to continue to receive Dominion&#39;s current quarterly dividend through close plus a one-time cash payment of $360 million at close</li>
+	<li><b>Tax-efficient, all-stock transaction&nbsp;</b>expected to enable Dominion Energy shareholders to participate in the expected upside of the combined company without an immediate tax liability</li>
+</ul>
+
+<p><b>Governance and structure</b><br />
+John Ketchum will serve as chairman and CEO of the combined company. Robert Blue will serve as president and CEO of regulated utilities and as a member of the board of directors. The combined company&#39;s board of directors will include 10 directors from NextEra Energy and four from Dominion Energy, with the composition to be detailed in the joint proxy statement to be filed with the Securities and Exchange Commission. The combined company will operate under the NextEra Energy name and will trade on the New York Stock Exchange under the ticker symbol NEE.</p>
+
+<p><b>Approvals and timeline</b><br />
+The transaction has been unanimously approved by the boards of directors of both companies. The transaction is expected to close in 12 to 18 months, subject to customary closing conditions and approvals by the shareholders of NextEra Energy and Dominion Energy, the expiration or termination of the waiting period under the Hart-Scott-Rodino Antitrust Improvements Act, approval by the Federal Energy Regulatory Commission under Section 203 of the Federal Power Act and approval by the Nuclear Regulatory Commission. The companies will also file for review and approval from the Virginia State Corporation Commission, the North Carolina Utilities Commission and the Public Service Commission of South Carolina.</p>
+
+<p><b>Transaction terms</b><br />
+Under terms of the agreement, Dominion Energy shareholders will receive a fixed exchange ratio of 0.8138 shares of NextEra Energy for each share of Dominion Energy they own at the close of the transaction. In addition, Dominion Energy shareholders will continue to receive Dominion&#39;s current quarterly dividend through closing plus a one-time cash payment of $360 million (which is taxable and is distributed equally across all outstanding Dominion Energy shares) at closing. Thereafter, Dominion Energy will participate in NextEra Energy&#39;s pro forma dividend growth policy. NextEra Energy shareholders will continue to own the same number of shares of the combined company that they hold of NextEra Energy immediately prior to the closing of the transaction. Upon completion of the merger, NextEra Energy shareholders will own approximately 74.5% and Dominion Energy shareholders will own approximately 25.5% of the combined company.</p>
+
+<p><b>Legal and financial advisors</b><br />
+Kirkland &amp; Ellis LLP served as legal counsel, and Lazard acted as lead financial advisor, with BofA and Wells Fargo also serving as financial advisors, to NextEra Energy. McGuire Woods LLP served as legal counsel, and Goldman Sachs &amp; Co. LLC and J.P. Morgan Securities LLC acted as co-financial advisors, to Dominion Energy.</p>
+
+<p><b>Conference call and webcast</b><br />
+NextEra Energy and Dominion Energy will host a joint investor conference call today at 9 a.m. ET to discuss the announcement. Domestic callers should dial 1-800-579-2568. International callers should dial 1-785-424-1222. The passcode for the conference call is 13785. Participants should dial in 10 to 15 minutes before the scheduled start time. Investor presentation materials and a live webcast of the conference call are available at <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=1554708653&amp;u=https%3A%2F%2Fwww.investor.nexteraenergy.com%2Fnews-and-events%2Fevents-and-presentations&amp;a=investor.nexteraenergy.com" rel="nofollow" target="_blank">investor.nexteraenergy.com</a> and <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=2415429653&amp;u=https%3A%2F%2Finvestors.dominionenergy.com%2Fevents-and-presentations%2Fdefault.aspx&amp;a=investors.dominionenergy.com" rel="nofollow" target="_blank">investors.dominionenergy.com</a>. A replay of the conference call will be available beginning at about 12 p.m. ET on May 18 and will stay available until May 25. Domestic callers may access the recording by dialing 1-800-938-2298. International callers should dial 1-402-220-1124. The passcode for the replay is 13785.</p>
+
+<p><b>About NextEra Energy, Inc.</b><br />
+NextEra Energy, Inc. (NYSE: NEE) is the largest electric power and energy infrastructure company in North America and is a leading provider of electricity to American homes and businesses. Headquartered in Juno Beach, Florida, NextEra Energy is a Fortune 200 company that owns Florida Power &amp; Light Company, America&#39;s largest electric utility, which provides reliable electricity to approximately 12 million people across Florida. NextEra Energy also owns the largest energy infrastructure development company in the U.S., NextEra Energy Resources, LLC. NextEra Energy and its affiliated entities are meeting America&#39;s growing energy needs with a diverse mix of energy sources, including natural gas, nuclear, renewable energy and battery storage. For more information about NextEra Energy companies, visit these websites: <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=1765851378&amp;u=http%3A%2F%2Fwww.nexteraenergy.com%2F&amp;a=www.NextEraEnergy.com" rel="nofollow" target="_blank">www.NextEraEnergy.com</a>, <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=3694114760&amp;u=http%3A%2F%2Fwww.fpl.com%2F&amp;a=www.FPL.com" rel="nofollow" target="_blank">www.FPL.com</a>, <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=3353522900&amp;u=http%3A%2F%2Fwww.nexteraenergyresources.com%2F&amp;a=www.NextEraEnergyResources.com" rel="nofollow" target="_blank">www.NextEraEnergyResources.com</a>.</p>
+
+<p><b>About Dominion Energy</b><br />
+Dominion Energy (NYSE: D), headquartered in Richmond, Va., provides regulated electricity service to 3.6 million homes and businesses in Virginia, North Carolina, and South Carolina, and regulated natural gas service to 500,000 customers in South Carolina. The company is one of the nation&#39;s leading developers and operators of regulated offshore wind and solar power and the largest producer of carbon-free electricity in New England. The company&#39;s mission is to provide the reliable, affordable, and increasingly clean energy that powers its customers every day. Please visit <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=3574910782&amp;u=https%3A%2F%2Fwww.dominionenergy.com%2F&amp;a=DominionEnergy.com" rel="nofollow" target="_blank">DominionEnergy.com</a> to learn more.</p>
+
+<p><b>Forward-Looking Statements</b><br />
+This communication includes &quot;forward-looking statements&quot; within the meaning of the safe harbor provisions of the Private Securities Litigation Reform Act of 1995. All statements other than statements of historical fact included or incorporated by reference in this communication, including, among other things, statements regarding the proposed business combination transaction between NextEra Energy, Inc., a Florida Corporation (&quot;NextEra Energy&quot;), and Dominion Energy, Inc., a Virginia Corporation (&quot;Dominion Energy&quot;), and future events, plans and anticipated results of operations, business strategies, the anticipated benefits of the proposed transactions, the anticipated impact of the proposed transactions on the combined company&#39;s business and future financial and operating results, the anticipated closing date for the proposed transactions and other aspects of NextEra Energy&#39;s or Dominion Energy&#39;s operations or operating results are forward-looking statements. Words and phrases such as &quot;ambition,&quot; &quot;anticipate,&quot; &quot;estimate,&quot; &quot;believe,&quot; &quot;budget,&quot; &quot;continue,&quot; &quot;could,&quot; &quot;intend,&quot; &quot;may,&quot; &quot;plan,&quot; &quot;potential,&quot; &quot;predict,&quot; &quot;seek,&quot; &quot;should,&quot; &quot;will,&quot; &quot;would,&quot; &quot;expect,&quot; &quot;objective,&quot; &quot;projection,&quot; &quot;forecast,&quot; &quot;goal,&quot; &quot;guidance,&quot; &quot;outlook,&quot; &quot;effort,&quot; &quot;target,&quot; the negative of such terms or other variations thereof and words and terms of similar substance used in connection with any discussion of future plans, actions or events can be used to identify forward-looking statements. Where, in any forward-looking statement, NextEra Energy or Dominion Energy expresses an expectation or belief as to future results, such expectation or belief is expressed in good faith and believed to be reasonable at the time such forward-looking statement is made. Any forward-looking statement is not a guarantee of future performance, outcomes or results and is subject to numerous risks, uncertainties and other factors, many of which are beyond NextEra Energy&#39;s or Dominion Energy&#39;s control, that could cause actual performance, outcomes or results to differ materially from what is expressed or implied in the forward-looking statement.</p>
+
+<p>These factors include a failure by NextEra Energy to successfully integrate Dominion Energy&#39;s businesses and technologies, which may result in the combined company not operating as effectively and efficiently as expected; the risk that the expected benefits of the proposed transactions may not be fully realized or may take longer to realize than expected; each party&#39;s ability to obtain the approval of its shareholders required to consummate the proposed transactions and the timing of the closing of the proposed transactions, including the risk that the conditions to closing are not satisfied on a timely basis or at all or the failure of the transactions to close for any other reason or to close on the anticipated terms, including with the anticipated tax treatment; the risk that any governmental or regulatory approval, consent or authorization that may be required for the proposed transactions is not obtained, is delayed or is obtained subject to conditions that are not anticipated or that cause the termination of the merger agreement and abandonment of the transactions; the occurrence of any event, change or other circumstance that could give rise to the termination of the merger agreement by either party; the risk that certain provisions in the merger agreement or the pendency of the transactions may impact either party&#39;s ability to pursue certain business opportunities or strategic transactions; unanticipated difficulties, liabilities or expenditures relating to the transactions, including the impact of potential litigation relating to the transactions; the effect of the announcement, pendency or completion of the proposed transactions on the parties&#39; business relationships and business operations generally, including the parties&#39; relationship with regulators, suppliers, vendors and customers; the effect of the announcement or pendency of the proposed transactions on the parties&#39; common stock prices and uncertainty as to the long-term value of either party&#39;s common stock; risks that the proposed transactions disrupt either party&#39;s current plans and operations, including due to the diversion of the attention of management from ordinary course business operations, and potential difficulties in hiring or retaining employees as a result of the proposed transactions; any rating agency actions; and the impact of the announcement or pendency of the proposed transactions on either party&#39;s ability to access capital, including the short- and long-term debt markets, on a timely and affordable basis; general worldwide economic conditions and related uncertainties; the effect and timing of changes in laws or in governmental regulations (including environmental); fluctuations in trading prices of securities of NextEra Energy and in the financial results of NextEra Energy or Dominion Energy; and the timing and extent of changes in interest rates, commodity prices and demand and market prices for electricity or gas. The registration statement on Form S-4 and joint proxy statement/prospectus that will be filed with the Securities and Exchange Commission (&quot;SEC&quot;) will describe additional risks in connection with the proposed transactions. While the list of factors presented here is, and the list of factors to be presented in the registration statement on Form S-4 and joint proxy statement/prospectus are considered representative, no such list should be considered to be a complete statement of all potential risks and uncertainties. For additional information about other factors that could cause actual results to differ materially from those described in the forward-looking statements, please refer to NextEra Energy&#39;s and Dominion Energy&#39;s respective periodic reports and other filings with the SEC, including the risk factors contained in NextEra Energy&#39;s and Dominion Energy&#39;s most recently filed Annual Reports on Form 10-K and subsequently filed Quarterly Reports on Form 10-Q.</p>
+
+<p>Any forward-looking statements included in this communication represent current expectations and are inherently uncertain and are made only as of the date hereof (or, if applicable, the dates indicated in such statement). Except as required by law, neither NextEra Energy nor Dominion Energy undertakes or assumes any obligation to update any forward-looking statements, whether as a result of new information or to reflect subsequent events or circumstances or otherwise.</p>
+
+<p><b>No Offer or Solicitation</b><br />
+This communication is not intended to and shall not constitute an offer to buy or sell or the solicitation of an offer to buy or sell any securities, or a solicitation of any vote or approval, nor shall there be any sale, issuance or transfer of securities in any jurisdiction in which such offer, solicitation or sale would be unlawful prior to registration or qualification under the securities laws of any such jurisdiction. No offering of securities shall be made, except by means of a prospectus meeting the requirements of Section 10 of the Securities Act of 1933, as amended.</p>
+
+<p><b>Additional Information about the Transactions and Where to Find It</b><br />
+In connection with the proposed transactions, NextEra Energy intends to file with the SEC a registration statement on Form S-4 that will include a joint proxy statement of NextEra Energy and Dominion Energy that also constitutes a prospectus of NextEra Energy. Each of NextEra Energy and Dominion Energy may also file other relevant documents with the SEC regarding the proposed transactions. This communication is not a substitute for the joint proxy statement/prospectus or registration statement or any other document that NextEra Energy or Dominion Energy may file with the SEC. The definitive joint proxy statement/prospectus (if and when available) will be mailed to shareholders of NextEra Energy and Dominion Energy. INVESTORS AND SECURITY HOLDERS ARE URGED TO READ THE REGISTRATION STATEMENT, JOINT PROXY STATEMENT/PROSPECTUS, AND ANY OTHER RELEVANT DOCUMENTS THAT MAY BE FILED WITH THE SEC, AS WELL AS ANY AMENDMENTS OR SUPPLEMENTS TO THOSE DOCUMENTS, CAREFULLY AND IN THEIR ENTIRETY IF AND WHEN THEY BECOME AVAILABLE BECAUSE THEY CONTAIN OR WILL CONTAIN IMPORTANT INFORMATION ABOUT NEXTERA ENERGY, DOMINION ENERGY, THE PROPOSED TRANSACTIONS AND RELATED MATTERS.<br />
+Investors and security holders will be able to obtain free copies of the registration statement and the joint proxy statement/prospectus (if and when available) and other documents containing important information about NextEra Energy, Dominion Energy and the proposed transactions, once such documents are filed with the SEC through the website maintained by the SEC at <a aria-invalid="true" href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=2194352268&amp;u=http%3A%2F%2Fwww.sec.gov%2F&amp;a=www.sec.gov" rel="nofollow" target="_blank">www.sec.gov</a>. Copies of the documents filed with the SEC by NextEra Energy will be available free of charge on NextEra Energy&#39;s website at <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=3359713748&amp;u=http%3A%2F%2Fwww.investor.nexteraenergy.com%2F&amp;a=http%3A%2F%2Fwww.investor.nexteraenergy.com%2F" rel="nofollow" target="_blank">http://www.investor.nexteraenergy.com/</a> or by contacting NextEra Energy&#39;s Investor Relations Department by email at <a href="mailto:investors@nexteraenergy.com" rel="nofollow" target="_blank">investors@nexteraenergy.com</a> or by phone at (800) 222-4511. Copies of the documents filed with the SEC by Dominion Energy will be available free of charge on Dominion Energy&#39;s website at <a href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=968472026&amp;u=http%3A%2F%2Finvestors.dominionenergy.com%2F&amp;a=http%3A%2F%2Finvestors.dominionenergy.com" rel="nofollow" target="_blank">http://investors.dominionenergy.com</a> or by contacting Dominion Energy&#39;s Investor Relations Department by email at <a href="mailto:investor.relations@dominionenergy.com" rel="nofollow" target="_blank">investor.relations@dominionenergy.com</a> or by phone at (804) 819-2438.</p>
+
+<p><b>Participants in the Solicitation</b><br />
+NextEra Energy, Dominion Energy and certain of their respective directors and executive officers may be deemed to be participants in the solicitation of proxies in respect of the proposed transactions. Information about the directors and executive officers of NextEra Energy, including a description of their direct or indirect interests, by security holdings or otherwise, is set forth in (i) NextEra Energy&#39;s proxy statement for its 2026 annual meeting of shareholders, which was filed with the SEC on April 1, 2026, including under the headings &quot;Proposal 1: Election as directors of the nominees specified in this proxy statement,&quot; &quot;Director Compensation,&quot; &quot;Executive Compensation,&quot; and &quot;Common Stock Ownership of Certain Beneficial Owners and Management&quot; (ii) NextEra Energy&#39;s Annual Report on Form 10-K for the fiscal year ended December 31, 2025, which was filed with the SEC on February 13, 2026, including under the heading &quot;Item 1. Business&mdash;Information About Our Executive Officers&quot; and (iii) to the extent certain holdings of NextEra Energy securities by its directors or executive officers have changed since the amounts set forth in NextEra Energy&#39;s proxy statement for its 2026 annual meeting of shareholders, such changes have been or will be reflected on Initial Statement of Beneficial Ownership of Securities on Form 3, Statement of Changes in Beneficial Ownership on Form 4, or Annual Statement of Changes in Beneficial Ownership of Securities on Form 5, filed with the SEC.</p>
+
+<p>Information about the directors and executive officers of Dominion Energy, including a description of their direct or indirect interests, by security holdings or otherwise, is set forth in (i) Dominion Energy&#39;s proxy statement for its 2026 annual meeting of shareholders, which was filed with the SEC on March 19, 2026, including under the headings &quot;Item 1: Election of Directors &ndash; Director Nominees,&quot; &quot;Compensation of Non-Employee Directors,&quot; &quot;Executive Compensation&quot; and &quot;Security Ownership of Certain Beneficial Owners and Management,&quot; (ii) Dominion Energy&#39;s Annual Report on Form 10-K for the fiscal year ended December 31, 2025, which was filed with the SEC on February 23, 2026, including under the heading &quot;Information about our Executive Officers,&quot; and (iii) to the extent certain holdings of Dominion Energy securities by its directors or executive officers have changed since the amounts set forth in Dominion Energy&#39;s proxy statement for its 2026 annual meeting of shareholders, such changes have been or will be reflected on Initial Statement of Beneficial Ownership of Securities on Form 3, Statement of Changes in Beneficial Ownership on Form 4 or Annual Statement of Changes in Beneficial Ownership of Securities on Form 5, filed with the SEC.</p>
+
+<p>Other information regarding the participants in the proxy solicitations and a description of their direct and indirect interests, by security holdings or otherwise, will be contained in the definitive joint proxy statement/prospectus and other relevant materials to be filed with the SEC regarding the proposed transactions when such materials become available. Investors should read the joint proxy statement/prospectus carefully when it becomes available before making any voting or investment decisions. Copies of the documents filed with the SEC by NextEra Energy and Dominion Energy will be available free of charge through the website maintained by the SEC at <a aria-invalid="true" href="https://edge.prnewswire.com/c/link/?t=0&amp;l=en&amp;o=4690549-1&amp;h=2194352268&amp;u=http%3A%2F%2Fwww.sec.gov%2F&amp;a=www.sec.gov" rel="nofollow" target="_blank">www.sec.gov</a>. Additionally, copies of documents filed with the SEC by NextEra Energy and Dominion Energy will be available free of charge through the sources indicated above.</p>
+
+<p>&nbsp;</p>
+
+<div class="PRN_ImbeddedAssetReference" id="DivAssetPlaceHolder2">
+<p><a href="https://mma.prnewswire.com/media/2981790/Dominion_Energy_Logo.html" rel="nofollow" target="_blank"><img alt="Dominion Energy" src="https://mma.prnewswire.com/media/2981790/Dominion_Energy_Logo.jpg" title="Dominion Energy" /> </a></p>
+</div>
+
+<p>SOURCE NextEra Energy, Inc. and Dominion Energy, Inc.</p>
+</div>
+	
+	<div class="wd_contact">For further information: Media and Investor Contacts: NextEra Energy media contact: (561) 694-4442, media.relations@nexteraenergy.com; NextEra Energy investor relations contact: Mark Eidelman, (561) 694-4697, investors@nexteraenergy.com; Dominion Energy media contact: Ryan Frazier, (804) 836-2083, C.Ryan.Frazier@dominionenergy.com; Dominion Energy investor relations contact: David McFarland, (804) 819-2438, David.M.McFarland@dominionenergy.com</div>
+	
+	
+</div>
+
+<div class="wd_right-column">
+
+ 
+				
+			
+<div class="wd_related-featurebox">&nbsp;</div>
+</div>
+
+
+<!-- ITEMDATE: 2026-05-18 07:30:00 EDT -->
+
+</div>
+</div>			</div>
+		</div>
+	</section>
+	
+	
+	
+	
+	
+	</main>
+
+<footer>
+	<div class="container-fluid copyright">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<ul class="socialbar">
+					<li><a href="https://www.facebook.com/nexteraenergy/" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+					<li><a href="https://twitter.com/nexteraenergy" target="_blank"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UCbM4Y9uPpWcrSS9AiqWTbZA" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+					<li><a href="https://www.linkedin.com/company/nextera-energy-inc/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+				</ul>
+				<ul class="social-links text-center">
+					<li><a href="https://www.nexteraenergy.com/company.html" target="_blank">Our Company</a></li>
+					<li><a href="https://www.nexteraenergy.com/legal-notice.html" target="_blank">Terms &amp; Conditions</a></li>
+					<li><a href="https://www.nexteraenergy.com/privacy-policy.html" target="_blank">Privacy Policy</a></li>
+					<li><a href="https://www.nexteraenergy.com/safety-policy.html" target="_blank">Safety Policy</a></li>
+				</ul>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 text-center">
+				<p class="wd_small">Copyright © 2026 NextEra Energy, Inc. All rights reserved.</p>
+				<!-- <p class="wd_bbb"><a href="http://www.bbb.org/south-east-florida/business-reviews/electric-companies/florida-power-and-light-company-in-miami-fl-4917#sealclick" target="_blank"><img src="images/logo-bbb-accredited.svg" alt="better business bureau logo"></a></p> -->
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div> 
+</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		//Latest JS needs to be scoped appropriately  
+		var $j11 = jQuery.noConflict();
+		console.log("Version: "+$j11.fn.jquery);
+	</script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script type="text/javascript">
+        $j11(document).on('ready', function () {
+			$j11(".slick-carousel").slick({
+				infinite: true,
+				arrows: true,
+				prevArrow: '<button type="button" class="slick-prev"></button>',
+				nextArrow: '<button type="button" class="slick-next"></button>',
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				responsive: [{
+					breakpoint: 960,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2,
+						infinite: true
+					}
+				}]
+			});
+        });
+  	</script>
+
+	<script src="js/wd_scripts.js"></script>
+
+
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 4, "News Release Feed ID", "202605180730PR_NEWS_USPR_____FL61555", "page"]);
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "News Releases Feed", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "News Releases", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 6854]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=6854&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5375cce0ed43ef6',t:'MTc5MzQ5OTAyMA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5375cce0ed43ef6',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

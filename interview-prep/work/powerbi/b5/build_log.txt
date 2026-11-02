@@ -1,0 +1,58 @@
+F4 removed slicer 56198e8c521b4d60a663
+F6/renames eb9e34101c7ddbafa3ba: {'Sum(FCT_RELIABILITY.SAIFI_EX_MED)': 'FCT_RELIABILITY.SAIFI ex MED', 'CountNonNull(FCT_RELIABILITY.Outages/Customer)': 'FCT_RELIABILITY.SAIFI ex MED'}
+F6/renames 0cdbc9919c3afef37960: {'Sum(SAIDI_WEATHER_ADJUSTED.SAIDI_EX_MED)': 'SAIDI_WEATHER_ADJUSTED.Actual SAIDI', 'Sum(SAIDI_WEATHER_ADJUSTED.WEATHER_ADJUSTED_SAIDI)': 'SAIDI_WEATHER_ADJUSTED.Weather-adjusted SAIDI'}
+F6/renames cd3dca34756db97f5ed6: {'Sum(V_STORM_VS_SAIDI.STORM_COUNTY_DAYS)': 'V_STORM_VS_SAIDI.Storm county-days', 'Sum(V_STORM_VS_SAIDI.SAIDI_EX_MED)': 'V_STORM_VS_SAIDI.SAIDI ex MED (weather table)'}
+F6/renames d2efd4d136e889ee2b0e: {'FCT_RELIABILITY.Storm SAIDI': 'FCT_RELIABILITY.Major-event-day SAIDI'}
+F6/renames abfe0d2588105da0a784: {'FCT_RELIABILITY.SAIDI change': 'FCT_RELIABILITY.SAIDI change %'}
+F6/renames 3e0ddca78b79485a3fea: {'Sum(LoadGrowth.commercial_sales_index)': 'LoadGrowth.Commercial sales index', 'Sum(LoadGrowth.commercial_customers_index)': 'LoadGrowth.Commercial customers index', 'Sum(LoadGrowth.residential_sales_index)': 'LoadGrowth.Residential sales index'}
+F6/renames 7b0e71f981e225998e87: {'Sum(DOM_LOAD_PROFILE.GROWTH_PCT)': 'DOM_LOAD_PROFILE.Hour growth %'}
+F6/renames 268053916982bec30f81: {'FCT_RELIABILITY.Storm share 2025': 'FCT_RELIABILITY.Major-event-day share'}
+F6/renames 4815afead0c6a4a7ca4b: {'Sum(FCT_RELIABILITY.Customers Served)': 'FCT_RELIABILITY.Total Customers', 'Sum(FCT_RELIABILITY.CUSTOMERS)': 'FCT_RELIABILITY.Total Customers'}
+F6/renames 71ceb4a586c3d3d3acb9: {'Sum(DOM_LOAD_PROFILE.GROWTH_PCT)': 'DOM_LOAD_PROFILE.Hour growth %'}
+F6/renames f3f57290918057748a49: {'Sum(LoadGrowth.commercial_sales_index)': 'LoadGrowth.Commercial sales index', 'Sum(LoadGrowth.commercial_customers_index)': 'LoadGrowth.Commercial customers index', 'Sum(LoadGrowth.residential_sales_index)': 'LoadGrowth.Residential sales index'}
+F6/renames 1bc8e4107099744b0737: {'Sum(SAIDI_WEATHER_ADJUSTED.SAIDI_EX_MED)': 'SAIDI_WEATHER_ADJUSTED.Actual SAIDI', 'Sum(SAIDI_WEATHER_ADJUSTED.WEATHER_ADJUSTED_SAIDI)': 'SAIDI_WEATHER_ADJUSTED.Weather-adjusted SAIDI'}
+F6/renames 60c7e3f0b4bead9c30cb: {'AmiEventStudy.Selected Major Event Share': '_Measures.Selected major-event-day share'}
+F6/renames 7f06e22e345306270702: {'AmiEventStudy.Selected Customers': '_Measures.Selected Customers'}
+F6/renames 826577f03738cae22210: {'Sum(V_STORM_VS_SAIDI.STORM_COUNTY_DAYS)': 'V_STORM_VS_SAIDI.Storm county-days', 'Sum(V_STORM_VS_SAIDI.SAIDI_EX_MED)': 'V_STORM_VS_SAIDI.SAIDI ex MED (weather table)'}
+F6/renames 85c7fe070bb08b249a19: {'AmiEventStudy.Selected SAIDI': '_Measures.Selected SAIDI'}
+F6/renames f34f7fc4d6b95e25b282: {'AmiEventStudy.Selected SAIFI': '_Measures.Selected SAIFI'}
+F6/renames f37647b5550328452389: {'AmiEventStudy.Selected CAIDI': '_Measures.Selected CAIDI'}
+F2 ed03849209beb1288bb0: 'Electricity Demand & Grid Planning' -> 'Reliability performance and weather'
+F2 0fb6bdf75ea43a197450: 'Reliability Performance & Drivers' -> 'Electricity demand and grid planning'
+F3 3e0ddca78b79485a3fea: 'Commercial sales up 65% since 2013 on 8% more customers. That gap is data centres' -> 'Commercial sales up 65% since 2013 on 8% more customers, consistent with large round-the-clock loads'
+F3 f3f57290918057748a49: 'Commercial sales up 65% since 2013 on 8% more customers. That gap is data centres' -> 'Commercial sales up 65% since 2013 on 8% more customers, consistent with large round-the-clock loads'
+F3 0cdbc9919c3afef37960: 'Remove the weather and the underlying number has not moved since 2015' -> 'Adjusted for storm days (a model estimate), SAIDI shows no clear trend since 2015'
+F3 1bc8e4107099744b0737: 'Remove the weather and the underlying number has not moved since 2015' -> 'Adjusted for storm days (a model estimate), SAIDI shows no clear trend since 2015'
+F3 cd3dca34756db97f5ed6: 'More storm days, more outage minutes. 2025 sits where its weather predicts' -> 'Years with more storm days had more outage minutes'
+F3 826577f03738cae22210: 'More storm days, more outage minutes. 2025 sits where its weather predicts' -> 'Years with more storm days had more outage minutes'
+F3 d2efd4d136e889ee2b0e: 'Major storms are half of all outage minutes in 2025, and the whole of the bad years' -> 'Major event days are about half of all-event outage minutes in 2025'
+F3 dcda2b950535cd9fed73: 'Same storms, different outcome: co-op outage frequency up 37% since 2015, Dominion up 14%' -> 'Since 2015, Virginia co-op outage frequency rose 37% and Dominion's 14%'
+F3 e1c9d78e2ce3b1f88809: 'Winter peak now matches summer: higher in 2022, 2025 and 2026' -> 'Winter set the year's peak in 2019, 2022 and 2025; 2026 is a near-tie so far'
+F3 10a79b0633cd9c8e9009: 'Winter peak now matches summer: higher in 2022, 2025 and 2026' -> 'Winter set the year's peak in 2019, 2022 and 2025; 2026 is a near-tie so far'
+F3 7b0e71f981e225998e87: 'Load growth 2019 to 2025 by hour of day: night +41%, afternoon +27%' -> 'Load growth 2019 to 2025: +39% to +41% in the hours ending 1 to 5 a.m., about +27% in the hours ending 1 to 5 p.m.'
+F3 71ceb4a586c3d3d3acb9: 'Load growth 2019 to 2025 by hour of day: night +41%, afternoon +27%' -> 'Load growth 2019 to 2025: +39% to +41% in the hours ending 1 to 5 a.m., about +27% in the hours ending 1 to 5 p.m.'
+F3 5aedb895e782649461c9: 'Minutes to restore each outage down 9% since 2019' -> 'Minutes per interruption down 9% since 2019'
+F3 a56e85d260bd5432b881: 'Minutes to restore each outage down 9% since 2019' -> 'Minutes per interruption down 9% since 2019'
+F3 99301c6283764dcfd28f: 'Restoration time is mid-pack. Outage frequency is the gap' -> 'Mid-pack on minutes per interruption; outage frequency is the gap'
+F3 1b2743b4ff761d5db85f: 'The meters are installed. Almost nobody is on a rate that uses them' -> 'Dominion: smart meters are 99.8% of meters; about 1% of customers are on a time-varying rate'
+F3 1d92052046d0a3c7b466: 'The meters are installed. Almost nobody is on a rate that uses them' -> 'Dominion: smart meters are 99.8% of meters; about 1% of customers are on a time-varying rate'
+F5 3e0ddca78b79485a3fea: axis title -> Index, 2013 = 100
+F5 f3f57290918057748a49: axis title -> Index, 2013 = 100
+scatter cd3dca34756db97f5ed6: visual filter YEAR 2015-2024; trend line = 104.3 + 0.0518 x days, r = 0.697
+scatter 826577f03738cae22210: visual filter YEAR 2015-2024; trend line = 104.3 + 0.0518 x days, r = 0.697
+axis eb9e34101c7ddbafa3ba: Categorical -> Scalar (2015 and 2020 lines now drawn)
+axis 8cf55a203d9c93e66b58: Categorical -> Scalar (2015 and 2020 lines now drawn)
+label a56e85d260bd5432b881: 2015 line named as on the SAIFI chart
+label 5aedb895e782649461c9: 2015 line named as on the SAIFI chart
+peer quadrant: median lines over 11 peers, SAIFI 0.934, CAIDI 99.5
+layout eb9e34101c7ddbafa3ba: x 11, y 8, 1898 x 520
+layout a56e85d260bd5432b881: x 11, y 548, 1898 x 520
+F10 page e6f27ff89680632d5471: 'Executive Dashboard-1' -> 'Summary'
+F4 Summary page filter: DIM_UTILITY[PEER_GROUP] = Dominion Energy Virginia
+F10 page 61745dccdb7948ee4977: 'Scorecards' -> 'Scorecard'
+F10 page 2414a423c3820b09c17c: 'What Moved' -> 'What moved'
+F10 page 241c63d8c7e81067e9cc: 'Weather' -> 'Weather'
+F10 page 39dca24cb135da967227: 'Peer Comparision' -> 'Fair comparison'
+F10 page 4348e5cd66c9b48126f0: 'Growth' -> 'Growth'
+F10 page e8d8451399dc68c3ece6: 'Seasonal' -> 'Demand and seasons'
+F10 page ca36f3cced18c2313453: 'Executive Dashboard-2' -> 'Demand summary'

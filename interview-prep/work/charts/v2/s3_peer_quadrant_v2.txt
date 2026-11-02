@@ -1,0 +1,2 @@
+caption: Dominion Energy Virginia and 11 peers: SAIFI vs CAIDI, 2021-2025 averages, ex-MED; medians of the 11 peers
+source: EIA-861 / PUDL; powerbi/Dominion_Reliability_PowerBI_Data.xlsx sheet Peers (D F07-F08)

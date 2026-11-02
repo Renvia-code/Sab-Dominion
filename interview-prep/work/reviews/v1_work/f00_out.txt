@@ -1,0 +1,430 @@
+e76e0815905253e4650295903e8963cd8a94ca65bec64d1dcca37a38d86e7add *claims.csv
+24f66ebf3e6f20ef0335c40f96300a70503632d0b23cd156d223713d5a1f3297 *research\claims_register.csv
+de5eed23abcc339389a3eaf67b7aed7ce33e12bfd430b5a98db1bb2a8b662d09 *work\v6_inputs\R_company_glossary.md
+3cbb3af046cb8fbc23afd41a729bd60782c65eb8560023f2d5956f013feffbd4 *work\v6_inputs\D_facts.md
+ce93d91ebd7a1220c6b3c725d8939a14c8bfbdfa3af19f3c05f9f279323febad *deliverables\03_interview_brief\Dominion_interview_brief.pdf
+54fefec05c6e17ef6d6c5a1a73604cf4acdabb792a4c2fd48a65332ff9dd2f3c *deliverables\03_interview_brief\Dominion_interview_brief.html
+195d12b6e41f006213ae46c9ca423a3c4304e6a8aed84496aca5b33396cddb8a *deliverables\02_question_sheet\Dominion_question_sheet.pdf
+0ba0fa38a7f4bf6bc8929647cb0c0649562a9128cafe86b67b014824f3e9e681 *deliverables\02_question_sheet\Dominion_question_sheet.html
+ab74c5c9d85a58974faf958d71b29b95fd09b9d833218f92eebcc3faf54e3d42 *deliverables\01_deck\Dominion_reliability_deck_adopted_print_letter.pdf
+690aa7d8a150d142fb1231ca6d8c750312ace1f2958544f5f97cb0b655583a81 *deliverables\01_deck\Dominion_reliability_deck_public_print_letter.pdf
+f859412b7450a0d699c2a6ba76245ee64b5386e1f0235da59bccd3f3baa2d729 *deliverables\01_deck\Dominion_reliability_deck_adopted.pptx
+bc544cdad148e146ec4112afdf65d1a705f5eb837c3e72dc0a2c2cbfe95a58fb *deliverables\01_deck\Dominion_reliability_deck_public.pptx
+2026-11-01T13:45:02+05:30
+
+claims rows: 152 | register rows: 131 | C-F rows present: ['C-F-01', 'C-F-02', 'C-F-03', 'C-F-04', 'C-F-05', 'C-F-06', 'C-F-07', 'C-F-08', 'C-F-09', 'C-F-10', 'C-F-11', 'C-F-12', 'C-F-14', 'C-F-15', 'C-F-16', 'C-F-17', 'C-F-18', 'C-F-19', 'C-F-20', 'C-F-21', 'C-F-22', 'C-F-23', 'C-F-24', 'C-F-25']
+==============================================================================================================
+id: C-F-01
+exact_text: electricity for 3.6M in VA, NC, SC; gas for 500k in SC
+value: 3.6M;500k;3.6;2.7
+unit: customers: electric in Virginia, North Carolina and South Carolina; gas in South Carolina; 2.7M = the Virginia count, C-S7-07
+used_in: brief p2 company box (first line; 'Customers' line '3.6M = all three states'), A1 ('2.68M · 2.8M · 3.6M'); qsheet item 19 (R §3: 'about 3.6 million electric customers in Virginia and the Carolinas, about 2.7 million of them in Virginia')
+source: work/v6_inputs/R_company_glossary.md §1 and §3; R-042 (research/claims_register.csv); 2.7 million: C-S7-07
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-02
+exact_text: 2.8M = Dominion Energy Virginia incl. NC
+value: 2.8M;2,809
+unit: customers (accounts, thousands in the source): Dominion Energy Virginia including North Carolina, 2025
+used_in: brief p2 company box ('Customers' line; 'If a panelist says 2.8M'), A1 ('2.68M · 2.8M · 3.6M')
+source: work/v6_inputs/R_company_glossary.md §1; R-107 NEW: Dominion 2025 Annual Report, PDF p.19 and p.65 (2,809k accounts); docs/03 P17
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-03
+exact_text: operating EPS $1.28 vs $1.06; 2026 seen in the top half of $3.45–$3.69
+value: 1.28;1.06;3.45;3.69
+unit: USD per share: Q3 2026 operating EPS against the comparison figure R-043 gives; the 2026 operating EPS range (R-044)
+used_in: brief p2 company box ('Q3 2026 (Oct 30)')
+source: work/v6_inputs/R_company_glossary.md §1; R-043, R-044
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-04
+exact_text: PUR-2026-00112 (rebuttal due Nov 2, hearings Nov 17, order by Jan 11)
+value: 2026-11-02;2026-11-17;2027-01-11;17;PUR-2026-00112;EC26-131
+unit: dates in the Virginia SCC merger case; docket numbers (SCC, FERC)
+used_in: brief p2 company box ('Merger' and 'Pending' lines); qsheet item 19 (R §3: 'SCC hearings start November 17')
+source: work/v6_inputs/R_company_glossary.md §1, §3 and §4 row 4; R-095 (SCC schedule), R-096, R-093 (FERC EC26-131), R-094 (NRC), R-048 (approvals), R-046
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-06
+exact_text: CVOW (Coastal Virginia Offshore Wind, 2.6 GW): about 85% built; budget $11.65B; done by end-2027
+value: 2.6;85;11.65;2027
+unit: GW; % built; USD billions; year
+used_in: brief p2 company box ('CVOW' line)
+source: work/v6_inputs/R_company_glossary.md §1; R-111 NEW (Annual Report PDF p.3, the project's name), R-062, R-061
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-07
+exact_text: 28% of Virginia Power's 2025 sales; 54+ GW in contracting stages, 12+ GW contracted
+value: 28;54;12
+unit: % of 2025 sales (data centers); GW in contracting stages; GW contracted
+used_in: brief p2 company box ('Data centers' line); qsheet item 19 (R §3: 'data centers are more than a quarter of Dominion Energy Virginia's sales, and the pipeline keeps growing')
+source: work/v6_inputs/R_company_glossary.md §1 and §3; R-112 NEW (Annual Report PDF p.20: 28%), R-054 and R-099 (the pipeline)
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-08
+exact_text: base rates +$566M (2026) and +$210M (2027); typical bill +$11.24 a month (2026); allowed return on equity 9.8%
+value: 566;210;11.24;9.8;50
+unit: USD millions (base-rate increases); USD a month (typical bill); % (allowed return on equity); basis points (the SCC's adjustment, C-Q-07)
+used_in: brief p2 company box ('Rates' line)
+source: work/v6_inputs/R_company_glossary.md §1; R-057, R-058, R-059
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-09
+exact_text: 19 sites
+value: 19;1
+unit: Voltage Island Mitigation sites; Voltage Optimization energy-savings goal (%)
+used_in: brief p2 company box ('VIM ... 19 sites', 'VO ... The goal is 1% energy savings'), hard 25 Q19 ('(19 sites)', '(goal: 1% energy savings)')
+source: work/v6_inputs/R_company_glossary.md §1; R-114 NEW (Grid Resiliency page), R-038 (VIM), R-039 (VO), R-035 (the programs)
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-10
+exact_text: about 2,900 miles of outage-prone lines buried by June 2026, of about 4,000. Due 2029
+value: 2,900;4,000;2029
+unit: miles buried by June 2026; miles in the program; completion year
+used_in: brief p2 company box ('SUP, Strategic Underground Program (separate)')
+source: work/v6_inputs/R_company_glossary.md §1; R-012 (re-read on the primary page, the R-013 URL), R-034, R-035
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+==============================================================================================================
+id: C-F-12
+exact_text: daily heating/cooling degree days vs 65°F, population-weighted
+value: 65;12;5;4;15
+unit: °F (degree-day base, CPC); states besides Virginia in PJM (plus DC); minutes (MAIFI threshold); nuclear plants (license transfers); minutes (EAGLE-I reading interval)
+used_in: brief p2 glossary (CPC, PJM, MAIFI, NRC, EAGLE-I)
+source: work/v6_inputs/R_company_glossary.md §2; R-119 NEW (CPC degree days), R-080 (PJM), R-130 NEW and R-074 (MAIFI), R-094 (NRC), R-129 NEW and R-016 (EAGLE-I)
+producer: R
+checked_by: orchestrator (pending)
+result: pending: orchestrator check (a row V1 never saw)
+variant: both
+producer_check: B: match: wording and numbers as the source gives them
+
+
+REGISTER ROWS CITED: ['R-042', 'R-107', 'R-043', 'R-044', 'R-202', 'R-095', 'R-096', 'R-093', 'R-094', 'R-048', 'R-046', 'R-111', 'R-062', 'R-061', 'R-112', 'R-054', 'R-099', 'R-057', 'R-058', 'R-059', 'R-114', 'R-038', 'R-039', 'R-035', 'R-012', 'R-013', 'R-034', 'R-119', 'R-080', 'R-130', 'R-074', 'R-129', 'R-016']
+==============================================================================================================
+id: R-042
+claim: Dominion customer base and mission (company boilerplate)
+value: 3.6 million electric (VA NC SC); 500,000 gas (SC)
+url_or_doi: https://news.dominionenergy.com/press-releases/press-releases/2026/Dominion-Energy-Announces-Third-Quarter-2026-Results/default.aspx
+accessed: 2026-11-01
+quote_or_locator: "provides regulated electricity service to 3.6 million homes and businesses in Virginia, North Carolina, and South Carolina, and regulated natural gas service to 500,000 customers in South Carolina"; mission "to provide the reliable, affordable, and increasingly clean energy that powers its customers every day"
+confidence: high
+used_in: dossier §1; on-a-page
+==============================================================================================================
+id: R-107
+claim: Dominion Energy Virginia (Virginia Power) serves about 2.8 million customers in Virginia and North Carolina; average electric distribution customer accounts 2,809 thousand in 2025 (2,782 thousand in 2024). This is the 2.8M a panelist may quote; EIA-861 Virginia-only is 2,675,735 (C-S7-07; docs/03 P17)
+value: about 2.8 million; 2,809k (2025); 2,782k (2024)
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.19 (printed p.9): 'Dominion Energy Virginia is composed of Virginia Power's regulated electric transmission, distribution and generation ... operations, which serve approximately 2.8 million residential, commercial, high load (including certain data centers), industrial and governmental customers in Virginia and North Carolina.' PDF p.65 (printed p.55), operating statistics: 'Average electric distribution customer accounts (thousands) 2,809' (2024: 2,782). Saved: work/research_raw/dom_ar2025/
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s1
+==============================================================================================================
+id: R-043
+claim: Q3 2026 results
+value: Operating EPS $1.28 (vs $1.06); GAAP EPS $1.30 (vs $1.16); operating earnings $1.1B (vs $921M); revenue $5,617M (vs $4,527M)
+url_or_doi: https://news.dominionenergy.com/press-releases/press-releases/2026/Dominion-Energy-Announces-Third-Quarter-2026-Results/default.aspx
+accessed: 2026-11-01
+quote_or_locator: "Operating earnings (non-GAAP) for the three months ended Sept. 30, 2026, were $1.1 billion ($1.28 per share), compared to operating earnings of $921 million ($1.06 per share)"; Consolidated Statements of Income: Operating Revenue 5,617 / 4,527
+confidence: high
+used_in: dossier §2; on-a-page
+==============================================================================================================
+id: R-044
+claim: 2026 guidance
+value: top half of $3.45-$3.69 operating EPS; other guidance reaffirmed
+url_or_doi: https://news.dominionenergy.com/press-releases/press-releases/2026/Dominion-Energy-Announces-Third-Quarter-2026-Results/default.aspx
+accessed: 2026-11-01
+quote_or_locator: "The company expects to be in the top half of the 2026 operating earnings guidance range of $3.45 to $3.69 per share and reaffirms existing operating earnings, credit, dividend, and long-term growth guidance."
+confidence: high
+used_in: dossier §2; on-a-page
+==============================================================================================================
+id: R-202 NOT FOUND
+==============================================================================================================
+id: R-095
+claim: Merger calendar per the Q3 call (30 Oct): VA rebuttal due 2 Nov, hearings from 17 Nov, order by 11 Jan 2027; SC testimony received, rebuttal due 18 Nov, hearings 8 Dec, order by 29 Jan 2027; NC hearings from 23 Feb 2027; federal approvals filed and progressing; close H2 2027
+value: see claim
+url_or_doi: https://www.fool.com/earnings/call-transcripts/2026/10/30/dominion-energy-d-q3-2026-earnings-call-transcript/
+accessed: 2026-11-01
+quote_or_locator: Robert Blue: 'we have received testimony from parties which we will address through rebuttal testimony due November 2.'; 'Evidentiary hearings begin on November 17.'; SC: 'rebuttal testimony due November 18.' 'Hearings begin on December 8.' 'With a final order by January 29, 2027.'; 'In North Carolina, hearings begin on February 23, 2027.'; 'Required federal approvals have all been filed and continue to progress.'; 'We continue to expect the transaction to close in the second half of 2027.' (third-party transcript)
+confidence: high (management remarks; transcript is third-party)
+used_in: freshness.md; dominion_on_a_page.md
+==============================================================================================================
+id: R-096
+claim: A solar and storage coalition (SEIA, Chesapeake Solar & Storage Association, MAREC Action, Permit Power) asked the SCC to reject the merger unless the companies commit to customer-sited solar and storage reforms; testimony filed 19 Oct in Case PUR-2026-00112
+value: PUR-2026-00112
+url_or_doi: https://pv-magazine-usa.com/2026/10/27/solar-industry-coalition-opposes-67-billion-dominion-nextera-merger-as-proposed/
+accessed: 2026-11-01
+quote_or_locator: pv magazine USA, 27 Oct 2026: asks the SCC to 'reject the proposed merger' 'unless the companies commit to reforms'; Case No. PUR-2026-00112
+confidence: medium (secondary); corroborates the case number
+used_in: freshness.md; dossier §11
+==============================================================================================================
+id: R-093
+claim: FERC (EC26-131): deficiency letter 23 Sep 2026; the companies filed their response 15 Oct 2026; no FERC order found as of 1 Nov
+value: deficiency 23 Sep; response 15 Oct
+url_or_doi: https://www.govinfo.gov/content/pkg/FR-2026-10-21/pdf/2026-21490.pdf; https://nepool.com/activity/sep-23-2026-ferc-deficiency-letter-in-nextera-dominion-merger/
+accessed: 2026-11-01
+quote_or_locator: Federal Register 21 Oct 2026 p.2: 'Docket Numbers: EC26-131-000 ... NextEra Energy, Inc, et al. submit response to FERC's 09/23/2026 deficiency letter re the Joint Application for Authorization under Section 203 of the Federal Power Act. Filed Date: 10/15/26. Accession Number: 20261015-5185.' NEPOOL: 'FERC OEMR issues Deficiency Letter; response due Oct 23, 2026'
+confidence: high (FR); NEPOOL secondary
+used_in: freshness.md; dominion_on_a_page.md
+==============================================================================================================
+id: R-094
+claim: NRC: indirect licence-transfer application (filed 15 Jul 2026) noticed 27 Aug 2026; hearing requests due 16 Sep, comments 28 Sep; no NRC order found as of 1 Nov
+value: notice 27 Aug 2026
+url_or_doi: https://www.federalregister.gov/documents/2026/08/27/2026-17529/nextera-energy-inc-dominion-energy-inc-virginia-electric-and-power-company-dominion-energy-nuclear
+accessed: 2026-11-01
+quote_or_locator: 'The application seeks NRC approval of the indirect transfer of the facility operating licenses ... for Surry ... North Anna ... V.C. Summer ... and Millstone'; 'Submit comments by September 28, 2026. A request for a hearing must be filed by September 16, 2026.'
+confidence: high
+used_in: freshness.md; dominion_on_a_page.md
+==============================================================================================================
+id: R-048
+claim: Merger approvals required
+value: shareholders; HSR; FERC s.203; NRC; VA SCC; NCUC; SC PSC
+url_or_doi: https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers
+accessed: 2026-11-01
+quote_or_locator: "expiration or termination of the waiting period under the Hart-Scott-Rodino Antitrust Improvements Act, approval by the Federal Energy Regulatory Commission under Section 203 ... and approval by the Nuclear Regulatory Commission. The companies will also file for review and approval from the Virginia State Corporation Commission, the North Carolina Utilities Commission and the Public Service Commission of South Carolina."
+confidence: high
+used_in: dossier §3
+==============================================================================================================
+id: R-046
+claim: NextEra-Dominion merger terms
+value: 0.8138 NEE per D share; 74.5%/25.5%; $360M one-time cash; $2.25B bill credits over two years post-close
+url_or_doi: https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers
+accessed: 2026-11-01
+quote_or_locator: "fixed exchange ratio of 0.8138 shares of NextEra Energy for each share of Dominion Energy"; "approximately 74.5% and 25.5%"; "one-time cash payment of $360 million"; "$2.25 billion in bill credits ... spread over two years post-close"
+confidence: high
+used_in: dossier §3; on-a-page
+==============================================================================================================
+id: R-111
+claim: CVOW stands for Coastal Virginia Offshore Wind
+value: Coastal Virginia Offshore Wind (CVOW)
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.3 (CEO letter): 'continued achievement of major construction milestones for our offshore energy project, Coastal Virginia Offshore Wind (CVOW)'
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s1
+==============================================================================================================
+id: R-062
+claim: CVOW size and Feb 2026 expectation
+value: 2.6 GW; 176 monopiles; completion expected early 2027 (as of Feb 2026)
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.4: "CVOW, a 2.6 GW generating project that will be able to power up to 660,000 homes and businesses when completed, expected in early 2027. As of late February, we had installed all 176 monopile foundations"
+confidence: high
+used_in: dossier §7; on-a-page
+==============================================================================================================
+id: R-061
+claim: CVOW status Q3 2026 (CEO on call)
+value: ~85% complete; 44 turbines (>640 MW); budget $11.65B incl. $123M unused contingency; completion by end-2027
+url_or_doi: https://www.fool.com/earnings/call-transcripts/2026/10/30/dominion-energy-d-q3-2026-earnings-call-transcript/
+accessed: 2026-11-01
+quote_or_locator: "approximately 85% complete"; "installed 44 turbines representing more than 640 megawatts"; "our current budget remains $11.65 billion including $123 million of unused contingency"; "project completion by the end of 2027"
+confidence: medium-high (transcript)
+used_in: dossier §7; on-a-page
+==============================================================================================================
+id: R-112
+claim: Data centers were 28% of Virginia Power's electricity sales in 2025 (26% in 2024); the PJM DOM Zone includes Dominion Energy Virginia's service territory
+value: 28% (2025); 26% (2024)
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.20 (printed p.10, Form 10-K Item 1): 'PJM has projected a 5.4% average peak annual load growth over the next ten years for the PJM DOM Zone, which includes Dominion Energy Virginia's service territory. Data centers represent 28% and 26% of Virginia Power's electricity sales for the years ended December 31, 2025 and 2024, respectively.' (text layer has broken word spacing; words re-joined)
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s1, s2, s3
+==============================================================================================================
+id: R-054
+claim: Data-center contracting pipeline (Q3 2026 call, CFO)
+value: over 54 GW in stages; over 12 GW under ESAs; +6 GW (13%) since end-2025
+url_or_doi: https://www.fool.com/earnings/call-transcripts/2026/10/30/dominion-energy-d-q3-2026-earnings-call-transcript/
+accessed: 2026-11-01
+quote_or_locator: "over 54 gigawatts of data center capacity in various stages of contracting"; "over 12 gigawatts of capacity contracted" under electric service agreements; "over 6 gigawatts of contracts or 13% since the end of last year"
+confidence: medium-high (transcript)
+used_in: dossier §4; on-a-page
+==============================================================================================================
+id: R-099
+claim: The data-centre pipeline (capacity in contracting stages, over 54 GW) grew by over 6 GW (13%) since end-2025, per the CFO on the Q3 call
+value: +6 GW (+13%)
+url_or_doi: https://www.fool.com/earnings/call-transcripts/2026/10/30/dominion-energy-d-q3-2026-earnings-call-transcript/
+accessed: 2026-11-01
+quote_or_locator: Steven D. Ridge: 'We now have over 54 gigawatts of data center capacity in various stages of contracting' ... 'we have added over 6 gigawatts of contracts or 13% since the end of last year.' [I] The 13% fits the 54 GW pipeline (6/0.13 = 46 GW base), not the 12 GW under electric service agreements.
+confidence: high (management remarks; third-party transcript)
+used_in: freshness.md; dominion_on_a_page.md
+==============================================================================================================
+id: R-057
+claim: 2025 Biennial Review outcome
+value: +$566M (Jan 2026) and +$210M (Jan 2027) base rates; ROE 9.80% (asked 10.40%)
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.130: "In November 2025, the Virginia Commission approved a base rate increase of $566 million effective January 2026 with an incremental base rate increase of $210 million effective January 2027 ... authorized an ROE of 9.80%"
+confidence: high
+used_in: dossier §6; on-a-page
+==============================================================================================================
+id: R-058
+claim: Typical residential bill impact of the 2025 Biennial Review
+value: +$11.24/month 2026; +$2.36 in 2027; ROE 9.7% to 9.8%
+url_or_doi: https://www.loudounnow.com/news/scc-approves-new-data-center-rate-class-for-dominion/article_02d5fa0c-1ed8-4771-b57d-c24765739854.html
+accessed: 2026-11-01
+quote_or_locator: "monthly increases of $11.24 in 2026 ... and $2.36 in 2027"; "increase in Dominion's authorized return on equity from 9.7% to 9.8%"
+confidence: high
+used_in: dossier §6; on-a-page
+==============================================================================================================
+id: R-059
+claim: Reliability can adjust Dominion's authorized ROE (from 2025 Biennial Review)
+value: up to +/-50 basis points
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.28-29 (printed 18-19): "beginning with the 2025 Biennial Review, the Virginia Commission may, at its discretion, increase or decrease Virginia Power's authorized ROE by up to 50 basis points based on factors that may include reliability, generating plant performance, customer service and operating efficiency"
+confidence: high
+used_in: dossier §5; for_B; on-a-page
+==============================================================================================================
+id: R-114
+claim: Dominion's definitions: a mainfeeder is the three-phase section from substations to tap lines; Mainfeeder Hardening rebuilds targeted mainlines to stronger standards; a voltage island is a substation with a single transformer, mitigated by a second transformer or grid reconfiguration
+value: MFH and VIM definitions
+url_or_doi: https://www.dominionenergy.com/about/delivering-energy/electric-projects/energy-grid-transformation/grid-resiliency-projects
+accessed: 2026-11-01
+quote_or_locator: 'A mainfeeder is the three-phase section of our power lines that distribute electrical power from substations to tap lines, which in turn, deliver power to individual customers.'; 'Improvements include rebuilding, relocating, converting or undergrounding targeted mainlines to new, stronger design standards.'; 'Voltage islands are when we have a substation with only a single-transformer. Dominion Energy plans to mitigate voltage islands by adding a second transformer and/or reconfiguring the grid architecture to provide the capacity to restore all customers in the event of a single transformer failure.' Same page as R-035 to R-039. Saved: work/research_raw/dom_web/grid_resiliency.html
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s1
+==============================================================================================================
+id: R-038
+claim: Voltage Island Mitigation scope
+value: 19 locations; voltage-island outages can exceed 24 hours
+url_or_doi: https://www.dominionenergy.com/about/delivering-energy/electric-projects/energy-grid-transformation/grid-resiliency-projects
+accessed: 2026-11-01
+quote_or_locator: "The Voltage Island Mitigation program should address 19 locations by the end of the program."; "An outage affecting the substation equipment on a voltage island can be upwards for 24 hours long."
+confidence: high
+used_in: dossier §5
+==============================================================================================================
+id: R-039
+claim: Voltage Optimization goal and data
+value: 1% system-wide energy savings; uses smart meter data
+url_or_doi: https://www.dominionenergy.com/about/delivering-energy/electric-projects/energy-grid-transformation/grid-resiliency-projects
+accessed: 2026-11-01
+quote_or_locator: "Our goal is to provide a system-wide average of 1% energy savings for our customers."; "Smart meters provide real-time voltage readings allowing us to apply more precise voltage settings."
+confidence: high
+used_in: dossier §5
+==============================================================================================================
+id: R-035
+claim: Dominion's Grid Resiliency programs (part of the GT Plan): Mainfeeder Hardening, Voltage Island Mitigation, Voltage Optimization, Intelligent Grid Devices/FLISR; SUP is outside Grid Resiliency scope
+value: 4 programs; SUP separate
+url_or_doi: https://www.dominionenergy.com/about/delivering-energy/electric-projects/energy-grid-transformation/grid-resiliency-projects
+accessed: 2026-11-01
+quote_or_locator: "Grid Resiliency and its programs are a part of Dominion Energy's Grid Transformation Plan."; "Underground conversions are not within the scope of Grid Resiliency programs."
+confidence: high
+used_in: role_brief §2; slide 6; dossier §5
+==============================================================================================================
+id: R-012
+claim: Strategic Underground Program miles buried (company-reported; June 2026)
+value: about 2900 miles (about 300 in the last year)
+url_or_doi: https://www.stocktitan.net/news/D/dominion-energy-prepares-year-round-for-hurricane-season-and-o7ahitzchhvw.html
+accessed: 2026-11-01
+quote_or_locator: "has buried about 2,900 miles of outage-prone power lines in Virginia, including about 300 miles in the last year" (Business Wire 20260608871614 via StockTitan repost; BW original 403)
+confidence: medium-high (repost of company release; re-check on Dominion newsroom in R2)
+used_in: role_brief.md §2
+==============================================================================================================
+id: R-013
+claim: Mainfeeder Hardening progress and result (company-reported; Dominion release, 8 June 2026): average annual outage time down 44% for customers in the hardened areas; no baseline period, comparison group or major-event treatment stated
+value: 8000+ poles; 350+ miles; -44% avg annual outage time in those areas
+url_or_doi: https://investors.dominionenergy.com/news/press-release-details/2026/Dominion-Energy-prepares-year-round-for-hurricane-season-and-encourages-customers-to-prepare-as-well/default.aspx
+accessed: 2026-11-01
+quote_or_locator: Primary source re-opened 1 Nov 2026 for V1 (the earlier StockTitan repost returned 403 to V1; it is no longer the source). Release dated 06/08/2026, 'RICHMOND, Va.--(BUSINESS WIRE)--': 'Through its Mainfeeder Hardening Program, the company has replaced more than 8,000 older utility poles and hardened over 350 miles of power lines in Virginia. The program has reduced average annual outage time by 44% for customers in these areas.' Saved: work/research_raw/v1_followups/dom_hurricane_2026.html
+confidence: high (company release on its IR site; company-reported metric, method not stated)
+used_in: role_brief.md §2; hard25 Q8 (C-S6-06); research/V1_followups.md
+==============================================================================================================
+id: R-034
+claim: SUP legal and cost frame: ~4,000 miles authorized; ~$387M annual cap; completion by 2029; 8 phases approved (~2,500 miles, $1.4B, Riders U and DIST); phase 9 requested (~300 miles, $240M)
+value: 4,000 mi; $387M/yr; 2029; 2,500 mi/$1.4B; 300 mi/$240M
+url_or_doi: https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+accessed: 2026-11-01
+quote_or_locator: PDF p.23 = printed p.13: "move approximately 4,000 miles of electric distribution lines underground ... annual investment cap of approximately $387 million and is expected to be completed by 2029. The Virginia Commission has approved eight phases of the program encompassing approximately 2,500 miles of converted lines and $1.4 billion in capital spending ... phase nine ... approximately 300 miles of converted lines and $240 million"
+confidence: high
+used_in: slide 6; dossier §5
+==============================================================================================================
+id: R-119
+claim: NOAA's Climate Prediction Center publishes population-weighted daily heating and cooling degree days; base 65 F
+value: HDD/CDD vs 65 F; population-weighted
+url_or_doi: https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/
+accessed: 2026-11-01
+quote_or_locator: Title 'Climate Prediction Center - Monitoring & Data: Degree Days Statistics'; 'CPC is now computing daily heating and cooling degree days using 2010 Census data for populations...'. Definitions page https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/ddayexp.shtml: heating = sum of the 'negative differences between the mean daily temperature and the 65°F base'; cooling = sum of the 'positive differences from the same base' (read via WebFetch).
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s2
+==============================================================================================================
+id: R-080
+claim: PJM is the RTO managing the grid and wholesale market in Virginia, 12 other states and DC, and must maintain transmission reliability
+value: VA + 12 states + DC
+url_or_doi: https://rga.lis.virginia.gov/Published/2025/RD916/PDF
+accessed: 2026-11-01
+quote_or_locator: pp10-11: 'PJM is the regional transmission organization that manages the electric grid and wholesale electricity market in Virginia and across 12 other states and the District of Columbia. As part of its role, PJM must maintain reliability of the transmission grid.'
+confidence: high
+used_in: domain_primer.md §6
+==============================================================================================================
+id: R-130
+claim: Momentary interruptions are excluded from SAIDI and SAIFI (EIA-861); CEMIn = Customers Experiencing Multiple Interruptions (percent with n or more sustained interruptions); MAIFI = Momentary Average Interruption Frequency Index, similar to SAIFI
+value: CEMIn and MAIFI expansions; momentary excluded
+url_or_doi: https://www.eia.gov/survey/form/eia_861/instructions.pdf; https://site.ieee.org/boston-pes/files/2019/03/IEEE-1366-Reliability-Indices-2-2019.pdf
+accessed: 2026-11-01
+quote_or_locator: EIA-861 instructions p.10: 'Outages can be classified as either momentary or sustained. Momentary outages are not included in determining SAIDI and SAIFI.' IEEE PES Boston slides p.48: 'CEMIn: Customers Experiencing Multiple Interruptions'; 'These are both measured in PERCENT'; 'CEMIn = Tot num of customers that experienced n or more sustained interruptions / CS'; p.50: 'MAIFI: Momentary Average Interruption Frequency Index- Similar to SAIFI'. Extends R-072 and R-074.
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s2
+==============================================================================================================
+id: R-074
+claim: IEEE 1366 index definitions as taught by IEEE PES Boston (2019): sustained interruption over five minutes; SAIFI, SAIDI, CAIDI meanings; CEMIn and CELID as percents; MAIFI and MAIFI_E
+value: definitions
+url_or_doi: https://site.ieee.org/boston-pes/files/2019/03/IEEE-1366-Reliability-Indices-2-2019.pdf
+accessed: 2026-11-01
+quote_or_locator: p6 'any interruption that lasts more than five minutes'; p10 SAIFI 'How often the average customer experiences an interruption', SAIDI 'The total number of minutes (or hours) of interruption the average customer experiences', CAIDI 'The average time required to restore service ... The numbers can be deceiving'; p41 CAIDI = SAIDI/SAIFI = 159/2.02 = 79; p47 'Averages can deceive'; p48 CEMIn, CELID 'measured in PERCENT'; p50 MAIFI, MAIFIE
+confidence: high (training slides; the 2022 standard itself not opened)
+used_in: domain_primer.md A1, §1
+==============================================================================================================
+id: R-129
+claim: EAGLE-I = Environment for Analysis of Geo-Located Energy Information, a GIS platform created at Oak Ridge National Laboratory; the ORNL dataset is sponsored by DOE's Office of Cybersecurity, Energy Security, and Emergency Response (CESER) and collected from utilities' public outage maps
+value: EAGLE-I expansion; ORNL for DOE CESER
+url_or_doi: doi:10.1038/s41597-024-03095-5; https://doi.ccs.ornl.gov/dataset/c09fce3f-5faa-54ef-878a-cb0af6851cb6
+accessed: 2026-11-01
+quote_or_locator: Abstract (Crossref record, saved lit_meta/brelsford2024_crossref.json): 'These data have been produced by the Environment for Analysis of Geo-Located Energy Information (EAGLE-I), a geographic information system and data visualization platform created at Oak Ridge National Laboratory to map the population experiencing electricity outages every 15 minutes at the county level.' ORNL Constellation (R-016 page, saved r6_scout/ccs_2025.html): 'collected by the EAGLE-I program at ORNL. The data has been collected from utility's public outage maps'; 'Sponsoring Organization Office of Cybersecurity, Energy Security, and Emergency Response (CESER)'. Extends R-016 and R-079.
+confidence: high
+used_in: v6_inputs/R_company_glossary.md s2
+==============================================================================================================
+id: R-016
+claim: EAGLE-I 2025 data release on ORNL Constellation
+value: DOI 10.13139/ORNLNCCS/3012826; released 19 Feb 2026
+url_or_doi: https://doi.ccs.ornl.gov/dataset/c09fce3f-5faa-54ef-878a-cb0af6851cb6
+accessed: 2026-11-01
+quote_or_locator: "power outage information at the county level for 2025 at 15-minute intervals"; "Release Date February 19, 2026"
+confidence: high
+used_in: for_D.md §1
+
+R-107..R-131 present: 25 | not cited by the ten rows: ['R-108', 'R-109', 'R-110', 'R-113', 'R-115', 'R-116', 'R-117', 'R-118', 'R-120', 'R-121', 'R-122', 'R-123', 'R-124', 'R-125', 'R-126', 'R-127', 'R-128', 'R-131']

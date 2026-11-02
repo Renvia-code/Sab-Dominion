@@ -1,0 +1,44 @@
+annual_report_2025 | 200 application/pdf 5162157 | https://s2.q4cdn.com/510812146/files/doc_downloads/2026/03/17/Dominion-Energy-2025-Annual-Report.pdf
+jobright_posting | 200 text/html; charset=utf-8 256494 | https://jobright.ai/jobs/info/6aa3a1d5c5a856ac7e33a91a
+dominion_grid_resiliency | 200 text/html; charset=utf-8 295089 | https://www.dominionenergy.com/about/delivering-energy/electric-projects/energy-grid-transformation/grid-resiliency-projects
+stocktitan_hurricane | 403 text/html; charset=utf-8 9 | https://www.stocktitan.net/news/D/dominion-energy-prepares-year-round-for-hurricane-season-and-o7ahitzchhvw.html
+nextera_release | 200 text/html; charset=UTF-8 55360 | https://newsroom.nexteraenergy.com/2026-05-18-NextEra-Energy-and-Dominion-Energy-to-Combine,-Creating-the-Worlds-Largest-Regulated-Electric-Utility-Business-and-North-Americas-Premier-Energy-Infrastructure-Platform-Benefiting-Customers
+fool_q3_2026 | 200 text/html; charset=utf-8 487525 | https://www.fool.com/earnings/call-transcripts/2026/10/30/dominion-energy-d-q3-2026-earnings-call-transcript/
+wtvr_merger | 200 text/html;charset=UTF-8 124973 | https://www.wtvr.com/news/local-news/dominion-nextera-merger-update-oct-19-2026
+virginiabusiness_scc | 403 text/html 548 | https://virginiabusiness.com/spanberger-wont-call-special-session-to-extend-dominion-nextera-merger-deadline/
+crossref_10_1037_apl0000994 | 200 application/json 2539 | https://api.crossref.org/works/10.1037/apl0000994
+crossref_10_1348_096317902320369712 | 200 application/json 4405 | https://api.crossref.org/works/10.1348/096317902320369712
+crossref_10_1080_23808985_1999_11678963 | 200 application/json 12210 | https://api.crossref.org/works/10.1080/23808985.1999.11678963
+crossref_10_1177_009102600203100310 | 200 application/json 3883 | https://api.crossref.org/works/10.1177/009102600203100310
+crossref_10_1037_a0019918 | 200 | https://api.crossref.org/works/10.1037/a0019918
+crossref_10_1037_a0024005 | 200 | https://api.crossref.org/works/10.1037/a0024005
+crossref_10_1037_a0016532 | 200 | https://api.crossref.org/works/10.1037/a0016532
+crossref_10_1037_cbs0000108 | 200 | https://api.crossref.org/works/10.1037/cbs0000108
+crossref_10_1037_a0035325 | 200 | https://api.crossref.org/works/10.1037/a0035325
+crossref_10_5964_jnc_6065 | 200 | https://api.crossref.org/works/10.5964/jnc.6065
+crossref_10_1038_s41598-024-58408-w | 200 | https://api.crossref.org/works/10.1038/s41598-024-58408-w
+crossref_10_1037_pspi0000097 | 200 | https://api.crossref.org/works/10.1037/pspi0000097
+crossref_10_1177_0956797614553946 | 200 | https://api.crossref.org/works/10.1177/0956797614553946
+crossref_10_1111_j_1467-9280_2006_01693_x | 200 | https://api.crossref.org/works/10.1111/j.1467-9280.2006.01693.x
+crossref_10_1037_a0037559 | 200 | https://api.crossref.org/works/10.1037/a0037559
+crossref_10_1037_0033-2909_132_3_354 | 200 | https://api.crossref.org/works/10.1037/0033-2909.132.3.354
+crossref_10_1037_a0018883 | 200 | https://api.crossref.org/works/10.1037/a0018883
+openalex_10_1037_a0019918 | 200 | https://api.openalex.org/works/doi:10.1037/a0019918
+openalex_10_1037_a0024005 | 200 | https://api.openalex.org/works/doi:10.1037/a0024005
+openalex_10_1037_cbs0000108 | 200 | https://api.openalex.org/works/doi:10.1037/cbs0000108
+sec_8k_dominion_20260903 | 403 text/html 4819 | https://www.sec.gov/Archives/edgar/data/715957/000119312526381919/d323818d8k.htm
+sec_8k_nextera_20260903 | 403 text/html 4819 | https://www.sec.gov/Archives/edgar/data/753308/000075330826000071/nee-20260903.htm
+dominion_release_20260608 | 200 text/html; charset=utf-8 53098 | https://investors.dominionenergy.com/news/press-release-details/2026/Dominion-Energy-prepares-year-round-for-hurricane-season-and-encourages-customers-to-prepare-as-well/default.aspx
+dominion_tree_trimming_faq | 200 text/html; charset=utf-8 258715 | https://www.dominionenergy.com/safety/electric-safety/tree-trimming-and-powerlines/va-tree-trimming-and-powerlines
+final_dom_q3_2026_release | 403 text/html; charset=UTF-8 5809 | https://news.dominionenergy.com/press-releases/press-releases/2026/Dominion-Energy-Announces-Third-Quarter-2026-Results/default.aspx
+final_pvmag_coalition | 403 text/html; charset=UTF-8 5664 | https://pv-magazine-usa.com/2026/10/27/solar-industry-coalition-opposes-67-billion-dominion-nextera-merger-as-proposed/
+final_govinfo_fr_20261021 | 200 application/pdf 193692 | https://www.govinfo.gov/content/pkg/FR-2026-10-21/pdf/2026-21490.pdf
+final_fedreg_nrc_20260827 | 200 text/html; charset=utf-8 10596 | https://www.federalregister.gov/documents/2026/08/27/2026-17529/nextera-energy-inc-dominion-energy-inc-virginia-electric-and-power-company-dominion-energy-nuclear
+final_loudounnow_rates | 200 text/html; charset=UTF-8 291311 | https://www.loudounnow.com/news/scc-approves-new-data-center-rate-class-for-dominion/article_02d5fa0c-1ed8-4771-b57d-c24765739854.html
+final_cpc_degree_days | 200 text/html; charset=utf-8 18362 | https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/
+final_cpc_ddayexp | 200 text/html; charset=utf-8 17882 | https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/cdus/degree_days/ddayexp.shtml
+final_va_rd916_2025 | 200 application/pdf 483451 | https://rga.lis.virginia.gov/Published/2025/RD916/PDF
+final_eia861_instructions | 200 application/pdf 1346255 | https://www.eia.gov/survey/form/eia_861/instructions.pdf
+final_ieee_pes_boston_1366 | 200 application/pdf 930620 | https://site.ieee.org/boston-pes/files/2019/03/IEEE-1366-Reliability-Indices-2-2019.pdf
+final_crossref_10_1038_s41597-024-03095-5 | 200 application/json 15007 | https://api.crossref.org/works/10.1038/s41597-024-03095-5
+final_ornl_eaglei_2025 | 200 text/html; charset=UTF-8 23348 | https://doi.ccs.ornl.gov/dataset/c09fce3f-5faa-54ef-878a-cb0af6851cb6

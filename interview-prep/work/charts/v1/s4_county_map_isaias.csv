@@ -1,0 +1,197 @@
+county_fips,county,customers_basis,minutes_non_med_avg_2015_24,class
+51001,Accomack County,26528,201.0,150–250
+51003,Albemarle County,45280,491.1,350–500
+51005,Alleghany County,7913,419.0,350–500
+51007,Amelia County,5545,507.7,500 or more
+51009,Amherst County,18016,572.4,500 or more
+51011,Appomattox County,6686,244.2,150–250
+51013,Arlington County,111055,147.2,under 150
+51015,Augusta County,32642,257.9,250–350
+51017,Bath County,3010,756.4,500 or more
+51019,Bedford County,47929,345.7,250–350
+51023,Botetourt County,10626,788.6,500 or more
+51025,Brunswick County,7778,369.9,350–500
+51027,Buchanan County,12760,787.9,500 or more
+51029,Buckingham County,5391,616.7,500 or more
+51031,Campbell County,29450,284.9,250–350
+51033,Caroline County,14714,195.8,150–250
+51035,Carroll County,16812,648.7,500 or more
+51036,Charles City County,2516,778.0,500 or more
+51037,Charlotte County,5148,706.8,500 or more
+51041,Chesterfield County,155017,179.5,150–250
+51043,Clarke County,7589,308.5,250–350
+51047,Culpeper County,27716,202.6,150–250
+51049,Cumberland County,3604,570.7,500 or more
+51053,Dinwiddie County,12472,402.2,350–500
+51057,Essex County,5226,284.9,250–350
+51059,Fairfax County,513143,91.3,under 150
+51061,Fauquier County,31801,366.1,350–500
+51065,Fluvanna County,7390,509.4,500 or more
+51067,Franklin County,32464,276.9,250–350
+51073,Gloucester County,15330,369.5,350–500
+51075,Goochland County,12608,339.3,250–350
+51079,Greene County,10381,193.2,150–250
+51081,Greensville County,5788,257.6,250–350
+51083,Halifax County,15791,466.4,350–500
+51085,Hanover County,49633,169.3,150–250
+51087,Henrico County,150139,276.6,250–350
+51089,Henry County,26850,520.9,500 or more
+51093,Isle of Wight County,10757,331.9,250–350
+51095,James City County,32899,168.6,150–250
+51097,King and Queen County,2679,513.1,500 or more
+51099,King George County,13848,267.7,250–350
+51101,King William County,8030,172.9,150–250
+51103,Lancaster County,5333,379.4,350–500
+51107,Loudoun County,187874,94.9,under 150
+51109,Louisa County,16334,338.1,250–350
+51111,Lunenburg County,4827,571.6,500 or more
+51113,Madison County,6952,326.6,250–350
+51115,Mathews County,3233,743.5,500 or more
+51117,Mecklenburg County,17640,293.8,250–350
+51119,Middlesex County,4296,674.8,500 or more
+51125,Nelson County,5606,878.6,500 or more
+51127,New Kent County,8920,345.8,250–350
+51133,Northumberland County,5466,489.0,350–500
+51135,Nottoway County,6864,311.4,250–350
+51137,Orange County,18484,251.0,250–350
+51139,Page County,9423,297.8,250–350
+51143,Pittsylvania County,29827,632.9,500 or more
+51145,Powhatan County,12936,383.3,350–500
+51147,Prince Edward County,10853,371.6,350–500
+51149,Prince George County,22790,133.0,under 150
+51153,Prince William County,225231,55.4,under 150
+51157,Rappahannock County,3687,580.5,500 or more
+51159,Richmond County,4030,59.4,under 150
+51163,Rockbridge County,11617,376.6,350–500
+51165,Rockingham County,34838,227.7,150–250
+51171,Shenandoah County,18066,329.5,250–350
+51175,Southampton County,4783,416.4,350–500
+51177,Spotsylvania County,62155,148.1,under 150
+51179,Stafford County,67741,148.5,under 150
+51181,Surry County,2816,281.4,250–350
+51183,Sussex County,4419,225.1,150–250
+51185,Tazewell County,21376,454.7,350–500
+51187,Warren County,23404,254.6,250–350
+51193,Westmoreland County,8013,397.7,350–500
+51199,York County,28029,173.2,150–250
+51510,Alexandria city,67166,149.4,under 150
+51530,Buena Vista city,2949,99.6,under 150
+51540,Charlottesville city,20605,204.8,150–250
+51550,Chesapeake city,104567,123.8,under 150
+51570,Colonial Heights city,8524,207.6,150–250
+51580,Covington city,2882,117.1,under 150
+51595,Emporia city,2639,154.6,150–250
+51610,Falls Church city,6786,223.7,150–250
+51630,Fredericksburg city,14939,113.6,under 150
+51650,Hampton city,58889,139.1,under 150
+51670,Hopewell city,9904,157.0,150–250
+51678,Lexington city,2808,95.0,under 150
+51685,Manassas Park city,8015,30.0,under 150
+51700,Newport News city,84935,130.6,under 150
+51710,Norfolk city,116644,104.8,under 150
+51730,Petersburg city,14894,268.8,250–350
+51735,Poquoson city,4482,203.4,150–250
+51740,Portsmouth city,43205,134.2,under 150
+51760,Richmond city,112565,58.9,under 150
+51790,Staunton city,11216,195.0,150–250
+51800,Suffolk city,26940,214.2,150–250
+51810,Virginia Beach city,190947,141.8,under 150
+51820,Waynesboro city,10510,170.9,150–250
+51830,Williamsburg city,8943,106.8,under 150
+isaias_curve,hour,0.0,0.0,
+isaias_curve,hour,1.0,6.2,
+isaias_curve,hour,2.0,13.3,
+isaias_curve,hour,3.0,18.8,
+isaias_curve,hour,4.0,25.1,
+isaias_curve,hour,5.0,30.3,
+isaias_curve,hour,6.0,36.3,
+isaias_curve,hour,7.0,43.6,
+isaias_curve,hour,8.0,49.7,
+isaias_curve,hour,9.0,51.9,
+isaias_curve,hour,10.0,55.0,
+isaias_curve,hour,11.0,58.5,
+isaias_curve,hour,12.0,60.5,
+isaias_curve,hour,13.0,64.0,
+isaias_curve,hour,14.0,64.9,
+isaias_curve,hour,15.0,64.2,
+isaias_curve,hour,16.0,65.8,
+isaias_curve,hour,17.0,66.7,
+isaias_curve,hour,18.0,67.1,
+isaias_curve,hour,19.0,71.3,
+isaias_curve,hour,20.0,73.7,
+isaias_curve,hour,21.0,73.4,
+isaias_curve,hour,22.0,73.6,
+isaias_curve,hour,23.0,73.2,
+isaias_curve,hour,24.0,73.8,
+isaias_curve,hour,25.0,75.5,
+isaias_curve,hour,26.0,77.0,
+isaias_curve,hour,27.0,80.3,
+isaias_curve,hour,28.0,80.1,
+isaias_curve,hour,29.0,83.8,
+isaias_curve,hour,30.0,85.1,
+isaias_curve,hour,31.0,88.4,
+isaias_curve,hour,32.0,88.6,
+isaias_curve,hour,33.0,89.9,
+isaias_curve,hour,34.0,91.7,
+isaias_curve,hour,35.0,92.3,
+isaias_curve,hour,36.0,93.1,
+isaias_curve,hour,37.0,93.8,
+isaias_curve,hour,38.0,94.1,
+isaias_curve,hour,39.0,94.5,
+isaias_curve,hour,40.0,95.0,
+isaias_curve,hour,41.0,95.4,
+isaias_curve,hour,42.0,95.6,
+isaias_curve,hour,43.0,95.9,
+isaias_curve,hour,44.0,96.0,
+isaias_curve,hour,45.0,95.0,
+isaias_curve,hour,46.0,95.6,
+isaias_curve,hour,47.0,96.2,
+isaias_curve,hour,48.0,96.1,
+isaias_curve,hour,49.0,96.7,
+isaias_curve,hour,50.0,97.2,
+isaias_curve,hour,51.0,97.7,
+isaias_curve,hour,52.0,98.0,
+isaias_curve,hour,53.0,97.6,
+isaias_curve,hour,54.0,97.4,
+isaias_curve,hour,55.0,98.2,
+isaias_curve,hour,56.0,95.4,
+isaias_curve,hour,57.0,95.5,
+isaias_curve,hour,58.0,95.8,
+isaias_curve,hour,59.0,96.7,
+isaias_curve,hour,60.0,96.6,
+isaias_curve,hour,61.0,96.9,
+isaias_curve,hour,62.0,97.6,
+isaias_curve,hour,63.0,97.8,
+isaias_curve,hour,64.0,97.8,
+isaias_curve,hour,65.0,97.9,
+isaias_curve,hour,66.0,98.4,
+isaias_curve,hour,67.0,98.6,
+isaias_curve,hour,68.0,99.1,
+isaias_curve,hour,69.0,98.9,
+isaias_curve,hour,70.0,98.8,
+isaias_curve,hour,71.0,98.7,
+isaias_curve,hour,72.0,98.9,
+isaias_curve,hour,73.0,99.3,
+isaias_curve,hour,74.0,99.4,
+isaias_curve,hour,75.0,99.5,
+isaias_curve,hour,76.0,99.5,
+isaias_curve,hour,77.0,99.6,
+isaias_curve,hour,78.0,99.7,
+isaias_curve,hour,79.0,99.7,
+isaias_curve,hour,80.0,98.2,
+isaias_curve,hour,81.0,99.1,
+isaias_curve,hour,82.0,99.6,
+isaias_curve,hour,83.0,99.6,
+isaias_curve,hour,84.0,99.9,
+isaias_curve,hour,85.0,100.0,
+isaias_curve,hour,86.0,100.0,
+isaias_curve,hour,87.0,100.0,
+isaias_curve,hour,88.0,99.2,
+isaias_curve,hour,89.0,99.2,
+isaias_curve,hour,90.0,99.2,
+isaias_curve,hour,91.0,99.2,
+isaias_curve,hour,92.0,100.0,
+isaias_curve,hour,93.0,100.0,
+isaias_curve,hour,94.0,100.0,
+isaias_curve,hour,95.0,100.0,
+isaias_curve,hour,96.0,100.0,

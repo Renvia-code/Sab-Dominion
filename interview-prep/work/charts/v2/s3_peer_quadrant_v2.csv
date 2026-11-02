@@ -1,0 +1,13 @@
+utility,major_event_method,saifi_5yr_2021_25,caidi_5yr_2021_25,saidi_3yr_2023_25
+Alabama Power,Own method,0.934,125.4,110
+BGE,IEEE 1366,0.71,99.3,64.2
+Dominion Energy SC,IEEE 1366,1.14,71.8,83.9
+Dominion Energy Virginia,Own method,1.211,110.4,133
+Duke Carolinas (NC),IEEE 1366,1.253,139.2,179
+Duke Energy Florida,Mixed,0.994,87.2,83
+Duke Progress (NC),IEEE 1366,1.228,113.8,143.8
+FPL,IEEE 1366,0.488,95.5,46.6
+Georgia Power,Mixed,1.243,113.6,140.8
+PECO,IEEE 1366,0.742,99.3,66.1
+PPL Electric,IEEE 1366,0.689,136.7,99.1
+Pepco (MD),IEEE 1366,0.569,89.8,48.3

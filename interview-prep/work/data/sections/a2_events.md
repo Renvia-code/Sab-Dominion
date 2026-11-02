@@ -1,0 +1,79 @@
+## A2 The ten largest outage events in Dominion counties, November 2014 to 2025
+
+**Finding.** The ten largest outage events in the 103 counties Dominion serves were three tropical storms (Michael 2018, Isaias 2020, Matthew 2016), two winter storms (January 2022 snow, February 2021 ice) and five wind events. The largest, Michael (11-12 October 2018), had 545,548 customers out for a full hour (all utilities in those counties); half the excess was restored 15.8 hours after the peak and 90% after 60.5 hours. Winter storms took longest to restore: about 100 hours to 90% for both the January 2022 snowstorm and the February 2021 ice storm. There is no clear change in restoration speed: across the 47 events that kept 50,000 or more customers out for an hour, after allowing for event size, hours to 90% restored moved +4.6% a year (95% CI -0.5% to +9.8%, p = 0.07, not significant); the median was 19.6 hours in 2015-2019 (18 events) and 23.5 hours in 2020-2025 (29 events). Say "no evidence that restoration got faster", not "it got slower".
+
+**Chart-ready tables** (`data/output/`): `outage_events_top10.csv` (this table), `fct_event_context.csv` (all 486 territory events with storm type, tropical cyclone and DOE-417 match), `fct_restoration_curve.csv` (hour-by-hour curves for the events that peaked at 50,000 or more; slice on `event_key`).
+
+| # | Start (EST) | Peak (EST) | Storm type | Tropical cyclone | Peak out | Held 1 h | Hours above 10k | Customer-hours (m) | h50 | h90 | h99 | DOE-417 customers |
+|---:|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 2018-10-11 | 2018-10-12 | tropical | Michael | 558,729 | 545,548 | 111.3 | 17.78 | 15.8 | 60.5 | 106.8 |  |
+| 2 | 2018-03-01 | 2018-03-02 | wind |  | 419,136 | 401,776 | 106.0 | 13.16 | 18.8 | 55.0 | 104.5 |  |
+| 3 | 2020-08-04 | 2020-08-04 | tropical | Isaias | 351,738 | 343,492 | 70.5 | 6.17 | 8.3 | 33.5 | 72.8 | 508,000 |
+| 4 | 2022-01-03 | 2022-01-03 | winter |  | 314,644 | 308,015 | 150.0 | 13.69 | 21.3 | 102.8 | 167.0 |  |
+| 5 | 2021-02-13 | 2021-02-13 | winter |  | 281,707 | 271,359 | 229.0 | 16.48 | 40.5 | 101.5 | 265.0 |  |
+| 6 | 2016-10-08 | 2016-10-09 | tropical | Matthew | 269,298 | 265,401 | 74.3 | 8.01 | 11.3 | 52.8 | 77.8 |  |
+| 7 | 2016-06-16 | 2016-06-16 | wind |  | 234,951 | 233,003 | 88.5 | 7.03 | 19.5 | 65.8 | 97.3 |  |
+| 8 | 2025-06-19 | 2025-06-19 | wind |  | 225,609 | 209,475 | 31.0 | 2.09 | 4.5 | 22.0 | 36.8 |  |
+| 9 | 2025-02-12 | 2025-02-16 | wind |  | 187,074 | 172,538 | 135.5 | 8.2 | 3.0 | 20.3 | 29.0 |  |
+| 10 | 2018-05-14 | 2018-05-14 | wind |  | 159,532 | 151,385 | 27.8 | 1.45 | 4.5 | 20.0 | 50.0 | 112,000 |
+
+```sql
+SELECT ROW_NUMBER() OVER (ORDER BY peak_sustained_1h DESC) AS rank,
+       start_day, CAST(peak_utc - INTERVAL '5 HOUR' AS DATE) AS peak_day, storm_type, tropical_cyclone,
+       peak_customers_out, peak_sustained_1h,
+       ROUND(hours_above_threshold, 1) AS hours_above_10k,
+       ROUND(customer_hours / 1e6, 2)  AS customer_hours_m,
+       ROUND(hours_to_50pct, 1) AS h50, ROUND(hours_to_90pct, 1) AS h90, ROUND(hours_to_99pct, 1) AS h99,
+       doe417_customers_max, starts_on_med_proxy_day, event_key
+FROM mart.FCT_EVENT_CONTEXT
+ORDER BY peak_sustained_1h DESC
+LIMIT 10
+```
+
+**Did restoration get faster?** Events with at least 50,000 customers out for an hour, 2015-2025:
+
+```sql
+SELECT event_key, year, start_day, peak_sustained_1h, hours_to_50pct, hours_to_90pct, storm_type
+FROM mart.FCT_EVENT_CONTEXT
+WHERE peak_sustained_1h >= 50000 AND hours_to_90pct IS NOT NULL
+ORDER BY start_day
+```
+
+OLS on those 47 events: ln(hours) = a + b x (year - 2020) + c x ln(peak held 1 h); `numpy.linalg.lstsq`, t-based 95% CI.
+
+| Measure | Change per year, size-adjusted | 95% CI | p |
+|---|---:|---|---:|
+| Hours to 50% restored | +1.2% | -4.6% to +7.4% | 0.68 |
+| Hours to 90% restored | +4.6% | -0.5% to +9.8% | 0.07 |
+
+Size matters more than the year: each doubling of the peak multiplies hours to 90% by 1.56. Spearman rank correlation of hours to 90% with year: rho = 0.17 (p = 0.25); Mann-Whitney 2015-19 vs 2020-25: p = 0.27.
+
+**Restoration curve, Tropical Storm Isaias (peak 04 Aug 2020).** Chosen for the inset because it is the largest event with a matching DOE-417 report (Virginia, 508,000 customers affected; EAGLE-I's simultaneous peak for all utilities in the 103 counties was 351,738). Share of the excess over the pre-event background restored, by hours since the peak:
+
+```sql
+SELECT hour_since_peak, customers_out, ROUND(share_restored, 3) AS share_restored
+FROM mart.FCT_RESTORATION_CURVE
+WHERE event_key = (SELECT event_key FROM mart.FCT_EVENT_CONTEXT WHERE tropical_cyclone LIKE '%ISAIAS%')
+ORDER BY hour_since_peak
+```
+
+| Hours since peak | Customers out (hourly max) | Share restored |
+|---:|---:|---:|
+| 0 | 351,738 | 0% |
+| 6 | 224,838 | 36% |
+| 12 | 140,213 | 60% |
+| 24 | 93,942 | 74% |
+| 36 | 26,380 | 93% |
+| 48 | 16,110 | 96% |
+| 72 | 6,319 | 99% |
+| 96 | 1,806 | 100% |
+| 120 | 439 | 100% |
+| 144 | 556 | 100% |
+| 167 | 623 | 100% |
+
+**Caveats.**
+- EAGLE-I counts every utility's customers in a county, so these events include co-op and municipal customers in the 103 counties Dominion serves (the Dominion-county rule is in `DIM_COUNTY.dominion_county_rule`). They are not Dominion's own event records.
+- "Held 1 h" ranks events by the highest level held for four consecutive 15-minute readings, so a 45-minute spike (30 Jul 2019, 159,742 for under an hour in Hampton Roads) does not rank above multi-day storms. Restoration times ignore one-reading collection drops (the series must stay below the level for 3 hours).
+- Hours to X% are measured from the peak, against the excess over the median of the 24 hours before the event. The 2025-02-12 event merges the 12 February and 15-16 February storms, because the territory never fell below 10,000 out for 3 hours in between.
+- Storm type comes from NOAA line-risk reports in Dominion counties on the event's days; the tropical label also uses HURDAT2 tracks within 400 km of Richmond. DOE-417 has no utility column: the match rule is in sql/11 (decision D19).
+- The trend test has few events and wide intervals; "no measurable change" is not "no change".

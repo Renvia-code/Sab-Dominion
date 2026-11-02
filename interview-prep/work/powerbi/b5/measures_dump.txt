@@ -1,0 +1,160 @@
+[DIM_UTILITY] Bar colour | fmt=None | folder=None | desc=None | keys=[]
+      IF(SELECTEDVALUE(DIM_UTILITY[Display name]) = "Dominion Energy Virginia", "#0A66C2", "#B8BCC2")
+[DIM_UTILITY] Row colour | fmt=None | folder=None | desc=None | keys=[]
+      IF(SELECTEDVALUE(DIM_UTILITY[Display name]) = "Dominion Energy Virginia", "#118DFF", "#FFFFFF")
+[FCT_RELIABILITY] SAIDI ex MED | fmt=None | folder=None | desc=None | keys=['annotations']
+      DIVIDE(SUM(FCT_RELIABILITY[CUST_MINUTES_EX_MED]), SUM(FCT_RELIABILITY[Customers Served]))
+[FCT_RELIABILITY] Outage Mins/Customer | fmt=0 | folder=None | desc=None | keys=['annotations']
+      CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025})
+[FCT_RELIABILITY] Total Customers | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(FCT_RELIABILITY[Customers Served])
+[FCT_RELIABILITY] Share of outage mins caused by major storms | fmt=0.0%;-0.0%;0.0% | folder=None | desc=None | keys=[]
+      DIVIDE(SUM(FCT_RELIABILITY[SAIDI_ALL]) - SUM(FCT_RELIABILITY[SAIDI_EX_MED]), SUM(FCT_RELIABILITY[SAIDI_ALL]))
+[FCT_RELIABILITY] SAIDI all events | fmt=0.0 | folder=None | desc=None | keys=[]
+      DIVIDE(SUM(FCT_RELIABILITY[CUST_MINUTES_ALL]), [Total Customers])
+[FCT_RELIABILITY] Storm SAIDI | fmt=None | folder=None | desc=None | keys=['annotations']
+      [SAIDI all events] - [SAIDI ex MED]
+[FCT_RELIABILITY] SAIDI 2015 to 2017 | fmt=0.0 | folder=None | desc=None | keys=[]
+      CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2015, 2016, 2017})
+[FCT_RELIABILITY] SAIDI 2023 to 2025 | fmt=0.0 | folder=None | desc=None | keys=[]
+      CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2023, 2024, 2025})
+[FCT_RELIABILITY] SAIFI ex MED | fmt=None | folder=None | desc=None | keys=['annotations']
+      DIVIDE(SUM(FCT_RELIABILITY[CUST_INTERRUPTIONS_EX_MED]), [Total Customers])
+[FCT_RELIABILITY] CAIDI ex MED | fmt=0.0 | folder=None | desc=None | keys=[]
+      DIVIDE([SAIDI ex MED], [SAIFI ex MED])
+[FCT_RELIABILITY] SAIFI 5yr | fmt=None | folder=None | desc=None | keys=['annotations']
+      CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [SAIFI ex MED]), FCT_RELIABILITY[YEAR] IN {2021, 2022, 2023, 2024, 2025})
+[FCT_RELIABILITY] CAIDI 5yr | fmt=0.0 | folder=None | desc=None | keys=[]
+      CALCULATE(AVERAGEX(VALUES(FCT_RELIABILITY[YEAR]), [CAIDI ex MED]), FCT_RELIABILITY[YEAR] IN {2021, 2022, 2023, 2024, 2025})
+[FCT_RELIABILITY] SAIDI change % | fmt=0.00%;-0.00%;0.00% | folder=None | desc=None | keys=[]
+      (DIVIDE([SAIDI 2023 to 2025], [SAIDI 2015 to 2017]) - 1)
+[FCT_RELIABILITY] Method | fmt=None | folder=None | desc=None | keys=[]
+      IF(DISTINCTCOUNT(FCT_RELIABILITY[STANDARD]) > 1, "Mixed", MAX(FCT_RELIABILITY[STANDARD]))
+[FCT_RELIABILITY] SAIFI label | fmt=None | folder=None | desc=None | keys=['annotations']
+      IF(SELECTEDVALUE(FCT_RELIABILITY[YEAR]) IN {2019, 2023, 2025}, [SAIFI ex MED])
+[FCT_RELIABILITY] CAIDI label | fmt=None | folder=None | desc=None | keys=['annotations']
+      IF(SELECTEDVALUE(FCT_RELIABILITY[YEAR]) IN {2019, 2023, 2025}, [CAIDI ex MED])
+[V_GROUP_INDEX] SAIFI index 2015 | fmt=None | folder=None | desc=None | keys=['annotations']
+      DIVIDE(SUM(V_GROUP_INDEX[SAIFI_EX_MED]), CALCULATE(SUM(V_GROUP_INDEX[SAIFI_EX_MED]), V_GROUP_INDEX[YEAR] = 2015)) * 100
+[V_GROUP_INDEX] Index label | fmt=None | folder=None | desc=None | keys=['annotations']
+      IF(SELECTEDVALUE(V_GROUP_INDEX[YEAR]) = 2025, [SAIFI index 2015])
+[LoadGrowth] Sales label | fmt=None | folder=None | desc=None | keys=['annotations']
+      IF(SELECTEDVALUE(LoadGrowth[year]) = 2025, SUM(LoadGrowth[commercial_sales_index]))
+[Programmes2025] Smart meter share % | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(Programmes2025[smart_meter_share]) * 100
+[Programmes2025] Time-varying rate % | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(Programmes2025[time_varying_rate_share_pct])
+[AmiEventStudy] Selected SAIDI | fmt=None | folder=None | desc=None | keys=['annotations']
+      
+      VAR SelectedYear =
+          SELECTEDVALUE('Dashboard Year'[Year], 2025)
+      RETURN
+          CALCULATE(
+              [SAIDI ex MED],
+              FCT_RELIABILITY[YEAR] = SelectedYear
+          )
+      
+[AmiEventStudy] Selected SAIFI | fmt=None | folder=None | desc=None | keys=['annotations']
+      
+      VAR SelectedYear =
+          SELECTEDVALUE('Dashboard Year'[Year], 2025)
+      RETURN
+          CALCULATE(
+              [SAIFI ex MED],
+              FCT_RELIABILITY[YEAR] = SelectedYear
+          )
+      
+[AmiEventStudy] Selected CAIDI | fmt=None | folder=None | desc=None | keys=['annotations']
+      
+      VAR SelectedYear =
+          SELECTEDVALUE('Dashboard Year'[Year], 2025)
+      RETURN
+          CALCULATE(
+              [CAIDI ex MED],
+              FCT_RELIABILITY[YEAR] = SelectedYear
+          )
+      
+[AmiEventStudy] Measure | fmt=None | folder=None | desc=None | keys=['annotations']
+      <NONE>
+[AmiEventStudy] Selected Customers | fmt=None | folder=None | desc=None | keys=['annotations']
+      
+      VAR SelectedYear =
+          SELECTEDVALUE('Dashboard Year'[Year], 2025)
+      RETURN
+          CALCULATE(
+              [Total Customers],
+              FCT_RELIABILITY[YEAR] = SelectedYear
+          )
+      
+[AmiEventStudy] Selected Major Event Share | fmt=0%;-0%;0% | folder=None | desc=None | keys=[]
+      
+      VAR SelectedYear =
+          SELECTEDVALUE('Dashboard Year'[Year], 2025)
+      RETURN
+          CALCULATE(
+              DIVIDE(
+                  [SAIDI all events] - [SAIDI ex MED],
+                  [SAIDI all events]
+              ),
+              FCT_RELIABILITY[YEAR] = SelectedYear
+          )
+      
+[DOM_LOAD_ANNUAL] Floor MW | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(DOM_LOAD_ANNUAL[FLOOR_MW])
+[DOM_LOAD_ANNUAL] Peak MW | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(DOM_LOAD_ANNUAL[PEAK_MW])
+[DOM_LOAD_ANNUAL] Winter peak MW | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(DOM_LOAD_ANNUAL[WINTER_PEAK_MW])
+[DOM_LOAD_ANNUAL] Summer peak MW | fmt=None | folder=None | desc=None | keys=['annotations']
+      SUM(DOM_LOAD_ANNUAL[SUMMER_PEAK_MW])
+[DOM_LOAD_ANNUAL] Floor growth 2019 to 2025 | fmt=0%;-0%;0% | folder=None | desc=None | keys=[]
+      DIVIDE(CALCULATE([Floor MW], DOM_LOAD_ANNUAL[YEAR] = 2025), CALCULATE([Floor MW], DOM_LOAD_ANNUAL[YEAR] = 2019)) - 1
+[DOM_LOAD_ANNUAL] Peak growth 2019 to 2025 | fmt=0%;-0%;0% | folder=None | desc=None | keys=[]
+      DIVIDE(CALCULATE([Peak MW], DOM_LOAD_ANNUAL[YEAR] = 2025), CALCULATE([Peak MW], DOM_LOAD_ANNUAL[YEAR] = 2019)) - 1
+[DOM_TOP50_HOURS] Top 50 hours in 2025 | fmt=0 | folder=None | desc=None | keys=[]
+      CALCULATE(COUNTROWS(DOM_TOP50_HOURS), DOM_TOP50_HOURS[RANK_END_2025] <= 50, DOM_TOP50_HOURS[YEAR] = 2025)
+[SAIDI_WEATHER_ADJUSTED] Adjusted label | fmt=None | folder=None | desc=None | keys=['annotations']
+      IF(SELECTEDVALUE(SAIDI_WEATHER_ADJUSTED[YEAR]) IN {2015, 2019, 2025}, SUM(SAIDI_WEATHER_ADJUSTED[WEATHER_ADJUSTED_SAIDI]))
+[DOM_LOAD_PROFILE] Hour colour | fmt=None | folder=None | desc=None | keys=[]
+      
+      VAR h = SELECTEDVALUE(DOM_LOAD_PROFILE[HOUR_NO])
+      RETURN
+      SWITCH(TRUE(),
+          h <= 6 || h >= 22, "#118DFF",
+          h >= 18,           "#B8BCC2",
+                             "#E8D166")
+REL [
+{
+"name": "AutoDetected_fec1106f-be3e-4203-8e3a-ab9a905f3efa",
+"fromTable": "FCT_RELIABILITY",
+"fromColumn": "UTILITY_KEY",
+"toTable": "DIM_UTILITY",
+"toColumn": "UTILITY_KEY"
+},
+{
+"name": "AutoDetected_2f6e9c31-1754-436f-90ff-24dd3d0f584b",
+"fromTable": "Headline",
+"fromColumn": "losses_pct",
+"toTable": "Programmes2025",
+"toColumn": "losses_pct"
+}
+]
+model annotations [('__PBI_TimeIntelligenceEnabled', '1'), ('PBI_QueryOrder', '["V_TREND","DIM_UTILITY","FCT_RELIABILITY","STORM_INDEX","V_GROUP_INDEX","V_STORM_VS_SAIDI","LoadGrowth","Programmes2025","Headline","AmiEventStudy","Tests","DOM_LOAD_ANNUAL","DOM_TOP50_HOURS","SAIDI_')]
+cultures [{'name': 'en-US', 'linguisticMetadata': {'content': {'Version': '2.0.0', 'Language': 'en-US', 'Entities': {'fct_reliability.saifi_ex_med': {'Definition': {'Binding': {'ConceptualEntity': 'FCT_RELIABILITY', 'ConceptualProperty': 'SAIFI ex MED'}}, 'State': 'Generated', 'Terms': [{'Outages per Custome
+T-ann V_TREND [('PBI_ResultType', 'Table')]
+T-ann DIM_UTILITY [('PBI_ResultType', 'Table')]
+T-ann FCT_RELIABILITY [('PBI_ResultType', 'Table')]
+T-ann STORM_INDEX [('PBI_ResultType', 'Table')]
+T-ann V_GROUP_INDEX [('PBI_ResultType', 'Table')]
+T-ann V_STORM_VS_SAIDI []
+T-ann LoadGrowth [('PBI_ResultType', 'Exception')]
+T-ann Programmes2025 [('PBI_ResultType', 'Exception')]
+T-ann Headline [('PBI_ResultType', 'Exception')]
+T-ann AmiEventStudy [('PBI_ResultType', 'Exception')]
+T-ann Tests [('PBI_ResultType', 'Table')]
+T-ann DOM_LOAD_ANNUAL []
+T-ann DOM_TOP50_HOURS []
+T-ann SAIDI_WEATHER_ADJUSTED []
+T-ann V_STORM_VS_SAIDI (2) []
+T-ann DOM_LOAD_PROFILE []
+T-ann Dashboard Year [('PBI_Id', '4f95280560f24c3db6d6b535e14a0529')]

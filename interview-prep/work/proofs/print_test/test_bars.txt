@@ -1,0 +1,2 @@
+caption: SAIDI ex-MED by year, Dominion Energy Virginia
+source: EIA-861 (2025 final) and PUDL 2015-2024; data/output/storm_vs_saidi.csv

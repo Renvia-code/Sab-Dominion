@@ -1,0 +1,68 @@
+SAIFI trend p = 0.54450 slope +0.00427
+CAIDI trend p = 0.73822 slope +0.16911
+SAIDI trend p = 0.57855 slope +0.64035
+peer groups: {'Other': 1257, 'Virginia co-op': 13, 'Southeast IOU peer': 5, 'Mid-Atlantic IOU peer': 4, 'Florida IOU peer': 2, 'Dominion Energy Virginia': 1, 'Appalachian Power (VA)': 1}
+co-op groups: ['Virginia co-op']
+                        utility_name state  saifi    saidi      cust
+0             BARC Electric Coop Inc    VA    NaN      NaN       NaN
+1   Mecklenburg Electric Cooperative    VA  1.956  244.000   31280.0
+2        Northern Virginia Elec Coop    VA  0.583   42.812  179398.0
+3       Northern Neck Elec Coop, Inc    VA  2.168  188.644   21079.0
+4        Powell Valley Electric Coop    VA  4.267  161.940    8406.0
+5        Prince George Electric Coop    VA    NaN  222.200   13341.0
+6        Shenandoah Valley Elec Coop    VA  2.340  258.000  101226.0
+7       Southside Electric Coop, Inc    VA  2.866  323.591   59312.0
+8     Central Virginia Electric Coop    VA  3.470  501.000   39308.0
+9         Rappahannock Electric Coop    VA  2.020  219.710  184314.0
+10           Community Electric Coop    VA    NaN      NaN       NaN
+11     Craig-Botetourt Electric Coop    VA    NaN      NaN       NaN
+12               A & N Electric Coop    VA  2.279  146.599   37914.0
+Virginia co-op: SAIFI matched denominators 1.887 | diluted (customers of SAIDI filers) 1.849 | missing-SAIFI customers 13,341
+deck_adopted words slides 1-8: [76, 154, 124, 138, 117, 143, 122, 131] total 1005 -> 7.73 min; per-slide seconds [35, 71, 57, 64, 54, 66, 56, 60]
+deck_public words slides 1-8: [69, 154, 124, 124, 99, 157, 122, 128] total 977 -> 7.52 min; per-slide seconds [32, 71, 57, 57, 46, 72, 56, 59]
+MASTER_PROMPT date lines: ['| Interview date, time, place (on site, video) | **Tuesday 3 November 2026**; time and place: |', '**Deadline: the interview is Tuesday 3 November 2026.** Finish the whole pack in this run, on Sunday', '> i need it for my interview interview is on november 3rd', 'Then a short list for the morning of 3 November.']
+origin/main docs/02 [6,077,232]: ['### `RAW.EIA930_SUBREGION` (6,077,232 rows, BA-subregion-hour, July 2018 to October 2026)']
+origin/main docs/05 [0\.70]: ['| Correlation, storm days vs SAIDI ex-MED, 2015 to 2024 | 0.70 | `CORR()` in `05_noaa_storms.sql` Q6b. With SAIFI: 0.41. With major-storm minutes: 0.47 |']
+origin/main docs/05 [79%]: ['| SAIDI 2023 -> 2025 | +17.1%, 79% from frequency | same pair for 2023 to 2025 |']
+origin/main docs/05 [0\.96]: ['| Quadrant lines | medians of the twelve peers: SAIFI 0.96, CAIDI 105 |']
+origin/main docs/05 [\b105\b]: ['| Quadrant lines | medians of the twelve peers: SAIFI 0.96, CAIDI 105 |']
+origin/main docs/08 [6,077,232]: ["**Step 3, filter and type.** `STG.EIA930_DOM_HOURLY` keeps rows where `balancing_authority = 'PJM' AND sub_region = 'DOM'` (72,864 of 6,077,232), parses both timestamps and keys on UTC so that clock-c"]
+origin/main docs/03 [within 2%]: ['| T2 | 04 | SAIDI = SAIFI x CAIDI within 2% for every row | 0 rows | 0 | A column is mis-mapped in staging |']
+origin/main docs/03 T rows: ['| T1 | 04 | No duplicate utility-state-year in `FCT_RELIABILITY` | 0 rows | 0 | De-duplication in `STG.RELIABILITY` failed, or a new file ov', '| T2 | 04 | SAIDI = SAIFI x CAIDI within 2% for every row | 0 rows | 0 | A column is mis-mapped in staging |', '| T3 | 04 | All-events SAIDI not lower than ex-MED SAIDI | 4 rows (known source anomalies, P8) | 4 | A different count means new anomalous r', "| T4 | 04 | Dominion VA 2025 equals EIA's published values (306.7, 144.4, 2,675,735) | 0 rows | 0 | Wrong file or wrong column mapping. Stop", '| T5 | 04 | Row count and customer total by year | 13 rows, 940 to 1,175 reporting units per year, customers increasing each year. The step ', '| T6 | 04 | No raw numeric value failed `TRY_TO_NUMBER` after separator removal | 0 rows | 0 | A new formatting variant in the source. Exten', '| T7 | 05 | Every Dominion county in the service territory resolves to a FIPS code | 0 rows | 0 | A county spelling changed. Extend the name', '| T8 | 05 | The latest NOAA file covers a full year | 1 row, month 12 | 202512 | The NOAA file is partial. Wait, or state the cut-off on the', '| T9 | 05 | No zone event left without a county after both passes | 0 rows | 0 | Further zone renumbering. Refresh the zone lookup |', '| T10 | 06 | Hours with reported demand above 60,000 MW | 2 rows (18 October 2021) | 2 | Additional anomalous rows. Review the dates |', '| T11 | 06 | No UTC hour appears twice for the DOM zone | 0 rows | 0 | A file was loaded twice. Truncate and reload |', '| T12 | 06 | Each full year 2019 to 2025 has at least 8,700 reported hours | 0 rows | 0 | A six-month file is missing or truncated |']
+page order: ['Summary', 'Scorecard', 'What moved', 'Weather', 'Fair comparison', 'Outages by county', 'Storms', 'Growth', 'Demand and seasons', 'Demand summary', 'Data notes']
+s5_hourly_growth_2019_2025.csv
+    hour_ending  avg_mw_2019  avg_mw_2025  growth_pct
+0             1      10273.0      14279.0        39.0
+1             2       9935.0      13932.0        40.2
+2             3       9755.0      13737.0        40.8
+3             4       9708.0      13684.0        41.0
+4             5       9879.0      13833.0        40.0
+5             6      10366.0      14270.0        37.7
+6             7      11089.0      14915.0        34.5
+7             8      11562.0      15362.0        32.9
+8             9      11750.0      15459.0        31.6
+9            10      11860.0      15427.0        30.1
+10           11      12008.0      15462.0        28.8
+11           12      12157.0      15551.0        27.9
+12           13      12300.0      15664.0        27.3
+13           14      12435.0      15795.0        27.0
+14           15      12552.0      15925.0        26.9
+15           16      12697.0      16136.0        27.1
+16           17      12931.0      16478.0        27.4
+17           18      13223.0      16876.0        27.6
+18           19      13260.0      16967.0        28.0
+19           20      13107.0      16875.0        28.7
+20           21      12864.0      16641.0        29.4
+21           22      12354.0      16163.0        30.8
+22           23      11585.0      15469.0        33.5
+23           24      10836.0      14798.0        36.6
+s5_winter_summer_peaks_v1.csv
+   year  winter_peak_mw  summer_peak_mw  higher
+0  2019         19803.0         19478.0  winter
+1  2020         17468.0         20073.0  summer
+2  2021         17985.0         20493.0  summer
+3  2022         22415.0         21274.0  winter
+4  2023         19635.0         22050.0  summer
+5  2024         22152.0         23220.0  summer
+6  2025         24957.0         23905.0  winter
+7  2026         25413.0         25384.0  winter

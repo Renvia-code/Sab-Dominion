@@ -1,0 +1,2 @@
+caption: Dominion Energy Virginia and 11 peers: SAIFI vs CAIDI, 2021-2025 averages, ex-MED; medians of the 11 peers 0.934 and 99.5
+source: data/output/peer_reliability_5yr.csv (D batch 5, commit 7133aba); method from the workbook Peers sheet

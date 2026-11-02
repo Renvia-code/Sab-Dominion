@@ -1,0 +1,165 @@
+
+### county 51041 basis
+SELECT county_fips, county_label, customers_basis, customers_basis_source, dominion_county, dominion_only_county FROM mart.DIM_COUNTY WHERE county_fips IN ('51041', '51143', '51153')
+
+county_fips          county_label  customers_basis                     customers_basis_source  dominion_county  dominion_only_county
+      51041   Chesterfield County           155017 EAGLE-I modelled customers (MCC.csv, 2022)             True                 False
+      51143   Pittsylvania County            29827 EAGLE-I modelled customers (MCC.csv, 2022)             True                 False
+      51153 Prince William County           225231 EAGLE-I modelled customers (MCC.csv, 2022)             True                 False
+
+### county-day 51041 2025-07-18 and neighbours
+SELECT county_fips, day, customer_hours, customer_hours_per_1k, customers_out_max,
+       failed_readings, storm_day, storm_wind, max_gust_kt
+FROM mart.FCT_COUNTY_DAY WHERE county_fips = '51041' AND day BETWEEN DATE '2025-07-17' AND DATE '2025-07-19' ORDER BY day
+
+county_fips        day  customer_hours  customer_hours_per_1k  customers_out_max  failed_readings  storm_day  storm_wind  max_gust_kt
+      51041 2025-07-17          984.75               6.352529                105                0      False       False          NaN
+      51041 2025-07-18        13513.00              87.171084               4560                0       True        True         50.0
+      51041 2025-07-19        13510.75              87.156570               4128                0      False       False          NaN
+
+### 15-min readings 51041 EST day 2025-07-18
+SELECT COUNT(*) AS slots, COUNT(customers_out) AS with_value,
+       SUM(customers_out) AS sum_customers_out, SUM(customers_out) * 0.25 AS customer_hours, MAX(customers_out) AS max_out,
+       MIN(ts_utc) AS first_utc, MAX(ts_utc) AS last_utc
+FROM stg.EAGLEI_VA_15MIN
+WHERE county_fips = '51041' AND CAST(ts_utc - INTERVAL 5 HOUR AS DATE) = DATE '2025-07-18'
+
+ slots  with_value  sum_customers_out  customer_hours  max_out           first_utc            last_utc
+    85          85            54052.0         13513.0     4560 2025-07-18 05:00:00 2025-07-19 04:45:00
+
+### A1 ratio in SQL
+WITH p AS (
+  SELECT storm_day, customer_hours_per_1k FROM mart.FCT_COUNTY_DAY
+  WHERE failed_readings = 0 AND county_fips NOT IN ('51600', '51683', '51660', '51520'))
+SELECT SUM(CASE WHEN storm_day THEN 1 ELSE 0 END) AS storm_county_days,
+       SUM(CASE WHEN NOT storm_day THEN 1 ELSE 0 END) AS calm_county_days,
+       ROUND(AVG(CASE WHEN storm_day THEN customer_hours_per_1k END), 1) AS storm_mean,
+       ROUND(AVG(CASE WHEN NOT storm_day THEN customer_hours_per_1k END), 2) AS calm_mean,
+       ROUND(AVG(CASE WHEN storm_day THEN customer_hours_per_1k END)
+           / AVG(CASE WHEN NOT storm_day THEN customer_hours_per_1k END), 1) AS ratio
+FROM p
+
+ storm_county_days  calm_county_days  storm_mean  calm_mean  ratio
+            6108.0          373851.0       332.8      27.86   11.9
+
+### Isaias event
+SELECT event_key, start_utc, peak_utc, end_utc, peak_customers_out, peak_sustained_1h, hours_above_threshold,
+       ROUND(customer_hours) AS customer_hours, background_customers_out, hours_to_50pct, hours_to_90pct, hours_to_99pct,
+       starts_on_med_proxy_day, storm_type, tropical_cyclone, doe417_customers_max, size_ratio
+FROM mart.FCT_EVENT_CONTEXT WHERE start_utc BETWEEN TIMESTAMP '2020-08-03' AND TIMESTAMP '2020-08-05'
+
+                           event_key           start_utc            peak_utc             end_utc  peak_customers_out  peak_sustained_1h  hours_above_threshold  customer_hours  background_customers_out  hours_to_50pct  hours_to_90pct  hours_to_99pct  starts_on_med_proxy_day storm_type tropical_cyclone  doe417_customers_max  size_ratio
+territory|DOM103|2020-08-04 07:45:00 2020-08-04 07:45:00 2020-08-04 13:30:00 2020-08-07 06:00:00            351738.0           343492.0                   70.5       6167169.0                    2316.0            8.25            33.5           72.75                     True   tropical           ISAIAS                508000    0.692398
+
+### Isaias restoration curve, selected hours
+SELECT hour_since_peak, customers_out, ROUND(share_restored, 3) AS share_restored
+FROM mart.FCT_RESTORATION_CURVE WHERE event_key LIKE '%2020-08-04 07:45:00'
+  AND hour_since_peak IN (0, 1, 6, 12, 24, 33, 34, 48, 72) ORDER BY hour_since_peak
+
+ hour_since_peak  customers_out  share_restored
+             0.0       351738.0           0.000
+             1.0       330001.0           0.062
+             6.0       224838.0           0.363
+            12.0       140213.0           0.605
+            24.0        93942.0           0.738
+            33.0        37446.0           0.899
+            34.0        31431.0           0.917
+            48.0        16110.0           0.961
+            72.0         6319.0           0.989
+
+### DOE-417 rows Aug 2020
+SELECT * FROM stg.DOE417_EVENTS WHERE date_began BETWEEN DATE '2020-08-01' AND DATE '2020-08-10'
+
+ file_year             source_file  source_row date_began time_began date_restored                                                                                                                                                                                                                                                                                                                                                   area_affected                                                                                                                                                                                           alert_criteria                event_type  demand_loss_mw  customers_affected  virginia_row  dominion_area
+      2020 2020_Annual_Summary.xls         191 2020-08-01      11:14    2020-08-10                                                                                                                                                                                                                                                                                            Texas: Cameron County, Willacy County, Hidalgo County, Starr County;                                                                                   Public appeal to reduce the use of electricity for purposes of maintaining the continuity of the Bulk Electric System.            Severe Weather            <NA>                <NA>         False          False
+      2020 2020_Annual_Summary.xls         192 2020-08-01      08:16    2020-08-01                                                                                                                                                                                                                                                                                                                                   California: San Diego County;                                                                  Complete loss of monitoring or control capability at its staffed Bulk Electric System control center for 30 continuous minutes or more.         System Operations               0                   0         False          False
+      2020 2020_Annual_Summary.xls         193 2020-08-01      00:00    2020-08-01                                                                                                                                                                                                                                                                                            Texas: Cameron County, Hidalgo County, Starr County, Willacy County; Damage or destruction of a Facility within its Reliability Coordinator Area, Balancing Authority Area or Transmission Operator Area that results in action(s) to avoid a Bulk Electric System Emergency.            Severe Weather            <NA>                <NA>         False          False
+      2020 2020_Annual_Summary.xls         194 2020-08-02      19:43    2020-08-02                                                                                                                                                                                                                                                                                                                                   Illinois: Rock Island County;            Unexpected Transmission loss within its area, contrary to design, of three or more Bulk Electric System Facilities caused by a common disturbance (excluding successful automatic reclosing). Transmission Interruption               0                   0         False          False
+      2020 2020_Annual_Summary.xls         195 2020-08-03      08:00    2020-08-03                                                                                                                                                                                                                                                                                                                                            Texas: Ector County;                                                                                                    Damage or destruction of its Facility that results from actual or suspected intentional human action.                 Vandalism               0                   0         False          False
+      2020 2020_Annual_Summary.xls         196 2020-08-03      23:15    2020-08-06                                                                                                                                                                                                                                                                                                                                 North Carolina: South Carolina:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              340000         False          False
+      2020 2020_Annual_Summary.xls         197 2020-08-03      23:02           NaT                                                                                                                                                                                                                                                                                                                                                 North Carolina:                                                                              Complete loss of off-site power (LOOP) affecting a nuclear generating station per the Nuclear Plant Interface Requirements.            Severe Weather            <NA>                <NA>         False          False
+      2020 2020_Annual_Summary.xls         198 2020-08-04      12:00    2020-08-07                                                                                                                                                                                                                                            New York: Rockland County, Orange County, Sullivan County; New Jersey: Bergen County, Passaic County, Sussex County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              160000         False          False
+      2020 2020_Annual_Summary.xls         199 2020-08-04      13:00    2020-08-04                                                                                                                                                                                                                                                                                                         New York: Nassau County, Suffolk County, Queens County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            3907              420000         False          False
+      2020 2020_Annual_Summary.xls         200 2020-08-04      11:20    2020-08-07                                                                                                                                                                                                                                                                                                                                                     New Jersey:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather              60               75000         False          False
+      2020 2020_Annual_Summary.xls         201 2020-08-04      09:00    2020-08-05                                                                                                                                                                                                                                                                                                                                                       Delaware:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              100000         False          False
+      2020 2020_Annual_Summary.xls         202 2020-08-04      14:00    2020-08-08                                                                                                                                                                                                                                                                                                        New York: Dutchess County, Orange County, Ulster County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              116818         False          False
+      2020 2020_Annual_Summary.xls         203 2020-08-04      04:41    2020-08-05                                                                                                                                                                                                                                                                                                                                                       Virginia:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              508000          True           True
+      2020 2020_Annual_Summary.xls         204 2020-08-04      12:18    2020-08-08                                                                                                                                                                                                                                                                                                                                                     New Jersey:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              788000         False          False
+      2020 2020_Annual_Summary.xls         205 2020-08-04      14:35    2020-08-10                                                                                                                                                                                                                                                                                                                                        New York: Broome County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>               76120         False          False
+      2020 2020_Annual_Summary.xls         206 2020-08-04      15:15    2020-08-07                                                                                                                                                                                                                                                                                        Connecticut: Massachusetts: New Hampshire: Maine: Rhode Island: Vermont:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            2000             1188247         False          False
+      2020 2020_Annual_Summary.xls         207 2020-08-04      13:31           NaT                                                                                                                                                                                                                                                      New York: Bronx County, Richmond County, Queens County, Kings County, Westchester County, New York County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              271119         False          False
+      2020 2020_Annual_Summary.xls         208 2020-08-04      06:01    2020-08-06                                                                                                                                      North Carolina: Brunswick County, Columbus County, Pender County, Duplin County, Onslow County, Jones County, Craven County, Jones County, Beaufort County, Bertie County, Chowan County, Gates County, Perquimans County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather             311              125987         False          False
+      2020 2020_Annual_Summary.xls         209 2020-08-04      12:00           NaT                                                                                                                                                                                                                                               Pennsylvania: Bucks County, Chester County, Delaware County, Montgomery County, Philadelphia County, York County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              137103         False          False
+      2020 2020_Annual_Summary.xls         210 2020-08-04      10:30           NaT                                                                                                                                                                                                                                                                                                                                                     New Jersey:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>               70000         False          False
+      2020 2020_Annual_Summary.xls         211 2020-08-04      14:35           NaT                                                                                                                                                                                                                                                                                                                                                       New York:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>               76120         False          False
+      2020 2020_Annual_Summary.xls         212 2020-08-05      17:58    2020-08-05                                                                                                                                                                                                                                                                                                                                           Texas: Orange County;            Unexpected Transmission loss within its area, contrary to design, of three or more Bulk Electric System Facilities caused by a common disturbance (excluding successful automatic reclosing). Transmission Interruption              89               19785         False          False
+      2020 2020_Annual_Summary.xls         213 2020-08-07      05:13           NaT                                                                                                                                                                                                                                                                                                                       New York: Queens County, New York County;                                                                                           Uncontrolled loss of 300 Megawatts or more of firm system loads for 15 minutes or more from a single incident.            Severe Weather             500              187068         False          False
+      2020 2020_Annual_Summary.xls         214 2020-08-10      11:00    2020-08-10 Iowa: Webster County, Greene County, Dallas County, Hamilton County, Boone County, Polk County, Hardin County, Story County, Jasper County, Grundy County, Marshall County, Tama County, Poweshiek County, Benton County, Iowa County, Linn County, Johnson County, Jones County, Cedar County, Muscatine County, Jackson County, Clinton County, Scott County;       Uncontrolled loss of 200 Megawatts or more of firm system loads for 15 minutes or more from a single incident for entities with previous year's peak demand less than or equal to 3,000 Megawatts.            Severe Weather             550                <NA>         False          False
+      2020 2020_Annual_Summary.xls         215 2020-08-10      16:00    2020-08-13                                                                                                                                                                                                                                                                                                                                             Illinois: Missouri:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              135000         False          False
+      2020 2020_Annual_Summary.xls         216 2020-08-10      12:49           NaT                                                                                                                                                                                                                                                                                                                                                           Iowa:                                                                              Complete loss of off-site power (LOOP) affecting a nuclear generating station per the Nuclear Plant Interface Requirements.            Severe Weather            <NA>                <NA>         False          False
+      2020 2020_Annual_Summary.xls         217 2020-08-10      22:39    2020-08-13                                                                                                                                                                                                                                                                                                                                                        Indiana:                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>               95300         False          False
+      2020 2020_Annual_Summary.xls         218 2020-08-10      14:30           NaT                                                                                                                                                                                                          Illinois: Cook County, Will County, DuPage County, Lake County, Kane County, Grundy County, LaSalle County, DeKalb County, McHenry County, Lee County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather            <NA>              856000         False          False
+      2020 2020_Annual_Summary.xls         219 2020-08-10      22:25    2020-08-10                                                                                                                                                                                                                                                                                                                                      New York: Onondaga County;                                                                  Complete loss of monitoring or control capability at its staffed Bulk Electric System control center for 30 continuous minutes or more.         System Operations               0                   0         False          False
+      2020 2020_Annual_Summary.xls         220 2020-08-10      12:38           NaT                                                                                                                                                                                                                                                                                                                                                           Iowa:                                                                                           Uncontrolled loss of 300 Megawatts or more of firm system loads for 15 minutes or more from a single incident.            Severe Weather            1400              250000         False          False
+      2020 2020_Annual_Summary.xls         221 2020-08-10      10:00           NaT                                                                                                                                                                                                       Iowa: Dallas County, Polk County, Warren County, Madison County, Johnson County, Scott County; Illinois: Rock Island County, Henry County, Mercer County;                                                                                                                               Loss of electric service to more than 50,000 customers for 1 hour or more.            Severe Weather             950              300000         False          False
+
+### territory day 2020-08-04 and the 2020 threshold
+SELECT day, ROUND(customer_hours) AS customer_hours, customers_out_max,
+       ROUND(alpha, 3) AS alpha, ROUND(beta, 3) AS beta, ROUND(med_threshold_customer_hours) AS threshold, is_med_proxy
+FROM mart.FCT_TERRITORY_DAY WHERE day BETWEEN DATE '2020-08-03' AND DATE '2020-08-06' ORDER BY day
+
+       day  customer_hours  customers_out_max  alpha  beta  threshold  is_med_proxy
+2020-08-03         66360.0             8384.0  9.826 1.239   409595.0         False
+2020-08-04       4184567.0           351738.0  9.826 1.239   409595.0          True
+2020-08-05       1647235.0           125956.0  9.826 1.239   409595.0          True
+2020-08-06        334622.0            20182.0  9.826 1.239   409595.0         False
+
+### proxy MED days per year
+SELECT year(day) AS year, SUM(CASE WHEN is_med_proxy THEN 1 ELSE 0 END) AS med_days,
+       ROUND(MAX(med_threshold_customer_hours)) AS threshold FROM mart.FCT_TERRITORY_DAY GROUP BY 1 ORDER BY 1
+
+ year  med_days  threshold
+ 2015       2.0   317094.0
+ 2016      15.0   317094.0
+ 2017       3.0   439983.0
+ 2018      18.0   344470.0
+ 2019       5.0   420922.0
+ 2020       6.0   409595.0
+ 2021      12.0   350260.0
+ 2022      14.0   356035.0
+ 2023       3.0   420569.0
+ 2024      10.0   343201.0
+ 2025      15.0   338024.0
+
+### county map extremes
+SELECT county_fips, county_label, minutes_non_med_avg_2015_24, map_flag FROM read_csv_auto('data/output/county_outage_map.csv')
+WHERE map_flag = 'ok' ORDER BY minutes_non_med_avg_2015_24 DESC LIMIT 2
+
+ county_fips     county_label  minutes_non_med_avg_2015_24 map_flag
+       51125    Nelson County                        878.6       ok
+       51023 Botetourt County                        788.6       ok
+
+### county map min
+SELECT county_fips, county_label, minutes_non_med_avg_2015_24, map_flag FROM read_csv_auto('data/output/county_outage_map.csv')
+WHERE map_flag = 'ok' ORDER BY minutes_non_med_avg_2015_24 ASC LIMIT 2
+
+ county_fips          county_label  minutes_non_med_avg_2015_24 map_flag
+       51685    Manassas Park city                         30.0       ok
+       51153 Prince William County                         55.4       ok
+
+### county-year Pittsylvania
+SELECT county_fips, year, ROUND(outage_minutes_per_customer_non_med, 1) AS min_non_med, events_non_med, storm_days, ROUND(failed_share, 3) AS failed_share
+FROM mart.FCT_COUNTY_YEAR WHERE county_fips = '51143' ORDER BY year
+
+county_fips  year  min_non_med  events_non_med  storm_days  failed_share
+      51143  2015        140.0            29.0        12.0         0.000
+      51143  2016        298.3            38.0        15.0         0.000
+      51143  2017        148.2            32.0        15.0         0.001
+      51143  2018        227.8            36.0        14.0         0.002
+      51143  2019        344.0            38.0        13.0         0.017
+      51143  2020        904.8            70.0         6.0         0.017
+      51143  2021       2640.2            66.0         9.0         0.152
+      51143  2022        721.1            95.0        16.0         0.000
+      51143  2023        425.3            59.0         9.0         0.000
+      51143  2024        479.2            56.0        14.0         0.000
+      51143  2025        360.7            53.0        13.0         0.002
